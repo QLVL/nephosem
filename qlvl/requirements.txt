@@ -1,6 +1,0 @@
-NumPy
-Scipy
-pandas
-sklearn
-tqdm
-tabulate

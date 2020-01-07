@@ -1,9 +1,0 @@
-The	the
-vet	vet
-grabbed	grab
-the	the
-dog	dog
-by	by
-its	its
-neck	neck
-.	.

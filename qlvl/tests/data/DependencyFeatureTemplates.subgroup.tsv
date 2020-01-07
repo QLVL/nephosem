@@ -1,8 +1,0 @@
-ID	Target Regex	Feature Regex	Tareget Description	Feature Description	ID
-1	(?P<LEMMA>\w+)/(?P<POS>N)\w*	<-(?P<DEPREL>nsubj)$ (?P<LEMMA>\w+)/(?P<POS>V)\w*	noun	subject of verb	1
-2	(?P<LEMMA>\w+)/(?P<POS>N)\w*	<-(?P<DEPREL>nsubj) ?P<LEMMA>\w+/(?P<POS>V)\w*->[(?P<DEPREL>acomp) (?P<LEMMA>\w+)/(?P<POS>JJ)]	noun	has predicative adjective	2
-3	(?P<LEMMA>\w+)/(?P<POS>V)\w*	->[(?P<DEPREL>nsubj)$ (?P<LEMMA>\w+)/(?P<POS>N)\w*]	verb	has nominal subject	3
-5	(?P<LEMMA>\w+)/(?P<POS>N)\w*	<-(?P<DEPREL>nsubj) (?P<LEMMA>\w+)/(?P<POS>V)\w*->[(?P<DEPREL>prep) (?P<LEMMA>\w+)/(?P<POS>IN)->[(?P<DEPREL>pobj) (?P<LEMMA>\w+)/(?P<POS>N)\w*]]	noun	subject of verb with prepositonal complement noun 	5
-6	(?P<LEMMA>\w+)/(?P<POS>N)\w*	<-(?P<DEPREL>nsubj) (?P<LEMMA>\w+)/(?P<POS>V)\w*->[(?P<DEPREL>prep) (?P<LEMMA>\w+)/(?P<POS>IN)]	noun	subject of verb with prepositonal complement	6
-7	(?P<LEMMA>\w+)/(?P<POS>V)\w*	->[(?P<DEPREL>prep) (?P<LEMMA>\w+)/(?P<POS>N)->[(?P<DEPREL>pobj) (?P<LEMMA>\w+)/(?P<POS>N)\w*]]	verb	has prepositional complement noun	7
-16	(?P<LEMMA>\w+)/(?P<POS>V)\w*	->[(?P<DEPREL>agent) ?P<LEMMA>by/?P<POS>IN->[?P<DEPREL>pobj (?P<LEMMA>\w+)/(?P<POS>N)\w*],(?P<DEPREL>nsubjpass) (?P<LEMMA>\w+)/(?P<POS>N)\w*]	verb	has passive subject noun AND agent noun	16
