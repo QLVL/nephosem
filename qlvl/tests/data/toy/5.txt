@@ -1,0 +1,6 @@
+Coffee	coffee
+tastes	taste
+better	better
+than	than
+tea	tea
+.	.

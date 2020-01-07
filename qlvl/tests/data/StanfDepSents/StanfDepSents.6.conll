@@ -1,0 +1,25 @@
+<s id="16">
+The	DT	the	1	2	det
+boy	NN	boy	2	3	nsubj
+gives	VBZ	give	3	0	ROOT
+the	DT	the	4	5	det
+girl	NN	girl	5	3	dative
+a	DT	a	6	9	det
+tasty	JJ	tasty	7	9	amod
+healthy	JJ	healthy	8	9	amod
+apple	NN	apple	9	3	dobj
+</s>
+<s id="17">
+The	DT	the	1	2	det
+boy	NN	boy	2	3	nsubj
+is	VBZ	be	3	0	ROOT
+not	RB	not	4	3	neg
+healthy	JJ	healthy	5	3	acomp
+</s>
+<s id="18">
+The	DT	the	1	2	det
+girl	NN	girl	2	5	nsubj
+does	VBZ	do	3	5	aux
+n't	RB	not	4	5	neg
+eat	VB	eat	5	0	ROOT
+</s>

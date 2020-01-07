@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
+        http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+    <key id="n1" for="node" attr.name="LEMMA" attr.type="string">
+        <default>(\w+)</default>
+    </key>
+    <key id="n2" for="node" attr.name="POS" attr.type="string">
+        <default>\w+</default>
+    </key>
+    <key id="e1" for="edge" attr.name="DEPREL" attr.type="string"/>
+    <graph id="1" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(nsubj)$</data>
+        </edge>
+    </graph>
+    <graph id="2" edgedefault="directed">
+        <node id="1">
+            <data key="n1">\w+</data>
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <node id="3">
+            <data key="n2">(JJ)</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(nsubj)$</data>
+        </edge>
+        <edge source="1" target="3">
+            <data key="e1">(acomp)</data>
+        </edge>
+    </graph>
+    <graph id="4" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <node id="3">
+            <data key="n2">(JJ)</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(nsubj)$</data>
+        </edge>
+        <edge source="1" target="3">
+            <data key="e1">(acomp)</data>
+        </edge>
+    </graph>
+    <graph id="5" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <node id="3">
+            <data key="n2">(IN)</data>
+        </node>
+        <node id="4">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(nsubj)</data>
+        </edge>
+        <edge source="1" target="3">
+            <data key="e1">(prep)</data>
+        </edge>
+        <edge source="3" target="4">
+            <data key="e1">(pobj)</data>
+        </edge>
+    </graph>
+    <graph id="6" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <node id="3">
+            <data key="n2">(IN)</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(nsubj)</data>
+        </edge>
+        <edge source="1" target="3">
+            <data key="e1">(prep)</data>
+        </edge>
+    </graph>
+    <graph id="7" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n2">(IN)</data>
+        </node>
+        <node id="3">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(prep)</data>
+        </edge>
+        <edge source="2" target="3">
+            <data key="e1">(pobj)</data>
+        </edge>
+    </graph>
+    <graph id="9" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <node id="3">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(nsubj)$</data>
+        </edge>
+        <edge source="1" target="3">
+            <data key="e1">(dobj)</data>
+        </edge>
+    </graph>
+    <graph id="10" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(dobj)</data>
+        </edge>
+    </graph>
+    <graph id="11" edgedefault="directed">
+        <node id="1">
+            <data key="n1">(\w+)</data>
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="1"/>
+        <node id="2">
+            <data key="n1">(\w+)</data>
+            <data key="n2">(N)\w+</data>
+        </node>
+        <node id="3">
+            <data key="n1">(\w+)</data>
+            <data key="n2">(N)\w+</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(nsubj)$</data>
+        </edge>
+        <edge source="1" target="3">
+            <data key="e1">(dobj)</data>
+        </edge>
+    </graph>
+    <graph id="12" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n2">(JJ)</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(amod)</data>
+        </edge>
+    </graph>
+    <graph id="14" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(JJ)</data>
+        </node>
+        <node id="2">
+            <data key="n2">(RB)\w*</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(advmod)</data>
+        </edge>
+    </graph>
+    <graph id="15" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(nsubjpass)</data>
+        </edge>
+    </graph>
+    <graph id="16" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n1">by</data>
+            <data key="n2">IN</data>
+        </node>
+        <node id="3">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <node id="4">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(agent)</data>
+        </edge>
+        <edge source="2" target="3">
+            <data key="e1">pobj</data>
+        </edge>
+        <edge source="1" target="4">
+            <data key="e1">(nsubjpass)</data>
+        </edge>
+    </graph>
+    <graph id="17" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n1">by</data>
+            <data key="n2">IN</data>
+        </node>
+        <node id="3">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(agent)</data>
+        </edge>
+        <edge source="2" target="3">
+            <data key="e1">pobj</data>
+        </edge>
+    </graph>
+    <graph id="18" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(appos)</data>
+        </edge>
+    </graph>
+    <graph id="20" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n1">\w+</data>
+            <data key="n2">(N)\w*</data>
+        </node>
+        <node id="3">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(nsubj)</data>
+        </edge>
+        <edge source="2" target="3">
+            <data key="e1">(conj)</data>
+        </edge>
+    </graph>
+    <graph id="22" edgedefault="directed">
+        <node id="1">
+            <data key="n1">\w+</data>
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <node id="3">
+            <data key="n2">(V)\w*</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(nsubj)</data>
+        </edge>
+        <edge source="1" target="3">
+            <data key="e1">(conj)</data>
+        </edge>
+    </graph>
+    <graph id="24" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n1">\w+</data>
+            <data key="n2">\w*</data>
+        </node>
+        <node id="3">
+            <data key="n1">\w+</data>
+            <data key="n2">\w*</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(dobj)</data>
+        </edge>
+        <edge source="1" target="3">
+            <data key="e1">(dative)</data>
+        </edge>
+    </graph>
+    <graph id="25" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <node id="3">
+            <data key="n1">\w+</data>
+            <data key="n2">\w*</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(dobj)</data>
+        </edge>
+        <edge source="1" target="3">
+            <data key="e1">(dative)</data>
+        </edge>
+    </graph>
+    <graph id="26" edgedefault="directed">
+        <node id="1">
+            <data key="n2">(V)\w*</data>
+        </node>
+        <node id="2">
+            <data key="n2">(N)\w*</data>
+        </node>
+        <node id="3">
+            <data key="n1">\w+</data>
+            <data key="n2">\w*</data>
+        </node>
+        <edge source="1" target="2">
+            <data key="e1">(dative)</data>
+        </edge>
+        <edge source="1" target="3">
+            <data key="e1">(dobj)</data>
+        </edge>
+    </graph>
+</graphml>

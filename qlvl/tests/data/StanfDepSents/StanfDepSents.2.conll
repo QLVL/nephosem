@@ -1,0 +1,30 @@
+<s id="4">
+The	DT	the	1	2	det
+apple	NN	apple	2	4	nsubjpass
+is	VBZ	be	3	4	auxpass
+eaten	VBN	eat	4	0	ROOT
+by	IN	by	5	4	agent
+the	DT	the	6	7	det
+boy	NN	boy	7	5	pobj
+</s>
+<s id="5">
+The	DT	the	1	2	det
+boy	NN	boy	2	3	nsubj
+eats	VBZ	eat	3	0	ROOT
+very	RB	very	4	5	advmod
+healthy	JJ	healthy	5	6	amod
+food	NN	food	6	3	dobj
+</s>
+<s id="6">
+Apples	NNP	apple	1	8	nsubjpass
+,	,	,	2	1	punct
+a	DT	a	3	5	det
+healthy	JJ	healthy	4	5	amod
+food	NN	food	5	1	appos
+,	,	,	6	8	punct
+are	VBP	be	7	8	auxpass
+eaten	VBN	eat	8	0	ROOT
+by	IN	by	9	8	agent
+the	DT	the	10	11	det
+girl	NN	girl	11	9	pobj
+</s>

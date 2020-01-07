@@ -1,0 +1,56 @@
+The	the
+dog	dog
+barked	bark
+loud	loud
+at	at
+the	the
+passerby	passerby
+.	.
+</artikel>
+The	the
+vet	vet
+grabbed	grab
+the	the
+dog	dog
+by	by
+its	its
+neck	neck
+.	.
+</artikel>
+The	the
+cat	cat
+was	be
+purring	purr
+loud	loud
+.	.
+</artikel>
+The	the
+vet	vet
+was	be
+scratched	scratch
+by	by
+the	the
+cat	cat
+while	while
+grabbing	grab
+it	it
+.	.
+</artikel>
+Coffee	coffee
+tastes	taste
+better	better
+than	than
+tea	tea
+.	.
+</artikel>
+The	the
+vet	vet
+grabbed	grab
+his	his
+cup	cup
+and	and
+tasted	taste
+his	his
+coffee	coffee
+.
+</artikel>
