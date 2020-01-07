@@ -1,0 +1,8 @@
+The	the
+dog	dog
+barked	bark
+loud	loud
+at	at
+the	the
+passerby	passerby
+.	.

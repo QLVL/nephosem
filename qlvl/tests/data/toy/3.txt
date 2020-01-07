@@ -1,0 +1,6 @@
+The	the
+cat	cat
+was	be
+purring	purr
+loud	loud
+.	.

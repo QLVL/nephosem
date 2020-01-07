@@ -1,0 +1,29 @@
+<s id="19">
+The	DT	the	1	3	det
+old	JJ	old	2	3	amod
+boy	NN	boy	3	4	nsubj
+gives	VBZ	give	4	0	ROOT
+the	DT	the	5	6	det
+girl	NN	girl	6	4	dative
+a	DT	a	7	9	det
+baby	NN	baby	8	9	compound
+apple	NN	apple	9	4	dobj
+</s>
+<s id="20">
+The	DT	the	1	2	det
+boy	NN	boy	2	3	nsubj
+is	VBZ	be	3	0	ROOT
+ten	CD	ten	4	5	nummod
+years	NNS	year	5	6	npadvmod
+old	JJ	old	6	3	acomp
+</s>
+<s id="21">
+The	DT	the	1	2	det
+boy	NN	boy	2	3	nsubj
+asked	VBD	ask	3	0	ROOT
+the	DT	the	4	5	det
+girl	NN	girl	5	3	dobj
+about	IN	about	6	3	prep
+eating	VBG	eat	7	6	pcomp
+apples	NNS	apple	8	7	dobj
+</s>

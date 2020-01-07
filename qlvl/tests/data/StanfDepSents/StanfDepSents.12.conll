@@ -1,0 +1,25 @@
+<s id="34">
+Apples	NNP	apple	1	6	nsubj
+eaten	VBN	eat	2	1	vmod
+during	IN	during	3	2	prep
+the	DT	the	4	5	det
+year	NN	year	5	3	pobj
+are	VBP	be	6	0	ROOT
+tasty	JJ	tasty	7	6	acomp
+</s>
+<s id="35">
+The	DT	the	1	2	det
+boy	NN	boy	2	3	nsubj
+likes	VBZ	like	3	0	ROOT
+to	TO	to	4	5	aux
+eat	VB	eat	5	3	xcomp
+an	DT	an	6	7	det
+apple	NN	apple	7	5	dobj
+</s>
+<s id="36">
+Apples	NNS	apple	1	2	nsubj
+are	VBP	be	2	0	ROOT
+healthy	JJ	healthy	3	2	acomp
+to	TO	to	4	5	aux
+eat	VB	eat	5	3	xcomp
+</s>

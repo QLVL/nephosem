@@ -1,0 +1,27 @@
+ID	Target Regex	Feature Regex	Tareget Description	Feature Description	ID
+1	(\w+)/(N)\w*	<(nsubj) (\w+)/(V)\w*	noun	subject of verb	1
+2	(\w+)/(N)\w*	<(nsubj) \w+/(V)\w* >[(acomp) (\w+)/(JJ)]	noun	has predicative adjective	2
+3	(\w+)/(V)\w*	>[(nsubj) (\w+)/(N)\w*]	verb	has nominal subject	3
+4	(\w+)/(V)\w*	>[(acomp) (\w+)/(JJ),(nsubj) (\w+)/(N)\w*]	verb	has nominal subject and predicative adjective	4
+5	(\w+)/(N)\w*	<(nsubj) (\w+)/(V)\w* >[(prep) (\w+)/(IN) >[(pobj) (\w+)/(N)\w*]]	noun	subject of verb with prepositonal complement noun 	5
+6	(\w+)/(N)\w*	<(nsubj) (\w+)/(V)\w* >[(prep) (\w+)/(IN)]	noun	subject of verb with prepositonal complement	6
+7	(\w+)/(V)\w*	>[(prep) (\w+)/(IN) >[(pobj) (\w+)/(N)\w*]]	verb	has prepositional complement noun	7
+8	(\w+)/(N)\w*	<(pobj) (\w+)/(IN) <(prep) (\w+)/(V)\w*	noun	prepositional complement of verb	8
+9	(\w+)/(N)\w*	<(nsubj) \w+/(V)\w* >[(dobj) (\w+)/(N)\w*]	noun	subject of verb with direct object noun	9
+10	(\w+)/(V)\w*	>[(dobj) (\w+)/(N)\w*]	verb	has direct object noun	10
+11	(\w+)/(V)\w*	>[(dobj) (\w+)/(N)\w*,(nsubj) (\w+)/(N)\w*]	verb	has subject noun AND direct object noun	11
+12	(\w+)/(N)\w*	>[(amod) (\w+)/(JJ)]	noun	modified by adjective	12
+13	(\w+)/(JJ)\w*	<(amod) (\w+)/(N)\w*	adjective	modifies noun	13
+14	(\w+)/(JJ)\w*	>[(advmod) (\w+)/(RB)\w*]	adjective	modified by adverb	14
+15	(\w+)/(N)\w*	<(nsubjpass) (\w+)/(V)\w*	noun	passive subject of verb	15
+16	(\w+)/(V)\w*	>[(agent) by/IN >[pobj (\w+)/(N)\w*],(nsubjpass) (\w+)/(N)\w*]	verb	has passive subject noun AND agent noun	16
+17	(\w+)/(N)\w*	<pobj by/IN <(agent) (\w+)/(V)\w*	noun	is agent of passive verb	17
+18	(\w+)/(N)\w*	<(appos) (\w+)/(N)\w*	noun	is apposition to noun	18
+19	(\w+)/(N)\w*	>[(appos) (\w+)/(N)\w*]	noun	has apposition noun	19
+20	(\w+)/(N)\w*	<(conj) \w+/(N)\w* <(nsubj) (\w+)/(V)\w*	noun	is conjunct of a noun subject of a verb	20
+21	(\w+)/(V)\w*	>[(nsubj) \w+/(N)\w* >[(conj) (\w+)/(N)\w*]]	verb	has a noun subject with a noun conjunct	21
+22	(\w+)/(N)\w*	<(nsubj) \w+/(V)\w*>[(conj) (\w+)/(V)\w*]	noun	subject of a verb with a verb conjunct	22
+23	(\w+)/(V)\w*	<(conj) \w+/(V)\w*>[(nsubj) (\w+)/(N)\w*]	verb	is conjunct of a verb with a noun subject	23
+24	(\w+)/(V)\w*	>[(dobj) \w+/\w+,(dative) \w+/\w+]	verb	has a direct object and a dative (noun, pronoun...)	24
+25	(\w+)/(N)\w*	<(dobj) (\w+)/(V)\w*>[(dative) \w+/\w+]	noun	is direct object of a verb that has a dative	25
+26	(\w+)/(N)\w*	<(dative) (\w+)/(V)\w*>[(dobj) \w+/\w+]	noun	is dative of a verb that has an object	26
