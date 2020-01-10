@@ -163,6 +163,9 @@ class DepRelHandler(BaseHandler):
                 break
 
             tally = self._do_process_job(job)
+            # Vocab object cannot be pickled, so we have to delete it from macro attributes
+            for macro in tally:
+                del macro.target_filter
             res_queue.put(tally)
 
         logger.debug("worker exiting")
@@ -182,6 +185,12 @@ class DepRelHandler(BaseHandler):
             The matched features from sentences in the `fname` file.
         """
         macros = deepcopy(self.macros)
+        # when you provide targets to filter, add it to every macro
+        # speed up by matching target-feature pattern
+        # replace the target regular expression of patterns with the targets
+        if self.targets is not None:
+            for macro in macros:
+                macro.target_filter = self.targets.deepcopy()
         self.update_dep_rel(fname, macros)
         return macros
 
@@ -197,18 +206,11 @@ class DepRelHandler(BaseHandler):
         # read each sentence from the corpus file
         end_bound = self.settings['separator-line-machine']
         sentences = read_sentence(fname, formatter=self.formatter, end_bound=end_bound, encoding=self.input_encoding)
-        res = []
-        # when you provide targets to filter, add it to every macro
-        if self.targets is not None:
-            for macro in macros:
-                macro.target_filter = self.targets
         for s in sentences:
             ss = SentenceGraph(sentence=s.split('\n'), formatter=self.formatter)
-            # speed up by matching target-feature pattern
-            # replace the target regular expression of patterns with the targets
             for macro in macros:
                 ss.match_pattern(macro)
-        return res
+        return
 
     def _process_results(self, res_queue, n=0):
         """Get all results (matched features) from result queue and merge them."""

@@ -165,9 +165,6 @@ def tree_match(sentence, macro):
     # find feature root
     froot = get_root(macro.graph)
 
-    print(macro.target_filter)
-    return
-
     # iterate over each sentence node that matches the root of the feature
     for v, vitem in sentence.nodes:
         if not macro.match_node(vitem, idx=froot):
@@ -199,7 +196,6 @@ def subtree_match(sentence=None, macro=None, lmatches=None):
     # if find a match
     if len(lmatches) <= 0:
         return
-
     # the current depth of matching
     match_depth = len(lmatches[0])
     if match_depth == macro.depth:  # the last level
@@ -210,6 +206,16 @@ def subtree_match(sentence=None, macro=None, lmatches=None):
                 nodemapping.update(m)
             # remap feature node to sentence node label (type)
             matched_nodes = {fn: sentence.nodes[sn] for fn, sn in nodemapping.items()}
+            # if the target filter is given, check whether the matched target node appear in the target filter
+            if macro.target_filter is not None:
+                target_node_dict = matched_nodes[macro.target_idx]
+                # example of target_node_dict: {'FORM': 'Het', 'LEMMA': 'het', 'POS': 'det'}
+                vals = [target_node_dict[attr] for attr, _idx in macro.target_node_attrs.items()]
+                target_type = macro.connector.join(vals)
+                # if the matched target type does not appear in the given target filter
+                # do not add this match to the macro (for speeding up processing and save memory space)
+                if target_type not in macro.target_filter:
+                    return
             # remap feature edge (tuple of node idx) to sentence edge label (dependency relation)
             matched_edges = {(head, tail): sentence.edges[(nodemapping[head], nodemapping[tail])]
                              for head, tail in macro.edges}

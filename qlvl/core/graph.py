@@ -398,7 +398,7 @@ class PatternGraph(DiGraph):
         else:
             self.graph = graph.copy()
 
-        self.repr_ = None
+        # self.repr_ = None
         self.nonlinear = not self.islinear(self.graph)
 
         self.node_repr_fmt = "LEMMA/POS"
@@ -591,12 +591,12 @@ class MacroGraph(PatternGraph):
     """
     connector = '/'
 
-    def __init__(self, template, target=-1, target_filter=None, feature_filter={}):
+    def __init__(self, pattern, target=-1, target_filter={}, feature_filter={}):
         """
 
         Parameters
         ----------
-        template : :class:`~PatternGraph`
+        pattern : :class:`~PatternGraph`
         target : int
             Node index of the template
         target_filter : :class:`~qlvl.core.vocab.Vocab`, optional
@@ -612,10 +612,10 @@ class MacroGraph(PatternGraph):
             For example, target type 'girl/NN' co-occur with the feature 'hd/dobj_*/V_dp/iobj_apple/NN'
             for a number of times.
         """
-        super(MacroGraph, self).__init__(graph=template.graph)
+        super(MacroGraph, self).__init__(graph=pattern.graph)
         self.target_idx = target
         self.target_filter = target_filter
-        self.repr_ = template.repr_
+        # self.repr_ = pattern.repr_
         # self.set_feature(feature_filter)
         self.matched_nodes = []
         self.matched_edges = []
@@ -894,7 +894,8 @@ class MacroGraph(PatternGraph):
         return macros
 
     def __repr__(self):
-        if self.repr_:
-            return self.repr_
-        else:
-            super(MacroGraph, self).__repr__()
+        # if self.repr_:
+        #     return self.repr_
+        # else:
+        #     return super(MacroGraph, self).__repr__()
+        return "macro {}".format(self.id)
