@@ -12,9 +12,10 @@ except ImportError:
     from Queue import Queue
 
 from qlvl import progbar, trange
+from qlvl.core.vocab import Vocab
 from qlvl.core.matrix import TypeTokenMatrix
 from qlvl.core.handler import BaseHandler
-from qlvl.core.graph import SentenceGraph, TemplateGraph
+from qlvl.core.graph import SentenceGraph, MacroGraph
 from qlvl.specutils import mxutils
 
 logger = logging.getLogger(__name__)
@@ -24,11 +25,22 @@ homedir = os.path.expanduser('~')
 class DepRelHandler(BaseHandler):
     """Handler Class for processing dependency relations"""
 
-    def __init__(self, settings, workers=0):
+    def __init__(self, settings, workers=0, targets=None, features=None, **kwargs):
         super(DepRelHandler, self).__init__(settings, workers=workers)
-        self.templates = []
+        # you could make the program check only the targets and/or features you provide
+        if targets is not None:
+            if isinstance(targets, list):
+                self.targets = Vocab( {t: 0 for t in targets} )
+            elif isinstance(targets, Vocab):
+                self.targets = targets
+            else:
+                raise AttributeError("The `targets` should be a list of string or a `Vocab` object!")
+        else:
+            self.targets = Vocab()
+        # normally, we don't set features previously
+        self.macros = []
 
-    def read_templates(self, fname=None, templates=None, encoding='utf-8'):
+    def read_templates(self, fname=None, macros=None, encoding='utf-8'):
         """Read the templates from a CSV/TSV file.
         The file has lines of content like the following (including a header):
             ID	Target Regex	Feature Regex	Tareget Description	Feature Description	ID
@@ -38,7 +50,7 @@ class DepRelHandler(BaseHandler):
         ----------
         fname : str, optional
             File name of the templates file.
-        templates : iterable of :class:`~qlvl.core.graph.TemplateGraph`, optional
+        macros : iterable of :class:`~qlvl.core.graph.TemplateGraph`, optional
             TemplateGraph instances when not passing the file name.
         encoding : str, default 'utf-8'
             File encoding of the template file.
@@ -56,15 +68,15 @@ class DepRelHandler(BaseHandler):
         >>> dephan.templates[0]
         <-(?P<DEPREL>nsubj)$ (?P<LEMMA>\w+)/(?P<POS>V)\w*
         >>> templates = deepcopy(dephan.templates)
-        >>> dephan.read_templates(templates=templates)
+        >>> dephan.read_templates(macros=templates)
         >>> dephan.templates[0]
         <-(?P<DEPREL>nsubj)$ (?P<LEMMA>\w+)/(?P<POS>V)\w*
 
         """
-        if templates:
-            self.templates = templates
+        if macros:
+            self.macros = macros
         elif fname:
-            self.templates = TemplateGraph.read_csv(fname)
+            self.macros = MacroGraph.read_csv(fname)  # TODO: use different encodings
         else:
             raise ValueError("Please provide either fname or features!")
 
@@ -77,6 +89,10 @@ class DepRelHandler(BaseHandler):
             Path of file recording corpus file names ('fnames' file of a corpus).
             If this is provided, only the files recorded in this fnames file would be processed.
             Else, all files and folders inside the 'corpus-path' of settings would be processed.
+        targets : list of str or :class:`~qlvl.core.vocab.Vocab`, optional
+            Target types/words to process.
+            If this is provided, only process these targets when matching the sentence with macros.
+            Else, all possible targets would be checked when matching sentences.
 
         Returns
         -------
@@ -100,7 +116,7 @@ class DepRelHandler(BaseHandler):
         """
         fnames = self.prepare_fnames(fnames)
         logger.info("Building dependency features...")
-        self.process(fnames)
+        _res = self.process(fnames)
 
         logger.info("Building matrix...")
         self.freqMTX = self.build_matrix_by_matches()
@@ -110,7 +126,7 @@ class DepRelHandler(BaseHandler):
         """Build a frequency matrix by the matches."""
         freq_dict = defaultdict(lambda: defaultdict(int))
         targets, contexts = set(), set()
-        for tplt in self.templates:
+        for tplt in self.macros:
             for i in range(len(tplt.matched_nodes)):
                 trgt = tplt.target(index=i)
                 targets.add(trgt)
@@ -165,19 +181,33 @@ class DepRelHandler(BaseHandler):
         features : iterable
             The matched features from sentences in the `fname` file.
         """
-        templates = deepcopy(self.templates)
+        templates = deepcopy(self.macros)
         self.update_dep_rel(fname, templates)
         return templates
 
     def update_dep_rel(self, fname, templates, **kwargs):
+        """This is the real method that is used for processing!!!
+        Procedures:
+        1. read sentences from the corpus file
+        2. for each sentence, match every template/pattern
+            2.1 if targets are provided, only match the sentence which satisfies the targets
+            2.2 so the matching should be a target-feature matching
+            2.3 this is a way of speeding up the process when the targets are provided
+        """
         # read each sentence from the corpus file
         end_bound = self.settings['separator-line-machine']
         sentences = read_sentence(fname, formatter=self.formatter, end_bound=end_bound, encoding=self.input_encoding)
         res = []
         for s in sentences:
             ss = SentenceGraph(sentence=s.split('\n'), formatter=self.formatter)
-            for f in templates:
-                ss.match_pattern(f)
+            if self.targets is None:
+                for tplt in templates:
+                    ss.match_pattern(tplt)
+            else:
+                # speed up by matching target-feature pattern
+                # replace the target regular expression of patterns with the targets
+                for tplt in templates:
+                    ss.match_target_feature(tplt)
         return res
 
     def _process_results(self, res_queue, n=0):
@@ -186,8 +216,8 @@ class DepRelHandler(BaseHandler):
             res = res_queue.get()
             for i in range(len(res)):
                 feat = res[i]
-                self.templates[i].matched_nodes.extend(feat.matched_nodes)
-                self.templates[i].matched_edges.extend(feat.matched_edges)
+                self.macros[i].matched_nodes.extend(feat.matched_nodes)
+                self.macros[i].matched_edges.extend(feat.matched_edges)
 
 
 def read_sentence(filename, formatter=None, start_bound='<s', end_bound='</s>', encoding='utf-8'):

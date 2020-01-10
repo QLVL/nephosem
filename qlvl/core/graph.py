@@ -255,17 +255,31 @@ class SentenceGraph(DiGraph):
 
         Parameters
         ----------
-        feature : :class:`~qlvl.core.graph.TemplateGraph`
+        pattern : :class:`~qlvl.core.graph.MacroGraph`
             The feature pattern to be matched to the sentence.
         """
         return tree_match(self, pattern)
+
+    def match_macro(self, macro, targets):
+        """
+
+        Parameters
+        ----------
+        macro
+        targets
+
+        Returns
+        -------
+
+        """
+        pass
 
     def match_target_feature(self, feature):
         """Match a graph with a path (a tree/graph object).
 
         Parameters
         ----------
-        feature : :class:`TemplateGraph`
+        feature : :class:`MacroGraph`
 
         Returns
         -------
@@ -580,7 +594,7 @@ class PatternGraph(DiGraph):
         return 'pattern {}'.format(self.id)
 
 
-class TemplateGraph(PatternGraph):
+class MacroGraph(PatternGraph):
     """Class representing a feature graph inherited from the class TemplateGraph.
     So it will have the same structure of the template from which it is generated.
     The generating process of a feature object would be:
@@ -610,7 +624,7 @@ class TemplateGraph(PatternGraph):
             For example, target type 'girl/NN' co-occur with the feature 'hd/dobj_*/V_dp/iobj_apple/NN'
             for a number of times.
         """
-        super(TemplateGraph, self).__init__(graph=template.graph)
+        super(MacroGraph, self).__init__(graph=template.graph)
         self.target_idx = target
         self.repr_ = template.repr_
         # self.set_feature(feature_filter)
@@ -894,4 +908,4 @@ class TemplateGraph(PatternGraph):
         if self.repr_:
             return self.repr_
         else:
-            super(TemplateGraph, self).__repr__()
+            super(MacroGraph, self).__repr__()

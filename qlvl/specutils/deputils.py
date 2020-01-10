@@ -152,14 +152,14 @@ def tree_match(sentence, pattern):
     Parameters
     ----------
     sentence : :class:`~qlvl.core.graph.SentenceGraph`
-    pattern : :class:`~qlvl.core.graph.TemplateGraph`
+    pattern : :class:`~qlvl.core.graph.MacroGraph`
     """
+    # check whether the sentence (dependency tree) is a valid tree
     try:
         assert sentence.istree
     except Exception as err:
         logger.error(err, str(sentence))
         return False
-    assert pattern.istree
 
     num_curr_matches = len(pattern.matched_nodes)
     # find feature root
@@ -187,7 +187,7 @@ def subtree_match(sentence=None, pattern=None, lmatches=None):
     Parameters
     ----------
     sentence : :class:`~qlvl.core.graph.SentenceGraph`
-    pattern : :class:`~qlvl.core.graph.TemplateGraph`
+    pattern : :class:`~qlvl.core.graph.MacroGraph`
     lmatches : queue (collections.deque)
         Contains a list of possible matches.
         Each match is a (finally the length is `pattern.depth`) lists of levels of the pattern.
@@ -242,7 +242,7 @@ def match_level(sentence, pattern, prevmap):
     Parameters
     ----------
     sentence : :class:`~qlvl.core.graph.SentenceGraph`
-    pattern : :class:`~qlvl.core.graph.TemplateGraph`
+    pattern : :class:`~qlvl.core.graph.MacroGraph`
     prevmap : dict
         Index mapping from sentence node to pattern node (of previous level).
         e.g. pattern node idx -> sentence node idx
@@ -283,7 +283,7 @@ def match_successors(sentence, scur, pattern, fcur):
     sentence : :class:`~qlvl.core.graph.SentenceGraph`
     scur : int
         Current node index of sentence
-    pattern : :class:`~qlvl.core.graph.TemplateGraph`
+    pattern : :class:`~qlvl.core.graph.MacroGraph`
     fcur : int
         Current node index of pattern
 
