@@ -181,11 +181,11 @@ class DepRelHandler(BaseHandler):
         features : iterable
             The matched features from sentences in the `fname` file.
         """
-        templates = deepcopy(self.macros)
-        self.update_dep_rel(fname, templates)
-        return templates
+        macros = deepcopy(self.macros)
+        self.update_dep_rel(fname, macros)
+        return macros
 
-    def update_dep_rel(self, fname, templates, **kwargs):
+    def update_dep_rel(self, fname, macros, **kwargs):
         """This is the real method that is used for processing!!!
         Procedures:
         1. read sentences from the corpus file
@@ -198,16 +198,16 @@ class DepRelHandler(BaseHandler):
         end_bound = self.settings['separator-line-machine']
         sentences = read_sentence(fname, formatter=self.formatter, end_bound=end_bound, encoding=self.input_encoding)
         res = []
+        # when you provide targets to filter, add it to every macro
+        if self.targets is not None:
+            for macro in macros:
+                macro.target_filter = self.targets
         for s in sentences:
             ss = SentenceGraph(sentence=s.split('\n'), formatter=self.formatter)
-            if self.targets is None:
-                for tplt in templates:
-                    ss.match_pattern(tplt)
-            else:
-                # speed up by matching target-feature pattern
-                # replace the target regular expression of patterns with the targets
-                for tplt in templates:
-                    ss.match_target_feature(tplt)
+            # speed up by matching target-feature pattern
+            # replace the target regular expression of patterns with the targets
+            for macro in macros:
+                ss.match_pattern(macro)
         return res
 
     def _process_results(self, res_queue, n=0):

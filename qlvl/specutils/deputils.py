@@ -142,7 +142,7 @@ def get_depth_of_node(gx, v):
     return depth
 
 
-def tree_match(sentence, pattern):
+def tree_match(sentence, macro):
     """Match the sentence with the subgraph pattern.
     Abstract of the matching:
         * find root node of the pattern
@@ -152,7 +152,7 @@ def tree_match(sentence, pattern):
     Parameters
     ----------
     sentence : :class:`~qlvl.core.graph.SentenceGraph`
-    pattern : :class:`~qlvl.core.graph.MacroGraph`
+    macro : :class:`~qlvl.core.graph.MacroGraph`
     """
     # check whether the sentence (dependency tree) is a valid tree
     try:
@@ -161,22 +161,25 @@ def tree_match(sentence, pattern):
         logger.error(err, str(sentence))
         return False
 
-    num_curr_matches = len(pattern.matched_nodes)
+    num_curr_matches = len(macro.matched_nodes)
     # find feature root
-    froot = get_root(pattern.graph)
+    froot = get_root(macro.graph)
+
+    print(macro.target_filter)
+    return
 
     # iterate over each sentence node that matches the root of the feature
     for v, vitem in sentence.nodes:
-        if not pattern.match_node(vitem, idx=froot):
+        if not macro.match_node(vitem, idx=froot):
             continue
         mapping = {froot: v}  # mapping of the first level
         # recursively match the sentence with the feature from this node
-        subtree_match(sentence=sentence, pattern=pattern, lmatches=deque([[mapping]]))
+        subtree_match(sentence=sentence, macro=macro, lmatches=deque([[mapping]]))
 
-    return not num_curr_matches == len(pattern.matched_nodes)
+    return not num_curr_matches == len(macro.matched_nodes)
 
 
-def subtree_match(sentence=None, pattern=None, lmatches=None):
+def subtree_match(sentence=None, macro=None, lmatches=None):
     """Match the sentence with a subtree of the feature by a level-match algorithm.
     Abstract:
         * Get a match from the `lmatches` queue
@@ -187,7 +190,7 @@ def subtree_match(sentence=None, pattern=None, lmatches=None):
     Parameters
     ----------
     sentence : :class:`~qlvl.core.graph.SentenceGraph`
-    pattern : :class:`~qlvl.core.graph.MacroGraph`
+    macro : :class:`~qlvl.core.graph.MacroGraph`
     lmatches : queue (collections.deque)
         Contains a list of possible matches.
         Each match is a (finally the length is `pattern.depth`) lists of levels of the pattern.
@@ -199,7 +202,7 @@ def subtree_match(sentence=None, pattern=None, lmatches=None):
 
     # the current depth of matching
     match_depth = len(lmatches[0])
-    if match_depth == pattern.depth:  # the last level
+    if match_depth == macro.depth:  # the last level
         for lmatch in lmatches:
             # merge dicts of levels
             nodemapping = dict()
@@ -209,9 +212,9 @@ def subtree_match(sentence=None, pattern=None, lmatches=None):
             matched_nodes = {fn: sentence.nodes[sn] for fn, sn in nodemapping.items()}
             # remap feature edge (tuple of node idx) to sentence edge label (dependency relation)
             matched_edges = {(head, tail): sentence.edges[(nodemapping[head], nodemapping[tail])]
-                             for head, tail in pattern.edges}
+                             for head, tail in macro.edges}
             # append matched nodes and edges to the feature
-            pattern.add_match(matched_nodes, matched_edges)
+            macro.add_match(matched_nodes, matched_edges)
         return
 
     size = len(lmatches)  # number of possible matches
@@ -219,7 +222,7 @@ def subtree_match(sentence=None, pattern=None, lmatches=None):
         lmatch = lmatches.popleft()  # get each possible match (of all levels)
         currmap = lmatch[-1]  # node index mapping of current level
         # match the next level of the sentence based on the matched 'mapping' of current level
-        matched, matched_succs = match_level(sentence, pattern, currmap)
+        matched, matched_succs = match_level(sentence, macro, currmap)
         if not matched:
             continue
         # append the map of next level to current matches
@@ -230,7 +233,7 @@ def subtree_match(sentence=None, pattern=None, lmatches=None):
             lmatches.append(newmap)
 
     # recursively match the next level
-    subtree_match(sentence=sentence, pattern=pattern, lmatches=lmatches)
+    subtree_match(sentence=sentence, macro=macro, lmatches=lmatches)
 
 
 def match_level(sentence, pattern, prevmap):

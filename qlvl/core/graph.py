@@ -244,7 +244,7 @@ class SentenceGraph(DiGraph):
 
         self.generate_graph(nodes, edges)
 
-    def match_pattern(self, pattern):
+    def match_pattern(self, macro):
         """Match a sentence with a feature pattern (and target pair).
         Append the results to the attribute lists `matched_nodes` and `matched_edges` of the feature object.
         A `matched node` is a dict mapping node index to type string.
@@ -255,24 +255,10 @@ class SentenceGraph(DiGraph):
 
         Parameters
         ----------
-        pattern : :class:`~qlvl.core.graph.MacroGraph`
+        macro : :class:`~qlvl.core.graph.MacroGraph`
             The feature pattern to be matched to the sentence.
         """
-        return tree_match(self, pattern)
-
-    def match_macro(self, macro, targets):
-        """
-
-        Parameters
-        ----------
-        macro
-        targets
-
-        Returns
-        -------
-
-        """
-        pass
+        return tree_match(self, macro)
 
     def match_target_feature(self, feature):
         """Match a graph with a path (a tree/graph object).
@@ -595,7 +581,7 @@ class PatternGraph(DiGraph):
 
 
 class MacroGraph(PatternGraph):
-    """Class representing a feature graph inherited from the class TemplateGraph.
+    """Class representing a feature graph inherited from the class PatternGraph.
     So it will have the same structure of the template from which it is generated.
     The generating process of a feature object would be:
     * 1. replicate a (tree) structure of the template
@@ -605,7 +591,7 @@ class MacroGraph(PatternGraph):
     """
     connector = '/'
 
-    def __init__(self, template, target=-1, feature_filter={}):
+    def __init__(self, template, target=-1, target_filter=None, feature_filter={}):
         """
 
         Parameters
@@ -613,6 +599,8 @@ class MacroGraph(PatternGraph):
         template : :class:`~PatternGraph`
         target : int
             Node index of the template
+        target_filter : :class:`~qlvl.core.vocab.Vocab`, optional
+            When given, matched sentences which satisfy the given targets.
         feature_filter : dict
             The first dict indicates caring or not the specific types on a node of the template.
             i.e. {2: False}
@@ -626,6 +614,7 @@ class MacroGraph(PatternGraph):
         """
         super(MacroGraph, self).__init__(graph=template.graph)
         self.target_idx = target
+        self.target_filter = target_filter
         self.repr_ = template.repr_
         # self.set_feature(feature_filter)
         self.matched_nodes = []
