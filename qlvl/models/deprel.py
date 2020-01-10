@@ -171,7 +171,8 @@ class DepRelHandler(BaseHandler):
 
     def update_dep_rel(self, fname, templates, **kwargs):
         # read each sentence from the corpus file
-        sentences = read_sentence(fname, formatter=self.formatter, encoding=self.input_encoding)
+        end_bound = self.settings['separator-line-machine']
+        sentences = read_sentence(fname, formatter=self.formatter, end_bound=end_bound, encoding=self.input_encoding)
         res = []
         for s in sentences:
             ss = SentenceGraph(sentence=s.split('\n'), formatter=self.formatter)
@@ -207,9 +208,12 @@ def read_sentence(filename, formatter=None, start_bound='<s', end_bound='</s>', 
         sentence = []
         for line in fin:
             line = line.strip()
-            sentence.append(line)
+            # sentence.append(line)
             match = formatter.match_line(line)  # a valid line
-            if line.startswith(end_bound):  # end of a sentence
+            if match:
+                sentence.append(line)
+            # if line.startswith(end_bound):  # end of a sentence
+            if formatter.separator_line_machine(line):
                 yield '\n'.join(sentence)
                 sentence = []
         if len(sentence) > 0:  # if file does not end with a '</s' line

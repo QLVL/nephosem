@@ -146,7 +146,11 @@ class DiGraph(object):
 
     @property
     def istree(self):
-        return nx.is_tree(self.graph)
+        try:
+            istree = nx.is_tree(self.graph)
+            return istree
+        except:
+            return False
 
     def out_degree(self, v):
         return self.graph.out_degree(v)

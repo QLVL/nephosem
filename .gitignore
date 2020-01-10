@@ -1,0 +1,17 @@
+*.pyc
+*.pyo
+*.swp
+*.png
+
+Graph.py
+neo4j_test.py
+ENCOW-test.db/*
+
+.idea
+.idea/*
+.ipynb_checkpoints*
+test_data
+
+.pytest_cache
+*.pytest_cache
+*.pytest_cache/*
