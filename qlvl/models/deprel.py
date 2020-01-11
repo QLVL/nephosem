@@ -25,7 +25,7 @@ homedir = os.path.expanduser('~')
 class DepRelHandler(BaseHandler):
     """Handler Class for processing dependency relations"""
 
-    def __init__(self, settings, workers=0, targets=None, features=None, **kwargs):
+    def __init__(self, settings, workers=0, targets=None, mode='type', features=None, **kwargs):
         super(DepRelHandler, self).__init__(settings, workers=workers)
         # you could make the program check only the targets and/or features you provide
         if targets is not None:
@@ -37,6 +37,7 @@ class DepRelHandler(BaseHandler):
                 raise AttributeError("The `targets` should be a list of string or a `Vocab` object!")
         else:
             self.targets = Vocab()
+        self.mode = mode
         # normally, we don't set features previously
         self.macros = []
 
@@ -194,6 +195,14 @@ class DepRelHandler(BaseHandler):
         return macros
 
     def update_dep_rel(self, fname, macros, **kwargs):
+        if self.mode == 'type':
+            self.update_dep_rel_type(fname, macros, **kwargs)
+        elif self.mode == 'token':
+            self.update_dep_rel_token(fname, macros, **kwargs)
+        else:
+            raise ValueError("Not support this mode!")
+
+    def update_dep_rel_type(self, fname, macros, **kwargs):
         """This is the real method that is used for processing!!!
         Procedures:
         1. read sentences from the corpus file
@@ -203,10 +212,27 @@ class DepRelHandler(BaseHandler):
             2.3 this is a way of speeding up the process when the targets are provided
         """
         # read each sentence from the corpus file
-        end_bound = self.settings['separator-line-machine']
         sentences = read_sentence(fname, formatter=self.formatter, encoding=self.input_encoding)
         for s in sentences:
             ss = SentenceGraph(sentence=s, formatter=self.formatter)
+            for macro in macros:
+                ss.match_pattern(macro)
+        return
+
+    def update_dep_rel_token(self, fname, macros, **kwargs):
+        """This is the real method that is used for processing!!!
+        Procedures:
+        1. read sentences from the corpus file
+        2. for each sentence, match every template/pattern
+            2.1 if targets are provided, only match the sentence which satisfies the targets
+            2.2 so the matching should be a target-feature matching
+            2.3 this is a way of speeding up the process when the targets are provided
+        """
+        basename = os.path.basename(fname).rsplit('.', 1)[0]  # for filename in token
+        # read each sentence from the corpus file
+        sentences = read_sentence(fname, formatter=self.formatter, encoding=self.input_encoding)
+        for s in sentences:
+            ss = SentenceGraph(sentence=s, formatter=self.formatter, fname=basename)
             for macro in macros:
                 ss.match_pattern(macro)
         return

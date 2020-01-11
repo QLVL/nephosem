@@ -185,7 +185,7 @@ class DiGraph(object):
 
 
 class SentenceGraph(DiGraph):
-    def __init__(self, nodes=None, edges=None, sentence=None, formatter=None, settings=None):
+    def __init__(self, nodes=None, edges=None, sentence=None, formatter=None, fname="", settings=None):
         """Construct a graph by a sentence and id2node.
         When the nodes and edges are provided, directly create a sentence graph based on them.
         When the nodes and edges are not provided, create a sentence graph based the corpus sentence string lines.
@@ -200,6 +200,7 @@ class SentenceGraph(DiGraph):
         formatter : :class:`~qlvl.core.terms.CorpusFormatter`
         """
         super(SentenceGraph, self).__init__()
+        self.fid = fname
         self.formatter = formatter
         if nodes and edges:
             self.generate_graph(nodes, edges)
@@ -224,7 +225,7 @@ class SentenceGraph(DiGraph):
         """
         nodes = defaultdict(lambda: defaultdict(str))
         edges = defaultdict(lambda: defaultdict(str))
-        for line in sentence:
+        for lid, line in sentence:
             line = line.strip()
             match = self.formatter.match_line(line)
             if match is None:
@@ -242,6 +243,8 @@ class SentenceGraph(DiGraph):
                     nodes[node_idx][col] = val
                 elif col in edge_attr:
                     edges[(head_idx, node_idx)][col] = val
+            # add line index to node attributes
+            nodes[node_idx]['lid'] = lid
 
         self.generate_graph(nodes, edges)
 
