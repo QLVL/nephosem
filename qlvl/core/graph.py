@@ -13,6 +13,7 @@ from copy import deepcopy
 import pandas as pd
 
 import networkx as nx
+import xml
 from xml.dom import minidom
 
 from qlvl.specutils.deputils import match_graph, tree_match, get_depth, draw_tree, draw_match, parse_pattern
@@ -398,7 +399,7 @@ class PatternGraph(DiGraph):
         else:
             self.graph = graph.copy()
 
-        # self.repr_ = None
+        self.repr_ = None
         self.nonlinear = not self.islinear(self.graph)
 
         self.node_repr_fmt = "LEMMA/POS"
@@ -591,13 +592,13 @@ class MacroGraph(PatternGraph):
     """
     connector = '/'
 
-    def __init__(self, pattern, target=-1, target_filter={}, feature_filter={}):
+    def __init__(self, pattern, target_idx=-1, feature_idx=-1, target_filter={}, feature_filter={}):
         """
 
         Parameters
         ----------
         pattern : :class:`~PatternGraph`
-        target : int
+        target_idx : int
             Node index of the template
         target_filter : :class:`~qlvl.core.vocab.Vocab`, optional
             When given, matched sentences which satisfy the given targets.
@@ -613,9 +614,10 @@ class MacroGraph(PatternGraph):
             for a number of times.
         """
         super(MacroGraph, self).__init__(graph=pattern.graph)
-        self.target_idx = target
+        self.target_idx = target_idx
         # example: {'LEMMA': 1, 'POS': 1}
         self.target_node_attrs = {}
+        self.feature_idx = feature_idx
         # example: {'LEMMA': 1, 'POS': 1}
         self.feature_node_attrs = {}
         # example: {'DEPREL': 1}
@@ -879,29 +881,64 @@ class MacroGraph(PatternGraph):
         macros = []
         macro_xmls = doc.getElementsByTagName('target-feature-macro')
         for macroxml in macro_xmls:
-            # get macro id
-            macro_id = int(macroxml.attributes['id'].value)
-            # get pattern id
-            patt = macroxml.getElementsByTagName('sub-graph-pattern')[0]
-            pattid = int(patt.attributes['id'].value)
-            # parse the target information
-            target = macroxml.getElementsByTagName('target')[0]
-            target_id = int(target.attributes['nodeID'].value)
-            target_desc = target.getElementsByTagName('description')[0].childNodes[0].data
-            # parse the feature information
-            feature = macroxml.getElementsByTagName('feature')[0]
-            feat_desc = feature.getElementsByTagName('description')[0].childNodes[0].data
-            # generate a macro
-            macro = cls(id2patt[pattid], target=target_id)
-            macro.id = macro_id
+            macro = cls.parse_macro_xml(macroxml, id2patt)
             macro.target_node_attrs = trgtattr2group
             macro.feature_node_attrs = featattr2group
             macro.feature_edge_attrs = {feature_edge_fmt: 1}
-            macro.target_desc = target_desc
-            macro.feature_desc = feat_desc
             macros.append(macro)
 
         return macros
+
+    @classmethod
+    def parse_macro_xml(cls, macroxml, id2patt):
+        """Example XML:
+        ```xml
+        <target-feature-macro id="1">
+            <sub-graph-pattern id="1"/>
+            <target nodeID="2">
+                <description>Empty</description>
+            </target>
+            <feature nodeID="1">
+                <description>Words that depend directly on the target.</description>
+            </feature>
+        </target-feature-macro>
+        ```
+
+        Parameters
+        ----------
+        macroxml : :class:`~xml.dom.minidom.Element`
+            XML element of a macro
+        id2patt : dict
+            The dict mapping index to pattern
+
+        Returns
+        -------
+        :class: `~qlvl.core.graph.MacroGraph`
+        """
+        # get macro id
+        macro_id = int(macroxml.attributes['id'].value)
+        # get pattern id
+        patt = macroxml.getElementsByTagName('sub-graph-pattern')[0]
+        pattern_id = int(patt.attributes['id'].value)
+        # parse the target information
+        target = macroxml.getElementsByTagName('target')[0]
+        target_idx = int(target.attributes['nodeID'].value)
+        target_desc_tag = target.getElementsByTagName('description')
+        target_desc = target_desc_tag[0].childNodes[0].data if len(target_desc_tag) > 0 else "no description"
+        # parse the feature information
+        feature = macroxml.getElementsByTagName('feature')[0]
+        try:
+            feature_idx = int(feature.attributes['featureID'].value)
+        except Exception as e:
+            feature_idx = -1
+        feat_desc_tag = feature.getElementsByTagName('description')
+        feat_desc = feat_desc_tag[0].childNodes[0].data if len(feat_desc_tag) > 0 else "no description"
+        # construct a macro
+        macro = cls(id2patt[pattern_id], target_idx=target_idx, feature_idx=feature_idx)
+        macro.id = macro_id
+        macro.target_desc = target_desc
+        macro.feature_desc = feat_desc
+        return macro
 
     def __repr__(self):
         # if self.repr_:
