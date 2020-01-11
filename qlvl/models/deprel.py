@@ -204,9 +204,9 @@ class DepRelHandler(BaseHandler):
         """
         # read each sentence from the corpus file
         end_bound = self.settings['separator-line-machine']
-        sentences = read_sentence(fname, formatter=self.formatter, end_bound=end_bound, encoding=self.input_encoding)
+        sentences = read_sentence(fname, formatter=self.formatter, encoding=self.input_encoding)
         for s in sentences:
-            ss = SentenceGraph(sentence=s.split('\n'), formatter=self.formatter)
+            ss = SentenceGraph(sentence=s, formatter=self.formatter)
             for macro in macros:
                 ss.match_pattern(macro)
         return
@@ -221,7 +221,7 @@ class DepRelHandler(BaseHandler):
                 self.macros[i].matched_edges.extend(feat.matched_edges)
 
 
-def read_sentence(filename, formatter=None, start_bound='<s', end_bound='</s>', encoding='utf-8'):
+def read_sentence(filename, formatter=None, encoding='utf-8'):
     """Read sentences from corpus file.
 
     Parameters
@@ -233,19 +233,20 @@ def read_sentence(filename, formatter=None, start_bound='<s', end_bound='</s>', 
 
     Returns
     -------
-    generator of sentences (string)
+    generator of sentences (tuple(int, string))
     """
     with codecs.open(filename, 'r', encoding=encoding) as fin:
         sentence = []
+        lid = 0
         for line in fin:
+            lid += 1
             line = line.strip()
-            # sentence.append(line)
             match = formatter.match_line(line)  # a valid line
             if match:
-                sentence.append(line)
+                sentence.append((lid, line))  # add line index
             # if line.startswith(end_bound):  # end of a sentence
             if formatter.separator_line_machine(line):
-                yield '\n'.join(sentence)
+                yield sentence
                 sentence = []
         if len(sentence) > 0:  # if file does not end with a '</s' line
-            yield '\n'.join(sentence)
+            yield sentence

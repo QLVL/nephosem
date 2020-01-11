@@ -652,6 +652,29 @@ class MacroGraph(PatternGraph):
 
     def feature(self, index=0):
         """Transform a matched node and edge to a feature string"""
+        if self.feature_idx == -1:
+            return self.feature_full(index=index)
+        else:
+            return self.feature_simple(index=index)
+
+    def feature_simple(self, index=0):
+        """The result feature string is a normal type.
+        We only have one feature node (without edge) in the result feature representation.
+        """
+        node_dict = self.matched_nodes[index]
+        vals = []
+        for attr, gid in self.feature_node_attrs.items():  # gid -> group id
+            feat_regex = self.graph.nodes[self.feature_idx][attr]
+            feat_node = self.matched_nodes[index][self.feature_idx][attr]
+            mfeature = re.match(feat_regex, feat_node)
+            try:
+                mfeat_repr = mfeature.group(gid)
+            except:
+                mfeat_repr = '*'
+            vals.append(mfeat_repr)
+        return self.connector.join(vals)
+
+    def feature_full(self, index=0):
         node_dict = self.matched_nodes[index]
         edge_dict = self.matched_edges[index]
         # preorder traversal, start from the root
@@ -890,9 +913,9 @@ class MacroGraph(PatternGraph):
         # parse the target node format
         target_fmt = doc.getElementsByTagName('target-fmt')[0]
         target_node_fmt = target_fmt.getElementsByTagName('node-fmt')[0]
-        target_str = target_node_fmt.getElementsByTagName('string')[0].childNodes[0].data  # e.g. 'LEMMA/POS'
+        target_str = target_node_fmt.getElementsByTagName('string')[0]  # e.g. 'LEMMA/POS'
         connector = target_str.attributes['connector'].value  # commonly use '/'
-        target_attrs = target_str.split(connector)  # e.g. ['LEMMA', 'POS']
+        target_attrs = target_str.childNodes[0].data.split(connector)  # e.g. ['LEMMA', 'POS']
         # compare attribute names
         trgtattr2group = {}
         for attr in target_attrs:
@@ -902,9 +925,9 @@ class MacroGraph(PatternGraph):
         # parse the feature node and edge formats
         feature_fmt = doc.getElementsByTagName('feature-fmt')[0]
         feature_node_fmt = feature_fmt.getElementsByTagName('node-fmt')[0]
-        feature_node_str = feature_node_fmt.getElementsByTagName('string')[0].childNodes[0].data  # e.g. 'LEMMA/POS'
+        feature_node_str = feature_node_fmt.getElementsByTagName('string')[0]  # e.g. 'LEMMA/POS'
         connector = feature_node_str.attributes['connector'].value  # '/'
-        feature_node_attrs = feature_node_str.split(connector)  # e.g. ['LEMMA', 'POS']
+        feature_node_attrs = feature_node_str.childNodes[0].data.split(connector)  # e.g. ['LEMMA', 'POS']
         # compare attribute names
         featattr2group = {}
         for attr in feature_node_attrs:
