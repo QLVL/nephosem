@@ -849,15 +849,50 @@ class MacroGraph(PatternGraph):
 
     @classmethod
     def read_xml(cls, fname, patterns):
+        """Example XML:
+        ```xml
+        <?xml version="1.0" encoding="UTF-8"?>
+        <target-feature-list>
+            <target-fmt>
+                <node-fmt>
+                    <LEMMA group="1"/>
+                    <POS group="1"/>
+                    <string connector="/">LEMMA/POS</string>
+                </node-fmt>
+            </target-fmt>
+            <feature-fmt>
+                <node-fmt>
+                    <LEMMA group="1"/>
+                    <POS group="1"/>
+                    <string connector="/">LEMMA/POS</string>
+                </node-fmt>
+                <edge-fmt>DEPREL</edge-fmt>
+            </feature-fmt>
+            <target-feature-macro id="1">
+                ...
+            </target-feature-macro>
+            ...
+        </target-feature-list>
+        ```
+
+        Parameters
+        ----------
+        fname : str
+        patterns : list, of :class:`~qlvl.core.graph.PatternGraph`
+
+        Returns
+        -------
+        list, of :class:`~qlvl.core.graph.MacroGraph`
+        """
         id2patt = {p.id: p for p in patterns}
         doc = minidom.parse(fname)
 
         # parse the target node format
         target_fmt = doc.getElementsByTagName('target-fmt')[0]
         target_node_fmt = target_fmt.getElementsByTagName('node-fmt')[0]
-        target_str = target_node_fmt.getElementsByTagName('string')[0]
-        connector = target_str.attributes['connector'].value
-        target_attrs = target_str.childNodes[0].data.split(connector)
+        target_str = target_node_fmt.getElementsByTagName('string')[0].childNodes[0].data  # e.g. 'LEMMA/POS'
+        connector = target_str.attributes['connector'].value  # commonly use '/'
+        target_attrs = target_str.split(connector)  # e.g. ['LEMMA', 'POS']
         # compare attribute names
         trgtattr2group = {}
         for attr in target_attrs:
@@ -867,15 +902,15 @@ class MacroGraph(PatternGraph):
         # parse the feature node and edge formats
         feature_fmt = doc.getElementsByTagName('feature-fmt')[0]
         feature_node_fmt = feature_fmt.getElementsByTagName('node-fmt')[0]
-        feature_node_str = feature_node_fmt.getElementsByTagName('string')[0]
-        connector = feature_node_str.attributes['connector'].value
-        feature_node_attrs = feature_node_str.childNodes[0].data.split(connector)
+        feature_node_str = feature_node_fmt.getElementsByTagName('string')[0].childNodes[0].data  # e.g. 'LEMMA/POS'
+        connector = feature_node_str.attributes['connector'].value  # '/'
+        feature_node_attrs = feature_node_str.split(connector)  # e.g. ['LEMMA', 'POS']
         # compare attribute names
         featattr2group = {}
         for attr in feature_node_attrs:
             group_id = feature_node_fmt.getElementsByTagName(attr)[0].attributes['group'].value
             featattr2group[attr] = int(group_id)
-        feature_edge_fmt = feature_fmt.getElementsByTagName('edge-fmt')[0].childNodes[0].data
+        feature_edge_fmt = feature_fmt.getElementsByTagName('edge-fmt')[0].childNodes[0].data  # e.g. 'DEPREL'
 
         # parse macros
         macros = []
