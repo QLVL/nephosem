@@ -614,8 +614,14 @@ class MacroGraph(PatternGraph):
         """
         super(MacroGraph, self).__init__(graph=pattern.graph)
         self.target_idx = target
+        # example: {'LEMMA': 1, 'POS': 1}
+        self.target_node_attrs = {}
+        # example: {'LEMMA': 1, 'POS': 1}
+        self.feature_node_attrs = {}
+        # example: {'DEPREL': 1}
+        self.feature_edge_attrs = {}
         self.target_filter = target_filter
-        # self.repr_ = pattern.repr_
+        self.repr_ = pattern.repr_
         # self.set_feature(feature_filter)
         self.matched_nodes = []
         self.matched_edges = []
@@ -643,6 +649,7 @@ class MacroGraph(PatternGraph):
         return self.connector.join(vals)
 
     def feature(self, index=0):
+        """Transform a matched node and edge to a feature string"""
         node_dict = self.matched_nodes[index]
         edge_dict = self.matched_edges[index]
         # preorder traversal, start from the root
@@ -701,6 +708,7 @@ class MacroGraph(PatternGraph):
             self.preorder_recur(node_dict, edge_dict, curr=succ, reprs=reprs)
 
     def get_node_repr(self, nid, node_attrs):
+        """Get representation of a (matched) node."""
         vals = []
         for attr, gid in self.feature_node_attrs.items():
             node_regex = self.graph.nodes[nid][attr]
@@ -713,6 +721,7 @@ class MacroGraph(PatternGraph):
         return self.connector.join(vals)
 
     def get_edge_repr(self, eid, edge_attrs):
+        """Get representation of an (matched) edge."""
         vals = []
         for attr, gid in self.feature_edge_attrs.items():
             edge_regex = self.graph.edges[eid][attr]
@@ -725,6 +734,7 @@ class MacroGraph(PatternGraph):
         return self.connector.join(vals)
 
     def feature_old(self, index=0):
+        """Deprecated"""
         node_dict = deepcopy(self.matched_nodes[index])
         node_dict.pop(1, None)
         for idx, node in node_dict.items():
@@ -790,7 +800,6 @@ class MacroGraph(PatternGraph):
         return mrepr
 
     def set_feature(self, feature_filter={}):
-
         # set properties of each node and edge from the values of template to values of feature
         for v in self.graph.nodes():
             if v == self.target:
@@ -852,6 +861,7 @@ class MacroGraph(PatternGraph):
         for attr in target_attrs:
             group_id = target_node_fmt.getElementsByTagName(attr)[0].attributes['group'].value
             trgtattr2group[attr] = int(group_id)
+
         # parse the feature node and edge formats
         feature_fmt = doc.getElementsByTagName('feature-fmt')[0]
         feature_node_fmt = feature_fmt.getElementsByTagName('node-fmt')[0]

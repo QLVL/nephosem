@@ -126,12 +126,11 @@ class DepRelHandler(BaseHandler):
         """Build a frequency matrix by the matches."""
         freq_dict = defaultdict(lambda: defaultdict(int))
         targets, contexts = set(), set()
-        for tplt in self.macros:
-            for i in range(len(tplt.matched_nodes)):
-                trgt = tplt.target(index=i)
+        for macro in self.macros:
+            for i in range(len(macro.matched_nodes)):
+                trgt = macro.target(index=i)
                 targets.add(trgt)
-                feat = tplt.feature(index=i)
-                # feat = tplt.feature_old(index=i)
+                feat = macro.feature(index=i)
                 contexts.add(feat)
                 freq_dict[trgt][feat] += 1
         targets = sorted(targets)
