@@ -75,7 +75,10 @@ class DepRelHandler(BaseHandler):
 
         """
         if macros:
-            self.macros = macros
+            self.macros = deepcopy(macros)
+            for macro in self.macros:
+                macro.matched_nodes = []
+                macro.matched_edges = []
         elif fname:
             self.macros = MacroGraph.read_csv(fname)  # TODO: use different encodings
         else:
@@ -232,7 +235,7 @@ class DepRelHandler(BaseHandler):
         # read each sentence from the corpus file
         sentences = read_sentence(fname, formatter=self.formatter, encoding=self.input_encoding)
         for s in sentences:
-            ss = SentenceGraph(sentence=s, formatter=self.formatter, fname=basename)
+            ss = SentenceGraph(sentence=s, formatter=self.formatter, fname=basename, mode=self.mode)
             for macro in macros:
                 ss.match_pattern(macro)
         return

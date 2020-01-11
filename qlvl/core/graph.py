@@ -185,7 +185,7 @@ class DiGraph(object):
 
 
 class SentenceGraph(DiGraph):
-    def __init__(self, nodes=None, edges=None, sentence=None, formatter=None, fname="", settings=None):
+    def __init__(self, nodes=None, edges=None, sentence=None, formatter=None, mode='type', fname="", settings=None):
         """Construct a graph by a sentence and id2node.
         When the nodes and edges are provided, directly create a sentence graph based on them.
         When the nodes and edges are not provided, create a sentence graph based the corpus sentence string lines.
@@ -200,6 +200,7 @@ class SentenceGraph(DiGraph):
         formatter : :class:`~qlvl.core.terms.CorpusFormatter`
         """
         super(SentenceGraph, self).__init__()
+        self.mode = mode
         self.fid = fname
         self.formatter = formatter
         if nodes and edges:
@@ -244,7 +245,7 @@ class SentenceGraph(DiGraph):
                 elif col in edge_attr:
                     edges[(head_idx, node_idx)][col] = val
             # add line index to node attributes
-            nodes[node_idx]['lid'] = lid
+            nodes[node_idx]['LID'] = lid
 
         self.generate_graph(nodes, edges)
 
@@ -262,7 +263,7 @@ class SentenceGraph(DiGraph):
         macro : :class:`~qlvl.core.graph.MacroGraph`
             The feature pattern to be matched to the sentence.
         """
-        return tree_match(self, macro)
+        tree_match(self, macro)
 
     def match_target_feature(self, feature):
         """Match a graph with a path (a tree/graph object).

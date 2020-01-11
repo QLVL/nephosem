@@ -199,28 +199,7 @@ def subtree_match(sentence=None, macro=None, lmatches=None):
     # the current depth of matching
     match_depth = len(lmatches[0])
     if match_depth == macro.depth:  # the last level
-        for lmatch in lmatches:
-            # merge dicts of levels
-            nodemapping = dict()
-            for m in lmatch:
-                nodemapping.update(m)
-            # remap feature node to sentence node label (type)
-            matched_nodes = {fn: sentence.nodes[sn] for fn, sn in nodemapping.items()}
-            # if the target filter is given, check whether the matched target node appear in the target filter
-            if macro.target_filter is not None:
-                target_node_dict = matched_nodes[macro.target_idx]
-                # example of target_node_dict: {'FORM': 'Het', 'LEMMA': 'het', 'POS': 'det'}
-                vals = [target_node_dict[attr] for attr, _idx in macro.target_node_attrs.items()]
-                target_type = macro.connector.join(vals)
-                # if the matched target type does not appear in the given target filter
-                # do not add this match to the macro (for speeding up processing and save memory space)
-                if target_type not in macro.target_filter:
-                    return
-            # remap feature edge (tuple of node idx) to sentence edge label (dependency relation)
-            matched_edges = {(head, tail): sentence.edges[(nodemapping[head], nodemapping[tail])]
-                             for head, tail in macro.edges}
-            # append matched nodes and edges to the feature
-            macro.add_match(matched_nodes, matched_edges)
+        add_match(sentence, lmatches, macro)
         return
 
     size = len(lmatches)  # number of possible matches
@@ -240,6 +219,35 @@ def subtree_match(sentence=None, macro=None, lmatches=None):
 
     # recursively match the next level
     subtree_match(sentence=sentence, macro=macro, lmatches=lmatches)
+
+
+def add_match(sentence, lmatches, macro):
+    """When found a new match, add this match to macro's matched_nodes and matched_edges"""
+    for lmatch in lmatches:
+        # merge dicts of levels
+        nodemapping = dict()
+        for m in lmatch:
+            nodemapping.update(m)
+        # remap feature node to sentence node label (type)
+        matched_nodes = {fn: sentence.nodes[sn] for fn, sn in nodemapping.items()}
+        # if the target filter is given, check whether the matched target node appear in the target filter
+        if macro.target_filter is not None:
+            target_node_dict = matched_nodes[macro.target_idx]
+            # example of target_node_dict: {'FORM': 'Het', 'LEMMA': 'het', 'POS': 'det'}
+            vals = [target_node_dict[attr] for attr, _idx in macro.target_node_attrs.items()]
+            target_type = macro.connector.join(vals)
+            # if the matched target type does not appear in the given target filter
+            # do not add this match to the macro (for speeding up processing and save memory space)
+            if target_type not in macro.target_filter:
+                return
+        if sentence.mode == 'token':
+            for nid, attrs in matched_nodes.items():
+                attrs['FID'] = sentence.fid
+        # remap feature edge (tuple of node idx) to sentence edge label (dependency relation)
+        matched_edges = {(head, tail): sentence.edges[(nodemapping[head], nodemapping[tail])]
+                         for head, tail in macro.edges}
+        # append matched nodes and edges to the feature
+        macro.add_match(matched_nodes, matched_edges)
 
 
 def match_level(sentence, pattern, prevmap):
