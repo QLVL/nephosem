@@ -3,6 +3,9 @@
 *.swp
 *.png
 
+*__pycache__
+*__pycache__/*
+
 Graph.py
 neo4j_test.py
 ENCOW-test.db/*
