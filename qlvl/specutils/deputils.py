@@ -234,7 +234,7 @@ def add_match(sentence, lmatches, macro):
         if macro.target_filter is not None:
             target_node_dict = matched_nodes[macro.target_idx]
             # example of target_node_dict: {'FORM': 'Het', 'LEMMA': 'het', 'POS': 'det'}
-            vals = [target_node_dict[attr] for attr, _idx in macro.target_node_attrs.items()]
+            vals = [target_node_dict[attr] for attr, _idx in macro.target_node_attrs.items() if attr not in ['FID', 'LID']]
             target_type = macro.connector.join(vals)
             # if the matched target type does not appear in the given target filter
             # do not add this match to the macro (for speeding up processing and save memory space)

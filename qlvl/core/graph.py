@@ -637,19 +637,22 @@ class MacroGraph(PatternGraph):
     def size(self):
         return self.graph.number_of_nodes()
 
-    def target(self, index=0):
+    def target(self, index=0, mode='type'):
         """Return the target of the `index` match."""
         target_idx = self.target_idx
         vals = []
         # for attr in self.node_repr_fmt.split(self.connector):
         for attr, gid in self.target_node_attrs.items():
-            target_regex = self.graph.nodes[target_idx][attr]
-            target_node = self.matched_nodes[index][target_idx][attr]
-            mtarget = re.match(target_regex, target_node)
-            try:
-                mtrgt_repr = mtarget.group(gid)
-            except:
-                mtrgt_repr = '*'  # ''
+            if mode == 'token' and attr in ['LID', 'FID']:
+                mtrgt_repr = str(self.matched_nodes[index][target_idx][attr])  # LID is int
+            else:
+                target_regex = self.graph.nodes[target_idx][attr]
+                target_node = self.matched_nodes[index][target_idx][attr]
+                mtarget = re.match(target_regex, target_node)
+                try:
+                    mtrgt_repr = mtarget.group(gid)
+                except:
+                    mtrgt_repr = '*'  # ''
             vals.append(mtrgt_repr)
         # return '/'.join(mtarget.groups())
         return self.connector.join(vals)

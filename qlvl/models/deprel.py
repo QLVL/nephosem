@@ -132,7 +132,7 @@ class DepRelHandler(BaseHandler):
         targets, contexts = set(), set()
         for macro in self.macros:
             for i in range(len(macro.matched_nodes)):
-                trgt = macro.target(index=i)
+                trgt = macro.target(index=i, mode=self.mode)
                 targets.add(trgt)
                 feat = macro.feature(index=i)
                 contexts.add(feat)
