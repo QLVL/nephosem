@@ -643,8 +643,11 @@ class MacroGraph(PatternGraph):
         vals = []
         # for attr in self.node_repr_fmt.split(self.connector):
         for attr, gid in self.target_node_attrs.items():
-            if mode == 'token' and attr in ['LID', 'FID']:
-                mtrgt_repr = str(self.matched_nodes[index][target_idx][attr])  # LID is int
+            if attr in ['LID', 'FID']:
+                if mode == 'type':
+                    continue
+                elif mode == 'token':
+                    mtrgt_repr = str(self.matched_nodes[index][target_idx][attr])  # LID is int
             else:
                 target_regex = self.graph.nodes[target_idx][attr]
                 target_node = self.matched_nodes[index][target_idx][attr]
