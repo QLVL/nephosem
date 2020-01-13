@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<target-feature-list>
+    <target-fmt>
+        <node-fmt>
+            <LEMMA group="1"/>
+            <POS group="1"/>
+            <FID group="1"/>
+            <LID group="1"/>
+            <string connector="/">LEMMA/POS/FID/LID</string>
+        </node-fmt>
+    </target-fmt>
+    <feature-fmt>
+        <node-fmt>
+            <LEMMA group="1"/>
+            <POS group="1"/>
+            <string connector="/">LEMMA/POS</string>
+        </node-fmt>
+        <edge-fmt>DEPREL</edge-fmt>
+    </feature-fmt>
+    <target-feature-macro id="1">
+        <sub-graph-pattern id="1"/>
+        <target nodeID="2">
+            <description>Empty</description>
+        </target>
+        <feature featureID="1">
+            <description>Words that depend directly on the target.</description>
+        </feature>
+    </target-feature-macro>
+    <target-feature-macro id="2">
+        <sub-graph-pattern id="1"/>
+        <target nodeID="1">
+            <description>Empty</description>
+        </target>
+        <feature featureID="2">
+            <description>Words the target depends directly on.</description>
+        </feature>
+    </target-feature-macro>
+    <target-feature-macro id="3">
+        <sub-graph-pattern id="2"/>
+        <target nodeID="3">
+            <description>Empty</description>
+        </target>
+        <feature featureID="1">
+            <description>Words that depend on something that depends on the target.</description>
+        </feature>
+    </target-feature-macro>
+    <target-feature-macro id="4">
+        <sub-graph-pattern id="2"/>
+        <target nodeID="1">
+            <description>Empty</description>
+        </target>
+        <feature featureID="3">
+            <description>Words that are the head of the head that the target depends on.</description>
+        </feature>
+    </target-feature-macro>
+    <target-feature-macro id="5">
+        <sub-graph-pattern id="3"/>
+        <target nodeID="1">
+            <description>Empty</description>
+        </target>
+        <feature featureID="2">
+            <description>Words that depend on the head that the target also depends on.</description>
+        </feature>
+    </target-feature-macro>
+</target-feature-list>
