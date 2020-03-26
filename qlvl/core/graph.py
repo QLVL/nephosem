@@ -162,7 +162,7 @@ class DiGraph(object):
     def successors(self, v):
         return self.graph.successors(v)
 
-    def predcessors(self, v):
+    def predecessors(self, v):
         return self.graph.predecessors(v)
 
     def add_node(self, v_id, **kwargs):
