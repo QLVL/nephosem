@@ -239,7 +239,7 @@ def add_match(sentence, lmatches, macro):
             # if the matched target type does not appear in the given target filter
             # do not add this match to the macro (for speeding up processing and save memory space)
             if target_type not in macro.target_filter:
-                return
+                continue
         if sentence.mode == 'token':
             for nid, attrs in matched_nodes.items():
                 attrs['FID'] = sentence.fid
