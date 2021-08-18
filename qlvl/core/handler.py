@@ -117,8 +117,8 @@ class Paralleler(object):
                 target=self._worker_loop,
                 args=(job_queue, res_queue)
             )
-            for _ in range(self.workers)
-        ]
+            for _ in range(min(self.workers, len(fnames)))
+        ] # added by Mariana: colfreq may return null if there are more workers than fnames!!
 
         # start all workers
         for worker in workers:

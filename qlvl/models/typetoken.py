@@ -258,7 +258,6 @@ class ColFreqHandler(BaseHandler):
             submtx.save(tmp_fname, pack=False, verbose=False)
             logger.debug("Saved the tmp matrix into {}".format(tmp_fname))
             res_queue.put(tmp_fname)
-
             del mtx_dict
             i += 1; chunk = 0
         else:
