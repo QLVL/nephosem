@@ -1,0 +1,41 @@
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
+        http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+    <key id="n1" for="node" attr.name="lemma" attr.type="string">
+        <default>(.+)</default>
+    </key>
+    <key id="n2" for="node" attr.name="pos" attr.type="string">
+        <default>(\w+)</default>
+    </key>
+    <key id="e1" for="edge" attr.name="deprel" attr.type="string"/>
+    
+    <graph id="1" edgedefault="directed">
+        <node id="1"></node>
+        <node id="2"></node>
+        <edge source="1" target="2">
+            <data key="e1">dobj|nsubj</data>
+        </edge>
+    </graph>
+        
+    <graph id="2" edgedefault="directed">
+        <node id="1"></node>
+        <node id="2"></node>
+        <edge source="1" target="2">
+            <data key="e1">mod</data>
+        </edge>
+    </graph>
+    
+    <graph id="3" edgedefault="directed">
+        <node id="1"></node>
+        <node id="2"></node>
+        <node id="3"></node>
+        <edge source="1" target="2">
+            <data key="e1">prep</data>
+        </edge>
+        <edge source="2" target="3">
+            <data key="e1">pobj</data>
+        </edge>
+    </graph>
+
+</graphml>

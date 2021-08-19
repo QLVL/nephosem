@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<target-feature-list>
+    <target-fmt>
+        <node-fmt>
+            <lemma group="1"/>
+            <pos group="1"/>
+            <fid group="1"/>
+            <lid group="1"/>
+            <string connector="/">lemma/pos/fid/lid</string>
+        </node-fmt>
+    </target-fmt>
+    <feature-fmt>
+        <node-fmt>
+            <lemma group="1"/>
+            <pos group="1"/>
+            <string connector="/">lemma/pos</string>
+        </node-fmt>
+        <edge-fmt>DEPREL</edge-fmt>
+    </feature-fmt>
+    <target-feature-macro id="1">
+        <sub-graph-pattern id="1"/>
+        <target nodeID="1">
+            <description>Empty</description>
+        </target>
+        <feature featureID="2">
+            <description>Words that depend directly on the target.</description>
+        </feature>
+    </target-feature-macro>
+    <target-feature-macro id="2">
+        <sub-graph-pattern id="1"/>
+        <target nodeID="2">
+            <description>Empty</description>
+        </target>
+        <feature featureID="1">
+            <description>Words the target depends directly on.</description>
+        </feature>
+    </target-feature-macro>
+</target-feature-list>
