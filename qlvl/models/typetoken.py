@@ -424,7 +424,8 @@ class ColFreqHandler(BaseHandler):
     def _process_results(self, res_queue, n=0, **kwargs):
         resmtx = None  # final matrix
         # get results from queue
-        for _ in trange(n):
+        while not res_queue.empty():
+        #for _ in trange(n):
             res = res_queue.get()
             # when data in res_queue is a tmp file name
             if isinstance(res, str):
@@ -437,6 +438,7 @@ class ColFreqHandler(BaseHandler):
                 try:
                     os.remove('{}.{}'.format(res, 'meta'))
                     os.remove('{}.{}'.format(res, 'npz'))
+                    os.rmdir(os.path.dirname(res))
                 except Exception as err:
                     logger.exception("Cannot remove *.meta or *.npz tmp files.\n{}".format(err))
             # else: the indicator -1, do nothing
@@ -608,7 +610,8 @@ class TokenHandler(BaseHandler):
     def _process_results(self, res_queue, n=0, **kwargs):
         type2toks = defaultdict(list)
 
-        for _ in trange(n):
+        while not res_queue.empty():
+        #for _ in trange(n):
             res = res_queue.get()
             # when data in res_queue is a `type2toks` dict
             if isinstance(res, dict):
