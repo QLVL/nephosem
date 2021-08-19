@@ -654,6 +654,18 @@ class CorpusFormatter(object):
             colidx = self.__dict__.get('_{}'.format(column), 0)
             return match.group(colidx)
 
+    def get_word(self, match): # This function and next two copied from old code
+        """Get word-form from match object."""
+        return match.group(self._word) if self._word != -1 else ''
+
+    def get_pos(self, match):
+        """Get part-of-speech tag from match object."""
+        return match.group(self._pos) if self._pos != -1 else ''
+
+    def get_lemma(self, match):
+        """Get lemma from match object."""
+        return match.group(self._lemma) if self._lemma != -1 else ''
+
     def get_type(self, match):
         """Get type string from match object."""
         return self.connector.join([match.group(i) for i in self._type])
