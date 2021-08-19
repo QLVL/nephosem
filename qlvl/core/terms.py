@@ -613,7 +613,7 @@ class CorpusFormatter(object):
         self._colloc = [col2id[e] for e in colloc_eles]  # -> [2]
 
         # specify which columns are node attributes or edge attributes
-        self.node_attr = settings.get('node-attr', 'FORM,POS,LEMMA')
+        self.node_attr = settings.get('node-attr', 'word,pos,lemma')
         self.edge_attr = settings.get('edge-attr', None)
 
         self.settings = deepcopy(settings)  # store settings for possible uses
