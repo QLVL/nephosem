@@ -1,0 +1,1838 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qlvl.core package &mdash; Nephological Semantics 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">qlvl.core package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-qlvl.core.graph">qlvl.core.graph module</a></li>
+<li><a class="reference internal" href="#module-qlvl.core.handler">qlvl.core.handler module</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-qlvl.core.matrix">qlvl.core.matrix module</a><ul>
+<li><a class="reference internal" href="#usage-examples">Usage examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-qlvl.core.terms">qlvl.core.terms module</a></li>
+<li><a class="reference internal" href="#module-qlvl.core.vocab">qlvl.core.vocab module</a><ul>
+<li><a class="reference internal" href="#id17">Usage examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-qlvl.core">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>qlvl.core package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/qlvl.core.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qlvl-core-package">
+<h1>qlvl.core package<a class="headerlink" href="#qlvl-core-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-qlvl.core.graph">
+<span id="qlvl-core-graph-module"></span><h2>qlvl.core.graph module<a class="headerlink" href="#module-qlvl.core.graph" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.core.graph.DiGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.core.graph.</span></span><span class="sig-name descname"><span class="pre">DiGraph</span></span><a class="headerlink" href="#qlvl.core.graph.DiGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>graph : <code class="xref py py-class docutils literal notranslate"><span class="pre">DiGraph</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.DiGraph.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_v</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.DiGraph.add_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an edge to graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.DiGraph.add_node">
+<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.DiGraph.add_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a node with id and label (optional) to graph.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.graph.DiGraph.edges">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#qlvl.core.graph.DiGraph.edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.DiGraph.in_degree">
+<span class="sig-name descname"><span class="pre">in_degree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.DiGraph.in_degree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.graph.DiGraph.istree">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">istree</span></span><a class="headerlink" href="#qlvl.core.graph.DiGraph.istree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.graph.DiGraph.nodes">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#qlvl.core.graph.DiGraph.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.DiGraph.out_degree">
+<span class="sig-name descname"><span class="pre">out_degree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.DiGraph.out_degree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.DiGraph.predecessors">
+<span class="sig-name descname"><span class="pre">predecessors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.DiGraph.predecessors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.DiGraph.successors">
+<span class="sig-name descname"><span class="pre">successors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.DiGraph.successors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.core.graph.Graph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.core.graph.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id2node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.Graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.Graph.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e_from_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_to_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.Graph.add_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an edge to graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.Graph.add_node">
+<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.Graph.add_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a node with id and label (optional) to graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.Graph.build_graph">
+<span class="sig-name descname"><span class="pre">build_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id2node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.Graph.build_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a graph</p>
+<dl class="simple">
+<dt>sentence<span class="classifier">iterable</span></dt><dd><p>A list of dependency relations.</p>
+</dd>
+<dt>id2node<span class="classifier">dict</span></dt><dd><p>Node id to node string mapping.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.Graph.build_graph_raw">
+<span class="sig-name descname"><span class="pre">build_graph_raw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.Graph.build_graph_raw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a graph from raw text (of a sentence)</p>
+<dl class="simple">
+<dt>sentence<span class="classifier">iterable</span></dt><dd><p>A list of strings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.graph.Graph.edges">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#qlvl.core.graph.Graph.edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.Graph.match">
+<span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.Graph.match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match a graph with path.</p>
+<p>path : <code class="xref py py-class docutils literal notranslate"><span class="pre">PathTemplate</span></code></p>
+<p>valid matches : iterable</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.graph.Graph.nodes">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#qlvl.core.graph.Graph.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.core.graph.</span></span><span class="sig-name descname"><span class="pre">MacroGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qlvl.core.graph.PatternGraph" title="qlvl.core.graph.PatternGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">qlvl.core.graph.PatternGraph</span></code></a></p>
+<p>Class representing a feature graph inherited from the class PatternGraph.
+So it will have the same structure of the template from which it is generated.
+The generating process of a feature object would be:
+* 1. replicate a (tree) structure of the template
+* 2. set target node index
+* 3. set feature properties for each node (except for the target) and each edge.</p>
+<blockquote>
+<div><p>The feature properties (i.e. True or False) would be stored in <strong>attributes</strong> of nodes and edges</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.add_match">
+<span class="sig-name descname"><span class="pre">add_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matched_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matched_edges</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.add_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add matched nodes and edges</p>
+<dl class="simple">
+<dt>matched_nodes<span class="classifier">dict</span></dt><dd><p>mapping from node index to item string</p>
+</dd>
+<dt>matched_edges<span class="classifier">dict</span></dt><dd><p>mapping from edge index to relation string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.connector">
+<span class="sig-name descname"><span class="pre">connector</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/'</span></em><a class="headerlink" href="#qlvl.core.graph.MacroGraph.connector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class representing a dependency template tree/graph</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.feature">
+<span class="sig-name descname"><span class="pre">feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform a matched node and edge to a feature string</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.feature_full">
+<span class="sig-name descname"><span class="pre">feature_full</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.feature_full" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.feature_old">
+<span class="sig-name descname"><span class="pre">feature_old</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.feature_old" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.feature_simple">
+<span class="sig-name descname"><span class="pre">feature_simple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.feature_simple" title="Permalink to this definition">¶</a></dt>
+<dd><p>The result feature string is a normal type.
+We only have one feature node (without edge) in the result feature representation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.get_edge_repr">
+<span class="sig-name descname"><span class="pre">get_edge_repr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_attrs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.get_edge_repr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get representation of an (matched) edge.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.get_node_repr">
+<span class="sig-name descname"><span class="pre">get_node_repr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_attrs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.get_node_repr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get representation of a (matched) node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.parse_macro_xml">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">parse_macro_xml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">macroxml</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id2patt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.parse_macro_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Example XML:
+<a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>xml
+&lt;target-feature-macro id=”1”&gt;</p>
+<blockquote>
+<div><p>&lt;sub-graph-pattern id=”1”/&gt;
+&lt;target nodeID=”2”&gt;</p>
+<blockquote>
+<div><p>&lt;description&gt;Empty&lt;/description&gt;</p>
+</div></blockquote>
+<p>&lt;/target&gt;
+&lt;feature nodeID=”1”&gt;</p>
+<blockquote>
+<div><p>&lt;description&gt;Words that depend directly on the target.&lt;/description&gt;</p>
+</div></blockquote>
+<p>&lt;/feature&gt;</p>
+</div></blockquote>
+<p>&lt;/target-feature-macro&gt;
+<a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
+<dl>
+<dt>macroxml<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></span></dt><dd><p>XML element of a macro</p>
+</dd>
+<dt>id2patt<span class="classifier">dict</span></dt><dd><p>The dict mapping index to pattern</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Class</dt>
+<dd class="field-odd"><p><cite>~qlvl.core.graph.MacroGraph</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.preorder_recur">
+<span class="sig-name descname"><span class="pre">preorder_recur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reprs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.preorder_recur" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.read_csv">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">read_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_colname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Target</span> <span class="pre">Regex'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_colname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Feature</span> <span class="pre">Regex'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.read_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read feature patterns from a CSV/TSV file.
+This method uses <cite>pandas.read_csv()</cite>. If there is any reading error, please refer to the documentation of pandas.</p>
+<dl class="simple">
+<dt>fname<span class="classifier">str</span></dt><dd><p>Filename of feature patterns in Kris’ notation.</p>
+</dd>
+<dt>target_colname<span class="classifier">str, default ‘Target Regex’</span></dt><dd><p>Column name of the target regular expression in the CSV/TSV file.</p>
+</dd>
+<dt>feature_colname<span class="classifier">str, default ‘Feature Regex’</span></dt><dd><p>Column name of the feature regular expression in the CSV/TSV file.</p>
+</dd>
+<dt>sep<span class="classifier">str, default ‘    ‘</span></dt><dd><p>Delimiter to use.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.read_xml">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">read_xml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patterns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.read_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Example XML:
+<a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a>xml
+&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;
+&lt;target-feature-list&gt;</p>
+<blockquote>
+<div><dl>
+<dt>&lt;target-fmt&gt;</dt><dd><dl class="simple">
+<dt>&lt;node-fmt&gt;</dt><dd><p>&lt;LEMMA group=”1”/&gt;
+&lt;POS group=”1”/&gt;
+&lt;string connector=”/”&gt;LEMMA/POS&lt;/string&gt;</p>
+</dd>
+</dl>
+<p>&lt;/node-fmt&gt;</p>
+</dd>
+</dl>
+<p>&lt;/target-fmt&gt;
+&lt;feature-fmt&gt;</p>
+<blockquote>
+<div><dl class="simple">
+<dt>&lt;node-fmt&gt;</dt><dd><p>&lt;LEMMA group=”1”/&gt;
+&lt;POS group=”1”/&gt;
+&lt;string connector=”/”&gt;LEMMA/POS&lt;/string&gt;</p>
+</dd>
+</dl>
+<p>&lt;/node-fmt&gt;
+&lt;edge-fmt&gt;DEPREL&lt;/edge-fmt&gt;</p>
+</div></blockquote>
+<p>&lt;/feature-fmt&gt;
+&lt;target-feature-macro id=”1”&gt;</p>
+<blockquote>
+<div><p>…</p>
+</div></blockquote>
+<p>&lt;/target-feature-macro&gt;
+…</p>
+</div></blockquote>
+<p>&lt;/target-feature-list&gt;
+<a href="#id13"><span class="problematic" id="id14">``</span></a><a href="#id15"><span class="problematic" id="id16">`</span></a></p>
+<p>fname : str
+patterns : list, of <a class="reference internal" href="#qlvl.core.graph.PatternGraph" title="qlvl.core.graph.PatternGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternGraph</span></code></a></p>
+<p>list, of <a class="reference internal" href="#qlvl.core.graph.MacroGraph" title="qlvl.core.graph.MacroGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">MacroGraph</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.set_feature">
+<span class="sig-name descname"><span class="pre">set_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.set_feature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.set_target">
+<span class="sig-name descname"><span class="pre">set_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.set_target" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.show_match">
+<span class="sig-name descname"><span class="pre">show_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.show_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.size">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.MacroGraph.target">
+<span class="sig-name descname"><span class="pre">target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'type'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.MacroGraph.target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the target of the <cite>index</cite> match.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.core.graph.PatternGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.core.graph.</span></span><span class="sig-name descname"><span class="pre">PatternGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.PatternGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qlvl.core.graph.DiGraph" title="qlvl.core.graph.DiGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">qlvl.core.graph.DiGraph</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qlvl.core.graph.PatternGraph.connector">
+<span class="sig-name descname"><span class="pre">connector</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/'</span></em><a class="headerlink" href="#qlvl.core.graph.PatternGraph.connector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class representing a dependency template tree/graph</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.PatternGraph.islinear">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">islinear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.PatternGraph.islinear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.PatternGraph.match_edge">
+<span class="sig-name descname"><span class="pre">match_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.PatternGraph.match_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match the passing sentence edge with the corresponding edge in the pattern graph.</p>
+<dl class="simple">
+<dt>edge<span class="classifier">dict</span></dt><dd><p>A dict of edge attributes of the sentence graph.
+For most cases, there is only one attribute <cite>DEPREL</cite>.</p>
+</dd>
+<dt>idx<span class="classifier">int or tuple of int</span></dt><dd><p>An integer index of the corresponding edge of the pattern graph.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.PatternGraph.match_node">
+<span class="sig-name descname"><span class="pre">match_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.PatternGraph.match_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match the passing sentence node with the corresponding node in the pattern graph.</p>
+<dl class="simple">
+<dt>node<span class="classifier">dict</span></dt><dd><p>A dict of node attributes of the sentence graph.
+e.g. {‘FORM’: ‘The’, ‘POS’: ‘DT’, ‘LEMMA’: ‘the’}</p>
+</dd>
+<dt>idx<span class="classifier">int</span></dt><dd><p>An integer index of the corresponding node of the pattern graph.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.PatternGraph.read_csv">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">read_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_colname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Target</span> <span class="pre">Regex'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_colname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Feature</span> <span class="pre">Regex'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.PatternGraph.read_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read feature patterns from a CSV/TSV file.
+This method uses <cite>pandas.read_csv()</cite>. If there is any reading error, please refer to the documentation of pandas.</p>
+<dl class="simple">
+<dt>fname<span class="classifier">str</span></dt><dd><p>Filename of feature patterns in Kris’ notation.</p>
+</dd>
+<dt>target_colname<span class="classifier">str, default ‘Target Regex’</span></dt><dd><p>Column name of the target regular expression in the CSV/TSV file.</p>
+</dd>
+<dt>feature_colname<span class="classifier">str, default ‘Feature Regex’</span></dt><dd><p>Column name of the feature regular expression in the CSV/TSV file.</p>
+</dd>
+<dt>sep<span class="classifier">str, default ‘    ‘</span></dt><dd><p>Delimiter to use.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.PatternGraph.read_graphml">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">read_graphml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.PatternGraph.read_graphml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.PatternGraph.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.PatternGraph.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.core.graph.SentenceGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.core.graph.</span></span><span class="sig-name descname"><span class="pre">SentenceGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'type'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.SentenceGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qlvl.core.graph.DiGraph" title="qlvl.core.graph.DiGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">qlvl.core.graph.DiGraph</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.SentenceGraph.build_graph">
+<span class="sig-name descname"><span class="pre">build_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.SentenceGraph.build_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a graph from raw text (of a sentence)</p>
+<dl class="simple">
+<dt>sentence<span class="classifier">iterable</span></dt><dd><p>A list of strings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.SentenceGraph.generate_graph">
+<span class="sig-name descname"><span class="pre">generate_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.SentenceGraph.generate_graph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.SentenceGraph.match_pattern">
+<span class="sig-name descname"><span class="pre">match_pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">macro</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.SentenceGraph.match_pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match a sentence with a feature pattern (and target pair).
+Append the results to the attribute lists <cite>matched_nodes</cite> and <cite>matched_edges</cite> of the feature object.
+A <cite>matched node</cite> is a dict mapping node index to type string.
+A <cite>matched edge</cite> is a dict mapping edge index to dependency relation.
+e.g. one match would be:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>nodes: <cite>{1: ‘boy/NN’, 2: ‘give/V’, 3: ‘girl/NN’}</cite></p></li>
+<li><p>edges: <cite>{(2, 1): ‘nsubj’, (2, 3): ‘iobj’}</cite></p></li>
+</ul>
+</div></blockquote>
+<dl>
+<dt>macro<span class="classifier"><a class="reference internal" href="#qlvl.core.graph.MacroGraph" title="qlvl.core.graph.MacroGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">MacroGraph</span></code></a></span></dt><dd><p>The feature pattern to be matched to the sentence.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.SentenceGraph.match_target_feature">
+<span class="sig-name descname"><span class="pre">match_target_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.SentenceGraph.match_target_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match a graph with a path (a tree/graph object).</p>
+<p>feature : <a class="reference internal" href="#qlvl.core.graph.MacroGraph" title="qlvl.core.graph.MacroGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">MacroGraph</span></code></a></p>
+<p>valid matches : iterable</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.graph.SentenceGraph.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.SentenceGraph.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.core.graph.match_sub_template">
+<span class="sig-prename descclassname"><span class="pre">qlvl.core.graph.</span></span><span class="sig-name descname"><span class="pre">match_sub_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.graph.match_sub_template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-qlvl.core.handler">
+<span id="qlvl-core-handler-module"></span><h2>qlvl.core.handler module<a class="headerlink" href="#module-qlvl.core.handler" title="Permalink to this headline">¶</a></h2>
+<p>Handler Class</p>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.core.handler.BaseHandler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.core.handler.</span></span><span class="sig-name descname"><span class="pre">BaseHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.handler.BaseHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qlvl.core.handler.Paralleler" title="qlvl.core.handler.Paralleler"><code class="xref py py-class docutils literal notranslate"><span class="pre">qlvl.core.handler.Paralleler</span></code></a></p>
+<p>This is a base class of all handler classes.</p>
+<p>Contains framework for multicore method. The purpose of this class is to provide a
+reference interface for concrete handler implementations. At the same time,
+functionality that we expect to be common for those implementations is provided
+here to avoid code duplication.</p>
+<p>A typical procedure of processing a corpus would be</p>
+<dl class="simple">
+<dt>tmpindicator<span class="classifier">str</span></dt><dd><p>A string indicator for the temporary folder name used by all methods of this Class.</p>
+</dd>
+</dl>
+<p>settings : dict
+corpus_path : str
+output_path : str
+encoding : str</p>
+<blockquote>
+<div><p>Default ‘utf-8’</p>
+</div></blockquote>
+<dl class="simple">
+<dt>input_encoding<span class="classifier">str</span></dt><dd><p>File encoding of input corpus files.
+Default ‘utf-8’</p>
+</dd>
+<dt>output_encoding<span class="classifier">str</span></dt><dd><p>File encoding of output files.
+Could be different with input_encoding.
+e.g. :
+If input_encoding is ‘latin-1’, but we don’t want to use it for output files.
+We could use ‘utf-8’ for output files.
+Default ‘utf-8’.</p>
+</dd>
+</dl>
+<p>A subclass should initialize the following attributes:</p>
+<ul class="simple">
+<li><p>self.settings - settings dict</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.handler.BaseHandler.prepare_fnames">
+<span class="sig-name descname"><span class="pre">prepare_fnames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.handler.BaseHandler.prepare_fnames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare corpus file names based on the fnames file path or the corpus path.
+If a valid <cite>fnames</cite> is passed, read all file names recorded inside this file.
+If not, use the corpus directory <cite>self.corpus_path</cite> and read all file names inside this folder.</p>
+<dl class="simple">
+<dt>fnames<span class="classifier">str or list, optional</span></dt><dd><p>If str, then it is the filename of a file which records all (a user wants to process) file names of a corpus.
+If list, then it contains a list of filenames.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.handler.BaseHandler.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.handler.BaseHandler.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process files in the fnames list.</p>
+<dl class="simple">
+<dt>fnames<span class="classifier">iterable</span></dt><dd><p>This fnames is a list of file names.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>object</dt><dd><dl class="simple">
+<dt>For different tasks, this method returns different objects:</dt><dd><ul class="simple">
+<li><p>ItemFreqHandler: returns a <cite>Vocab</cite> object,</p></li>
+<li><p>ColFreqHandler: returns a <cite>TypeTokenMatrix</cite> co-occurrence frequency matrix,</p></li>
+<li><p>TokenHandler: returns a Python dict mapping the type strings to their lists of tokens (<cite>TokenNode</cite> objects).</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.handler.BaseHandler.process_right_window">
+<span class="sig-name descname"><span class="pre">process_right_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.handler.BaseHandler.process_right_window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qlvl.core.handler.BaseHandler.tmpindicator">
+<span class="sig-name descname"><span class="pre">tmpindicator</span></span><em class="property"> <span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#qlvl.core.handler.BaseHandler.tmpindicator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.handler.BaseHandler.update_one_file">
+<span class="sig-name descname"><span class="pre">update_one_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.handler.BaseHandler.update_one_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the template method updating data of one corpus file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.handler.BaseHandler.update_one_match">
+<span class="sig-name descname"><span class="pre">update_one_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.handler.BaseHandler.update_one_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.core.handler.Paralleler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.core.handler.</span></span><span class="sig-name descname"><span class="pre">Paralleler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.handler.Paralleler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is a base class of all classes that work parallel.
+This class contains a framework for parallel tasks.
+Here is the description of the procedures:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The main entrance is the method <cite>process()</cite>. It creates a job queue (for tasks sent to all sub-processes)</p></li>
+</ul>
+<p>and a result queue (for results returned by all sub-processes). It also creates a number of worker processes,
+each of whom will execute the method <cite>_worker_loop()</cite>. After creating worker processes,
+it produces the job queue by the input fnames (data). The <cite>_worker_loop()</cite> will process
+the tasks in the job queue and return the results in the result queue. Finally it uses
+<cite>_process_results()</cite> method to post process (merge) the results of each worker process
+into one final Python object.
+* The default <cite>_job_producer()</cite> method produces the job queue by feeding with the input
+fnames. One fname will be fetched and processed by a worker process (<cite>_worker_loop()</cite>).
+A sub-class inheriting <cite>Paralleler</cite> could over-write this method and feed other data
+into the job queue. Just ensure that one piece of data could be used by the <cite>_do_process_job()</cite>
+method inside the <cite>_worker_loop()</cite>.
+* The <cite>_worker_loop()</cite> method will fetch one piece of data (default, one <cite>fname</cite>) and
+send it to the method <cite>_do_process_job()</cite> and send the corresponding result to the result
+queue. Any sub-class should implement this method for different tasks.
+* The <cite>_do_process_job</cite> gets one piece of data, send it to a function for processing,
+and returns the result back to the <cite>_worker_loop()</cite> method. Any sub-class should implement
+this method.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>workers<span class="classifier">integer</span></dt><dd><p>Number of CPU cores to be used parallel.</p>
+</dd>
+<dt>tmpdir<span class="classifier">str</span></dt><dd><p>The path of the temporary directory used by the Class</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.handler.Paralleler.pid">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">pid</span></span><a class="headerlink" href="#qlvl.core.handler.Paralleler.pid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.handler.Paralleler.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.handler.Paralleler.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process files in the fnames list.</p>
+<dl class="simple">
+<dt>fnames<span class="classifier">iterable</span></dt><dd><p>This fnames is a list of file names.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>object</dt><dd><dl class="simple">
+<dt>For different tasks, this method returns different objects:</dt><dd><ul class="simple">
+<li><p>ItemFreqHandler: returns a <cite>Vocab</cite> object,</p></li>
+<li><p>ColFreqHandler: returns a <cite>TypeTokenMatrix</cite> co-occurrence frequency matrix,</p></li>
+<li><p>TokenHandler: returns a Python dict mapping the type strings to their lists of tokens (<cite>TokenNode</cite> objects).</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.handler.Paralleler.subtmpdir">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">subtmpdir</span></span><a class="headerlink" href="#qlvl.core.handler.Paralleler.subtmpdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>When the class is instanced in a subprocess, a temporary folder for this subprocess
+will be created for its temporary files.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-qlvl.core.matrix">
+<span id="qlvl-core-matrix-module"></span><h2>qlvl.core.matrix module<a class="headerlink" href="#module-qlvl.core.matrix" title="Permalink to this headline">¶</a></h2>
+<p>Matrix Classes</p>
+<div class="section" id="usage-examples">
+<h3>Usage examples<a class="headerlink" href="#usage-examples" title="Permalink to this headline">¶</a></h3>
+<p>Construct a TypeTokenMatrix with a Python dict e.g.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">qlvl.tests.utils</span> <span class="kn">import</span> <span class="n">common_texts</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">qlvl</span> <span class="kn">import</span> <span class="n">TypeTokenMatrix</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.core.matrix.</span></span><span class="sig-name descname"><span class="pre">TypeTokenMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">qlvl.core.matrix.BaseMatrix</span></code></p>
+<p>Construction of a toy TypeTokenMatrix object:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">row_items</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;row0&#39;</span><span class="p">,</span> <span class="s1">&#39;row1&#39;</span><span class="p">,</span> <span class="s1">&#39;row2&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col_items</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;col0&#39;</span><span class="p">,</span> <span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col2&#39;</span><span class="p">,</span> <span class="s1">&#39;col3&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sparr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spMTX</span> <span class="o">=</span> <span class="n">TypeTokenMatrix</span><span class="p">(</span><span class="n">spmx</span><span class="p">,</span> <span class="n">row_items</span><span class="p">,</span> <span class="n">col_items</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">spMTX</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dsmx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nmMTX</span> <span class="o">=</span> <span class="n">TypeTokenMatrix</span><span class="p">(</span><span class="n">dsmx</span><span class="p">,</span> <span class="n">row_items</span><span class="p">,</span> <span class="n">col_items</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">nmMTX</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sqarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">squareform</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sqmx</span> <span class="o">=</span> <span class="n">squareform</span><span class="p">(</span><span class="n">sqarr</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sqMTX</span> <span class="o">=</span> <span class="n">TypeTokenMatrix</span><span class="p">(</span><span class="n">sqmx</span><span class="p">,</span> <span class="n">col_items</span><span class="p">,</span> <span class="n">col_items</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sqMTX</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.colid2item">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">colid2item</span></span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.colid2item" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.concatenate">
+<span class="sig-name descname"><span class="pre">concatenate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targetmx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.concatenate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concatenate target matrix with self.</p>
+<dl>
+<dt>targetmx<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></span></dt><dd><p>Target matrix</p>
+</dd>
+<dt>axis<span class="classifier">int</span></dt><dd><p>Axis of concatenation.
+If axis = 0, concatenate the targetmx as the new rows of self matrix.
+If axis = 1, concatenate the targetmx as the new columns of self matrix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.count_nonzero">
+<span class="sig-name descname"><span class="pre">count_nonzero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.count_nonzero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Count the number of nonzero values for each row or each column.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.dataframe">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">dataframe</span></span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.dataframe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.deepcopy">
+<span class="sig-name descname"><span class="pre">deepcopy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.deepcopy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.describe">
+<span class="sig-name descname"><span class="pre">describe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.describe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates descriptive information of the matrix
+TODO: improve</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.drop">
+<span class="sig-name descname"><span class="pre">drop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_nonzero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.drop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drop rows which has fewer or equal nonzero values than <cite>n_nonzero</cite>.</p>
+<dl class="simple">
+<dt>axis<span class="classifier">int</span></dt><dd><p>If axis is 0, drop rows that satisfy the given criteria.
+If axis is 1, drop columns that satisfy the given criteria.</p>
+</dd>
+<dt>n_nonzero<span class="classifier">int</span></dt><dd><p>The number of nonzero values in each row.
+If n_nonzero is 0, drop all empty rows.
+If n_nonzero is 1, drop all rows that only have 1 nonzero value or less.
+…</p>
+</dd>
+</dl>
+<p>Dropped matrix : <code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.drop_empty">
+<span class="sig-name descname"><span class="pre">drop_empty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explicit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.drop_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drop empty rows and return a dropped matrix.</p>
+<dl class="simple">
+<dt>axis<span class="classifier">int</span></dt><dd><p>0 or 1</p>
+</dd>
+<dt>explicit<span class="classifier">bool</span></dt><dd><p>If True, rows that only have explicit zeros are also empty.
+Else, rows that only have no stored values are empty.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.drop_empty_rows">
+<span class="sig-name descname"><span class="pre">drop_empty_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explicit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.drop_empty_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drop empty rows and return a dropped matrix.</p>
+<dl class="simple">
+<dt>explicit<span class="classifier">bool</span></dt><dd><p>If True, rows that only have explicit zeros are also empty.
+Else, rows that only have no stored values are empty.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.drop_zero_rows">
+<span class="sig-name descname"><span class="pre">drop_zero_rows</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.drop_zero_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drop rows with only zero values and return the dropped matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.empty_rows">
+<span class="sig-name descname"><span class="pre">empty_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explicit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.empty_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show types/tokens which have empty rows
+If this matrix is a token-context weight matrix,
+the row of a token would have all zero ppmi values.</p>
+<dl class="simple">
+<dt>explicit<span class="classifier">bool</span></dt><dd><p>If True, rows that only have explicit zeros are also empty.
+Else, rows that have no stored values are empty.</p>
+</dd>
+</dl>
+<p>a list of row indices</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.equal">
+<span class="sig-name descname"><span class="pre">equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">othermx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.from_dataframe">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">issparse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.from_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.get_colloc_contexts">
+<span class="sig-name descname"><span class="pre">get_colloc_contexts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.get_colloc_contexts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get collocate context features.</p>
+<p>item</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.get_matrix">
+<span class="sig-name descname"><span class="pre">get_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.get_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get matrix.</p>
+<p>numpy.ndarray or scipy.sparse.csr_matrix:</p>
+<p>NotImplementedError</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.item2colid">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">item2colid</span></span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.item2colid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dict mapping from (column) items to corresponding indices.
+If <cite>self._item2colid</cite> is generated, just return it,
+else, create the <cite>self._item2colid</cite> dict and return it.</p>
+<p>self._item2colid : dict</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.item2rowid">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">item2rowid</span></span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.item2rowid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dict mapping from (row) items to corresponding indices.
+If <cite>self._item2rowid</cite> is generated, just return it,
+else, create the <cite>self._item2rowid</cite> dict and return it.</p>
+<p>self._item2rowid : dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.load">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pack</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>filename : “…/xx.wcmx.freq.pac”
+encoding : str</p>
+<blockquote>
+<div><p>Default ‘utf-8’.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>pack<span class="classifier">True or False</span></dt><dd><p>Indicate the file is packaged or not</p>
+</dd>
+</dl>
+<p>meta data and matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targetmx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge two TypeTokenMatrix objects.</p>
+<dl>
+<dt>targetmx<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></span></dt><dd><p>Target matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.meta_data">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">meta_data</span></span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.meta_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Meta data of the matrix.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.most_similar">
+<span class="sig-name descname"><span class="pre">most_similar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.most_similar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get most similar items of the target item.</p>
+<dl class="simple">
+<dt>item<span class="classifier">str</span></dt><dd><p>Row item (word)</p>
+</dd>
+<dt>k<span class="classifier">int</span></dt><dd><p>Number of returned similar items.</p>
+</dd>
+<dt>descending<span class="classifier">bool</span></dt><dd><p>If descending is True, sort the elements according to descending order of the values.
+Else, sort the elements according to ascending order of the values.
+The values would be distance or similarity.
+So for similarity matrix, set <cite>descending</cite> to True, as we want elements with largest values (similarities).
+For distance matrix, set <cite>descending</cite> to False.
+For similarity rank matrix, same to similarity matrix.</p>
+</dd>
+</dl>
+<p>a list of elements</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.multiply">
+<span class="sig-name descname"><span class="pre">multiply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.multiply" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.print_matrix">
+<span class="sig-name descname"><span class="pre">print_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_rows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_cols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.print_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints n_rows and n_cols of the matrix.
+If either is set to None, print the standard amount.</p>
+<p>n_rows
+n_cols</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.read_csv">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">read_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'infer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">issparse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.read_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a comma(tab)-separated values (csv/tsv) file.</p>
+<dl class="simple">
+<dt>filename<span class="classifier">str</span></dt><dd><p>Filename of the csv file.</p>
+</dd>
+<dt>sep<span class="classifier">str, default ‘    ‘</span></dt><dd><p>Field delimiter to use.</p>
+</dd>
+<dt>header<span class="classifier">int or list of ints, default ‘infer’</span></dt><dd><p>Row number(s) to use as the column names, and the start of the data.</p>
+</dd>
+<dt>index_col<span class="classifier">int or sequence or False, default None</span></dt><dd><p>Column to use as the row labels of the DataFrame.</p>
+</dd>
+<dt>issparse<span class="classifier">bool</span></dt><dd><p>True for sparse matrix (i.e. frequency matrix).
+False for dense matrix (i.e. distance matrix).</p>
+</dd>
+<dt>encoding<span class="classifier">str, default ‘utf-8’</span></dt><dd><p>Encoding to use for UTF when reading/writing (ex. ‘utf-8’).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.reorder">
+<span class="sig-name descname"><span class="pre">reorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.reorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reorder the matrix based on a new item list.</p>
+<dl class="simple">
+<dt>item_list<span class="classifier">list of str</span></dt><dd><p>A list of (string) items.</p>
+</dd>
+<dt>axis<span class="classifier">int, optional</span></dt><dd><p>0 for row, 1 for column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.rowid2item">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">rowid2item</span></span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.rowid2item" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample the matrix based on row</p>
+<dl class="simple">
+<dt>percent<span class="classifier">float</span></dt><dd><p>percentage of row dimension</p>
+</dd>
+<dt>seed<span class="classifier">int, default</span></dt><dd><p>Random seed form sampling.
+When the seed is set to a non-default value (non-negative),
+the method uses this seed for numpy random sampling operation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pack</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.shape">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.spmatrix_to_dict">
+<span class="sig-name descname"><span class="pre">spmatrix_to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.spmatrix_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only for sparse matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.submatrix">
+<span class="sig-name descname"><span class="pre">submatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.submatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select a submatrix.
+If self is a sparse matrix (i.e. word-context frequency matrix),
+you can either specify only row or only col or both.
+If self is a square matrix (i.e. word-word distance matrix),
+normally you should select a square submatrix, therefore specify both row and col with the same list.</p>
+<dl class="simple">
+<dt>row<span class="classifier">iterable (list of str)</span></dt><dd><p>Only support a list of str</p>
+</dd>
+<dt>col<span class="classifier">iterable (list of str)</span></dt><dd><p>Only support a list of str</p>
+</dd>
+</dl>
+<p>submatrix : <code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.sum">
+<span class="sig-name descname"><span class="pre">sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sum the matrix over the given axis.
+If the axis is None, sum over both rows and columns, returning a scalar.</p>
+<blockquote>
+<div><p>axis = 1</p>
+</div></blockquote>
+<p>———–    ^
+| 1, 0, 2 |   [3]
+| 0, 3, 4 |   [7]
+———–</p>
+<blockquote>
+<div><p>[1, 3, 6]        &gt; axis = 0</p>
+<blockquote>
+<div><p>Collocate present   Collocate absent    Totals</p>
+</div></blockquote>
+</div></blockquote>
+<p>Node present  c_a_b               c_a_nb              R1
+Node absent   c_na_b              c_na_nb             R2
+Totals        C1                  C2                  N</p>
+<dl class="simple">
+<dt>axis<span class="classifier">int</span></dt><dd><p>If axis == 1, sum over rows.
+If axis == 0, sum over columns.
+If axis is None, return the total sum value (scalar).</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>dict</dt><dd><p>A python dict with row/column items as keys and sum of that row/column as values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.to_csv">
+<span class="sig-name descname"><span class="pre">to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.to_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write DataFrame to a comma-separated values (csv) file.</p>
+<p>filename : str
+sep : character, default ‘      ‘</p>
+<blockquote>
+<div><p>Field delimiter for the output file.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>index<span class="classifier">boolean, default True</span></dt><dd><p>Write row names (index).</p>
+</dd>
+<dt>header<span class="classifier">boolean, default True</span></dt><dd><p>Write out the column names.</p>
+</dd>
+<dt>encoding<span class="classifier">string, optional</span></dt><dd><p>A string representing the encoding to use in the output file, defaults to ‘ascii’ on Python 2 and ‘utf-8’ on Python 3.</p>
+</dd>
+</dl>
+<p>verbose : boolean</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.todense">
+<span class="sig-name descname"><span class="pre">todense</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.todense" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.matrix.TypeTokenMatrix.transpose">
+<span class="sig-name descname"><span class="pre">transpose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.matrix.TypeTokenMatrix.transpose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the transpose of a matrix.</p>
+<dl class="simple">
+<dt>numpy.ndarray:</dt><dd><p>The transpose.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-qlvl.core.terms">
+<span id="qlvl-core-terms-module"></span><h2>qlvl.core.terms module<a class="headerlink" href="#module-qlvl.core.terms" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.core.terms.CorpusFormatter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.core.terms.</span></span><span class="sig-name descname"><span class="pre">CorpusFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.CorpusFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qlvl.core.terms.CorpusFormatter.connector">
+<span class="sig-name descname"><span class="pre">connector</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/'</span></em><a class="headerlink" href="#qlvl.core.terms.CorpusFormatter.connector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.CorpusFormatter.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.CorpusFormatter.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the content of the corresponding column from a corpus line.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.CorpusFormatter.get_colloc">
+<span class="sig-name descname"><span class="pre">get_colloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.CorpusFormatter.get_colloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get token string from match object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.CorpusFormatter.get_lemma">
+<span class="sig-name descname"><span class="pre">get_lemma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.CorpusFormatter.get_lemma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get lemma from match object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.CorpusFormatter.get_pos">
+<span class="sig-name descname"><span class="pre">get_pos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.CorpusFormatter.get_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get part-of-speech tag from match object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.CorpusFormatter.get_token">
+<span class="sig-name descname"><span class="pre">get_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.CorpusFormatter.get_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get token string from match object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.CorpusFormatter.get_type">
+<span class="sig-name descname"><span class="pre">get_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.CorpusFormatter.get_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get type string from match object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.CorpusFormatter.get_word">
+<span class="sig-name descname"><span class="pre">get_word</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.CorpusFormatter.get_word" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get word-form from match object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.CorpusFormatter.left_bound_machine">
+<span class="sig-name descname"><span class="pre">left_bound_machine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.CorpusFormatter.left_bound_machine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.CorpusFormatter.match_line">
+<span class="sig-name descname"><span class="pre">match_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">form</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.CorpusFormatter.match_line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.CorpusFormatter.right_bound_machine">
+<span class="sig-name descname"><span class="pre">right_bound_machine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.CorpusFormatter.right_bound_machine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.CorpusFormatter.separator_line_machine">
+<span class="sig-name descname"><span class="pre">separator_line_machine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.CorpusFormatter.separator_line_machine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.CorpusFormatter.single_bound_machine">
+<span class="sig-name descname"><span class="pre">single_bound_machine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.CorpusFormatter.single_bound_machine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.core.terms.Getter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.core.terms.</span></span><span class="sig-name descname"><span class="pre">Getter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.Getter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.Getter.get_func">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">get_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">get_form_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.Getter.get_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>get_form_string : str</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.Getter.get_item">
+<span class="sig-name descname"><span class="pre">get_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">form</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.Getter.get_item" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.Getter.get_token">
+<span class="sig-name descname"><span class="pre">get_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.Getter.get_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.Getter.get_type">
+<span class="sig-name descname"><span class="pre">get_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.Getter.get_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.Getter.init_machine">
+<span class="sig-name descname"><span class="pre">init_machine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.Getter.init_machine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.Getter.left_bound_machine">
+<span class="sig-name descname"><span class="pre">left_bound_machine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.Getter.left_bound_machine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.terms.Getter.lemma">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">lemma</span></span><a class="headerlink" href="#qlvl.core.terms.Getter.lemma" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.terms.Getter.pos">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">pos</span></span><a class="headerlink" href="#qlvl.core.terms.Getter.pos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.Getter.right_bound_machine">
+<span class="sig-name descname"><span class="pre">right_bound_machine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.Getter.right_bound_machine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.Getter.separator_line_machine">
+<span class="sig-name descname"><span class="pre">separator_line_machine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.Getter.separator_line_machine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.Getter.single_bound_machine">
+<span class="sig-name descname"><span class="pre">single_bound_machine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.Getter.single_bound_machine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.Getter.token_line_machine">
+<span class="sig-name descname"><span class="pre">token_line_machine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.Getter.token_line_machine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.terms.Getter.word">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">word</span></span><a class="headerlink" href="#qlvl.core.terms.Getter.word" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.Getter.word_line_machine">
+<span class="sig-name descname"><span class="pre">word_line_machine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.Getter.word_line_machine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.core.terms.ItemNode">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.core.terms.</span></span><span class="sig-name descname"><span class="pre">ItemNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lemma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colloc_fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.ItemNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class represents an item node parsed by <cite>line-machine</cite> regular expression.
+The parsed item node consists of ‘word’, ‘lemma’ and ‘pos’ (if a file line has them).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qlvl.core.terms.ItemNode.connector">
+<span class="sig-name descname"><span class="pre">connector</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/'</span></em><a class="headerlink" href="#qlvl.core.terms.ItemNode.connector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.ItemNode.to_colloc">
+<span class="sig-name descname"><span class="pre">to_colloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colloc_fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.ItemNode.to_colloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a collocate string based on the item node.</p>
+<dl class="simple">
+<dt>colloc_fmt<span class="classifier">str</span></dt><dd><p>colloc format string, i.e. ‘lemma/pos’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.ItemNode.to_type">
+<span class="sig-name descname"><span class="pre">to_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.ItemNode.to_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a type string based on the item node.</p>
+<dl class="simple">
+<dt>type_fmt<span class="classifier">str</span></dt><dd><p>type format string, i.e. ‘lemma/pos’</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.core.terms.TokenNode">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.core.terms.</span></span><span class="sig-name descname"><span class="pre">TokenNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token_str</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unknown'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lemma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lcollocs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rcollocs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.TokenNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qlvl.core.terms.ItemNode" title="qlvl.core.terms.ItemNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">qlvl.core.terms.ItemNode</span></code></a></p>
+<p>A TokenNode normal has its left and right context/collocate ItemNodes.</p>
+<dl class="simple">
+<dt>connector<span class="classifier">str</span></dt><dd><p>For connecting ‘word’, ‘lemma’, ‘pos’, ‘fid’ and ‘lid’.
+default ‘/’</p>
+</dd>
+</dl>
+<p>lcollocs : a list of left collocates
+rcollocs : a list of right collocates</p>
+<blockquote>
+<div><p>one collocates is an ItemNode object</p>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qlvl.core.terms.TokenNode.connector">
+<span class="sig-name descname"><span class="pre">connector</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/'</span></em><a class="headerlink" href="#qlvl.core.terms.TokenNode.connector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.TokenNode.gen_token_from_json_data">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">gen_token_from_json_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.TokenNode.gen_token_from_json_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.terms.TokenNode.json_data">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">json_data</span></span><a class="headerlink" href="#qlvl.core.terms.TokenNode.json_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.terms.TokenNode.lspan">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">lspan</span></span><a class="headerlink" href="#qlvl.core.terms.TokenNode.lspan" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.terms.TokenNode.rspan">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">rspan</span></span><a class="headerlink" href="#qlvl.core.terms.TokenNode.rspan" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.terms.TokenNode.token">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">token</span></span><a class="headerlink" href="#qlvl.core.terms.TokenNode.token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.core.terms.TypeNode">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.core.terms.</span></span><span class="sig-name descname"><span class="pre">TypeNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_str</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lemma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokens</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.TypeNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qlvl.core.terms.ItemNode" title="qlvl.core.terms.ItemNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">qlvl.core.terms.ItemNode</span></code></a></p>
+<p>This Class represents a type node which in the token level contains all its token appearances.</p>
+<p>The followings are some important attributes.
+Attributes
+———-
+lemma : str
+pos : str
+tokens : a list of appearances / tokens</p>
+<blockquote>
+<div><p>an appearance includes the token and its collocate types</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.TypeNode.append_token">
+<span class="sig-name descname"><span class="pre">append_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.TypeNode.append_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.terms.TypeNode.collocs">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">collocs</span></span><a class="headerlink" href="#qlvl.core.terms.TypeNode.collocs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qlvl.core.terms.TypeNode.connector">
+<span class="sig-name descname"><span class="pre">connector</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/'</span></em><a class="headerlink" href="#qlvl.core.terms.TypeNode.connector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.terms.TypeNode.freq">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">freq</span></span><a class="headerlink" href="#qlvl.core.terms.TypeNode.freq" title="Permalink to this definition">¶</a></dt>
+<dd><p>frequency of the type</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.TypeNode.get_collocs">
+<span class="sig-name descname"><span class="pre">get_collocs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.TypeNode.get_collocs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the collocates of all tokens</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.TypeNode.load">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.TypeNode.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.TypeNode.merge">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.TypeNode.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge a list of TypeNode instances into one</p>
+<p>tns : a list of TypeNode instances</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.TypeNode.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'random'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.TypeNode.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select n tokens/appearances from all.</p>
+<dl class="simple">
+<dt>n<span class="classifier">int</span></dt><dd><p>default is 300</p>
+</dd>
+<dt>method<span class="classifier">str</span></dt><dd><p>‘random’, …</p>
+</dd>
+</dl>
+<p>A new TypeNode object</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.TypeNode.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.TypeNode.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.terms.TypeNode.type">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#qlvl.core.terms.TypeNode.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.core.terms.Window">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.core.terms.</span></span><span class="sig-name descname"><span class="pre">Window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lspan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rspan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.Window" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="simple">
+<dt>left_span<span class="classifier">int</span></dt><dd><p>left span, window size of left collocates</p>
+</dd>
+<dt>right_span<span class="classifier">int</span></dt><dd><p>right span, window size of right collocates</p>
+</dd>
+<dt>left<span class="classifier">deque</span></dt><dd><p>left window</p>
+</dd>
+<dt>right<span class="classifier">deque</span></dt><dd><p>right window</p>
+</dd>
+<dt>node</dt><dd><p>center node</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.Window.init_span">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">init_span</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.Window.init_span" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.terms.Window.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.terms.Window.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>current window: [l1, …]        [node]  [r1, …]
+update cur =&gt;   [l2, …, node]  [r1]    [r2, …, cur]</p>
+<p>cur</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qlvl.core.vocab">
+<span id="qlvl-core-vocab-module"></span><h2>qlvl.core.vocab module<a class="headerlink" href="#module-qlvl.core.vocab" title="Permalink to this headline">¶</a></h2>
+<p>Vocabulary Class</p>
+<div class="section" id="id17">
+<h3>Usage examples<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<p>Initialize a vocabulary with a Python dict e.g.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">qlvl.tests.utils</span> <span class="kn">import</span> <span class="n">common_texts</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">qlvl</span> <span class="kn">import</span> <span class="n">Vocab</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.core.vocab.</span></span><span class="sig-name descname"><span class="pre">Vocab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just to have a better name for deepcopy().</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.dataframe">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">dataframe</span></span><a class="headerlink" href="#qlvl.core.vocab.Vocab.dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate dataframe dynamically every time it is called.
+Sort items first by frequency (descending)
+and then by alphabetic ascending order.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.deepcopy">
+<span class="sig-name descname"><span class="pre">deepcopy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.deepcopy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.describe">
+<span class="sig-name descname"><span class="pre">describe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.describe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give a description of Vocab.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.equal">
+<span class="sig-name descname"><span class="pre">equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.equal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether two vocabularies are equal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.get_dict">
+<span class="sig-name descname"><span class="pre">get_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.get_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.get_item_list">
+<span class="sig-name descname"><span class="pre">get_item_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sorting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'alpha'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.get_item_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a sorted list of items based on a sorting order.
+Calls utils.sort_dict().</p>
+<dl class="simple">
+<dt>sorting<span class="classifier">str</span></dt><dd><p>‘freq’ for frequency order, ‘alpha’ for alphabetic order.</p>
+</dd>
+<dt>descending<span class="classifier">bool</span></dt><dd><p>If True, sort dict by descending order of ‘sorting’.
+Else, sort dict by ascending order of ‘sorting’.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>list :</dt><dd><p>sorted list of items in the vocabulary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.increment">
+<span class="sig-name descname"><span class="pre">increment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.increment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increment the value of a key by ‘inc’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.isEmpty">
+<span class="sig-name descname"><span class="pre">isEmpty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.isEmpty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as Python dict.items()</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.load">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'json'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load vocabulary (frequency list) from file.
+The default file format to load the vocabulary is ‘json’.</p>
+<p>filename : str
+encoding : str</p>
+<blockquote>
+<div><p>‘utf-8’, ‘latin-1’, …</p>
+</div></blockquote>
+<dl class="simple">
+<dt>fmt<span class="classifier">str</span></dt><dd><p>‘json’, ‘plain’, ‘txt’ (same as plain)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Class</dt>
+<dd class="field-odd"><p><cite>~qlvl.Vocab</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.make_type_file">
+<span class="sig-name descname"><span class="pre">make_type_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.make_type_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method could be used in the token level workflow
+for generating a typeSelection file</p>
+<p>type_list : a list of types
+out_fname : output file name
+encoding</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.match">
+<span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'item'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match items by a given regular expression pattern.</p>
+<dl class="simple">
+<dt>pattern<span class="classifier">str</span></dt><dd><p>Regular expression pattern</p>
+</dd>
+<dt>column_name<span class="classifier">str</span></dt><dd><p>‘item’ or ‘freq’, normally only use ‘item’</p>
+</dd>
+</dl>
+<p>list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.regex_item">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">regex_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.regex_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match an item by a given regular expression pattern.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save vocabulary to file.</p>
+<p>filename : str
+encoding : str</p>
+<blockquote>
+<div><p>Encoding format: ‘utf-8’, ‘latin-1’ …
+If not provided, use encoding of <em>Vocab</em>.</p>
+</div></blockquote>
+<dl>
+<dt>fmt<span class="classifier">str</span></dt><dd><p>File format: ‘json’, ‘plain’.
+The default file format is ‘json’.
+The ‘plain’ format would save frequency dict in the following format:</p>
+<blockquote>
+<div><p>type-string[TAB]frequency</p>
+</div></blockquote>
+<p>One type per line.</p>
+</dd>
+<dt>verbose<span class="classifier">bool</span></dt><dd><p>Show information or not.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.select_items">
+<span class="sig-name descname"><span class="pre">select_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">word</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.select_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method takes a word (or lemma) as input
+and returns a Vocab object.
+Whether the provided word matches the items in vocab or not,
+should depend on the type-format of the items.
+If item is ‘lemma/pos’, then ‘lemma’ string should be provided.
+If item is ‘word/pos’, then ‘word’ string should be provided.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.select_subsets">
+<span class="sig-name descname"><span class="pre">select_subsets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">specif_words</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'random'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.select_subsets" title="Permalink to this definition">¶</a></dt>
+<dd><p>select subsets / n appearances
+Here, we select, for each word,
+which n items(appearances) will be retrieved from the corpus.</p>
+<dl class="simple">
+<dt>specif_words</dt><dd><p>a list of (specified) words</p>
+</dd>
+<dt>n</dt><dd><p>number of selected appearance
+if n &gt; the frequency of an item, select all appearances
+else, randomly (default) select n appearances</p>
+</dd>
+<dt>method</dt><dd><p>selecting methods: ‘random’, …</p>
+</dd>
+<dt>indent</dt><dd><p>indentation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.setFILTER">
+<span class="sig-name descname"><span class="pre">setFILTER</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.setFILTER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.subvocab">
+<span class="sig-name descname"><span class="pre">subvocab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.subvocab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select a sub vocab by a list of items.
+If an item is not in the vocab, its frequency is zero.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.sum">
+<span class="sig-name descname"><span class="pre">sum</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get total sum of all frequencies.
+Just a slightly better method name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.sum_freq">
+<span class="sig-name descname"><span class="pre">sum_freq</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.sum_freq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get total sum of all frequencies.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.core.vocab.Vocab.values">
+<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.core.vocab.Vocab.values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-qlvl.core">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-qlvl.core" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

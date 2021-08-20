@@ -1,0 +1,785 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qlvl.deprel package &mdash; Nephological Semantics 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="qlvl.models package" href="qlvl.models.html" />
+    <link rel="prev" title="qlvl.core package" href="qlvl.core.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">qlvl</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="qlvl.html">qlvl package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="qlvl.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="qlvl.core.html">qlvl.core package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">qlvl.deprel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qlvl.models.html">qlvl.models package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qlvl.specutils.html">qlvl.specutils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qlvl.tests.html">qlvl.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qlvl.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qlvl.html#module-qlvl.conf">qlvl.conf module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qlvl.html#module-qlvl.logging">qlvl.logging module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qlvl.html#module-qlvl.utils">qlvl.utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qlvl.html#module-qlvl">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">qlvl</a> &raquo;</li>
+        
+          <li><a href="qlvl.html">qlvl package</a> &raquo;</li>
+        
+      <li>qlvl.deprel package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/qlvl.deprel.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qlvl-deprel-package">
+<h1>qlvl.deprel package<a class="headerlink" href="#qlvl-deprel-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-qlvl.deprel.basic">
+<span id="qlvl-deprel-basic-module"></span><h2>qlvl.deprel.basic module<a class="headerlink" href="#module-qlvl.deprel.basic" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.DiGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">DiGraph</span></span><a class="headerlink" href="#qlvl.deprel.basic.DiGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.DiGraph.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.DiGraph.add_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an edge to graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.DiGraph.add_node">
+<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.DiGraph.add_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a node with id and label (optional) to graph.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.DiGraph.edges">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#qlvl.deprel.basic.DiGraph.edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.DiGraph.in_degree">
+<span class="sig-name descname"><span class="pre">in_degree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.DiGraph.in_degree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.DiGraph.istree">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">istree</span></span><a class="headerlink" href="#qlvl.deprel.basic.DiGraph.istree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.DiGraph.nodes">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#qlvl.deprel.basic.DiGraph.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.DiGraph.out_degree">
+<span class="sig-name descname"><span class="pre">out_degree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.DiGraph.out_degree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.DiGraph.predcessors">
+<span class="sig-name descname"><span class="pre">predcessors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.DiGraph.predcessors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.DiGraph.successors">
+<span class="sig-name descname"><span class="pre">successors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.DiGraph.successors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.FeatureGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">FeatureGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.FeatureGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qlvl.deprel.basic.TemplateGraph" title="qlvl.deprel.basic.TemplateGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">qlvl.deprel.basic.TemplateGraph</span></code></a></p>
+<p>Class representing a feature graph inherited from the class TemplateGraph.
+So it will have the same structure of the template from which it is generated.
+The generating process of a feature object would be:
+* 1. replicate a (tree) structure of the template
+* 2. set target node index
+* 3. set feature properties for each node (except for the target) and each edge.</p>
+<blockquote>
+<div><p>The feature properties (i.e. True or False) would be stored in <strong>attributes</strong> of nodes and edges</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.FeatureGraph.add_match">
+<span class="sig-name descname"><span class="pre">add_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matched_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matched_edges</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.FeatureGraph.add_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add matched nodes and edges</p>
+<dl class="simple">
+<dt>matched_nodes<span class="classifier">dict</span></dt><dd><p>mapping from node index to item string</p>
+</dd>
+<dt>matched_edges<span class="classifier">dict</span></dt><dd><p>mapping from edge index to relation string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.FeatureGraph.set_feature">
+<span class="sig-name descname"><span class="pre">set_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.FeatureGraph.set_feature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.FeatureGraph.set_target">
+<span class="sig-name descname"><span class="pre">set_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.FeatureGraph.set_target" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.FeatureGraph.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.FeatureGraph.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.FeatureGraph.show_match">
+<span class="sig-name descname"><span class="pre">show_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.FeatureGraph.show_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.FeatureGraph.size">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#qlvl.deprel.basic.FeatureGraph.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Graph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id2node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.Graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Graph.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e_from_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_to_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.Graph.add_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an edge to graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Graph.add_node">
+<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.Graph.add_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a node with id and label (optional) to graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Graph.build_graph">
+<span class="sig-name descname"><span class="pre">build_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id2node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.Graph.build_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a graph</p>
+<dl class="simple">
+<dt>sentence<span class="classifier">iterable</span></dt><dd><p>A list of dependency relations.</p>
+</dd>
+<dt>id2node<span class="classifier">dict</span></dt><dd><p>Node id to node string mapping.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Graph.build_graph_raw">
+<span class="sig-name descname"><span class="pre">build_graph_raw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.Graph.build_graph_raw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a graph from raw text (of a sentence)</p>
+<dl class="simple">
+<dt>sentence<span class="classifier">iterable</span></dt><dd><p>A list of strings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Graph.edges">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#qlvl.deprel.basic.Graph.edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Graph.match">
+<span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.Graph.match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match a graph with path.</p>
+<p>path : <a class="reference internal" href="#qlvl.deprel.basic.PathTemplate" title="qlvl.deprel.basic.PathTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PathTemplate</span></code></a></p>
+<p>valid matches : iterable</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Graph.nodes">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#qlvl.deprel.basic.Graph.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Path">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">Path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matches</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class storing path matches found in corpus</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Path.add_path">
+<span class="sig-name descname"><span class="pre">add_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.Path.add_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a match</p>
+<dl class="simple">
+<dt>match<span class="classifier">iterable</span></dt><dd><p>A list of str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Path.len">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">len</span></span><a class="headerlink" href="#qlvl.deprel.basic.Path.len" title="Permalink to this definition">¶</a></dt>
+<dd><p>size of template
+i.e. ‘<em>:NN:amod:VB:</em>’ has a size of one</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Path.load">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.Path.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Path.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.Path.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Path.size">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#qlvl.deprel.basic.Path.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of matches</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.PathTemplate">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">PathTemplate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.PathTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class representing a path template</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.PathTemplate.len">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">len</span></span><a class="headerlink" href="#qlvl.deprel.basic.PathTemplate.len" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.PathTemplate.match_edge">
+<span class="sig-name descname"><span class="pre">match_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.PathTemplate.match_edge" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.PathTemplate.match_node">
+<span class="sig-name descname"><span class="pre">match_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.PathTemplate.match_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Sentence">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">Sentence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.Sentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Sentence.get_content">
+<span class="sig-name descname"><span class="pre">get_content</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.Sentence.get_content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.Sentence.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.Sentence.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>parse sentence text (raw string from corpus file)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.SentenceGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">SentenceGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.SentenceGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qlvl.deprel.basic.DiGraph" title="qlvl.deprel.basic.DiGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">qlvl.deprel.basic.DiGraph</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.SentenceGraph.build_graph">
+<span class="sig-name descname"><span class="pre">build_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.SentenceGraph.build_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a graph from raw text (of a sentence)</p>
+<dl class="simple">
+<dt>sentence<span class="classifier">iterable</span></dt><dd><p>A list of strings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.SentenceGraph.generate_graph">
+<span class="sig-name descname"><span class="pre">generate_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.SentenceGraph.generate_graph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.SentenceGraph.match_feature">
+<span class="sig-name descname"><span class="pre">match_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.SentenceGraph.match_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match a sentence with a feature (and target pair)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.SentenceGraph.match_target_feature">
+<span class="sig-name descname"><span class="pre">match_target_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.SentenceGraph.match_target_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match a graph with a path (a tree/graph object).</p>
+<p>feature : <a class="reference internal" href="#qlvl.deprel.basic.FeatureGraph" title="qlvl.deprel.basic.FeatureGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureGraph</span></code></a></p>
+<p>valid matches : iterable</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.SentenceGraph.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.SentenceGraph.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.TemplateGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">TemplateGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.TemplateGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qlvl.deprel.basic.DiGraph" title="qlvl.deprel.basic.DiGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">qlvl.deprel.basic.DiGraph</span></code></a></p>
+<p>Class representing a dependency template tree/graph</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.TemplateGraph.islinear">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">islinear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.TemplateGraph.islinear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.TemplateGraph.match_edge">
+<span class="sig-name descname"><span class="pre">match_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.TemplateGraph.match_edge" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.TemplateGraph.match_node">
+<span class="sig-name descname"><span class="pre">match_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.TemplateGraph.match_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.TemplateGraph.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.TemplateGraph.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.get_depth">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">get_depth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.get_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the depth of a tree</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.get_depth_of_node">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">get_depth_of_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.get_depth_of_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the depth of a node</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.get_root">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">get_root</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.get_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the root of a tree</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.match_level">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">match_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">currmap</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.match_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match the next level based on the index mapping (feature index -&gt; sentence index) of current level</p>
+<p>sentence : <a class="reference internal" href="#qlvl.deprel.basic.SentenceGraph" title="qlvl.deprel.basic.SentenceGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">SentenceGraph</span></code></a>
+feature : <a class="reference internal" href="#qlvl.deprel.basic.FeatureGraph" title="qlvl.deprel.basic.FeatureGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureGraph</span></code></a>
+currmap : dict</p>
+<blockquote>
+<div><p>Index mapping from sentence node to feature node (of current level).
+e.g. feature node idx -&gt; sentence node idx</p>
+</div></blockquote>
+<p>A list of dicts: feature node idx -&gt; sentence node idx</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.match_sub_template">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">match_sub_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.match_sub_template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.match_successors">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">match_successors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fcur</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.match_successors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match sentence successors with feature successors based on current sentence node and feature node.</p>
+<p>sentence : <a class="reference internal" href="#qlvl.deprel.basic.SentenceGraph" title="qlvl.deprel.basic.SentenceGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">SentenceGraph</span></code></a>
+scur : int</p>
+<blockquote>
+<div><p>Current node index of sentence</p>
+</div></blockquote>
+<p>feature : <a class="reference internal" href="#qlvl.deprel.basic.FeatureGraph" title="qlvl.deprel.basic.FeatureGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureGraph</span></code></a>
+fcur : int</p>
+<blockquote>
+<div><p>Current node index of feature</p>
+</div></blockquote>
+<p>A list of dicts: feature node idx -&gt; sentence node idx</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.subtree_match">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">subtree_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lmatches</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.subtree_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>sentence : <a class="reference internal" href="#qlvl.deprel.basic.SentenceGraph" title="qlvl.deprel.basic.SentenceGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">SentenceGraph</span></code></a>
+feature : <a class="reference internal" href="#qlvl.deprel.basic.FeatureGraph" title="qlvl.deprel.basic.FeatureGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureGraph</span></code></a>
+lmatches : queue (collections.deque)</p>
+<blockquote>
+<div><p>Contains a list of possible matches.
+Each match is a (finally the length is <cite>feature.depth</cite>) lists of levels of the feature.
+Element example: feature node idx -&gt; sentence node idx.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.basic.tree_match">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">tree_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.basic.tree_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match the sentence with the feature.</p>
+<p>sentence : <a class="reference internal" href="#qlvl.deprel.basic.SentenceGraph" title="qlvl.deprel.basic.SentenceGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">SentenceGraph</span></code></a>
+feature : <a class="reference internal" href="#qlvl.deprel.basic.FeatureGraph" title="qlvl.deprel.basic.FeatureGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureGraph</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="qlvl-deprel-corpus-module">
+<h2>qlvl.deprel.corpus module<a class="headerlink" href="#qlvl-deprel-corpus-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-qlvl.deprel.dephandler">
+<span id="qlvl-deprel-dephandler-module"></span><h2>qlvl.deprel.dephandler module<a class="headerlink" href="#module-qlvl.deprel.dephandler" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qlvl.deprel.dephandler.DepRelManager">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.deprel.dephandler.</span></span><span class="sig-name descname"><span class="pre">DepRelManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.dephandler.DepRelManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qlvl.core.html#qlvl.core.handler.BaseHandler" title="qlvl.core.handler.BaseHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">qlvl.core.handler.BaseHandler</span></code></a></p>
+<p>Handler Class for processing dependency relations</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.dephandler.DepRelManager.build_dep_rel">
+<span class="sig-name descname"><span class="pre">build_dep_rel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multicore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.dephandler.DepRelManager.build_dep_rel" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function will treat all different word types as possible target or context words.</p>
+<dl>
+<dt>fnames<span class="classifier">str, optional</span></dt><dd><p>Filename of a file which records all (a user wants to process) file names of a corpus.
+Format: corpus_name + settings[“fnames-ext”]</p>
+</dd>
+<dt>row_vocab<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code></span></dt><dd><p>Target words (types) vocabulary.
+If a non-empty vocabulary is passed, only target words (types) in this vocab
+should be processed.
+Otherwise all possible words (types) should be processed.</p>
+</dd>
+<dt>col_vocab<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code></span></dt><dd><p>Context features vocabulary.
+If a non-empty vocabulary is passed, only context features in this vocab
+should be processed.
+Otherwise all possible contexts should be processed.</p>
+</dd>
+<dt>multicore<span class="classifier">bool</span></dt><dd><p>Use multicore version of the method or not.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.dephandler.DepRelManager.do_job_single">
+<span class="sig-name descname"><span class="pre">do_job_single</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">superkwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.dephandler.DepRelManager.do_job_single" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method doing job for handler class.</p>
+<dl class="simple">
+<dt>fnames<span class="classifier">iterable</span></dt><dd><p>A list of filenames</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.dephandler.DepRelManager.merge_results">
+<span class="sig-name descname"><span class="pre">merge_results</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.dephandler.DepRelManager.merge_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge subprocess matrices into one final matrix.
+sub-process matrices filename format: …/matches.sub.pid</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.dephandler.DepRelManager.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queue_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.dephandler.DepRelManager.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>fnames
+queue_factor : int, optional</p>
+<blockquote>
+<div><p>Multiplier for size of queue -&gt; size = number of workers * queue_factor.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.dephandler.DepRelManager.read_features">
+<span class="sig-name descname"><span class="pre">read_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.dephandler.DepRelManager.read_features" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qlvl.deprel.dephandler.DepRelManager.read_template">
+<span class="sig-name descname"><span class="pre">read_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.dephandler.DepRelManager.read_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read paths from file</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.dephandler.update_dep_rel_caller">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.dephandler.</span></span><span class="sig-name descname"><span class="pre">update_dep_rel_caller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tmpdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.dephandler.update_dep_rel_caller" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will save path template matches of sub-process.
+Filename format of sub-process objects:</p>
+<blockquote>
+<div><p>matrix: paths.sub.pid</p>
+</div></blockquote>
+<dl class="simple">
+<dt>fnames<span class="classifier">iterable</span></dt><dd><p>A list of filenames</p>
+</dd>
+<dt>tmpdir<span class="classifier">str</span></dt><dd><p>Temporary folder</p>
+</dd>
+</dl>
+<p>settings : dict</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qlvl.deprel.deputils">
+<span id="qlvl-deprel-deputils-module"></span><h2>qlvl.deprel.deputils module<a class="headerlink" href="#module-qlvl.deprel.deputils" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.deputils.cartesian_product">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">cartesian_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.deputils.cartesian_product" title="Permalink to this definition">¶</a></dt>
+<dd><p>{1: (1, 2), 2: (3, 4)} -&gt; [{1:1, 2:3}, {1:2, 2:3}, {1:1, 2:4}, {1:2, 2:4}]
+Should perform:
+{1: (1, 2), 2: (1, 2)} -&gt;
+[{1: 1, 2: 2}] (if the target is not in (1, 2))
+[{1: 1, 2: 2}, {1: 2, 2: 1}]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.deputils.group">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodemap</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.deputils.group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.deputils.judgeIn">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">judgeIn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sLine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.deputils.judgeIn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.deputils.judgeIn_v1">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">judgeIn_v1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sLine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.deputils.judgeIn_v1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.deputils.judgeOut">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">judgeOut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sLine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.deputils.judgeOut" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.deputils.outMap">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">outMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.deputils.outMap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.deputils.process_sentence">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">process_sentence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sLine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.deputils.process_sentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process a sentence line.
+line : ‘sid:edge1;edge2;edge3…’</p>
+<p>sLine</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.deputils.read_nodes">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">read_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.deputils.read_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read nodes from file.
+i.e. :</p>
+<blockquote>
+<div><p>a/DT    4
+an/DT   21
+…</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.deprel.deputils.split_large_file">
+<span class="sig-prename descclassname"><span class="pre">qlvl.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">split_large_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.deprel.deputils.split_large_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split large corpus file into samller ones for multicore processing</p>
+</dd></dl>
+
+</div>
+<div class="section" id="qlvl-deprel-tmp-module">
+<h2>qlvl.deprel.tmp module<a class="headerlink" href="#qlvl-deprel-tmp-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-qlvl.deprel">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-qlvl.deprel" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qlvl.models.html" class="btn btn-neutral float-right" title="qlvl.models package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qlvl.core.html" class="btn btn-neutral float-left" title="qlvl.core package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
