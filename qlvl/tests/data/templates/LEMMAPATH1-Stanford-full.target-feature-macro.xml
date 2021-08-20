@@ -22,7 +22,7 @@
         <target nodeID="1">
             <description>Empty</description>
         </target>
-        <feature featureID="2">
+        <feature>
             <description>Words that depend directly on the target.</description>
         </feature>
     </target-feature-macro>
@@ -31,7 +31,7 @@
         <target nodeID="2">
             <description>Empty</description>
         </target>
-        <feature featureID="1">
+        <feature>
             <description>Words the target depends directly on.</description>
         </feature>
     </target-feature-macro>

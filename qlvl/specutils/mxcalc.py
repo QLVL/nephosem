@@ -8,6 +8,7 @@ import numpy as np
 import scipy.sparse as sp
 from sklearn.metrics import pairwise_distances
 from sklearn.metrics.pairwise import cosine_similarity
+from sklearn import preprocessing # addition by Stefano (2021.02.18)
 
 from qlvl import progbar
 # from qlvl.core.matrix import TypeTokenMatrix
@@ -499,7 +500,7 @@ def compute_token_weights(tcPositionMTX, twMTX):
     return tcPositionMTX.__class__(tok_weight_mtx, tcPositionMTX.row_items, tcPositionMTX.col_items)
 
 
-def compute_token_vectors(tcWeightMTX, soccMTX, operation='addition'):
+def compute_token_vectors(tcWeightMTX, soccMTX, operation='addition', normalization='l1'): # by Stefano
     """Compute token vectors.
     Build token vectors from a token weights (token-by-context weight matrix) and
     a second order matrix.
@@ -511,11 +512,17 @@ def compute_token_vectors(tcWeightMTX, soccMTX, operation='addition'):
     soccMTX : :class:`~qlvl.TypeTokenMatrix`
         Second order collocate matrix.
     operation : str
-        'addition', 'multiplication'
+        'addition', 'multiplication','weightedmean'
+    normalization: str
+        'l1', 'l2', 'no'
 
     Returns
     -------
     token vectors : :class:`~qlvl.TypeTokenMatrix`
+    
+    Note
+    -----
+    Values for "normalization" are regulated by sklearn.preprocessing.normalize()
     """
     # check pre-requisites
     # 1. Matrix type
@@ -544,15 +551,22 @@ def compute_token_vectors(tcWeightMTX, soccMTX, operation='addition'):
     left_mtx = tcWeightMTX.get_matrix()
 
     if operation == 'addition':
-        logger.info("  Operation: 'token-feature weight matrix' X 'socc matrix'...")
+        logger.info("  Operation: addition 'token-feature weight matrix' X 'socc matrix'...")
         product_mtx = dot_addition(left_mtx, right_mtx)
+    elif operation == 'weightedmean': # addition by Stefano (2021.02.09)
+        logger.info("  Operation: weighted mean 'token-feature weight matrix' X 'socc matrix'...")
+        left_mtx_weightsum = left_mtx.sum(axis=1)
+        weightedMTX = left_mtx.dot(right_mtx)/left_mtx_weightsum
+        product_mtx = np.nan_to_num(weightedMTX)
     elif operation == 'multiplication':
         logger.info("  Operation: multiplication...")
         product_mtx = dot_multiplication(left_mtx, right_mtx)
     else:
-        raise ValueError("Operation must be 'addition' or 'multiplication'")
+        raise ValueError("Operation must be 'addition', 'multiplication' or 'weightedmean'.")
 
     product_mtx = sp.csr_matrix(product_mtx)
+    if normalization != 'no': # addition by Stefano 2021.02.09, adapted by Mariana 2021.08.20
+        product_mtx = preprocessing.normalize(product_mtx, norm=normalization)
     return tcWeightMTX.__class__(product_mtx, tcWeightMTX.row_items, soccMTX.col_items)
 
 
