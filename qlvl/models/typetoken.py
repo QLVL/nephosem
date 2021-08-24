@@ -498,6 +498,7 @@ class TokenHandler(BaseHandler):
         fnames = self.prepare_fnames(fnames)
         logger.info("Scanning tokens of queries in corpus...")
         res = self.process(fnames)
+        self.type2toks = res
         return mxutils.transform_nodes_to_matrix(res)
 
     def process(self, fnames, **kwargs):
