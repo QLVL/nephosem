@@ -40,7 +40,9 @@
 
     
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="qlvl.specutils package" href="qlvl.specutils.html" />
+    <link rel="prev" title="qlvl.deprel package" href="qlvl.deprel.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -85,25 +87,29 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">qlvl.models package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-qlvl.models.cbc">qlvl.models.cbc module</a><ul>
-<li><a class="reference internal" href="#usage-examples">Usage examples</a></li>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">qlvl</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="qlvl.html">qlvl package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="qlvl.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="qlvl.core.html">qlvl.core package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qlvl.deprel.html">qlvl.deprel package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">qlvl.models package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qlvl.specutils.html">qlvl.specutils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qlvl.tests.html">qlvl.tests package</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-qlvl.models.deprel">qlvl.models.deprel module</a></li>
-<li><a class="reference internal" href="#module-qlvl.models.typetoken">qlvl.models.typetoken module</a><ul>
-<li><a class="reference internal" href="#other-models">Other models</a></li>
-<li><a class="reference internal" href="#id1">Usage examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qlvl.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qlvl.html#module-qlvl.conf">qlvl.conf module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qlvl.html#module-qlvl.logging">qlvl.logging module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qlvl.html#module-qlvl.utils">qlvl.utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qlvl.html#module-qlvl">Module contents</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-qlvl.models">Module contents</a></li>
 </ul>
 </li>
 </ul>
-</div>
+
             
           
         </div>
@@ -150,6 +156,10 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="modules.html">qlvl</a> &raquo;</li>
+        
+          <li><a href="qlvl.html">qlvl package</a> &raquo;</li>
+        
       <li>qlvl.models package</li>
     
     
@@ -191,16 +201,20 @@
 <dt class="sig sig-object py" id="qlvl.models.cbc.CBC.cluster">
 <span class="sig-name descname"><span class="pre">cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_eles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multicore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.cbc.CBC.cluster" title="Permalink to this definition">¶</a></dt>
 <dd><p>Main method of Cluster by Committee.</p>
-<dl class="simple">
-<dt>num_eles<span class="classifier">int, optional</span></dt><dd><p>Cluster only the first <cite>num_eles</cite> elements.
-<code class="docutils literal notranslate"><span class="pre">Notes</span></code> : Normally for test.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_eles</strong> (<em>int</em><em>, </em><em>optional</em>) – Cluster only the first <cite>num_eles</cite> elements.
+<code class="docutils literal notranslate"><span class="pre">Notes</span></code> : Normally for test.</p></li>
+<li><p><strong>multicore</strong> (<em>bool</em><em>, </em><em>optional</em>) – Use multicore method or not.
+Default True.</p></li>
+</ul>
 </dd>
-<dt>multicore<span class="classifier">bool, optional</span></dt><dd><p>Use multicore method or not.
-Default True.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>(Cs, Rs)</strong> – A list of committees and a list of residues (of each recursion).</p>
 </dd>
-</dl>
-<dl class="simple">
-<dt>(Cs, Rs)<span class="classifier">tuple</span></dt><dd><p>A list of committees and a list of residues (of each recursion).</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
 </dd>
 </dl>
 </dd></dl>
@@ -220,17 +234,25 @@ Default True.</p>
 <dt class="sig sig-object py" id="qlvl.models.deprel.DepRelHandler.build_dependency">
 <span class="sig-name descname"><span class="pre">build_dependency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.deprel.DepRelHandler.build_dependency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a dependency frequency matrix for corpus files provided.</p>
-<dl>
-<dt>fnames<span class="classifier">str, optional</span></dt><dd><p>Path of file recording corpus file names (‘fnames’ file of a corpus).
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fnames</strong> (<em>str</em><em>, </em><em>optional</em>) – Path of file recording corpus file names (‘fnames’ file of a corpus).
 If this is provided, only the files recorded in this fnames file would be processed.
-Else, all files and folders inside the ‘corpus-path’ of settings would be processed.</p>
-</dd>
-<dt>targets<span class="classifier">list of str or <a class="reference internal" href="qlvl.core.html#qlvl.core.vocab.Vocab" title="qlvl.core.vocab.Vocab"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code></a>, optional</span></dt><dd><p>Target types/words to process.
+Else, all files and folders inside the ‘corpus-path’ of settings would be processed.</p></li>
+<li><p><strong>targets</strong> (list of str or <a class="reference internal" href="qlvl.core.html#qlvl.core.vocab.Vocab" title="qlvl.core.vocab.Vocab"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code></a>, optional) – Target types/words to process.
 If this is provided, only process these targets when matching the sentence with macros.
-Else, all possible targets would be checked when matching sentences.</p>
+Else, all possible targets would be checked when matching sentences.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>features</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>iterable of <code class="xref py py-class docutils literal notranslate"><span class="pre">TemplateGraph</span></code></p>
 </dd>
 </dl>
-<p>features : iterable of <code class="xref py py-class docutils literal notranslate"><span class="pre">TemplateGraph</span></code></p>
+<p class="rubric">Examples</p>
 <p># create a DepRelHandler instance
 &gt;&gt;&gt; freqMTX = dephan.build_dependency()
 &gt;&gt;&gt; freqMTX
@@ -269,18 +291,19 @@ The file has lines of content like the following (including a header):</p>
 <div><p>ID  Target Regex    Feature Regex   Tareget Description     Feature Description     ID
 1   (?P&lt;LEMMA&gt;w+)/(?P&lt;POS&gt;N)w*    &lt;-(?P&lt;DEPREL&gt;nsubj)$ (?P&lt;LEMMA&gt;w+)/(?P&lt;POS&gt;V)w*       noun    subject of verb 1</p>
 </div></blockquote>
-<dl>
-<dt>fname<span class="classifier">str, optional</span></dt><dd><p>File name of the templates file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fname</strong> (<em>str</em><em>, </em><em>optional</em>) – File name of the templates file.</p></li>
+<li><p><strong>macros</strong> (iterable of <code class="xref py py-class docutils literal notranslate"><span class="pre">TemplateGraph</span></code>, optional) – TemplateGraph instances when not passing the file name.</p></li>
+<li><p><strong>encoding</strong> (<em>str</em><em>, </em><em>default 'utf-8'</em>) – File encoding of the template file.</p></li>
+</ul>
 </dd>
-<dt>macros<span class="classifier">iterable of <code class="xref py py-class docutils literal notranslate"><span class="pre">TemplateGraph</span></code>, optional</span></dt><dd><p>TemplateGraph instances when not passing the file name.</p>
-</dd>
-<dt>encoding<span class="classifier">str, default ‘utf-8’</span></dt><dd><p>File encoding of the template file.</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If either of the <cite>fname</cite> or <cite>templates</cite> is not provided.</p>
 </dd>
 </dl>
-<dl class="simple">
-<dt>ValueError</dt><dd><p>If either of the <cite>fname</cite> or <cite>templates</cite> is not provided.</p>
-</dd>
-</dl>
+<p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dephan</span> <span class="o">=</span> <span class="n">DepRelHandler</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">template_fname</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/tests/data/DependencyFeatureTemplates.subgroup.tsv&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">qlvl</span><span class="o">.</span><span class="n">rootdir</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dephan</span><span class="o">.</span><span class="n">read_templates</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="n">template_fname</span><span class="p">)</span>
@@ -333,13 +356,21 @@ Procedures:
 <dt class="sig sig-object py" id="qlvl.models.deprel.read_sentence">
 <span class="sig-prename descclassname"><span class="pre">qlvl.models.deprel.</span></span><span class="sig-name descname"><span class="pre">read_sentence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.deprel.read_sentence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read sentences from corpus file.</p>
-<p>filename : str
-formatter : qlvl.CorpusFormatter
-encoding : str</p>
-<blockquote>
-<div><p>default ‘utf-8’</p>
-</div></blockquote>
-<p>generator of sentences (tuple(int, string))</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – </p></li>
+<li><p><strong>formatter</strong> (<em>qlvl.CorpusFormatter</em>) – </p></li>
+<li><p><strong>encoding</strong> (<em>str</em>) – default ‘utf-8’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>generator of sentences (tuple(int, string))</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -370,14 +401,22 @@ encoding : str</p>
 <dt class="sig sig-object py" id="qlvl.models.typetoken.ColFreqHandler.build_col_freq">
 <span class="sig-name descname"><span class="pre">build_col_freq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_vocab</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_vocab</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.ColFreqHandler.build_col_freq" title="Permalink to this definition">¶</a></dt>
 <dd><p>The function will treat all different word types as possible target or context words.</p>
-<dl class="simple">
-<dt>fnames<span class="classifier">str, optional</span></dt><dd><p>Filename of a file which records all (a user wants to process) file names of a corpus.
-Format: corpus_name + settings[“fnames-ext”]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fnames</strong> (<em>str</em><em>, </em><em>optional</em>) – Filename of a file which records all (a user wants to process) file names of a corpus.
+Format: corpus_name + settings[“fnames-ext”]</p></li>
+<li><p><strong>row_vocab</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code>) – </p></li>
+<li><p><strong>col_vocab</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
 </dd>
 </dl>
-<p>row_vocab : <code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code>
-col_vocab : <code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code></p>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -399,12 +438,12 @@ col_vocab : <code class="xref py py-class docutils literal notranslate"><span cl
 <dt class="sig sig-object py" id="qlvl.models.typetoken.ColFreqHandler.process">
 <span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.ColFreqHandler.process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process files in the fnames list.</p>
-<dl class="simple">
-<dt>fnames<span class="classifier">iterable</span></dt><dd><p>This fnames is a list of file names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fnames</strong> (<em>iterable</em>) – This fnames is a list of file names.</p>
 </dd>
-</dl>
-<dl class="simple">
-<dt>object</dt><dd><dl class="simple">
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
 <dt>For different tasks, this method returns different objects:</dt><dd><ul class="simple">
 <li><p>ItemFreqHandler: returns a <cite>Vocab</cite> object,</p></li>
 <li><p>ColFreqHandler: returns a <cite>TypeTokenMatrix</cite> co-occurrence frequency matrix,</p></li>
@@ -412,6 +451,10 @@ col_vocab : <code class="xref py py-class docutils literal notranslate"><span cl
 </ul>
 </dd>
 </dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
 </dd>
 </dl>
 </dd></dl>
@@ -437,16 +480,16 @@ col_vocab : <code class="xref py py-class docutils literal notranslate"><span cl
 <dt class="sig sig-object py" id="qlvl.models.typetoken.ColFreqHandler.update_one_match">
 <span class="sig-name descname"><span class="pre">update_one_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.ColFreqHandler.update_one_match" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update co-occurrence frequency matrix with current window.</p>
-<dl>
-<dt>matrix<span class="classifier">3-tuple</span></dt><dd><p>Includes dict of dict, row item list and column item list.</p>
-</dd>
-<dt>match<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Match</span></code></span></dt><dd><p>A regular expression match object.</p>
-</dd>
-<dt>lid<span class="classifier">int</span></dt><dd><p>Line number (1-based).</p>
-</dd>
-<dt>win<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Window</span></code></span></dt><dd><p>This is a Window object which records current items in span.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>3-tuple</em>) – Includes dict of dict, row item list and column item list.</p></li>
+<li><p><strong>match</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Match</span></code>) – A regular expression match object.</p></li>
+<li><p><strong>lid</strong> (<em>int</em>) – Line number (1-based).</p></li>
+<li><p><strong>win</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Window</span></code>) – This is a Window object which records current items in span.
 The center item in window is the target word. And it has context
-words of left span and right span stored in two queues.</p>
+words of left span and right span stored in two queues.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -462,27 +505,33 @@ words of left span and right span stored in two queues.</p>
 <span class="sig-name descname"><span class="pre">build_item_freq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.ItemFreqHandler.build_item_freq" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make a list of all word types that occurred in the corpus
 and write in json format</p>
-<dl class="simple">
-<dt>fnames<span class="classifier">str, optional</span></dt><dd><p>Path of file recording corpus file names (‘fnames’ file of a corpus).
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fnames</strong> (<em>str</em><em>, </em><em>optional</em>) – Path of file recording corpus file names (‘fnames’ file of a corpus).
 If this is provided, only the files recorded in this fnames file
 would be processed.
 Else, all files and folders inside the ‘corpus-path’ of settings
 would be processed.</p>
 </dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>vocabulary</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code></p>
+</dd>
 </dl>
-<p>vocabulary : <code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qlvl.models.typetoken.ItemFreqHandler.process">
 <span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.ItemFreqHandler.process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process files in the fnames list.</p>
-<dl class="simple">
-<dt>fnames<span class="classifier">iterable</span></dt><dd><p>This fnames is a list of file names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fnames</strong> (<em>iterable</em>) – This fnames is a list of file names.</p>
 </dd>
-</dl>
-<dl class="simple">
-<dt>object</dt><dd><dl class="simple">
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
 <dt>For different tasks, this method returns different objects:</dt><dd><ul class="simple">
 <li><p>ItemFreqHandler: returns a <cite>Vocab</cite> object,</p></li>
 <li><p>ColFreqHandler: returns a <cite>TypeTokenMatrix</cite> co-occurrence frequency matrix,</p></li>
@@ -490,6 +539,10 @@ would be processed.</p>
 </ul>
 </dd>
 </dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
 </dd>
 </dl>
 </dd></dl>
@@ -504,10 +557,12 @@ would be processed.</p>
 <span class="sig-name descname"><span class="pre">update_one_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.ItemFreqHandler.update_one_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process lines in file (filename), and add frequencies to vocab.
 !!! this function modifies vocab !!!</p>
-<dl>
-<dt>data<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code></span></dt><dd><p>The Vocab object to be updated.</p>
-</dd>
-<dt>filename<span class="classifier">str</span></dt><dd><p>The corpus file name to process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code>) – The Vocab object to be updated.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – The corpus file name to process</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -528,12 +583,12 @@ would be processed.</p>
 <dt class="sig sig-object py" id="qlvl.models.typetoken.TokenHandler.process">
 <span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.TokenHandler.process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process files in the fnames list.</p>
-<dl class="simple">
-<dt>fnames<span class="classifier">iterable</span></dt><dd><p>This fnames is a list of file names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fnames</strong> (<em>iterable</em>) – This fnames is a list of file names.</p>
 </dd>
-</dl>
-<dl class="simple">
-<dt>object</dt><dd><dl class="simple">
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
 <dt>For different tasks, this method returns different objects:</dt><dd><ul class="simple">
 <li><p>ItemFreqHandler: returns a <cite>Vocab</cite> object,</p></li>
 <li><p>ColFreqHandler: returns a <cite>TypeTokenMatrix</cite> co-occurrence frequency matrix,</p></li>
@@ -541,6 +596,10 @@ would be processed.</p>
 </ul>
 </dd>
 </dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
 </dd>
 </dl>
 </dd></dl>
@@ -556,12 +615,18 @@ we have to check the remaining nodes which are in the right window</p>
 <dt class="sig sig-object py" id="qlvl.models.typetoken.TokenHandler.retrieve_tokens">
 <span class="sig-name descname"><span class="pre">retrieve_tokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.TokenHandler.retrieve_tokens" title="Permalink to this definition">¶</a></dt>
 <dd><p>Scan/Retrieve tokens from corpus files.</p>
-<dl class="simple">
-<dt>fnames<span class="classifier">str, optional</span></dt><dd><p>Filename of a file which records all (a user wants to process) file names of a corpus.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fnames</strong> (<em>str</em><em>, </em><em>optional</em>) – Filename of a file which records all (a user wants to process) file names of a corpus.
 Format: corpus_name + settings[“fnames-ext”]</p>
 </dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
+</dd>
 </dl>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -578,16 +643,16 @@ Format: corpus_name + settings[“fnames-ext”]</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qlvl.models.typetoken.TokenHandler.update_one_match">
 <span class="sig-name descname"><span class="pre">update_one_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type2toks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fname'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.TokenHandler.update_one_match" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>type2toks<span class="classifier">dict</span></dt><dd><p>A dict mapping from a type string to the token nodes of it.</p>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type2toks</strong> (<em>dict</em>) – A dict mapping from a type string to the token nodes of it.</p></li>
+<li><p><strong>win</strong> – </p></li>
+<li><p><strong>fid</strong> (<em>str</em>) – The file id in a token string.</p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+</ul>
 </dd>
 </dl>
-<p>win
-fid : str</p>
-<blockquote>
-<div><p>The file id in a token string.</p>
-</div></blockquote>
-<p>kwargs</p>
 </dd></dl>
 
 </dd></dl>
@@ -597,16 +662,44 @@ fid : str</p>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qlvl.models.typetoken.</span></span><span class="sig-name descname"><span class="pre">TypeToken</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">corpus_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.TypeToken" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Train, use and evaluate models model.</p>
-<p>fv : collocate frequencies matrix
-tv : token vectors</p>
-<dl class="simple">
-<dt>vocabulary :</dt><dd><p>This object represents the (all items) vocabulary of a corpus.</p>
-</dd>
-<dt>row_vocab :</dt><dd><p>Row vocabulary.</p>
-</dd>
-<dt>col_vocab :</dt><dd><p>Column vocabulary.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qlvl.models.typetoken.TypeToken.fv">
+<span class="sig-name descname"><span class="pre">fv</span></span><a class="headerlink" href="#qlvl.models.typetoken.TypeToken.fv" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>collocate frequencies matrix</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qlvl.models.typetoken.TypeToken.tv">
+<span class="sig-name descname"><span class="pre">tv</span></span><a class="headerlink" href="#qlvl.models.typetoken.TypeToken.tv" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>token vectors</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qlvl.models.typetoken.TypeToken.vocabulary">
+<span class="sig-name descname"><span class="pre">vocabulary</span></span><a class="headerlink" href="#qlvl.models.typetoken.TypeToken.vocabulary" title="Permalink to this definition">¶</a></dt>
+<dd><p>This object represents the (all items) vocabulary of a corpus.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qlvl.models.typetoken.TypeToken.row_vocab">
+<span class="sig-name descname"><span class="pre">row_vocab</span></span><a class="headerlink" href="#qlvl.models.typetoken.TypeToken.row_vocab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Row vocabulary.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qlvl.models.typetoken.TypeToken.col_vocab">
+<span class="sig-name descname"><span class="pre">col_vocab</span></span><a class="headerlink" href="#qlvl.models.typetoken.TypeToken.col_vocab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Column vocabulary.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="qlvl.models.typetoken.TypeToken.build_col_freq">
 <span class="sig-name descname"><span class="pre">build_col_freq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_vocab</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_vocab</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multicore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prog_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.TypeToken.build_col_freq" title="Permalink to this definition">¶</a></dt>
@@ -622,12 +715,13 @@ tv : token vectors</p>
 <dt class="sig sig-object py" id="qlvl.models.typetoken.TypeToken.build_token_vectors">
 <span class="sig-name descname"><span class="pre">build_token_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tcWeightMTX</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">soccMTX</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'addition'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.TypeToken.build_token_vectors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build token vectors.</p>
-<dl>
-<dt>soccMTX<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></span></dt><dd><p>Second order collocate matrix.</p>
-</dd>
-<dt>tcWeightMTX<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></span></dt><dd><p>Token-Context weight matrix.</p>
-</dd>
-<dt>operation<span class="classifier">str</span></dt><dd><p>‘addition’, ‘multiplication’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>soccMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – Second order collocate matrix.</p></li>
+<li><p><strong>tcWeightMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – Token-Context weight matrix.</p></li>
+<li><p><strong>operation</strong> (<em>str</em>) – ‘addition’, ‘multiplication’</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -636,42 +730,43 @@ tv : token vectors</p>
 <dt class="sig sig-object py" id="qlvl.models.typetoken.TypeToken.build_token_weights">
 <span class="sig-name descname"><span class="pre">build_token_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tcPositionMTX</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">twMTX</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.TypeToken.build_token_weights" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build token-context weight matrix.</p>
-<dl>
-<dt>tcPositionMTX<span class="classifier">token context position matrix</span></dt><dd><blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><p>target words</p>
-</div></blockquote>
-</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tcPositionMTX</strong> (<em>token context position matrix</em>) – <dl>
+<dt>target words</dt><dd><blockquote>
+<div></div></blockquote>
 <div class="line-block">
 <div class="line"><a href="#id2"><span class="problematic" id="id3">|</span></a></div>
 </div>
-</div></blockquote>
-<dl>
+</dd>
 <dt>tokens |               |</dt><dd><div class="line-block">
 <div class="line">|
 —————</div>
 </div>
 </dd>
 </dl>
-</dd>
-<dt>twMTX<span class="classifier">type weight matrix, ex. ‘pmi’ (transposed)</span></dt><dd><blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><p>target words</p>
-</div></blockquote>
-</div></blockquote>
+</p></li>
+<li><p><strong>twMTX</strong> (<em>type weight matrix</em><em>, </em><em>ex. 'pmi'</em><em> (</em><em>transposed</em><em>)</em>) – <dl>
+<dt>target words</dt><dd><blockquote>
+<div></div></blockquote>
 <p>context |      …      |</p>
-</div></blockquote>
-<dl class="simple">
+</dd>
 <dt>features | …   x   … |</dt><dd><dl class="simple">
 <dt>(types) |      …      |</dt><dd></dd>
 </dl>
 </dd>
 </dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
 </dd>
 </dl>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
 </dd></dl>
 
 <dl class="py method">
@@ -679,62 +774,89 @@ tv : token vectors</p>
 <span class="sig-name descname"><span class="pre">build_vocab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multicore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prog_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.TypeToken.build_vocab" title="Permalink to this definition">¶</a></dt>
 <dd><p>A caller method of TypeToken model.
 It calls the same method <cite>ItemFreqHandler.build_vocab</cite>.</p>
-<dl class="simple">
-<dt>fnames<span class="classifier">str</span></dt><dd><p>Path of file recording corpus file names (‘fnames’ file of a corpus).
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fnames</strong> (<em>str</em>) – Path of file recording corpus file names (‘fnames’ file of a corpus).
 If this is provided, only the files recorded in this fnames file
 would be processed.
 Else, all files and folders inside the ‘corpus-path’ of settings
-would be processed.</p>
+would be processed.</p></li>
+<li><p><strong>multicore</strong> (<em>bool</em>) – Use multicore processing or not.</p></li>
+<li><p><strong>prog_bar</strong> (<em>bool</em>) – Show progress bar or not.</p></li>
+</ul>
 </dd>
-<dt>multicore<span class="classifier">bool</span></dt><dd><p>Use multicore processing or not.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
 </dd>
-<dt>prog_bar<span class="classifier">bool</span></dt><dd><p>Show progress bar or not.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code></p>
 </dd>
 </dl>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code></p>
-<p>build_vocab : <code class="xref py py-class docutils literal notranslate"><span class="pre">build_vocab</span></code></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#qlvl.models.typetoken.TypeToken.build_vocab" title="qlvl.models.typetoken.TypeToken.build_vocab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build_vocab</span></code></a></dt><dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">build_vocab</span></code></p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qlvl.models.typetoken.TypeToken.compute_association">
 <span class="sig-name descname"><span class="pre">compute_association</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freqmx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ppmi'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.TypeToken.compute_association" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute association measures matrix.</p>
-<p>freqmx
-meas : str</p>
-<blockquote>
-<div><p>Could be: ‘pmi’, ‘ppmi’, ‘lik’, ‘chisq’, ‘zscore’, ‘dice’, ‘deltap’, ‘logratio’.</p>
-</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>freqmx</strong> – </p></li>
+<li><p><strong>meas</strong> (<em>str</em>) – Could be: ‘pmi’, ‘ppmi’, ‘lik’, ‘chisq’, ‘zscore’, ‘dice’, ‘deltap’, ‘logratio’.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qlvl.models.typetoken.TypeToken.compute_distance">
 <span class="sig-name descname"><span class="pre">compute_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measmx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cosine'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.TypeToken.compute_distance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute distance matrix.</p>
-<p>measmx : <code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>
-metric : str</p>
-<blockquote>
-<div><p>Could be: ‘cos’, ‘rank’</p>
-</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>measmx</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – </p></li>
+<li><p><strong>metric</strong> (<em>str</em>) – Could be: ‘cos’, ‘rank’</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qlvl.models.typetoken.TypeToken.compute_similarity">
 <span class="sig-name descname"><span class="pre">compute_similarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measmx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cosine'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.TypeToken.compute_similarity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute similarity matrix.</p>
-<p>measmx : <code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>
-metric : str</p>
-<blockquote>
-<div><p>Could be: ‘cos’, ‘rank’</p>
-</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>measmx</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – </p></li>
+<li><p><strong>metric</strong> (<em>str</em>) – Could be: ‘cos’, ‘rank’</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qlvl.models.typetoken.TypeToken.compute_simrank">
 <span class="sig-name descname"><span class="pre">compute_simrank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simmx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.TypeToken.compute_simrank" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute similarity rank matrix.</p>
-<p>simmx
-distance
-reverse</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>simmx</strong> – </p></li>
+<li><p><strong>distance</strong> – </p></li>
+<li><p><strong>reverse</strong> – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -775,7 +897,11 @@ reverse</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qlvl.models.typetoken.TypeToken.select_types">
 <span class="sig-name descname"><span class="pre">select_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.models.typetoken.TypeToken.select_types" title="Permalink to this definition">¶</a></dt>
-<dd><p>type_list : list of str</p>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type_list</strong> (<em>list of str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -792,6 +918,10 @@ reverse</p>
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qlvl.specutils.html" class="btn btn-neutral float-right" title="qlvl.specutils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qlvl.deprel.html" class="btn btn-neutral float-left" title="qlvl.deprel package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 
