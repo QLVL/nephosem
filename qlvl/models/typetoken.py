@@ -240,6 +240,7 @@ class ColFreqHandler(BaseHandler):
                 logger.debug("Saved the tmp matrix into {}".format(tmp_fname))
                 # put the temporary file name to result queue
                 res_queue.put(tmp_fname)
+                print(tmp_fname)
 
                 # reset parameters
                 mtx_dict = defaultdict(lambda: defaultdict(int))
@@ -425,7 +426,7 @@ class ColFreqHandler(BaseHandler):
         resmtx = None  # final matrix
         # get results from queue
         while not res_queue.empty():
-        #for _ in trange(n):
+#         for _ in trange(n):
             res = res_queue.get()
             # when data in res_queue is a tmp file name
             if isinstance(res, str):
@@ -499,7 +500,7 @@ class TokenHandler(BaseHandler):
         logger.info("Scanning tokens of queries in corpus...")
         res = self.process(fnames)
         self.type2toks = res
-        return mxutils.transform_nodes_to_matrix(res)
+        return mxutils.transform_nodes_to_matrix(res, self.formatter.colloc_format)
 
     def process(self, fnames, **kwargs):
         return super(TokenHandler, self).process(fnames, **kwargs)
@@ -577,8 +578,8 @@ class TokenHandler(BaseHandler):
         right_win = [ItemNode(match=colloc[0], formatter=self.formatter, fid=fid, lid=colloc[1])
                      for colloc in list(win.right) if colloc is not None]
         if not self.nocolvocab:
-            left_win = [x for x in left_win if x.to_type() in self.col_vocab.get_item_list()]
-            right_win = [x for x in right_win if x.to_type() in self.col_vocab.get_item_list()]
+            left_win = [x for x in left_win if x.to_colloc() in self.col_vocab.get_item_list()]
+            right_win = [x for x in right_win if x.to_colloc() in self.col_vocab.get_item_list()]
         token = TokenNode(fid=fid, lid=lid, match=match, formatter=self.formatter,
                           lcollocs=left_win, rcollocs=right_win)
         tpnode.append_token(token)
