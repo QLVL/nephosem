@@ -895,6 +895,7 @@ class TypeTokenMatrix(BaseMatrix):
         '''
         # mapping item strings to indices
         if row is not None:
+            row = [x for x in self.row_items if x in row]
             item2rowid = self.item2rowid
             sub_row_items = deepcopy(row)
             # row = np.array([item2rowid[e] for e in row])
@@ -902,6 +903,7 @@ class TypeTokenMatrix(BaseMatrix):
         else:
             sub_row_items = deepcopy(self.row_items)
         if col is not None:
+            col = [x for x in self.col_items if x in col]
             item2colid = self.item2colid
             sub_col_items = deepcopy(col)
             # col = np.array([item2colid[e] for e in col])
