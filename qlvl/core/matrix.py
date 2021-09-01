@@ -896,16 +896,30 @@ class TypeTokenMatrix(BaseMatrix):
         # mapping item strings to indices
         if row is not None:
             item2rowid = self.item2rowid
-            sub_row_items = deepcopy(row)
-            row = np.array([item2rowid[e] for e in row if e in item2rowid])
+            requested_rows = deepcopy(row)
+            sub_row_items = [e for e in requested_rows if e in item2rowid]
+            row = np.array([item2rowid[e] for e in sub_row_items])
             #row = np.array([item2rowid.get(e, 0) for e in row])
+            if len(row) == 0:
+                logger.warning("The row names provided do not exist.")
+                return
+            elif len(row) < len(requested_rows):
+                lost_rows = len(requested_rows) - len(row)
+                logger.warning(f"{lost_rows} rows have not been found.")
         else:
             sub_row_items = deepcopy(self.row_items)
         if col is not None:
             item2colid = self.item2colid
-            sub_col_items = deepcopy(col)
-            col = np.array([item2colid[e] for e in col if e in item2colid])
+            requested_cols = deepcopy(cols)
+            sub_col_items = [e for e in requested_cols if e in item2colid]
+            col = np.array([item2colid[e] for e in sub_col_items])
             #col = np.array([item2colid.get(e, 0) for e in col])
+            if len(col) == 0:
+                logger.warning("The column names provided do not exist.")
+                return
+            elif len(col) < len(requested_cols):
+                lost_cols = len(requested_cols) - len(col)
+                logger.warning(f"{lost_cols} columns have not been found.")
         else:
             sub_col_items = deepcopy(self.col_items)
         submx = self._mxbehavior.submatrix(row=row, col=col)
