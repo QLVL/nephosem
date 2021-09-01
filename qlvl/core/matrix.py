@@ -897,14 +897,14 @@ class TypeTokenMatrix(BaseMatrix):
         if row is not None:
             item2rowid = self.item2rowid
             sub_row_items = deepcopy(row)
-            row = np.array([item2rowid[e] for e in row if e in self.row_items])
-            # row = np.array([item2rowid.get(e, 0) for e in row])
+            row = np.array([item2rowid[e] for e in row if e in item2rowid])
+            #row = np.array([item2rowid.get(e, 0) for e in row])
         else:
             sub_row_items = deepcopy(self.row_items)
         if col is not None:
             item2colid = self.item2colid
             sub_col_items = deepcopy(col)
-            col = np.array([item2colid[e] for e in col if e in self.col_items])
+            col = np.array([item2colid[e] for e in col if e in item2colid])
             #col = np.array([item2colid.get(e, 0) for e in col])
         else:
             sub_col_items = deepcopy(self.col_items)
