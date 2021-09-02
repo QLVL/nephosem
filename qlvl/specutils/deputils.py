@@ -158,7 +158,7 @@ def tree_match(sentence, macro):
     try:
         assert sentence.istree
     except Exception as err:
-        logger.error(err, str(sentence))
+        logger.error(err, str(sentence.fid))
         return False
 
     num_curr_matches = len(macro.matched_nodes)

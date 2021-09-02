@@ -236,8 +236,13 @@ class DepRelHandler(BaseHandler):
         sentences = read_sentence(fname, formatter=self.formatter, encoding=self.input_encoding)
         for s in sentences:
             ss = SentenceGraph(sentence=s, formatter=self.formatter, fname=basename, mode=self.mode)
-            for macro in macros:
-                ss.match_pattern(macro)
+            if ss.istree:
+                for macro in macros:
+                    ss.match_pattern(macro)
+            else:
+                logger.warning('Sentence is not a tree')
+                rangetoks = [vid.get('lid') for v, vid in ss.nodes if vid.get('lid')]
+                logger.debug('Sentence in indices {} to {} of {} is not a tree.'.format(min(rangetoks), max(rangetoks), ss.fid))
         return
 
     def _process_results(self, res_queue, n=0):
