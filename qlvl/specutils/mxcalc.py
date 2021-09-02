@@ -67,17 +67,25 @@ def compute_ppmi(freqMTX, nfreq=None, cfreq=None, positive=True):
 
 
 @timeit
-def compute_association(freqMTX, nfreq=None, cfreq=None, meas='ppmi'):
+def compute_association(freqMTX, nfreq, cfreq, N=None, meas='ppmi'):
     """Compute association measures matrix.
+    
+    The matrix provided can be a submatrix with selected rows and/or columns, but `nfreq`
+    and `cfreq` must be marginal frequencies from a reference matrix, i.e. with co-occurrence
+    frequencies for the full corpus. `N` should be the sum of that reference matrix:
+    if it is not provided, it will be computed as the sum of row or column marginal frequencies
+    (whatever is largest).
 
     Parameters
     ----------
     freqMTX : :class:`~qlvl.TypeTokenMatrix`
         Raw co-occurrence frequency matrix.
     nfreq : :class:`~qlvl.Vocab`
-        Node frequency (sum).
+        Marginal row frequencies of the reference matrix.
     cfreq : :class:`~qlvl.Vocab`
-        Collocate frequency (sum).
+        Marginal collocate frequencies of the reference matrix.
+    N : int
+        Sum of the reference frequency matrix.
     meas : str
         Implemented association measures: 'pmi', 'ppmi', 'llik' (log likelihood),
         'chisq', 'zscore', 'dice'.
@@ -86,14 +94,9 @@ def compute_association(freqMTX, nfreq=None, cfreq=None, meas='ppmi'):
     -------
     association measure matrix : :class:`~qlvl.TypeTokenMatrix`
     """
-    N = nfreq.sum()
-    if nfreq and cfreq:
-        # select frequencies of row items / column items of freqMTX
-        # from nfreq and cfreq
-        #nfreq = nfreq.subvocab(freqMTX.row_items)  # subvocab of subset of row items
-        #cfreq = cfreq.subvocab(freqMTX.col_items)  # subvocab of subset of col items
-        nfreq = np.array([nfreq[e] for e in freqMTX.row_items])
-        cfreq = np.array([cfreq[e] for e in freqMTX.col_items])
+    N = N if N else max(nfreq.sum(), cfreq.sum())
+    nfreq = np.array([nfreq[e] for e in freqMTX.row_items])
+    cfreq = np.array([cfreq[e] for e in freqMTX.col_items])
 
     measmx = calc_association(freqMTX.matrix, nfreq=nfreq, cfreq=cfreq, N=N, meas=meas)
     args = (measmx, freqMTX.row_items, freqMTX.col_items)
