@@ -905,12 +905,12 @@ class TypeTokenMatrix(BaseMatrix):
                 return
             elif len(row) < len(requested_rows):
                 lost_rows = len(requested_rows) - len(row)
-                logger.warning(f"{lost_rows} rows have not been found.")
+                logger.warning("{} rows have not been found.".format(str(lost_rows)))
         else:
             sub_row_items = deepcopy(self.row_items)
         if col is not None:
             item2colid = self.item2colid
-            requested_cols = deepcopy(cols)
+            requested_cols = deepcopy(col)
             sub_col_items = [e for e in requested_cols if e in item2colid]
             col = np.array([item2colid[e] for e in sub_col_items])
             #col = np.array([item2colid.get(e, 0) for e in col])
@@ -919,7 +919,7 @@ class TypeTokenMatrix(BaseMatrix):
                 return
             elif len(col) < len(requested_cols):
                 lost_cols = len(requested_cols) - len(col)
-                logger.warning(f"{lost_cols} columns have not been found.")
+                logger.warning("{} columns have not been found.".format(str(lost_cols)))
         else:
             sub_col_items = deepcopy(self.col_items)
         submx = self._mxbehavior.submatrix(row=row, col=col)
