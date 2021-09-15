@@ -578,8 +578,8 @@ class TokenHandler(BaseHandler):
         right_win = [ItemNode(match=colloc[0], formatter=self.formatter, fid=fid, lid=colloc[1])
                      for colloc in list(win.right) if colloc is not None]
         if not self.nocolvocab:
-            left_win = [x for x in left_win if x.to_colloc() in self.col_vocab.get_item_list()]
-            right_win = [x for x in right_win if x.to_colloc() in self.col_vocab.get_item_list()]
+            left_win = [x for x in left_win if x.to_colloc() in self.col_vocab]
+            right_win = [x for x in right_win if x.to_colloc() in self.col_vocab]
         token = TokenNode(fid=fid, lid=lid, match=match, formatter=self.formatter,
                           lcollocs=left_win, rcollocs=right_win)
         tpnode.append_token(token)
