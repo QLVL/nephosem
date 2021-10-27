@@ -234,8 +234,10 @@ class SentenceGraph(DiGraph):
             node_attr = self.formatter.node_attr.split(',')
             edge_attr = self.formatter.edge_attr.split(',')
             # get column names of current index and head index
-            currID_column = self.formatter.settings.get('currID', 'ID')
-            headID_column = self.formatter.settings.get('headID', 'HEAD')
+#             currID_column = self.formatter.settings.get('currID', 'ID')
+#             headID_column = self.formatter.settings.get('headID', 'HEAD')
+            currID_column = self.formatter.settings.get('currID', 'id')
+            headID_column = self.formatter.settings.get('headID', 'head')
             node_idx = int(self.formatter.get(match, currID_column))
             head_idx = int(self.formatter.get(match, headID_column))
             for col in self.formatter.global_columns:
@@ -245,7 +247,7 @@ class SentenceGraph(DiGraph):
                 elif col in edge_attr:
                     edges[(head_idx, node_idx)][col] = val
             # add line index to node attributes
-            nodes[node_idx]['LID'] = lid
+            nodes[node_idx]['lid'] = lid
 
         self.generate_graph(nodes, edges)
 
@@ -406,8 +408,8 @@ class PatternGraph(DiGraph):
         self.repr_ = None
         self.nonlinear = not self.islinear(self.graph)
 
-        self.node_repr_fmt = "LEMMA/POS"
-        self.edge_repr_fmt = "DEPREL"
+        self.node_repr_fmt = "lemma/pos"
+        self.edge_repr_fmt = "deprel"
 
     @staticmethod
     def islinear(template):
@@ -643,7 +645,7 @@ class MacroGraph(PatternGraph):
         vals = []
         # for attr in self.node_repr_fmt.split(self.connector):
         for attr, gid in self.target_node_attrs.items():
-            if attr in ['LID', 'FID']:
+            if attr in ['LID', 'FID', 'fid', 'lid']:
                 if mode == 'type':
                     continue
                 elif mode == 'token':

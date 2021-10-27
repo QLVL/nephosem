@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<target-feature-list>
+    <target-fmt>
+        <node-fmt>
+            <lemma group="1"/>
+            <pos group="1"/>
+            <fid group="1"/>
+            <lid group="1"/>
+            <string connector="/">lemma/pos/fid/lid</string>
+        </node-fmt>
+    </target-fmt>
+    <feature-fmt>
+        <node-fmt>
+            <lemma group="1"/>
+            <pos group="1"/>
+            <string connector="/">lemma/pos</string>
+        </node-fmt>
+        <edge-fmt>deprel</edge-fmt>
+    </feature-fmt>
+    
+    <target-feature-macro id="1">
+        <sub-graph-pattern id="1"/>
+        <target nodeID="2">
+            <description>Empty</description>
+        </target>
+        <feature featureID="1">
+            <description>Verb of which target is direct object or subject.</description>
+        </feature>
+    </target-feature-macro>
+    
+    <target-feature-macro id="2">
+        <sub-graph-pattern id="2"/>
+        <target nodeID="1">
+            <description>Empty</description>
+        </target>
+        <feature featureID="2">
+            <description>Modifier, determiner or locative complement dependent on target.</description>
+        </feature>
+    </target-feature-macro>
+    
+    <target-feature-macro id="3">
+        <sub-graph-pattern id="3"/>
+        <target nodeID="3">
+            <description>Empty</description>
+        </target>
+        <feature featureID="2">
+        </feature>
+    </target-feature-macro>
+    
+</target-feature-list>

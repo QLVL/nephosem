@@ -8,6 +8,7 @@ import numpy as np
 import scipy.sparse as sp
 from sklearn.metrics import pairwise_distances
 from sklearn.metrics.pairwise import cosine_similarity
+from sklearn import preprocessing # addition by Stefano (2021.02.18)
 
 from qlvl import progbar
 # from qlvl.core.matrix import TypeTokenMatrix
@@ -66,17 +67,25 @@ def compute_ppmi(freqMTX, nfreq=None, cfreq=None, positive=True):
 
 
 @timeit
-def compute_association(freqMTX, nfreq=None, cfreq=None, meas='ppmi'):
+def compute_association(freqMTX, nfreq, cfreq, N=None, meas='ppmi'):
     """Compute association measures matrix.
+    
+    The matrix provided can be a submatrix with selected rows and/or columns, but `nfreq`
+    and `cfreq` must be marginal frequencies from a reference matrix, i.e. with co-occurrence
+    frequencies for the full corpus. `N` should be the sum of that reference matrix:
+    if it is not provided, it will be computed as the sum of row or column marginal frequencies
+    (whatever is largest).
 
     Parameters
     ----------
     freqMTX : :class:`~qlvl.TypeTokenMatrix`
         Raw co-occurrence frequency matrix.
     nfreq : :class:`~qlvl.Vocab`
-        Node frequency (sum).
+        Marginal row frequencies of the reference matrix.
     cfreq : :class:`~qlvl.Vocab`
-        Collocate frequency (sum).
+        Marginal collocate frequencies of the reference matrix.
+    N : int
+        Sum of the reference frequency matrix.
     meas : str
         Implemented association measures: 'pmi', 'ppmi', 'llik' (log likelihood),
         'chisq', 'zscore', 'dice'.
@@ -85,14 +94,9 @@ def compute_association(freqMTX, nfreq=None, cfreq=None, meas='ppmi'):
     -------
     association measure matrix : :class:`~qlvl.TypeTokenMatrix`
     """
-    N = nfreq.sum()
-    if nfreq and cfreq:
-        # select frequencies of row items / column items of freqMTX
-        # from nfreq and cfreq
-        #nfreq = nfreq.subvocab(freqMTX.row_items)  # subvocab of subset of row items
-        #cfreq = cfreq.subvocab(freqMTX.col_items)  # subvocab of subset of col items
-        nfreq = np.array([nfreq[e] for e in freqMTX.row_items])
-        cfreq = np.array([cfreq[e] for e in freqMTX.col_items])
+    N = N if N else max(nfreq.sum(), cfreq.sum())
+    nfreq = np.array([nfreq[e] for e in freqMTX.row_items])
+    cfreq = np.array([cfreq[e] for e in freqMTX.col_items])
 
     measmx = calc_association(freqMTX.matrix, nfreq=nfreq, cfreq=cfreq, N=N, meas=meas)
     args = (measmx, freqMTX.row_items, freqMTX.col_items)
@@ -499,7 +503,7 @@ def compute_token_weights(tcPositionMTX, twMTX):
     return tcPositionMTX.__class__(tok_weight_mtx, tcPositionMTX.row_items, tcPositionMTX.col_items)
 
 
-def compute_token_vectors(tcWeightMTX, soccMTX, operation='addition'):
+def compute_token_vectors(tcWeightMTX, soccMTX, operation='addition', normalization='l1'): # by Stefano
     """Compute token vectors.
     Build token vectors from a token weights (token-by-context weight matrix) and
     a second order matrix.
@@ -511,11 +515,17 @@ def compute_token_vectors(tcWeightMTX, soccMTX, operation='addition'):
     soccMTX : :class:`~qlvl.TypeTokenMatrix`
         Second order collocate matrix.
     operation : str
-        'addition', 'multiplication'
+        'addition', 'multiplication','weightedmean'
+    normalization: str
+        'l1', 'l2', 'no'
 
     Returns
     -------
     token vectors : :class:`~qlvl.TypeTokenMatrix`
+    
+    Note
+    -----
+    Values for "normalization" are regulated by sklearn.preprocessing.normalize()
     """
     # check pre-requisites
     # 1. Matrix type
@@ -544,15 +554,22 @@ def compute_token_vectors(tcWeightMTX, soccMTX, operation='addition'):
     left_mtx = tcWeightMTX.get_matrix()
 
     if operation == 'addition':
-        logger.info("  Operation: 'token-feature weight matrix' X 'socc matrix'...")
+        logger.info("  Operation: addition 'token-feature weight matrix' X 'socc matrix'...")
         product_mtx = dot_addition(left_mtx, right_mtx)
+    elif operation == 'weightedmean': # addition by Stefano (2021.02.09)
+        logger.info("  Operation: weighted mean 'token-feature weight matrix' X 'socc matrix'...")
+        left_mtx_weightsum = left_mtx.sum(axis=1)
+        weightedMTX = left_mtx.dot(right_mtx)/left_mtx_weightsum
+        product_mtx = np.nan_to_num(weightedMTX)
     elif operation == 'multiplication':
         logger.info("  Operation: multiplication...")
         product_mtx = dot_multiplication(left_mtx, right_mtx)
     else:
-        raise ValueError("Operation must be 'addition' or 'multiplication'")
+        raise ValueError("Operation must be 'addition', 'multiplication' or 'weightedmean'.")
 
     product_mtx = sp.csr_matrix(product_mtx)
+    if normalization != 'no': # addition by Stefano 2021.02.09, adapted by Mariana 2021.08.20
+        product_mtx = preprocessing.normalize(product_mtx, norm=normalization)
     return tcWeightMTX.__class__(product_mtx, tcWeightMTX.row_items, soccMTX.col_items)
 
 

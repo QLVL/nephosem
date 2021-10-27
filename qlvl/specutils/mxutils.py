@@ -114,13 +114,15 @@ def transform_spmatrix_to_dict(spmatrix, rowid2item, colid2item, verbose=False):
     return dict_mtx
 
 
-def transform_nodes_to_matrix(type2toks):
+def transform_nodes_to_matrix(type2toks, colloc_fmt = 'lemma/pos'):
     """Transform type nodes to token matrix.
 
     Parameters
     ----------
     type2toks : dict or iterable
         Type string -> token nodes of this type
+    colloc_fmt : str, default="lemma/pos"
+        Format for the column names
 
     Returns
     -------
@@ -135,9 +137,9 @@ def transform_nodes_to_matrix(type2toks):
     col_collocs = set()
     for tpstr, tpnode in type2toks.items():
         for tok in tpnode.tokens:
-            cleft = {colloc.to_colloc(colloc_fmt='lemma/pos'): (i - len(tok.lcollocs))
+            cleft = {colloc.to_colloc(colloc_fmt=colloc_fmt): (i - len(tok.lcollocs))
                      for i, colloc in enumerate(tok.lcollocs)}
-            cright = {colloc.to_colloc(colloc_fmt='lemma/pos'): i + 1
+            cright = {colloc.to_colloc(colloc_fmt=colloc_fmt): i + 1
                       for i, colloc in enumerate(tok.rcollocs)}
             tok2collocs[str(tok)] = {**cleft, **cright}
             col_collocs = col_collocs.union(set(tok2collocs[str(tok)].keys()))

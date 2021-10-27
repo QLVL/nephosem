@@ -158,7 +158,7 @@ def tree_match(sentence, macro):
     try:
         assert sentence.istree
     except Exception as err:
-        logger.error(err, str(sentence))
+        logger.error(err, str(sentence.fid))
         return False
 
     num_curr_matches = len(macro.matched_nodes)
@@ -234,7 +234,7 @@ def add_match(sentence, lmatches, macro):
         if macro.target_filter is not None:
             target_node_dict = matched_nodes[macro.target_idx]
             # example of target_node_dict: {'FORM': 'Het', 'LEMMA': 'het', 'POS': 'det'}
-            vals = [target_node_dict[attr] for attr, _idx in macro.target_node_attrs.items() if attr not in ['FID', 'LID']]
+            vals = [target_node_dict[attr] for attr, _idx in macro.target_node_attrs.items() if attr not in ['FID', 'LID', 'fid', 'lid']]
             target_type = macro.connector.join(vals)
             # if the matched target type does not appear in the given target filter
             # do not add this match to the macro (for speeding up processing and save memory space)
@@ -243,6 +243,7 @@ def add_match(sentence, lmatches, macro):
         if sentence.mode == 'token':
             for nid, attrs in matched_nodes.items():
                 attrs['FID'] = sentence.fid
+                attrs['fid'] = sentence.fid
         # remap feature edge (tuple of node idx) to sentence edge label (dependency relation)
         matched_edges = {(head, tail): sentence.edges[(nodemapping[head], nodemapping[tail])]
                          for head, tail in macro.edges}

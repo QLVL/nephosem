@@ -1,0 +1,588 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qlvl.specutils package &mdash; Nephological Semantics 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="qlvl.tests package" href="qlvl.tests.html" />
+    <link rel="prev" title="qlvl.models package" href="qlvl.models.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">qlvl</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="qlvl.html">qlvl package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="qlvl.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="qlvl.core.html">qlvl.core package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qlvl.deprel.html">qlvl.deprel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qlvl.models.html">qlvl.models package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">qlvl.specutils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qlvl.tests.html">qlvl.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qlvl.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qlvl.html#module-qlvl.conf">qlvl.conf module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qlvl.html#module-qlvl.logging">qlvl.logging module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qlvl.html#module-qlvl.utils">qlvl.utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qlvl.html#module-qlvl">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">qlvl</a> &raquo;</li>
+        
+          <li><a href="qlvl.html">qlvl package</a> &raquo;</li>
+        
+      <li>qlvl.specutils package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/qlvl.specutils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qlvl-specutils-package">
+<h1>qlvl.specutils package<a class="headerlink" href="#qlvl-specutils-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-qlvl.specutils.deputils">
+<span id="qlvl-specutils-deputils-module"></span><h2>qlvl.specutils.deputils module<a class="headerlink" href="#module-qlvl.specutils.deputils" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.deputils.draw_labels">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.deputils.</span></span><span class="sig-name descname"><span class="pre">draw_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.deputils.draw_labels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.deputils.draw_match">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.deputils.</span></span><span class="sig-name descname"><span class="pre">draw_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.deputils.draw_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.deputils.draw_tree">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.deputils.</span></span><span class="sig-name descname"><span class="pre">draw_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.deputils.draw_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a tree layout of a graph
+:param gx:
+:type gx: networkx.DiGraph
+:param v_label:
+:type v_label: str
+:param e_label:
+:type e_label: str
+:param figsize:
+:type figsize: tuple of two values</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.deputils.get_depth">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.deputils.</span></span><span class="sig-name descname"><span class="pre">get_depth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.deputils.get_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the depth of a tree</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.deputils.get_root">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.deputils.</span></span><span class="sig-name descname"><span class="pre">get_root</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.deputils.get_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the root of a tree</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.deputils.parse_pattern">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.deputils.</span></span><span class="sig-name descname"><span class="pre">parse_pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">larrow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'&lt;-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rarrow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-&gt;'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.deputils.parse_pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a string of feature regex to a node dict and an edge dict.
+e.g target = ‘(w+)/(N)w*’, feature = ‘&lt;(nsubj) w+/(V)w* &gt;[(acomp) (w+)/(JJ)]’
+==&gt;</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.deputils.tree_match">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.deputils.</span></span><span class="sig-name descname"><span class="pre">tree_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">macro</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.deputils.tree_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match the sentence with the subgraph pattern.
+Abstract of the matching:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>find root node of the pattern</p></li>
+<li><p>iterate over each sentence node that matches the pattern root</p></li>
+<li><p>recursively match the sentence with the pattern from each matched node</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sentence</strong> (<a class="reference internal" href="qlvl.core.html#qlvl.core.graph.SentenceGraph" title="qlvl.core.graph.SentenceGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">SentenceGraph</span></code></a>) – </p></li>
+<li><p><strong>macro</strong> (<a class="reference internal" href="qlvl.core.html#qlvl.core.graph.MacroGraph" title="qlvl.core.graph.MacroGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">MacroGraph</span></code></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qlvl.specutils.mxcalc">
+<span id="qlvl-specutils-mxcalc-module"></span><h2>qlvl.specutils.mxcalc module<a class="headerlink" href="#module-qlvl.specutils.mxcalc" title="Permalink to this headline">¶</a></h2>
+<p>Calculations of Matrices</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.mxcalc.compute_association">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.mxcalc.</span></span><span class="sig-name descname"><span class="pre">compute_association</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freqMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfreq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfreq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ppmi'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.mxcalc.compute_association" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute association measures matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>freqMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – Raw co-occurrence frequency matrix.</p></li>
+<li><p><strong>nfreq</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code>) – Node frequency (sum).</p></li>
+<li><p><strong>cfreq</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code>) – Collocate frequency (sum).</p></li>
+<li><p><strong>meas</strong> (<em>str</em>) – Implemented association measures: ‘pmi’, ‘ppmi’, ‘llik’ (log likelihood),
+‘chisq’, ‘zscore’, ‘dice’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>association measure matrix</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.mxcalc.compute_cosine">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.mxcalc.</span></span><span class="sig-name descname"><span class="pre">compute_cosine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.mxcalc.compute_cosine" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>measMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.mxcalc.compute_distance">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.mxcalc.</span></span><span class="sig-name descname"><span class="pre">compute_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cosine'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.mxcalc.compute_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute distance matrix from association measure matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>measMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – </p></li>
+<li><p><strong>axis</strong> (<em>int</em>) – 0 (row) or 1 (column)</p></li>
+<li><p><strong>metric</strong> (<em>str</em>) – ‘cosine’ (default), ‘euclidean’, ‘cityblock’, ‘l1’, ‘l2’, ‘manhattan’
+metrics that are valid in <em>sklearn.metrics.pairwise_distances</em></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.mxcalc.compute_ppmi">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.mxcalc.</span></span><span class="sig-name descname"><span class="pre">compute_ppmi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freqMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfreq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfreq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.mxcalc.compute_ppmi" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is faster than <cite>compute_association()</cite>.
+Set positive to False to get pmi values.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.mxcalc.compute_simrank">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.mxcalc.</span></span><span class="sig-name descname"><span class="pre">compute_simrank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.mxcalc.compute_simrank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute similarity rank matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>simMTX</strong> (<em>cosine similarity SquareMatrix</em>) – </p></li>
+<li><p><strong>reverse</strong> (<em>boolean</em><em>, </em><em>default False</em>) – True: the rank 1 represents the most similar one of that row
+False the largest rank 1 represents the most similar one of that row</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.mxcalc.compute_token_vectors">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.mxcalc.</span></span><span class="sig-name descname"><span class="pre">compute_token_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tcWeightMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">soccMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'addition'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'l1'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.mxcalc.compute_token_vectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute token vectors.
+Build token vectors from a token weights (token-by-context weight matrix) and
+a second order matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tcWeightMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – Token-Context weight matrix.</p></li>
+<li><p><strong>soccMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – Second order collocate matrix.</p></li>
+<li><p><strong>operation</strong> (<em>str</em>) – ‘addition’, ‘multiplication’,’weightedmean’</p></li>
+<li><p><strong>normalization</strong> (<em>str</em>) – ‘l1’, ‘l2’, ‘no’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>token vectors</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Values for “normalization” are regulated by sklearn.preprocessing.normalize()</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.mxcalc.compute_token_weights">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.mxcalc.</span></span><span class="sig-name descname"><span class="pre">compute_token_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tcPositionMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">twMTX</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.mxcalc.compute_token_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute token-by-context weight matrix.
+Build token weights from a token-by-context position/boolean matrix and
+a type-by-context weight matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tcPositionMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – <dl>
+<dt>token-by-context position matrix</dt><dd><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>target words</p>
+</div></blockquote>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><a href="#id1"><span class="problematic" id="id2">|</span></a></div>
+</div>
+</div></blockquote>
+<dl>
+<dt>tokens |               |</dt><dd><div class="line-block">
+<div class="line">|
+—————</div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>twMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – <dl>
+<dt>type-by-context weight matrix, i.e. ‘ppmi’ (transposed)</dt><dd><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>target words</p>
+</div></blockquote>
+</div></blockquote>
+<p>context |      …      |</p>
+</div></blockquote>
+<dl class="simple">
+<dt>features | …   x   … |</dt><dd><dl class="simple">
+<dt>(types) |      …      |</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>token weight matrix</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function will transform all explicit zeros in type-by-context weight matrix to implicit zeros.
+So, if those explicit zeros a important, be careful of them.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qlvl.specutils.mxutils">
+<span id="qlvl-specutils-mxutils-module"></span><h2>qlvl.specutils.mxutils module<a class="headerlink" href="#module-qlvl.specutils.mxutils" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.mxutils.merge_matrices">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.mxutils.</span></span><span class="sig-name descname"><span class="pre">merge_matrices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.mxutils.merge_matrices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge a list of (TypeTokenMatrix) matrices into one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>matrices</strong> (<em>list</em>) – A list of matrices (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>spmatrix, row_items, col_items</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.mxutils.merge_two_matrices">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.mxutils.</span></span><span class="sig-name descname"><span class="pre">merge_two_matrices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mtx1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mtx2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.mxutils.merge_two_matrices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge two (TypeTokenMatrix) matrices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mtx1</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – </p></li>
+<li><p><strong>mtx2</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>merged matrix</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.mxutils.transform_dict_to_spmatrix">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.mxutils.</span></span><span class="sig-name descname"><span class="pre">transform_dict_to_spmatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_mtx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowid2item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colid2item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.mxutils.transform_dict_to_spmatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate sparse.csr_matrix from dict of dict,
+according to row item to id and col item to id mappings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_mtx</strong> (<em>dict of dict</em>) – Matrix represented by a Python dict of dict</p></li>
+<li><p><strong>rowid2item</strong> (<em>list of str</em>) – Alphabetically ascending sorted list of items</p></li>
+<li><p><strong>colid2item</strong> (<em>list of str</em>) – Alphabetically ascending sorted list of items</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>sparse.csr_matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.mxutils.transform_indices">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.mxutils.</span></span><span class="sig-name descname"><span class="pre">transform_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mtx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_col_items</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.mxutils.transform_indices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.mxutils.transform_nodes_to_matrix">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.mxutils.</span></span><span class="sig-name descname"><span class="pre">transform_nodes_to_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type2toks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.mxutils.transform_nodes_to_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform type nodes to token matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type2toks</strong> (<em>dict</em><em> or </em><em>iterable</em>) – Type string -&gt; token nodes of this type</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>tokmx</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="qlvl.core.html#qlvl.core.matrix.TypeTokenMatrix" title="qlvl.core.matrix.TypeTokenMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qlvl.specutils.mxutils.transform_spmatrix_to_dict">
+<span class="sig-prename descclassname"><span class="pre">qlvl.specutils.mxutils.</span></span><span class="sig-name descname"><span class="pre">transform_spmatrix_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spmatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowid2item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colid2item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qlvl.specutils.mxutils.transform_spmatrix_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate dict of dict from sparse.csr_matrix,
+according to row item to id and col item to id mappings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spmatrix</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">csr_matrix</span></code>) – </p></li>
+<li><p><strong>rowid2item</strong> (<em>iterable</em><em> (</em><em>of str</em><em>)</em>) – Alphabetically ascending sorted list of items</p></li>
+<li><p><strong>colid2item</strong> (<em>iterable</em><em> (</em><em>of str</em><em>)</em>) – Alphabetically ascending sorted list of items</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Python dict of dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qlvl.specutils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-qlvl.specutils" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qlvl.tests.html" class="btn btn-neutral float-right" title="qlvl.tests package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qlvl.models.html" class="btn btn-neutral float-left" title="qlvl.models package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

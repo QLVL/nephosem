@@ -54,9 +54,12 @@ class ItemNode(object):
             line number
         """
         if match and formatter:
-            word = formatter.get_word(match)
-            lemma = formatter.get_lemma(match)
-            pos = formatter.get_pos(match)
+#             word = formatter.get_word(match)
+#             lemma = formatter.get_lemma(match)
+#             pos = formatter.get_pos(match)
+            word = formatter.get(match, "word")
+            lemma = formatter.get(match, "lemma")
+            pos = formatter.get(match, "pos")
         # if TypeNode and TokenNode both have to deal with 'word', 'lemma', 'pos'
         # then put these parts in super class ItemNode
         self.word = word
@@ -613,7 +616,7 @@ class CorpusFormatter(object):
         self._colloc = [col2id[e] for e in colloc_eles]  # -> [2]
 
         # specify which columns are node attributes or edge attributes
-        self.node_attr = settings.get('node-attr', 'FORM,POS,LEMMA')
+        self.node_attr = settings.get('node-attr', 'word,pos,lemma')
         self.edge_attr = settings.get('edge-attr', None)
 
         self.settings = deepcopy(settings)  # store settings for possible uses

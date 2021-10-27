@@ -128,6 +128,9 @@ class Paralleler(object):
         # produce the job queue
         self._job_producer(fnames, job_queue)
 
+        for worker in workers:
+            worker.join()
+
         # merge results of different sub-processes
         result = self._process_results(res_queue, n=len(fnames))
         return result
