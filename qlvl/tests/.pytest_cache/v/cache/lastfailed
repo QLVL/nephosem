@@ -1,7 +1,0 @@
-{
-  "test_basics.py::TestGetter::()::test_functions": true,
-  "test_matrix.py::TestTypeTokenMatrix::()::test_getitem": true,
-  "test_mxutils.py::TestMxUtils::()::test_merge_matrices": true,
-  "test_mxutils.py::TestMxUtils::()::test_merge_matrix_dict": true,
-  "test_typetoken.py::TestTypeToken::()": true
-}
