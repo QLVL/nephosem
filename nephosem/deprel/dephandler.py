@@ -30,10 +30,10 @@ except ImportError:
 
 from .basic import PathTemplate, SentenceGraph
 
-from qlvl import progbar, trange
-from qlvl.core.handler import BaseHandler
-from qlvl.core.terms import CorpusFormatter
-from qlvl.utils import make_dir, clean_dir, pickle, unpickle
+from nephosem import progbar, trange
+from nephosem.core.handler import BaseHandler
+from nephosem.core.terms import CorpusFormatter
+from nephosem.utils import make_dir, clean_dir, pickle, unpickle
 
 logger = logging.getLogger(__name__)
 homedir = os.path.expanduser('~')
@@ -148,12 +148,12 @@ class DepRelManager(BaseHandler):
         fnames : str, optional
             Filename of a file which records all (a user wants to process) file names of a corpus.
             Format: corpus_name + settings["fnames-ext"]
-        row_vocab : :class:`~qlvl.Vocab`
+        row_vocab : :class:`~nephosem.Vocab`
             Target words (types) vocabulary.
             If a non-empty vocabulary is passed, only target words (types) in this vocab
             should be processed.
             Otherwise all possible words (types) should be processed.
-        col_vocab : :class:`~qlvl.Vocab`
+        col_vocab : :class:`~nephosem.Vocab`
             Context features vocabulary.
             If a non-empty vocabulary is passed, only context features in this vocab
             should be processed.

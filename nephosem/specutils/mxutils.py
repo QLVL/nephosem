@@ -25,7 +25,7 @@ import scipy.sparse as sp
 
 from six import iteritems
 
-from qlvl.core import matrix
+from nephosem.core import matrix
 
 __all__ = ['transform_dict_to_spmatrix', 'transform_spmatrix_to_dict',
            'transform_nodes_to_matrix', 'transform_indices',
@@ -144,7 +144,7 @@ def transform_nodes_to_matrix(type2toks, colloc_fmt = 'lemma/pos'):
 
     Returns
     -------
-    tokmx : :class:`~qlvl.core.matrix.TypeTokenMatrix`
+    tokmx : :class:`~nephosem.core.matrix.TypeTokenMatrix`
     """
     if not isinstance(type2toks, dict):
         if not isinstance(type2toks, list):
@@ -172,12 +172,12 @@ def merge_two_matrices(mtx1, mtx2):
 
     Parameters
     ----------
-    mtx1 : :class:`~qlvl.TypeTokenMatrix`
-    mtx2 : :class:`~qlvl.TypeTokenMatrix`
+    mtx1 : :class:`~nephosem.TypeTokenMatrix`
+    mtx2 : :class:`~nephosem.TypeTokenMatrix`
 
     Returns
     -------
-    merged matrix : :class:`~qlvl.TypeTokenMatrix`
+    merged matrix : :class:`~nephosem.TypeTokenMatrix`
     """
     if mtx1.__class__ != mtx2.__class__:
         raise ValueError("The given two matrices are not the same type!")
@@ -226,7 +226,7 @@ def merge_matrices(matrices):
     Parameters
     ----------
     matrices : list
-        A list of matrices (:class:`~qlvl.TypeTokenMatrix`)
+        A list of matrices (:class:`~nephosem.TypeTokenMatrix`)
 
     Returns
     -------

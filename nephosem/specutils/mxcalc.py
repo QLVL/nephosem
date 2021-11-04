@@ -28,9 +28,8 @@ from sklearn.metrics import pairwise_distances
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn import preprocessing # addition by Stefano (2021.02.18)
 
-from qlvl import progbar
-# from qlvl.core.matrix import TypeTokenMatrix
-from qlvl.utils import timeit
+from nephosem import progbar
+from nephosem.utils import timeit
 
 __all__ = ['compute_association', 'compute_ppmi', 'compute_distance', 'compute_cosine', 'compute_simrank',
            'compute_token_weights', 'compute_token_vectors']

@@ -33,7 +33,7 @@ from collections import defaultdict, deque
 
 from six import iteritems
 
-from qlvl import utils
+from nephosem import utils
 
 __all__ = ['Window', 'Getter', 'CorpusFormatter', 'ItemNode', 'TypeNode', 'TokenNode']
 
@@ -56,7 +56,7 @@ class ItemNode(object):
         Parameters
         ----------
         match : regular expression match object
-        formatter : :class:`~qlvl.CorpusFormatter`
+        formatter : :class:`~nephosem.CorpusFormatter`
         word : str
         lemma : str
         pos : str
@@ -153,7 +153,7 @@ class TypeNode(ItemNode):
         Parameters
         ----------
         match : regular expression match object
-        formatter : :class:`~qlvl.CorpusFormatter`
+        formatter : :class:`~nephosem.CorpusFormatter`
         type_fmt : str
             type format string
         type_str : str
@@ -161,7 +161,7 @@ class TypeNode(ItemNode):
         word : str
         lemma : str
         pos : str
-        tokens : iterable of :class:`~qlvl.TokenNode`
+        tokens : iterable of :class:`~nephosem.TokenNode`
             A list of tokens.
         kwargs
         """
@@ -321,7 +321,7 @@ class TokenNode(ItemNode):
             line number in corpus file
         match :
             Regular expression match object of a corpus line
-        formatter : :class:`~qlvl.CorpusFormatter`
+        formatter : :class:`~nephosem.CorpusFormatter`
         word
         pos
         lemma

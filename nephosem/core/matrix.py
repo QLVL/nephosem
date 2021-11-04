@@ -27,8 +27,8 @@ Usage examples
 
 Construct a TypeTokenMatrix with a Python dict e.g.
 
->>> from qlvl.tests.utils import common_texts
->>> from qlvl import TypeTokenMatrix
+>>> from nephosem.tests.utils import common_texts
+>>> from nephosem import TypeTokenMatrix
 >>>
 >>>
 
@@ -54,9 +54,9 @@ import numpy as np
 import pandas as pd
 import scipy.sparse as sp
 
-from qlvl.specutils import mxutils
+from nephosem.specutils import mxutils
 # import transform_spmatrix_to_dict, transform_dict_to_spmatrix, get_largest_k, get_smallest_k, centroid_of_cluster
-from qlvl.utils import is_string
+from nephosem.utils import is_string
 
 __all__ = ['TypeTokenMatrix']
 
@@ -885,7 +885,7 @@ class TypeTokenMatrix(BaseMatrix):
 
         Returns
         -------
-        submatrix : :class:`~qlvl.TypeTokenMatrix`
+        submatrix : :class:`~nephosem.TypeTokenMatrix`
         """
         '''
         row_item_based = False  # -> the input row is a list of item (string)
@@ -1145,7 +1145,7 @@ class TypeTokenMatrix(BaseMatrix):
 
         Returns
         -------
-        Dropped matrix : :class:`~qlvl.TypeTokenMatrix`
+        Dropped matrix : :class:`~nephosem.TypeTokenMatrix`
         """
         if axis not in [0, 1]:
             raise ValueError("axis should be 0 or 1!")
@@ -1188,7 +1188,7 @@ class TypeTokenMatrix(BaseMatrix):
 
         Parameters
         ----------
-        targetmx : :class:`~qlvl.TypeTokenMatrix`
+        targetmx : :class:`~nephosem.TypeTokenMatrix`
             Target matrix
         """
         merged_mx, merged_row_items, merged_col_items = self._mxbehavior.merge(
@@ -1201,7 +1201,7 @@ class TypeTokenMatrix(BaseMatrix):
 
         Parameters
         ----------
-        targetmx : :class:`~qlvl.TypeTokenMatrix`
+        targetmx : :class:`~nephosem.TypeTokenMatrix`
             Target matrix
         axis : int
             Axis of concatenation.

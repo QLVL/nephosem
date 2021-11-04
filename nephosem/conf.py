@@ -25,7 +25,7 @@ try:
 except ImportError as e:
     from ConfigParser import ConfigParser   # Python 2.6+
 
-import qlvl
+import nephosem
 
 __all__ = ['ConfigLoader']
 
@@ -40,7 +40,7 @@ class ConfigLoader(object):
     """
     Examples
     ========
-    >>> from qlvl.conf import ConfigLoader
+    >>> from nephosem.conf import ConfigLoader
     >>> conf = ConfigLoader()  # will read default settings
 
     >>> new_config_fname = "/path/of/new/config/file"

@@ -6,11 +6,11 @@ import time
 import datetime
 import pytest
 
-import qlvl
-from qlvl.conf import ConfigLoader
-from qlvl.tests.utils import datapath
-from qlvl.models.typetoken import ItemFreqHandler, ColFreqHandler
-from qlvl.models.typetoken import TypeToken
+import nephosem
+from nephosem.conf import ConfigLoader
+from nephosem.tests.utils import datapath
+from nephosem.models.typetoken import ItemFreqHandler, ColFreqHandler
+from nephosem.models.typetoken import TypeToken
 
 
 curdir = os.path.dirname(__file__)

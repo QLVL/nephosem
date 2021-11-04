@@ -8,7 +8,7 @@ import json
 import pytest
 import pandas as pd
 
-from qlvl import Vocab
+from nephosem import Vocab
 
 curdir = os.path.dirname(os.path.realpath(__file__))
 

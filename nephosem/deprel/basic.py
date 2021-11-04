@@ -27,7 +27,7 @@ from copy import deepcopy
 
 import networkx as nx
 
-from qlvl.specutils.deputils import match_graph, draw_tree, draw_match
+from nephosem.specutils.deputils import match_graph, draw_tree, draw_match
 
 logger = logging.getLogger(__name__)
 

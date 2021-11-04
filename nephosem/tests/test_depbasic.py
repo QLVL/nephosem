@@ -4,8 +4,8 @@ Test dependency relation functions
 import pytest
 from collections import deque
 
-from qlvl.deprel.basic import SentenceGraph, TemplateGraph, FeatureGraph
-from qlvl.deprel.basic import tree_match, subtree_match, match_level, match_successors
+from nephosem.deprel.basic import SentenceGraph, TemplateGraph, FeatureGraph
+from nephosem.deprel.basic import tree_match, subtree_match, match_level, match_successors
 
 
 @pytest.fixture()

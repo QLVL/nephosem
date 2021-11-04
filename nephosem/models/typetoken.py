@@ -30,9 +30,9 @@ Usage examples
 
 Initialize a model with e.g.
 
->>> from qlvl import ItemFreqHandler, ColFreqHandler, TokenHandler
->>> from qlvl.tests.utils import common_texts, get_tmpfile
->>> from qlvl.models import TypeToken
+>>> from nephosem import ItemFreqHandler, ColFreqHandler, TokenHandler
+>>> from nephosem.tests.utils import common_texts, get_tmpfile
+>>> from nephosem.models import TypeToken
 >>>
 >>> path = get_tmpfile("models.model")
 >>>
@@ -56,16 +56,14 @@ try:
 except ImportError:
     import pickle as _pickle
 
-import qlvl
-from qlvl import trange
-from qlvl.core.terms import CorpusFormatter, TypeNode, ItemNode, TokenNode
-from qlvl.core.vocab import Vocab
-from qlvl.core.matrix import TypeTokenMatrix
-from qlvl.core.handler import BaseHandler
-from qlvl.specutils import mxcalc, mxutils
-# from qlvl.specutils.mxutils import transform_spmatrix_to_dict, transform_dict_to_spmatrix, merge_two_matrices
-from qlvl.utils import count_values
-# from qlvl.models.manager import ItemFreqManager, ColFreqManager, TokenManager, TokenScanner
+import nephosem
+from nephosem import trange
+from nephosem.core.terms import CorpusFormatter, TypeNode, ItemNode, TokenNode
+from nephosem.core.vocab import Vocab
+from nephosem.core.matrix import TypeTokenMatrix
+from nephosem.core.handler import BaseHandler
+from nephosem.specutils import mxcalc, mxutils
+from nephosem.utils import count_values
 
 __all__ = ['ItemFreqHandler', 'ColFreqHandler', 'TokenHandler', 'TypeToken']
 
@@ -94,7 +92,7 @@ class ItemFreqHandler(BaseHandler):
 
         Returns
         -------
-        vocabulary : :class:`~qlvl.Vocab`
+        vocabulary : :class:`~nephosem.Vocab`
         """
         fnames = self.prepare_fnames(fnames)  # read filenames recorded in 'fnames'
         logger.info("Building item frequency list...")
@@ -149,7 +147,7 @@ class ItemFreqHandler(BaseHandler):
 
         Parameters
         ----------
-        data : :class:`~qlvl.Vocab`
+        data : :class:`~nephosem.Vocab`
             The Vocab object to be updated.
         filename : str
             The corpus file name to process
@@ -203,12 +201,12 @@ class ColFreqHandler(BaseHandler):
         fnames : str, optional
             Filename of a file which records all (a user wants to process) file names of a corpus.
             Format: corpus_name + settings["fnames-ext"]
-        row_vocab : :class:`~qlvl.Vocab`
-        col_vocab : :class:`~qlvl.Vocab`
+        row_vocab : :class:`~nephosem.Vocab`
+        col_vocab : :class:`~nephosem.Vocab`
 
         Returns
         -------
-        :class:`~qlvl.TypeTokenMatrix`
+        :class:`~nephosem.TypeTokenMatrix`
         """
         fnames = self.prepare_fnames(fnames)
         self.row_vocab = row_vocab if row_vocab else self.row_vocab
@@ -362,7 +360,7 @@ class ColFreqHandler(BaseHandler):
             A regular expression match object.
         lid : int
             Line number (1-based).
-        win : :class:`~qlvl.Window`
+        win : :class:`~nephosem.Window`
             This is a Window object which records current items in span.
             The center item in window is the target word. And it has context
             words of left span and right span stored in two queues.
@@ -477,10 +475,10 @@ class TokenHandler(BaseHandler):
         """
         Parameters
         ----------
-        queries : iterable or :class:`~qlvl.Vocab`
+        queries : iterable or :class:`~nephosem.Vocab`
             Target types (queries) vocabulary. Must provide this.
             Only retrieve tokens of these types.
-        col_vocab : :class:`~qlvl.Vocab`
+        col_vocab : :class:`~nephosem.Vocab`
             Context features vocabulary.
             If a non-empty vocabulary is passed, only context features in this vocab
             should be processed.
@@ -510,7 +508,7 @@ class TokenHandler(BaseHandler):
 
         Returns
         -------
-        :class:`~qlvl.TypeTokenMatrix`
+        :class:`~nephosem.TypeTokenMatrix`
         """
         fnames = self.prepare_fnames(fnames)
         logger.info("Scanning tokens of queries in corpus...")
@@ -751,7 +749,7 @@ class TypeVectorizer(object):
 
         Returns
         -------
-        vocab : :class:`~qlvl.core.vocab.Vocab`
+        vocab : :class:`~nephosem.core.vocab.Vocab`
         """
         ifhan = ItemFreqHandler(settings=self.settings)
         vocab = ifhan.build_item_freq(fnames=fnames)
@@ -768,7 +766,7 @@ class TypeVectorizer(object):
 
         Returns
         -------
-        freqmx : :class:`~qlvl.core.matrix.TypeTokenMatrix`
+        freqmx : :class:`~nephosem.core.matrix.TypeTokenMatrix`
             Co-occurrence frequency matrix.
         """
         cfhan = ColFreqHandler(self.settings)
@@ -793,7 +791,7 @@ class TypeVectorizer(object):
 
         Returns
         -------
-        vectors : :class:`qlvl.core.matrix.TypeTokenMatrix`
+        vectors : :class:`nephosem.core.matrix.TypeTokenMatrix`
         """
         self.vectors = mxcalc.compute_association(self.freqmx, meas=meas)
         return self.vectors
@@ -934,11 +932,11 @@ class TypeToken(object):
 
         Returns
         -------
-        :class:`~qlvl.Vocab`
+        :class:`~nephosem.Vocab`
 
         See Also
         --------
-        build_vocab : :class:`~qlvl.ItemFreqHandler.build_vocab`
+        build_vocab : :class:`~nephosem.ItemFreqHandler.build_vocab`
         """
         ifman = ItemFreqManager(self.settings)
         self.vocab = ifman.build_item_freq(fnames=fnames, multicore=multicore, prog_bar=prog_bar)
@@ -974,7 +972,7 @@ class TypeToken(object):
 
         Parameters
         ----------
-        measmx : :class:`~qlvl.TypeTokenMatrix`
+        measmx : :class:`~nephosem.TypeTokenMatrix`
         metric : str
             Could be: 'cos', 'rank'
 
@@ -996,7 +994,7 @@ class TypeToken(object):
 
         Parameters
         ----------
-        measmx : :class:`~qlvl.TypeTokenMatrix`
+        measmx : :class:`~nephosem.TypeTokenMatrix`
         metric : str
             Could be: 'cos', 'rank'
 
@@ -1076,7 +1074,7 @@ class TypeToken(object):
 
         Returns
         -------
-        :class:`~qlvl.TypeTokenMatrix`
+        :class:`~nephosem.TypeTokenMatrix`
 
         """
         if tcPositionMTX is None:
@@ -1091,9 +1089,9 @@ class TypeToken(object):
 
         Parameters
         ----------
-        soccMTX : :class:`~qlvl.TypeTokenMatrix`
+        soccMTX : :class:`~nephosem.TypeTokenMatrix`
             Second order collocate matrix.
-        tcWeightMTX : :class:`~qlvl.TypeTokenMatrix`
+        tcWeightMTX : :class:`~nephosem.TypeTokenMatrix`
             Token-Context weight matrix.
         operation : str
             'addition', 'multiplication'
@@ -1161,8 +1159,8 @@ def read_token_colloc(type_node, colloc_vocab=None, settings=None):
 
     Parameters
     ----------
-    type_node : :class:`~qlvl.TypeNode`
-    colloc_vocab : :class:`~qlvl.Vocab`
+    type_node : :class:`~nephosem.TypeNode`
+    colloc_vocab : :class:`~nephosem.Vocab`
         collocate vocabulary
     settings : dict
 
