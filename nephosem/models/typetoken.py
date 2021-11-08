@@ -202,6 +202,7 @@ class ColFreqHandler(BaseHandler):
             Filename of a file which records all (a user wants to process) file names of a corpus.
             Format: corpus_name + settings["fnames-ext"]
         row_vocab : :class:`~nephosem.Vocab`
+            If it is not provided here or when initializing the class, the code will stop.
         col_vocab : :class:`~nephosem.Vocab`
 
         Returns
@@ -210,6 +211,9 @@ class ColFreqHandler(BaseHandler):
         """
         fnames = self.prepare_fnames(fnames)
         self.row_vocab = row_vocab if row_vocab else self.row_vocab
+        if len(self.row_vocab) == 0:
+            logger.error("No vocabulary of nodes has been provided.")
+            return
         self.col_vocab = col_vocab if col_vocab else self.col_vocab
         logger.info("Building collocate frequency matrix...")
         res = self.process(fnames)
