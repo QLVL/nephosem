@@ -29,12 +29,12 @@ try:
 except ImportError:
     from Queue import Queue
 
-from qlvl import progbar, trange
-from qlvl.core.vocab import Vocab
-from qlvl.core.matrix import TypeTokenMatrix
-from qlvl.core.handler import BaseHandler
-from qlvl.core.graph import SentenceGraph, MacroGraph
-from qlvl.specutils import mxutils
+from nephosem import progbar, trange
+from nephosem.core.vocab import Vocab
+from nephosem.core.matrix import TypeTokenMatrix
+from nephosem.core.handler import BaseHandler
+from nephosem.core.graph import SentenceGraph, MacroGraph
+from nephosem.specutils import mxutils
 
 logger = logging.getLogger(__name__)
 homedir = os.path.expanduser('~')
@@ -69,7 +69,7 @@ class DepRelHandler(BaseHandler):
         ----------
         fname : str, optional
             File name of the templates file.
-        macros : iterable of :class:`~qlvl.core.graph.TemplateGraph`, optional
+        macros : iterable of :class:`~nephosem.core.graph.TemplateGraph`, optional
             TemplateGraph instances when not passing the file name.
         encoding : str, default 'utf-8'
             File encoding of the template file.
@@ -82,7 +82,7 @@ class DepRelHandler(BaseHandler):
         Examples
         --------
         >>> dephan = DepRelHandler(settings)
-        >>> template_fname = "{}/tests/data/DependencyFeatureTemplates.subgroup.tsv".format(qlvl.rootdir)
+        >>> template_fname = "{}/tests/data/DependencyFeatureTemplates.subgroup.tsv".format(nephosem.rootdir)
         >>> dephan.read_templates(fname=template_fname)
         >>> dephan.templates[0]
         <-(?P<DEPREL>nsubj)$ (?P<LEMMA>\w+)/(?P<POS>V)\w*
@@ -111,14 +111,14 @@ class DepRelHandler(BaseHandler):
             Path of file recording corpus file names ('fnames' file of a corpus).
             If this is provided, only the files recorded in this fnames file would be processed.
             Else, all files and folders inside the 'corpus-path' of settings would be processed.
-        targets : list of str or :class:`~qlvl.core.vocab.Vocab`, optional
+        targets : list of str or :class:`~nephosem.core.vocab.Vocab`, optional
             Target types/words to process.
             If this is provided, only process these targets when matching the sentence with macros.
             Else, all possible targets would be checked when matching sentences.
 
         Returns
         -------
-        features : iterable of :class:`~qlvl.core.graph.TemplateGraph`
+        features : iterable of :class:`~nephosem.core.graph.TemplateGraph`
 
         Examples
         --------
@@ -282,7 +282,7 @@ def read_sentence(filename, formatter=None, encoding='utf-8'):
     Parameters
     ----------
     filename : str
-    formatter : qlvl.CorpusFormatter
+    formatter : nephosem.CorpusFormatter
     encoding : str
         default 'utf-8'
 

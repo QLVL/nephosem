@@ -27,7 +27,7 @@ Usage examples
 
 Initialize a vocabulary with a Python dict e.g.
 
->>> from qlvl.algos import cbc
+>>> from nephosem.algos import cbc
 
 """
 
@@ -47,11 +47,11 @@ import scipy.cluster.hierarchy as sch
 from scipy.spatial.distance import squareform
 from sklearn.metrics.pairwise import cosine_similarity
 
-from qlvl import progbar
-from qlvl.core.matrix import TypeTokenMatrix
-from qlvl.specutils.mxcalc import calc_association, calc_distance
-from qlvl.specutils.mxutils import centroid_of_cluster, sum_of_cluster
-from qlvl.utils import make_dir, clean_dir
+from nephosem import progbar
+from nephosem.core.matrix import TypeTokenMatrix
+from nephosem.specutils.mxcalc import calc_association, calc_distance
+from nephosem.specutils.mxutils import centroid_of_cluster, sum_of_cluster
+from nephosem.utils import make_dir, clean_dir
 
 __all__ = ['CBC']
 
@@ -225,7 +225,7 @@ def major_steps(cbc, eles=None, multicore=True):
 
     Parameters
     ----------
-    cbc : :class:`~qlvl.CBC`
+    cbc : :class:`~nephosem.CBC`
     eles : iterable, optional
         A list of elements to be clustered.
         In later recursions, `eles` are residues.
@@ -852,7 +852,7 @@ def cluster_similar_elements(e, distmx=None, k=100,
     Parameters
     ----------
     e : str
-    distmx : :class:`~qlvl.TypeTokenMatrix`
+    distmx : :class:`~nephosem.TypeTokenMatrix`
     k : int
         Number of most similar elements to cluster.
     prune_method : str

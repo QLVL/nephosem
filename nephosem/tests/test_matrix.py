@@ -9,7 +9,7 @@ import pandas as pd
 import scipy.sparse as sp
 from scipy.spatial.distance import squareform
 
-from qlvl import TypeTokenMatrix
+from nephosem import TypeTokenMatrix
 
 curdir = os.path.dirname(os.path.realpath(__file__))
 

@@ -11,8 +11,8 @@ import pytest
 import scipy.sparse as sp
 from scipy.spatial.distance import squareform
 
-from qlvl import Vocab, TypeTokenMatrix
-from qlvl.specutils import mxcalc
+from nephosem import Vocab, TypeTokenMatrix
+from nephosem.specutils import mxcalc
 
 curdir = os.path.dirname(os.path.realpath(__file__))
 

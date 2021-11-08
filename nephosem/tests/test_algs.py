@@ -10,7 +10,7 @@ import pytest
 import random
 import scipy.cluster.hierarchy as sch
 
-from qlvl.models import cbc
+from nephosem.models import cbc
 
 curdir = os.path.dirname(os.path.realpath(__file__))
 

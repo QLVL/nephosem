@@ -7,12 +7,12 @@ import pytest
 import pandas as pd
 from copy import deepcopy
 
-import qlvl
-from qlvl.conf import ConfigLoader
-from qlvl.core.terms import CorpusFormatter
-from qlvl.deprel.basic import SentenceGraph, TemplateGraph
+import nephosem
+from nephosem.conf import ConfigLoader
+from nephosem.core.terms import CorpusFormatter
+from nephosem.deprel.basic import SentenceGraph, TemplateGraph
 
-rootdir = qlvl.rootdir
+rootdir = nephosem.rootdir
 curdir = os.path.dirname(os.path.realpath(__file__))
 
 

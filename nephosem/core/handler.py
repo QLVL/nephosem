@@ -39,10 +39,10 @@ import os
 from copy import deepcopy
 import multiprocessing as mp
 
-import qlvl
-from qlvl import progbar, trange
-from qlvl.core.terms import CorpusFormatter, Window
-from qlvl.utils import read_fnames, read_fnames_of_corpus, make_dir, clean_dir
+import nephosem
+from nephosem import progbar, trange
+from nephosem.core.terms import CorpusFormatter, Window
+from nephosem.utils import read_fnames, read_fnames_of_corpus, make_dir, clean_dir
 
 logger = logging.getLogger(__name__)
 homedir = os.path.expanduser('~')
@@ -89,7 +89,7 @@ class Paralleler(object):
         # add other possible arguments to the `__dict__` of the class
         self.__dict__.update(kwargs)
         # set default tmpdir
-        self.tmpdir = qlvl.tmpdir
+        self.tmpdir = nephosem.tmpdir
         make_dir(self.tmpdir)
         clean_dir(self.tmpdir)
 
@@ -249,7 +249,7 @@ class BaseHandler(Paralleler):
         self.corpus_path = self.settings.get('corpus-path', None)
         if 'output-path' not in self.settings:
             logger.warning("There is no output path!\nUse the default one: `~/tmp`!")
-        self.output_path = self.settings.get('output-path', qlvl.tmpdir)
+        self.output_path = self.settings.get('output-path', nephosem.tmpdir)
         if 'tmp-path' not in self.settings:
             # if 'tmp-path' is not set in the settings
             logger.warning("Not provide the temporary path!")
@@ -259,7 +259,7 @@ class BaseHandler(Paralleler):
                 logger.warning("Use a sub tmp directory of the output-path: '/output-path/tmp'!")
             else:
                 # neither is provided, use the default one
-                _tmpdir = qlvl.tmpdir  # `~/tmp`
+                _tmpdir = nephosem.tmpdir  # `~/tmp`
                 logger.warning("Use the default tmp directory: '~/tmp'!")
         else:
             _tmpdir = self.settings['tmp-path']

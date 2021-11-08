@@ -27,8 +27,8 @@ Usage examples
 
 Initialize a vocabulary with a Python dict e.g.
 
->>> from qlvl.tests.utils import common_texts
->>> from qlvl import Vocab
+>>> from nephosem.tests.utils import common_texts
+>>> from nephosem import Vocab
 >>>
 >>>
 
@@ -44,7 +44,7 @@ from copy import deepcopy
 from collections import defaultdict
 from six import iteritems
 
-from qlvl import utils
+from nephosem import utils
 
 __all__ = ['Vocab']
 
@@ -429,7 +429,7 @@ class Vocab(object):
 
         Returns
         -------
-        :class: `~qlvl.Vocab`
+        :class: `~nephosem.Vocab`
         """
         args = (filename,)
         kwargs = {'encoding': encoding}
