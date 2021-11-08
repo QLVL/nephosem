@@ -23,6 +23,8 @@ import nephosem
 
 # Background
 
+The theoretical framework and methodology followed in the project were presented by Mariana Montes and Karlien Franco in the II Jornadas de Lingüística y Gramática Española on October 1, 2021. You can watch the presentation in [English](https://www.youtube.com/watch?v=BZnTXSf6heY&t=2508s) or [dubbed to Spanish](https://www.youtube.com/watch?v=lpqgBXZfuPc).
+
 Schütze, Hinrich. 1998. Automatic Word Sense Discrimination. _Computational Linguistics_ 24(1). 97–123.
 <!-- Any other suggestions? -->
 
@@ -37,7 +39,6 @@ Montes, Mariana. 2021. _Cloudspotting: visual analytics for distributional seman
 Montes, Mariana, Karlien Franco & Kris Heylen. 2021. Indestructible Insights. A Case Study in Distributional Prototype Semantics. In Gitte Kristiansen, Karlien Franco, Stefano De Pascale, Laura Rosseel & Weiwei Zhang (eds.), _Cognitive Sociolinguistics Revisited_, 251–263. De Gruyter. https://doi.org/10.1515/9783110733945-021.
 
 Montes, Mariana & Kris Heylen. 2022. Visualizing Distributional Semantics. In Dennis Tay & Molly Xie Pan (eds.), _Data Analytics in Cognitive Linguistics. Methods and Insights_. Mouton De Gruyter.
-<!-- We should soon be able to add the publications in Cognitive Sociolinguistics Revisited -->
 
 # Related publications
 
