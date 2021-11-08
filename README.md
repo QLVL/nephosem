@@ -30,7 +30,11 @@ Schütze, Hinrich. 1998. Automatic Word Sense Discrimination. _Computational Lin
 
 De Pascale, S. 2019. _Token-based vector space models as semantic control in lexical lectometry_. Leuven: KU Leuven PhD Dissertation. (8 November, 2019).
 
+De Pascale, Stefano & Weiwei Zhang. 2021. Scoring with Token-based Models. A Distributional Semantic Replication of Socioectometric Analyses in Geeraerts, Grondelaers, and Speelman (1999). In Gitte Kristiansen, Karlien Franco, Stefano De Pascale, Laura Rosseel & Weiwei Zhang (eds.), _Cognitive Sociolinguistics Revisited_, 186–199. De Gruyter. https://doi.org/10.1515/9783110733945-021.
+
 Montes, Mariana. 2021. _Cloudspotting: visual analytics for distributional semantics_. Leuven: KU Leuven PhD Dissertation.
+
+Montes, Mariana, Karlien Franco & Kris Heylen. 2021. Indestructible Insights. A Case Study in Distributional Prototype Semantics. In Gitte Kristiansen, Karlien Franco, Stefano De Pascale, Laura Rosseel & Weiwei Zhang (eds.), _Cognitive Sociolinguistics Revisited_, 251–263. De Gruyter. https://doi.org/10.1515/9783110733945-021.
 
 Montes, Mariana & Kris Heylen. 2022. Visualizing Distributional Semantics. In Dennis Tay & Molly Xie Pan (eds.), _Data Analytics in Cognitive Linguistics. Methods and Insights_. Mouton De Gruyter.
 <!-- We should soon be able to add the publications in Cognitive Sociolinguistics Revisited -->
