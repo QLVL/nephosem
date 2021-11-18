@@ -1,4 +1,5 @@
 
+[![DOI](https://zenodo.org/badge/233318567.svg)](https://zenodo.org/badge/latestdoi/233318567)
 ![Release](https://img.shields.io/github/v/release/qlvl/nephosem)
 [![License](https://img.shields.io/github/license/qlvl/nephosem)](https://www.gnu.org/licenses/gpl-3.0)
 
