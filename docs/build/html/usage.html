@@ -35,6 +35,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -97,6 +98,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="nephosem.html">Documentation</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="createClouds.html">The full python workflow for semasiological token-level clouds</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
 </ul>
 
@@ -165,7 +167,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="usage">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
@@ -180,10 +206,11 @@
 <h2>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h2>
 <p>If you use this code, use the information below:</p>
 <div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@software</span><span class="p">{</span><span class="nl">QLVL_nephosem</span><span class="p">,</span>
-<span class="na">author</span> <span class="p">=</span> <span class="s">{{QLVL}}</span><span class="p">,</span>
-<span class="na">license</span> <span class="p">=</span> <span class="s">{GPL-3.0-or-later}</span><span class="p">,</span>
-<span class="na">title</span> <span class="p">=</span> <span class="s">{{nephosem}}</span><span class="p">,</span>
-<span class="na">version</span> <span class="p">=</span> <span class="s">{0.1.0}</span>
+    <span class="na">author</span> <span class="p">=</span> <span class="s">{{QLVL}}</span><span class="p">,</span>
+    <span class="na">doi</span> <span class="p">=</span> <span class="s">{10.5281:zenodo.5710426}</span><span class="p">,</span>
+    <span class="na">license</span> <span class="p">=</span> <span class="s">{GPL-3.0-or-later}</span><span class="p">,</span>
+    <span class="na">title</span> <span class="p">=</span> <span class="s">{{nephosem}}</span><span class="p">,</span>
+    <span class="na">version</span> <span class="p">=</span> <span class="s">{0.1.0}</span>
 <span class="p">}</span>
 </pre></div>
 </div>

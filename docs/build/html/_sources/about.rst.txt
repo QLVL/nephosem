@@ -37,6 +37,8 @@ II Jornadas de Lingüística y Gramática Española on October 1, 2021.
 You can watch the presentation in `English <https://www.youtube.com/watch?v=BZnTXSf6heY&t=2508s>`_
 or `dubbed to Spanish <https://www.youtube.com/watch?v=lpqgBXZfuPc>`_.
 
+.. _publications:
+
 Publications using this code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

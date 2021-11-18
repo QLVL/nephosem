@@ -31,14 +31,17 @@ A more or less technical explanation of the procedure is explained `here <clouds
 The Nephosem package is at the core of this workflow, but is then expanded with other tools:
 
 * The `semasioFlow <https://github.com/montesmariana/semasioFlow>`_ Python package,
-which organizes and compacts Nephosem functions in a way specific to the semasiological workflow;
+  which organizes and compacts Nephosem functions in a way specific to the semasiological workflow;
 * The `semcloud <https://github.com/montesmariana/semcloud>`_ R package, which takes the output
-of semasioFlow and prepares the data for visualization, running dimensionality reduction and clustering
-and generating annotated concordances[#ann]_.
-* The `nephoVis <https://github.com/QLVL/NephoVis>`_ interactive visualization tool (see link above)
-for exhaustive, qualitative exploration of the models.
+  of semasioFlow and prepares the data for visualization, running dimensionality reduction and clustering
+  and generating annotated concordances[#ann]_ .
+* The `NephoVis <https://github.com/QLVL/NephoVis>`_ interactive visualization tool (see link above)
+  for exhaustive, qualitative exploration of the models.
 * The `Level 3 ShinyApp <https://github.com/montesmariana/Level3>`_ for deeper exploration of individual models.
 
+To start, you can take a look at :doc:`this notebook <createClouds>`, which shows the main steps using
+semasioFlow and Nephosem, starting with a corpus in conll format (one token per line, columns for different
+features) and ending with token-by-token distance matrices as well as a number of metadata registers.
 
 Lectometric workflow
 --------------------

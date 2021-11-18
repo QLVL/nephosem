@@ -22,8 +22,9 @@ If you use this code, use the information below:
 .. code-block:: bibtex
 
     @software{QLVL_nephosem,
-    author = {{QLVL}},
-    license = {GPL-3.0-or-later},
-    title = {{nephosem}},
-    version = {0.1.0}
+        author = {{QLVL}},
+        doi = {10.5281:zenodo.5710426},
+        license = {GPL-3.0-or-later},
+        title = {{nephosem}},
+        version = {0.1.0}
     }
