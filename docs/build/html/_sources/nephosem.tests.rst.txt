@@ -1,0 +1,101 @@
+nephosem.tests package
+======================
+
+Submodules
+----------
+
+nephosem.tests.test\_algs module
+--------------------------------
+
+.. automodule:: nephosem.tests.test_algs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+nephosem.tests.test\_depbasic module
+------------------------------------
+
+.. automodule:: nephosem.tests.test_depbasic
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+nephosem.tests.test\_graph module
+---------------------------------
+
+.. automodule:: nephosem.tests.test_graph
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+nephosem.tests.test\_matrix module
+----------------------------------
+
+.. automodule:: nephosem.tests.test_matrix
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+nephosem.tests.test\_mxcalc module
+----------------------------------
+
+.. automodule:: nephosem.tests.test_mxcalc
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+nephosem.tests.test\_mxutils module
+-----------------------------------
+
+.. automodule:: nephosem.tests.test_mxutils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+nephosem.tests.test\_settings module
+------------------------------------
+
+.. automodule:: nephosem.tests.test_settings
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+nephosem.tests.test\_terms module
+---------------------------------
+
+.. automodule:: nephosem.tests.test_terms
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+nephosem.tests.test\_typetoken module
+-------------------------------------
+
+.. automodule:: nephosem.tests.test_typetoken
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+nephosem.tests.test\_vocab module
+---------------------------------
+
+.. automodule:: nephosem.tests.test_vocab
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+nephosem.tests.utils module
+---------------------------
+
+.. automodule:: nephosem.tests.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: nephosem.tests
+   :members:
+   :undoc-members:
+   :show-inheritance:

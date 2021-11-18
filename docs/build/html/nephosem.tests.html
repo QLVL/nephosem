@@ -1,0 +1,952 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>nephosem.tests package &mdash; Nephological Semantics 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="nephosem.specutils package" href="nephosem.specutils.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">nephosem</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="nephosem.html">nephosem package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="nephosem.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="nephosem.core.html">nephosem.core package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nephosem.deprel.html">nephosem.deprel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nephosem.models.html">nephosem.models package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nephosem.specutils.html">nephosem.specutils package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">nephosem.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="nephosem.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nephosem.html#module-nephosem.conf">nephosem.conf module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nephosem.html#module-nephosem.logging">nephosem.logging module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nephosem.html#module-nephosem.utils">nephosem.utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nephosem.html#module-nephosem">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">nephosem</a> &raquo;</li>
+        
+          <li><a href="nephosem.html">nephosem package</a> &raquo;</li>
+        
+      <li>nephosem.tests package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/nephosem.tests.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="nephosem-tests-package">
+<h1>nephosem.tests package<a class="headerlink" href="#nephosem-tests-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-nephosem.tests.test_algs">
+<span id="nephosem-tests-test-algs-module"></span><h2>nephosem.tests.test_algs module<a class="headerlink" href="#module-nephosem.tests.test_algs" title="Permalink to this headline">¶</a></h2>
+<p>Test algorithm functions</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.tests.test_algs.TestAlgs">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_algs.</span></span><span class="sig-name descname"><span class="pre">TestAlgs</span></span><a class="headerlink" href="#nephosem.tests.test_algs.TestAlgs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_algs.TestAlgs.test_average_similarity">
+<span class="sig-name descname"><span class="pre">test_average_similarity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_algs.TestAlgs.test_average_similarity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_algs.TestAlgs.test_calc_meas_vec">
+<span class="sig-name descname"><span class="pre">test_calc_meas_vec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_algs.TestAlgs.test_calc_meas_vec" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_algs.TestAlgs.test_cbc_step1">
+<span class="sig-name descname"><span class="pre">test_cbc_step1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_algs.TestAlgs.test_cbc_step1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_algs.TestAlgs.test_cbc_step2">
+<span class="sig-name descname"><span class="pre">test_cbc_step2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_algs.TestAlgs.test_cbc_step2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_algs.TestAlgs.test_cbc_step3">
+<span class="sig-name descname"><span class="pre">test_cbc_step3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_algs.TestAlgs.test_cbc_step3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_algs.TestAlgs.test_cluster_avgsim">
+<span class="sig-name descname"><span class="pre">test_cluster_avgsim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_algs.TestAlgs.test_cluster_avgsim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_algs.TestAlgs.test_flat_clusters">
+<span class="sig-name descname"><span class="pre">test_flat_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_algs.TestAlgs.test_flat_clusters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_algs.TestAlgs.test_remove_duplicate">
+<span class="sig-name descname"><span class="pre">test_remove_duplicate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_algs.TestAlgs.test_remove_duplicate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_algs.TestAlgs.test_score_cluster">
+<span class="sig-name descname"><span class="pre">test_score_cluster</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_algs.TestAlgs.test_score_cluster" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_algs.TestAlgs.test_sub2glb">
+<span class="sig-name descname"><span class="pre">test_sub2glb</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_algs.TestAlgs.test_sub2glb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_algs.X">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_algs.</span></span><span class="sig-name descname"><span class="pre">X</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_algs.X" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-nephosem.tests.test_depbasic">
+<span id="nephosem-tests-test-depbasic-module"></span><h2>nephosem.tests.test_depbasic module<a class="headerlink" href="#module-nephosem.tests.test_depbasic" title="Permalink to this headline">¶</a></h2>
+<p>Test dependency relation functions</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.tests.test_depbasic.TestDepBasic">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_depbasic.</span></span><span class="sig-name descname"><span class="pre">TestDepBasic</span></span><a class="headerlink" href="#nephosem.tests.test_depbasic.TestDepBasic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_depbasic.TestDepBasic.test_match_level">
+<span class="sig-name descname"><span class="pre">test_match_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_depbasic.TestDepBasic.test_match_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_depbasic.TestDepBasic.test_match_successors">
+<span class="sig-name descname"><span class="pre">test_match_successors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_depbasic.TestDepBasic.test_match_successors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_depbasic.TestDepBasic.test_subtree_match">
+<span class="sig-name descname"><span class="pre">test_subtree_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_depbasic.TestDepBasic.test_subtree_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_depbasic.TestDepBasic.test_tree_match">
+<span class="sig-name descname"><span class="pre">test_tree_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_depbasic.TestDepBasic.test_tree_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_depbasic.feat">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_depbasic.</span></span><span class="sig-name descname"><span class="pre">feat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_depbasic.feat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_depbasic.featex">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_depbasic.</span></span><span class="sig-name descname"><span class="pre">featex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_depbasic.featex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_depbasic.sent">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_depbasic.</span></span><span class="sig-name descname"><span class="pre">sent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_depbasic.sent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-nephosem.tests.test_graph">
+<span id="nephosem-tests-test-graph-module"></span><h2>nephosem.tests.test_graph module<a class="headerlink" href="#module-nephosem.tests.test_graph" title="Permalink to this headline">¶</a></h2>
+<p>Test functions for dependency graph</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.tests.test_graph.TestSentenceGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_graph.</span></span><span class="sig-name descname"><span class="pre">TestSentenceGraph</span></span><a class="headerlink" href="#nephosem.tests.test_graph.TestSentenceGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_graph.TestSentenceGraph.test_init">
+<span class="sig-name descname"><span class="pre">test_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">orgsent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exsent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_graph.TestSentenceGraph.test_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.tests.test_graph.TestTemplateGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_graph.</span></span><span class="sig-name descname"><span class="pre">TestTemplateGraph</span></span><a class="headerlink" href="#nephosem.tests.test_graph.TestTemplateGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_graph.TestTemplateGraph.test_islinear">
+<span class="sig-name descname"><span class="pre">test_islinear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_graph.TestTemplateGraph.test_islinear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="nephosem.tests.test_graph.curdir">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_graph.</span></span><span class="sig-name descname"><span class="pre">curdir</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/mnt/c/Users/u0118974/OneDrive</span> <span class="pre">-</span> <span class="pre">KU</span> <span class="pre">Leuven/repos/qlvl/nephosem/nephosem/tests'</span></em><a class="headerlink" href="#nephosem.tests.test_graph.curdir" title="Permalink to this definition">¶</a></dt>
+<dd><p># Test sentence:
+The boy gives the girl a green apple for Valentine</p>
+<p># conll format:
+The     DT      the     1       2       amod
+boy     NN      boy     2       3       nsubj
+gives   V       give    3       0       ROOT
+the     DT      the     4       5       amod
+girl    NN      girl    5       3       dobj
+a       DT      a       6       8       amod
+green   JJ      green   7       8       amod
+apple   NN      apple   8       3       dobj
+for     IN      for 9   10      amod
+Valentine       NP      Valentine       10      8       amod</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_graph.exsent">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_graph.</span></span><span class="sig-name descname"><span class="pre">exsent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_graph.exsent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_graph.orgsent">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_graph.</span></span><span class="sig-name descname"><span class="pre">orgsent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_graph.orgsent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-nephosem.tests.test_matrix">
+<span id="nephosem-tests-test-matrix-module"></span><h2>nephosem.tests.test_matrix module<a class="headerlink" href="#module-nephosem.tests.test_matrix" title="Permalink to this headline">¶</a></h2>
+<p>Test TypeTokenMatrix Class</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.tests.test_matrix.TestTypeTokenMatrix">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_matrix.</span></span><span class="sig-name descname"><span class="pre">TestTypeTokenMatrix</span></span><a class="headerlink" href="#nephosem.tests.test_matrix.TestTypeTokenMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_matrix.TestTypeTokenMatrix.getitem">
+<span class="sig-name descname"><span class="pre">getitem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sqMTX</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_matrix.TestTypeTokenMatrix.getitem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_matrix.TestTypeTokenMatrix.test_concatenate">
+<span class="sig-name descname"><span class="pre">test_concatenate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sqMTX</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_matrix.TestTypeTokenMatrix.test_concatenate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_matrix.TestTypeTokenMatrix.test_empty_rows">
+<span class="sig-name descname"><span class="pre">test_empty_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sqMTX</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_matrix.TestTypeTokenMatrix.test_empty_rows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_matrix.TestTypeTokenMatrix.test_equal">
+<span class="sig-name descname"><span class="pre">test_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sqMTX</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_matrix.TestTypeTokenMatrix.test_equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_matrix.TestTypeTokenMatrix.test_most_similar">
+<span class="sig-name descname"><span class="pre">test_most_similar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sqMTX</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_matrix.TestTypeTokenMatrix.test_most_similar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_matrix.TestTypeTokenMatrix.test_operators">
+<span class="sig-name descname"><span class="pre">test_operators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sqMTX</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_matrix.TestTypeTokenMatrix.test_operators" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_matrix.TestTypeTokenMatrix.test_read_csv">
+<span class="sig-name descname"><span class="pre">test_read_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sqMTX</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_matrix.TestTypeTokenMatrix.test_read_csv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_matrix.TestTypeTokenMatrix.test_reorder">
+<span class="sig-name descname"><span class="pre">test_reorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sqMTX</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_matrix.TestTypeTokenMatrix.test_reorder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_matrix.TestTypeTokenMatrix.test_sample">
+<span class="sig-name descname"><span class="pre">test_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sqMTX</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_matrix.TestTypeTokenMatrix.test_sample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_matrix.TestTypeTokenMatrix.test_submatrix">
+<span class="sig-name descname"><span class="pre">test_submatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sqMTX</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_matrix.TestTypeTokenMatrix.test_submatrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_matrix.TestTypeTokenMatrix.test_to_csv">
+<span class="sig-name descname"><span class="pre">test_to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sqMTX</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_matrix.TestTypeTokenMatrix.test_to_csv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_matrix.nmMTX">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_matrix.</span></span><span class="sig-name descname"><span class="pre">nmMTX</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_matrix.nmMTX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_matrix.spMTX">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_matrix.</span></span><span class="sig-name descname"><span class="pre">spMTX</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_matrix.spMTX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_matrix.sqMTX">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_matrix.</span></span><span class="sig-name descname"><span class="pre">sqMTX</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_matrix.sqMTX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-nephosem.tests.test_mxcalc">
+<span id="nephosem-tests-test-mxcalc-module"></span><h2>nephosem.tests.test_mxcalc module<a class="headerlink" href="#module-nephosem.tests.test_mxcalc" title="Permalink to this headline">¶</a></h2>
+<p>Test TypeTokenMatrix Calculation functions</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.tests.test_mxcalc.TestCalcFuncs">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_mxcalc.</span></span><span class="sig-name descname"><span class="pre">TestCalcFuncs</span></span><a class="headerlink" href="#nephosem.tests.test_mxcalc.TestCalcFuncs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_mxcalc.TestCalcFuncs.test_calc_pmi">
+<span class="sig-name descname"><span class="pre">test_calc_pmi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_mxcalc.TestCalcFuncs.test_calc_pmi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_mxcalc.TestCalcFuncs.test_compute_association">
+<span class="sig-name descname"><span class="pre">test_compute_association</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfreq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfreq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_mxcalc.TestCalcFuncs.test_compute_association" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_mxcalc.TestCalcFuncs.test_compute_ppmi">
+<span class="sig-name descname"><span class="pre">test_compute_ppmi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfreq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfreq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_mxcalc.TestCalcFuncs.test_compute_ppmi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_mxcalc.cfreq">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_mxcalc.</span></span><span class="sig-name descname"><span class="pre">cfreq</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_mxcalc.cfreq" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>colloc_freq = {</dt><dd><p>‘.’: 44, ‘and’: 8, ‘at’: 6, ‘bark’: 6, ‘be’: 14, ‘better’: 4,
+‘by’: 17, ‘cat’: 14, ‘coffee’: 12, ‘cup’: 8, ‘dog’: 13,
+‘grab’: 25, ‘his’: 16, ‘it’: 10, ‘its’: 7, ‘loud’: 10,
+‘neck’: 7, ‘passerby’: 6, ‘purr’: 4, ‘scratch’: 10, ‘taste’: 12,
+‘tea’: 4, ‘than’: 4, ‘the’: 58, ‘vet’: 25, ‘while’: 10</p>
+</dd>
+</dl>
+<p>}
+cfreq = Vocab(colloc_freq)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_mxcalc.df">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_mxcalc.</span></span><span class="sig-name descname"><span class="pre">df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_mxcalc.df" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_mxcalc.nfreq">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_mxcalc.</span></span><span class="sig-name descname"><span class="pre">nfreq</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_mxcalc.nfreq" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>node_freq = {</dt><dd><p>‘.’: 10, ‘and’: 9, ‘at’: 7, ‘bark’: 7, ‘be’: 15, ‘better’: 5,
+‘by’: 18, ‘cat’: 15, ‘coffee’: 14, ‘cup’: 9, ‘dog’: 15,
+‘grab’: 27, ‘his’: 18, ‘it’: 10, ‘its’: 8, ‘loud’: 12,
+‘neck’: 8, ‘passerby’: 7, ‘purr’: 5, ‘scratch’: 10, ‘taste’: 14,
+‘tea’: 5, ‘than’: 5, ‘the’: 64, ‘vet’: 27, ‘while’: 10</p>
+</dd>
+</dl>
+<p>}
+nfreq = Vocab(node_freq)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_mxcalc.nmMTX">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_mxcalc.</span></span><span class="sig-name descname"><span class="pre">nmMTX</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_mxcalc.nmMTX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_mxcalc.spMTX">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_mxcalc.</span></span><span class="sig-name descname"><span class="pre">spMTX</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_mxcalc.spMTX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_mxcalc.sqMTX">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_mxcalc.</span></span><span class="sig-name descname"><span class="pre">sqMTX</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_mxcalc.sqMTX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-nephosem.tests.test_mxutils">
+<span id="nephosem-tests-test-mxutils-module"></span><h2>nephosem.tests.test_mxutils module<a class="headerlink" href="#module-nephosem.tests.test_mxutils" title="Permalink to this headline">¶</a></h2>
+<p>Test mxutils functions</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.tests.test_mxutils.TestMxUtils">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_mxutils.</span></span><span class="sig-name descname"><span class="pre">TestMxUtils</span></span><a class="headerlink" href="#nephosem.tests.test_mxutils.TestMxUtils" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_mxutils.TestMxUtils.test_merge_matrices">
+<span class="sig-name descname"><span class="pre">test_merge_matrices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_mxutils.TestMxUtils.test_merge_matrices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_mxutils.TestMxUtils.test_merge_matrix_dict">
+<span class="sig-name descname"><span class="pre">test_merge_matrix_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_mxutils.TestMxUtils.test_merge_matrix_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_mxutils.matrices">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_mxutils.</span></span><span class="sig-name descname"><span class="pre">matrices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_mxutils.matrices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-nephosem.tests.test_settings">
+<span id="nephosem-tests-test-settings-module"></span><h2>nephosem.tests.test_settings module<a class="headerlink" href="#module-nephosem.tests.test_settings" title="Permalink to this headline">¶</a></h2>
+<p>Test functions for basics</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.tests.test_settings.TestCorpusFormatter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_settings.</span></span><span class="sig-name descname"><span class="pre">TestCorpusFormatter</span></span><a class="headerlink" href="#nephosem.tests.test_settings.TestCorpusFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_settings.TestCorpusFormatter.test_line_format">
+<span class="sig-name descname"><span class="pre">test_line_format</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_settings.TestCorpusFormatter.test_line_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_settings.corpdir">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_settings.</span></span><span class="sig-name descname"><span class="pre">corpdir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_settings.corpdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_settings.datadir">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_settings.</span></span><span class="sig-name descname"><span class="pre">datadir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_settings.datadir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_settings.settings">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_settings.</span></span><span class="sig-name descname"><span class="pre">settings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_settings.settings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-nephosem.tests.test_terms">
+<span id="nephosem-tests-test-terms-module"></span><h2>nephosem.tests.test_terms module<a class="headerlink" href="#module-nephosem.tests.test_terms" title="Permalink to this headline">¶</a></h2>
+<p>Test functions for basics</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.tests.test_terms.TestItemNode">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_terms.</span></span><span class="sig-name descname"><span class="pre">TestItemNode</span></span><a class="headerlink" href="#nephosem.tests.test_terms.TestItemNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_terms.TestItemNode.test_init">
+<span class="sig-name descname"><span class="pre">test_init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_terms.TestItemNode.test_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.tests.test_terms.TestTokenNode">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_terms.</span></span><span class="sig-name descname"><span class="pre">TestTokenNode</span></span><a class="headerlink" href="#nephosem.tests.test_terms.TestTokenNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_terms.TestTokenNode.test_init">
+<span class="sig-name descname"><span class="pre">test_init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_terms.TestTokenNode.test_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.tests.test_terms.TestTypeNode">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_terms.</span></span><span class="sig-name descname"><span class="pre">TestTypeNode</span></span><a class="headerlink" href="#nephosem.tests.test_terms.TestTypeNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_terms.TestTypeNode.test_get_collocs">
+<span class="sig-name descname"><span class="pre">test_get_collocs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_terms.TestTypeNode.test_get_collocs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_terms.TestTypeNode.test_init">
+<span class="sig-name descname"><span class="pre">test_init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_terms.TestTypeNode.test_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_terms.TestTypeNode.test_merge">
+<span class="sig-name descname"><span class="pre">test_merge</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_terms.TestTypeNode.test_merge" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_terms.TestTypeNode.test_sample">
+<span class="sig-name descname"><span class="pre">test_sample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_terms.TestTypeNode.test_sample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.tests.test_terms.TestWindow">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_terms.</span></span><span class="sig-name descname"><span class="pre">TestWindow</span></span><a class="headerlink" href="#nephosem.tests.test_terms.TestWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_terms.TestWindow.test_init">
+<span class="sig-name descname"><span class="pre">test_init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_terms.TestWindow.test_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_terms.corpdir">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_terms.</span></span><span class="sig-name descname"><span class="pre">corpdir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_terms.corpdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_terms.datadir">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_terms.</span></span><span class="sig-name descname"><span class="pre">datadir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_terms.datadir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_terms.settings">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_terms.</span></span><span class="sig-name descname"><span class="pre">settings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_terms.settings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-nephosem.tests.test_typetoken">
+<span id="nephosem-tests-test-typetoken-module"></span><h2>nephosem.tests.test_typetoken module<a class="headerlink" href="#module-nephosem.tests.test_typetoken" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.tests.test_typetoken.TestTypeToken">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_typetoken.</span></span><span class="sig-name descname"><span class="pre">TestTypeToken</span></span><a class="headerlink" href="#nephosem.tests.test_typetoken.TestTypeToken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_typetoken.TestTypeToken.test_build_col_freq">
+<span class="sig-name descname"><span class="pre">test_build_col_freq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_typetoken.TestTypeToken.test_build_col_freq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_typetoken.TestTypeToken.test_build_vocab">
+<span class="sig-name descname"><span class="pre">test_build_vocab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings_word</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_typetoken.TestTypeToken.test_build_vocab" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_typetoken.settings">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_typetoken.</span></span><span class="sig-name descname"><span class="pre">settings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_typetoken.settings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_typetoken.settings_word">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_typetoken.</span></span><span class="sig-name descname"><span class="pre">settings_word</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_typetoken.settings_word" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-nephosem.tests.test_vocab">
+<span id="nephosem-tests-test-vocab-module"></span><h2>nephosem.tests.test_vocab module<a class="headerlink" href="#module-nephosem.tests.test_vocab" title="Permalink to this headline">¶</a></h2>
+<p>Test Vocab Class</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_vocab.</span></span><span class="sig-name descname"><span class="pre">TestVocab</span></span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_copy">
+<span class="sig-name descname"><span class="pre">test_copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_equal">
+<span class="sig-name descname"><span class="pre">test_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_get_item_list">
+<span class="sig-name descname"><span class="pre">test_get_item_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_get_item_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_getitem">
+<span class="sig-name descname"><span class="pre">test_getitem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_getitem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test vocab[arg] for different cases.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_increment">
+<span class="sig-name descname"><span class="pre">test_increment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_increment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_init">
+<span class="sig-name descname"><span class="pre">test_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test initialization of Vocab class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_items">
+<span class="sig-name descname"><span class="pre">test_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_items" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_keys">
+<span class="sig-name descname"><span class="pre">test_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_load">
+<span class="sig-name descname"><span class="pre">test_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_match">
+<span class="sig-name descname"><span class="pre">test_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_operators">
+<span class="sig-name descname"><span class="pre">test_operators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_operators" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_regex_item">
+<span class="sig-name descname"><span class="pre">test_regex_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_regex_item" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_save">
+<span class="sig-name descname"><span class="pre">test_save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_subvocab">
+<span class="sig-name descname"><span class="pre">test_subvocab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_subvocab" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_sum">
+<span class="sig-name descname"><span class="pre">test_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_sum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.TestVocab.test_values">
+<span class="sig-name descname"><span class="pre">test_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vocab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.TestVocab.test_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.array_equal">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_vocab.</span></span><span class="sig-name descname"><span class="pre">array_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.array_equal" title="Permalink to this definition">¶</a></dt>
+<dd><p>the two arrays need not be the same order</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.test_vocab.vocab">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.test_vocab.</span></span><span class="sig-name descname"><span class="pre">vocab</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.test_vocab.vocab" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-nephosem.tests.utils">
+<span id="nephosem-tests-utils-module"></span><h2>nephosem.tests.utils module<a class="headerlink" href="#module-nephosem.tests.utils" title="Permalink to this headline">¶</a></h2>
+<p>Module contains common utilities used in automated code tests for QLVL modules.</p>
+<div class="section" id="attributes">
+<h3>Attributes:<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<dl>
+<dt>module_path<span class="classifier">str</span></dt><dd><p>Full path to this module directory.</p>
+</dd>
+<dt>common_texts<span class="classifier">list of list of str</span></dt><dd><p>Toy dataset.</p>
+</dd>
+<dt>common_dictionary<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dictionary</span></code></span></dt><dd><p>Dictionary of toy dataset.</p>
+</dd>
+<dt>common_corpus<span class="classifier">list of list of (int, int)</span></dt><dd><p>Corpus of toy dataset.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="examples">
+<h3>Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>It’s easy to keep objects in temporary folder and reuse’em if needed:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">word2vec</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gensim.test.utils</span> <span class="kn">import</span> <span class="n">get_tmpfile</span><span class="p">,</span> <span class="n">common_texts</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">word2vec</span><span class="o">.</span><span class="n">Word2Vec</span><span class="p">(</span><span class="n">common_texts</span><span class="p">,</span> <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temp_path</span> <span class="o">=</span> <span class="n">get_tmpfile</span><span class="p">(</span><span class="s1">&#39;toy_w2v&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">temp_path</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_model</span> <span class="o">=</span> <span class="n">word2vec</span><span class="o">.</span><span class="n">Word2Vec</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">temp_path</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">new_model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s2">&quot;human&quot;</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Let’s print first document in toy dataset and then recreate it using its corpus and dictionary.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gensim.test.utils</span> <span class="kn">import</span> <span class="n">common_texts</span><span class="p">,</span> <span class="n">common_dictionary</span><span class="p">,</span> <span class="n">common_corpus</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">common_texts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">[&#39;human&#39;, &#39;interface&#39;, &#39;computer&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">common_dictionary</span><span class="o">.</span><span class="n">doc2bow</span><span class="p">(</span><span class="n">common_texts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="n">common_corpus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We can find our toy set in test data directory.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gensim.test.utils</span> <span class="kn">import</span> <span class="n">datapath</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">datapath</span><span class="p">(</span><span class="s2">&quot;testcorpus.txt&quot;</span><span class="p">))</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">texts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">[&#39;computer&#39;, &#39;human&#39;, &#39;interface&#39;]</span>
+</pre></div>
+</div>
+<p>If you don’t need to keep temporary objects on disk use <code class="xref py py-func docutils literal notranslate"><span class="pre">temporary_file()</span></code>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gensim.test.utils</span> <span class="kn">import</span> <span class="n">temporary_file</span><span class="p">,</span> <span class="n">common_corpus</span><span class="p">,</span> <span class="n">common_dictionary</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">LdaModel</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">temporary_file</span><span class="p">(</span><span class="s2">&quot;temp.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tf</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">lda</span> <span class="o">=</span> <span class="n">LdaModel</span><span class="p">(</span><span class="n">common_corpus</span><span class="p">,</span> <span class="n">id2word</span><span class="o">=</span><span class="n">common_dictionary</span><span class="p">,</span> <span class="n">num_topics</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">lda</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">tf</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.utils.datapath">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.utils.</span></span><span class="sig-name descname"><span class="pre">datapath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.utils.datapath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get full path for file <cite>fname</cite> in test data directory placed in this module directory.
+Usually used to place corpus to data directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fname</strong> (<em>str</em>) – Name of file.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Full path to <cite>fname</cite> in data folder.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.utils.get_tmpfile">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.utils.</span></span><span class="sig-name descname"><span class="pre">get_tmpfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">suffix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.utils.get_tmpfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get full path to file <cite>suffix</cite> in temporary folder.
+This function doesn’t creates file (only generate unique name).
+Also, it may return different paths in consecutive calling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>suffix</strong> (<em>str</em>) – Suffix of file.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Path to <cite>suffix</cite> file in temporary folder.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Using this function we may get path to temporary file and use it, for example, to store temporary model.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.tests.utils.temporary_file">
+<span class="sig-prename descclassname"><span class="pre">nephosem.tests.utils.</span></span><span class="sig-name descname"><span class="pre">temporary_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.tests.utils.temporary_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This context manager creates file <cite>name</cite> in temporary directory and returns its full path.
+Temporary directory with included files will deleted at the end of context. Note, it won’t create file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – Filename.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><em>str</em> – Path to file <cite>name</cite> in temporary directory.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>This example demonstrates that created temporary directory (and included
+files) will deleted at the end of context.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gensim.test.utils</span> <span class="kn">import</span> <span class="n">temporary_file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">temporary_file</span><span class="p">(</span><span class="s2">&quot;temp.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tf</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">tf</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;my extremely useful information&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is this file exists? </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">tf</span><span class="p">)))</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is this folder exists? </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">tf</span><span class="p">))))</span>
+<span class="go">Is this file exists? True</span>
+<span class="go">Is this folder exists? True</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is this file exists? </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">tf</span><span class="p">)))</span>
+<span class="go">Is this file exists? False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is this folder exists? </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">tf</span><span class="p">))))</span>
+<span class="go">Is this folder exists? False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-nephosem.tests">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-nephosem.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="nephosem.specutils.html" class="btn btn-neutral float-left" title="nephosem.specutils package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

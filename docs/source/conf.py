@@ -22,7 +22,7 @@ copyright = '2021, QLVL'
 author = 'QLVL'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1'
+release = '0.1.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -33,7 +33,8 @@ release = '0.1'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx_rtd_theme',
-    'sphinx.ext.napoleon'
+    'sphinx.ext.napoleon',
+    'sphinx.ext.autosummary'
 ]
 
 # Add any paths that contain templates here, relative to this directory.

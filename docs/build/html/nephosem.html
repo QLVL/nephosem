@@ -1,0 +1,744 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>nephosem package &mdash; Nephological Semantics 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="nephosem.core package" href="nephosem.core.html" />
+    <link rel="prev" title="nephosem" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">nephosem</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">nephosem package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="nephosem.core.html">nephosem.core package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nephosem.deprel.html">nephosem.deprel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nephosem.models.html">nephosem.models package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nephosem.specutils.html">nephosem.specutils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-nephosem.conf">nephosem.conf module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-nephosem.logging">nephosem.logging module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-nephosem.utils">nephosem.utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-nephosem">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">nephosem</a> &raquo;</li>
+        
+      <li>nephosem package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/nephosem.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="nephosem-package">
+<h1>nephosem package<a class="headerlink" href="#nephosem-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="nephosem.core.html">nephosem.core package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.core.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.core.html#module-nephosem.core.graph">nephosem.core.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.core.html#module-nephosem.core.handler">nephosem.core.handler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.core.html#module-nephosem.core.matrix">nephosem.core.matrix module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nephosem.core.html#usage-examples">Usage examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.core.html#module-nephosem.core.terms">nephosem.core.terms module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.core.html#module-nephosem.core.vocab">nephosem.core.vocab module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nephosem.core.html#id18">Usage examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.core.html#module-nephosem.core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nephosem.deprel.html">nephosem.deprel package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.deprel.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.deprel.html#module-nephosem.deprel.basic">nephosem.deprel.basic module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.deprel.html#nephosem-deprel-corpus-module">nephosem.deprel.corpus module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.deprel.html#module-nephosem.deprel.dephandler">nephosem.deprel.dephandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.deprel.html#module-nephosem.deprel.deputils">nephosem.deprel.deputils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.deprel.html#nephosem-deprel-tmp-module">nephosem.deprel.tmp module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.deprel.html#module-nephosem.deprel">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nephosem.models.html">nephosem.models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.models.html#module-nephosem.models.cbc">nephosem.models.cbc module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nephosem.models.html#usage-examples">Usage examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.models.html#module-nephosem.models.deprel">nephosem.models.deprel module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.models.html#module-nephosem.models.typetoken">nephosem.models.typetoken module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nephosem.models.html#other-models">Other models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nephosem.models.html#id1">Usage examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.models.html#module-nephosem.models">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nephosem.specutils.html">nephosem.specutils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.specutils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.specutils.html#module-nephosem.specutils.deputils">nephosem.specutils.deputils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.specutils.html#module-nephosem.specutils.mxcalc">nephosem.specutils.mxcalc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.specutils.html#module-nephosem.specutils.mxutils">nephosem.specutils.mxutils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.specutils.html#module-nephosem.specutils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-nephosem.conf">
+<span id="nephosem-conf-module"></span><h2>nephosem.conf module<a class="headerlink" href="#module-nephosem.conf" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.conf.ConfigLoader">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.conf.</span></span><span class="sig-name descname"><span class="pre">ConfigLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.conf.ConfigLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nephosem.conf</span> <span class="kn">import</span> <span class="n">ConfigLoader</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span> <span class="o">=</span> <span class="n">ConfigLoader</span><span class="p">()</span>  <span class="c1"># will read default settings</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_config_fname</span> <span class="o">=</span> <span class="s2">&quot;/path/of/new/config/file&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settings</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">update_config</span><span class="p">(</span><span class="n">new_config_fname</span><span class="p">)</span>  <span class="c1"># -&gt; new settings based on your config file and default settings</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.conf.ConfigLoader.load_config">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.conf.ConfigLoader.load_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read settings in a config file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.conf.ConfigLoader.read_params">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">read_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sett</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.conf.ConfigLoader.read_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.conf.ConfigLoader.settings">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">settings</span></span><a class="headerlink" href="#nephosem.conf.ConfigLoader.settings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.conf.ConfigLoader.updateConfig">
+<span class="sig-name descname"><span class="pre">updateConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.conf.ConfigLoader.updateConfig" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.conf.ConfigLoader.update_config">
+<span class="sig-name descname"><span class="pre">update_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.conf.ConfigLoader.update_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update settings based on a config file.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nephosem.logging">
+<span id="nephosem-logging-module"></span><h2>nephosem.logging module<a class="headerlink" href="#module-nephosem.logging" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.logging.DefaultFormatter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.logging.</span></span><span class="sig-name descname"><span class="pre">DefaultFormatter</span></span><a class="headerlink" href="#nephosem.logging.DefaultFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Formatter</span></code></p>
+<p>This class inherits <cite>logging.Formatter</cite> and is used for setting the format of a handler.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.logging.DefaultFormatter.dbg_fmt">
+<span class="sig-name descname"><span class="pre">dbg_fmt</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'DEBUG:</span> <span class="pre">%(module)s:</span> <span class="pre">%(lineno)d:</span> <span class="pre">%(msg)s'</span></em><a class="headerlink" href="#nephosem.logging.DefaultFormatter.dbg_fmt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.logging.DefaultFormatter.err_fmt">
+<span class="sig-name descname"><span class="pre">err_fmt</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'ERROR:</span> <span class="pre">%(msg)s'</span></em><a class="headerlink" href="#nephosem.logging.DefaultFormatter.err_fmt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.logging.DefaultFormatter.format">
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.logging.DefaultFormatter.format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format the specified record as text.</p>
+<p>The record’s attribute dictionary is used as the operand to a
+string formatting operation which yields the returned string.
+Before formatting the dictionary, a couple of preparatory steps
+are carried out. The message attribute of the record is computed
+using LogRecord.getMessage(). If the formatting string uses the
+time (as determined by a call to usesTime(), formatTime() is
+called to format the event time. If there is exception information,
+it is formatted using formatException() and appended to the message.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.logging.DefaultFormatter.info_fmt">
+<span class="sig-name descname"><span class="pre">info_fmt</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'%(msg)s'</span></em><a class="headerlink" href="#nephosem.logging.DefaultFormatter.info_fmt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.logging.DefaultFormatter.wrn_fmt">
+<span class="sig-name descname"><span class="pre">wrn_fmt</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'WARNING:</span> <span class="pre">%(msg)s'</span></em><a class="headerlink" href="#nephosem.logging.DefaultFormatter.wrn_fmt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nephosem.utils">
+<span id="nephosem-utils-module"></span><h2>nephosem.utils module<a class="headerlink" href="#module-nephosem.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.utils.SaveLoad">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">SaveLoad</span></span><a class="headerlink" href="#nephosem.utils.SaveLoad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Serialize/deserialize object from disk, by equipping objects with the save()/load() methods.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This uses pickle internally (among other techniques), so objects must not contain unpicklable attributes
+such as lambda functions etc.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.utils.SaveLoad.load">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.SaveLoad.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load an object previously saved using <code class="xref py py-meth docutils literal notranslate"><span class="pre">save()</span></code> from a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fname</strong> (<em>str</em>) – Path to file that contains needed object.</p></li>
+<li><p><strong>mmap</strong> (<em>str</em><em>, </em><em>optional</em>) – Memory-map option.  If the object was saved with large arrays stored separately, you can load these arrays
+via mmap (shared memory) using <cite>mmap=’r’.
+If the file being loaded is compressed (either ‘.gz’ or ‘.bz2’), then `mmap=None</cite> <strong>must be</strong> set.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-meth docutils literal notranslate"><span class="pre">save()</span></code></dt><dd><p>Save object to file.</p>
+</dd>
+</dl>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Object loaded from <cite>fname</cite>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>object</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>AttributeError</strong> – When called on an object instance instead of class (this is a class method).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.utils.SaveLoad.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname_or_handle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separately</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10485760</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">frozenset({})</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pickle_protocol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.SaveLoad.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the object to a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fname_or_handle</strong> (<em>str</em><em> or </em><em>file-like</em>) – Path to output file or already opened file-like object. If the object is a file handle,
+no special array handling will be performed, all attributes will be saved to the same file.</p></li>
+<li><p><strong>separately</strong> (<em>list of str</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – <p>If None, automatically detect large numpy/scipy.sparse arrays in the object being stored, and store
+them into separate files. This prevent memory errors for large objects, and also allows
+<a class="reference external" href="https://en.wikipedia.org/wiki/Mmap">memory-mapping</a> the large arrays for efficient
+loading and sharing the large arrays in RAM between multiple processes.</p>
+<p>If list of str: store these attributes into separate files. The automated size check
+is not performed in this case.</p>
+</p></li>
+<li><p><strong>sep_limit</strong> (<em>int</em><em>, </em><em>optional</em>) – Don’t store arrays smaller than this separately. In bytes.</p></li>
+<li><p><strong>ignore</strong> (<em>frozenset of str</em><em>, </em><em>optional</em>) – Attributes that shouldn’t be stored at all.</p></li>
+<li><p><strong>pickle_protocol</strong> (<em>int</em><em>, </em><em>optional</em>) – Protocol number for pickle.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-meth docutils literal notranslate"><span class="pre">load()</span></code></dt><dd><p>Load object from file.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.clean_dir">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">clean_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dirname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.clean_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clean directory.
+If there are files in this directory, remove them all.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.count_values">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">count_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.count_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Count the number of values in the nested dict</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.get_word_str">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">get_word_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wquery</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specific</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">corpus_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">def_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.get_word_str" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wquery</strong> – can be a string or a dictionary
+the result of getWordStr() always is a string</p></li>
+<li><p><strong>specific</strong> – refers to whether or not a corpus specific word
+representation is requested.</p></li>
+<li><p><strong>corpus_name</strong> – only used if ‘specific=True’</p></li>
+<li><p><strong>def_key</strong> – settings[‘wqueries-default-key’]</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.is_string">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">is_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.is_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the passed text is an instance of str / unicode (Python2) or unicode / bytes (Python3)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.load_dict_json">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">load_dict_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.load_dict_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load dict from json file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.load_dict_plain">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">load_dict_plain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.load_dict_plain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load dict from plain txt file
+One word per line ( word[TAB]freq )</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.make_dir">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">make_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dirname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.make_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create directory if not exist.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.pickle">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">pickle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.pickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pickle object <cite>obj</cite> to file <cite>fname</cite>, using smart_open so that <cite>fname</cite> can be on S3, HDFS, compressed etc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>object</em>) – Any python object.</p></li>
+<li><p><strong>fname</strong> (<em>str</em>) – Path to pickle file.</p></li>
+<li><p><strong>protocol</strong> (<em>int</em><em>, </em><em>optional</em>) – Pickle protocol number. Default is 2 in order to support compatibility across python 2.x and 3.x.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.read_fnames">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">read_fnames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.read_fnames" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function reads all filenames in this provided file
+It assumes ‘filename’ is a string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>filename that records corpus filenames</em>) – </p></li>
+<li><p><strong>dirname</strong> (<em>corpus directory</em>) – </p></li>
+<li><p><strong>encoding</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>a list of filenames in this file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.read_fnames_of_corpus">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">read_fnames_of_corpus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corpus_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.read_fnames_of_corpus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read all file names of all files in corpus_path folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>corpus_path</strong> (<em>str</em>) – The corpus path where all corpus files are located.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.read_word_queries">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">read_word_queries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wquery_default_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_DEFAULT_'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.read_word_queries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a list of ‘word queries’ from the file ‘fname’. These
+‘word queries’ are used in other functions as search terms for
+retrieving tokens in the corpora.
+———————————————————————-
+The function read_word_queries() assumes that ‘fname’ is a string that
+contains a file name.</p>
+<p>The expected file format for that file is as follows:</p>
+<ul>
+<li><p>lines that start with # are ignored</p></li>
+<li><p>other lines, if they don’t contain tabs, are assumed to contain a
+single word representation</p>
+<blockquote>
+<div><dl class="simple">
+<dt>e.g.:</dt><dd><p>appel/noun</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>such single word representations are represented as a string in the
+output of this function.</p>
+</li>
+<li><p>other lines, if they do contain tabs, are assumed to have the
+following format:</p>
+<blockquote>
+<div><blockquote>
+<div><p>corpusname:wordstr TAB corpusname:wordstr TAB etc.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>e.g.:</dt><dd><p>LeNC:rustoord/noun TAB TwNC:rust_oord/noun</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>This example indicates that what we consider to be one and the same
+word in our study, has the format “rustoord/noun” in the corpus
+LeNC and has the format “rust_oord/noun” in the corpus TwNC.
+Such information will be represented, in the output of
+readWQueriesList(), in a dictionary:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>e.g.:</dt><dd><dl class="simple">
+<dt>{“LeNC”: “rustoord/noun”,</dt><dd><p>“TwNC”: “rust_oord/noun”,
+“_DEFAULT_”: “rustoord/noun”}</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<p>In this example, it is assumed that the value of
+‘settings[“wqueries-default-key”]’ is “_DEFAULT_”.
+There always is a key ‘settings[“wqueries-default-key”]’ in these
+output dictionaries. If the input line does not explicitly contain
+a corpus name equal to ‘settings[“wqueries-default-key”]’, then the
+first value/word in the input line is also used as the value/word for
+‘settings[“wqueries-default-key”]’.</p>
+</li>
+</ul>
+<p>[format of result]
+- The result is a list of items, with each of these items either being</p>
+<blockquote>
+<div><p>a string (which indicates that the same search term can be used in
+all corpora) or a dictionary that maps corpus names onto queries/words
+and that maps ‘settings[“wqueries-default-key”]’ onto the default
+query/word.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fname</strong> – </p></li>
+<li><p><strong>encoding</strong> (<em>str</em>) – default ‘utf-8’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of dicts</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.save_concordance">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">save_concordance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">typenodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colloc_fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lemma'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.save_concordance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write out a concordance for types/concepts</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fname</strong> (<em>str</em>) – filename to save</p></li>
+<li><p><strong>colloc_fmt</strong> (<em>str</em>) – Options: ‘lemma’, ‘word’, ‘lemma/pos’, …</p></li>
+<li><p><strong>encoding</strong> (<em>str</em>) – default ‘utf-8’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.save_dict_json">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">save_dict_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.save_dict_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save frequency dict to json file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.save_dict_plain">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">save_dict_plain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'freq'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.save_dict_plain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save frequency dict to plain txt file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>freq_dict</strong> (<em>dict</em>) – </p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – </p></li>
+<li><p><strong>encoding</strong> (<em>str</em>) – ‘utf-8’, ‘latin-1’, …</p></li>
+<li><p><strong>order</strong> (<em>str</em>) – ‘freq’, ‘alpha’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.sizeof">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">sizeof</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'B'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.sizeof" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.sizeof_fmt">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">sizeof_fmt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'B'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.sizeof_fmt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.sort_dict">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">sort_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sorting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'freq'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.sort_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort a dict by order.
+Normally if the ‘sorting’ is ‘freq’, sort the dict first by frequency descending order,
+then by alphabetic ascending order.
+If the ‘sorting’ is ‘alpha’, sort the dict by alphabetic ascending order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>freq_dict</strong> (<em>dict</em>) – Python dict of item to frequency pair.</p></li>
+<li><p><strong>sorting</strong> (<em>str</em>) – ‘freq’ for frequency order, ‘alpha’ for alphabetic order.</p></li>
+<li><p><strong>descending</strong> (<em>bool</em>) – If True, sort dict by descending order of ‘sorting’.
+Else, sort dict by ascending order of ‘sorting’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>sorted_keys, a list of sorted keys of the dict</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.timeit">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">timeit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.timeit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.utils.unpickle">
+<span class="sig-prename descclassname"><span class="pre">nephosem.utils.</span></span><span class="sig-name descname"><span class="pre">unpickle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.utils.unpickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load object from <cite>fname</cite>, using smart_open so that <cite>fname</cite> can be on S3, HDFS, compressed etc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fname</strong> (<em>str</em>) – Path to pickle file.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Python object loaded from <cite>fname</cite>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nephosem">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-nephosem" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="nephosem.core.html" class="btn btn-neutral float-right" title="nephosem.core package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="modules.html" class="btn btn-neutral float-left" title="nephosem" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
