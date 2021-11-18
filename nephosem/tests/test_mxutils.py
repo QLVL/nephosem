@@ -6,8 +6,8 @@ import os
 
 import pytest
 
-from qlvl import TypeTokenMatrix
-from qlvl.specutils import mxutils
+from nephosem import TypeTokenMatrix
+from nephosem.specutils import mxutils
 
 curdir = os.path.dirname(os.path.realpath(__file__))
 
