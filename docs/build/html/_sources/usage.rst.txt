@@ -13,3 +13,17 @@ To use Nephosem, clone the `repository`_ and append it to the path in your Pytho
     import nephosem
 
 .. _repository: https://github.com/QLVL/nephosem/
+
+Citation
+--------
+
+If you use this code, use the information below:
+
+.. code-block:: bibtex
+
+    @software{QLVL_nephosem,
+    author = {{QLVL}},
+    license = {GPL-3.0-or-later},
+    title = {{nephosem}},
+    version = {0.1.0}
+    }

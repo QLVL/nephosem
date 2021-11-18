@@ -12,14 +12,17 @@ You can learn more about the project :doc:`here <about>`.
 
 One of the main products of our project is Nephosem, a Python package with functions
 to create type- and token-level distributional models, both with bag-of-words and
-dependency information. You can also find here :doc:`the documentation <modules>`.
+dependency information. You can also find here :doc:`the documentation <nephosem>`.
+
+.. image:: https://zenodo.org/badge/233318567.svg
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    usage
-   modules
+   Documentation <nephosem>
+   Repository <https://github.com/QLVL/nephosem/>
    about
 
 
