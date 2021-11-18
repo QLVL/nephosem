@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 authors:
-  - name: QLVL
+  - family-names: QLVL
   - email: qlvl@kuleuven.be
 title: "nephosem"
 version: 0.1.0
