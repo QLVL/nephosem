@@ -1,0 +1,875 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>nephosem.deprel package &mdash; Nephological Semantics 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="nephosem.models package" href="nephosem.models.html" />
+    <link rel="prev" title="nephosem.core package" href="nephosem.core.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="nephosem.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="nephosem.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="nephosem.core.html">nephosem.core package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">nephosem.deprel package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-nephosem.deprel.basic">nephosem.deprel.basic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nephosem-deprel-corpus-module">nephosem.deprel.corpus module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-nephosem.deprel.dephandler">nephosem.deprel.dephandler module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-nephosem.deprel.deputils">nephosem.deprel.deputils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nephosem-deprel-tmp-module">nephosem.deprel.tmp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-nephosem.deprel">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="nephosem.models.html">nephosem.models package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nephosem.specutils.html">nephosem.specutils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.html#module-nephosem.conf">nephosem.conf module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.html#module-nephosem.logging">nephosem.logging module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.html#module-nephosem.utils">nephosem.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nephosem.html#module-nephosem">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="nephosem.html">nephosem package</a> &raquo;</li>
+        
+      <li>nephosem.deprel package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/nephosem.deprel.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="nephosem-deprel-package">
+<h1>nephosem.deprel package<a class="headerlink" href="#nephosem-deprel-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-nephosem.deprel.basic">
+<span id="nephosem-deprel-basic-module"></span><h2>nephosem.deprel.basic module<a class="headerlink" href="#module-nephosem.deprel.basic" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.DiGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">DiGraph</span></span><a class="headerlink" href="#nephosem.deprel.basic.DiGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.DiGraph.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.DiGraph.add_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an edge to graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.DiGraph.add_node">
+<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.DiGraph.add_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a node with id and label (optional) to graph.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.DiGraph.edges">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#nephosem.deprel.basic.DiGraph.edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.DiGraph.in_degree">
+<span class="sig-name descname"><span class="pre">in_degree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.DiGraph.in_degree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.DiGraph.istree">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">istree</span></span><a class="headerlink" href="#nephosem.deprel.basic.DiGraph.istree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.DiGraph.nodes">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#nephosem.deprel.basic.DiGraph.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.DiGraph.out_degree">
+<span class="sig-name descname"><span class="pre">out_degree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.DiGraph.out_degree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.DiGraph.predcessors">
+<span class="sig-name descname"><span class="pre">predcessors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.DiGraph.predcessors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.DiGraph.successors">
+<span class="sig-name descname"><span class="pre">successors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.DiGraph.successors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.FeatureGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">FeatureGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.FeatureGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nephosem.deprel.basic.TemplateGraph" title="nephosem.deprel.basic.TemplateGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">nephosem.deprel.basic.TemplateGraph</span></code></a></p>
+<p>Class representing a feature graph inherited from the class TemplateGraph.
+So it will have the same structure of the template from which it is generated.
+The generating process of a feature object would be:
+* 1. replicate a (tree) structure of the template
+* 2. set target node index
+* 3. set feature properties for each node (except for the target) and each edge.</p>
+<blockquote>
+<div><p>The feature properties (i.e. True or False) would be stored in <strong>attributes</strong> of nodes and edges</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.FeatureGraph.add_match">
+<span class="sig-name descname"><span class="pre">add_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matched_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matched_edges</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.FeatureGraph.add_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add matched nodes and edges</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matched_nodes</strong> (<em>dict</em>) – mapping from node index to item string</p></li>
+<li><p><strong>matched_edges</strong> (<em>dict</em>) – mapping from edge index to relation string</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.FeatureGraph.set_feature">
+<span class="sig-name descname"><span class="pre">set_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.FeatureGraph.set_feature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.FeatureGraph.set_target">
+<span class="sig-name descname"><span class="pre">set_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.FeatureGraph.set_target" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.FeatureGraph.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.FeatureGraph.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.FeatureGraph.show_match">
+<span class="sig-name descname"><span class="pre">show_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.FeatureGraph.show_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.FeatureGraph.size">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#nephosem.deprel.basic.FeatureGraph.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Graph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id2node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.Graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Graph.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e_from_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_to_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.Graph.add_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an edge to graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Graph.add_node">
+<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.Graph.add_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a node with id and label (optional) to graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Graph.build_graph">
+<span class="sig-name descname"><span class="pre">build_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id2node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.Graph.build_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sentence</strong> (<em>iterable</em>) – A list of dependency relations.</p></li>
+<li><p><strong>id2node</strong> (<em>dict</em>) – Node id to node string mapping.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Graph.build_graph_raw">
+<span class="sig-name descname"><span class="pre">build_graph_raw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.Graph.build_graph_raw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a graph from raw text (of a sentence)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sentence</strong> (<em>iterable</em>) – A list of strings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Graph.edges">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#nephosem.deprel.basic.Graph.edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Graph.match">
+<span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.Graph.match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match a graph with path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference internal" href="#nephosem.deprel.basic.PathTemplate" title="nephosem.deprel.basic.PathTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PathTemplate</span></code></a>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>valid matches</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>iterable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Graph.nodes">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#nephosem.deprel.basic.Graph.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Path">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">Path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matches</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class storing path matches found in corpus</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Path.add_path">
+<span class="sig-name descname"><span class="pre">add_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.Path.add_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a match</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>match</strong> (<em>iterable</em>) – A list of str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Path.len">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">len</span></span><a class="headerlink" href="#nephosem.deprel.basic.Path.len" title="Permalink to this definition">¶</a></dt>
+<dd><p>size of template
+i.e. ‘<em>:NN:amod:VB:</em>’ has a size of one</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Path.load">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.Path.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Path.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.Path.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Path.size">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#nephosem.deprel.basic.Path.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of matches</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.PathTemplate">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">PathTemplate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.PathTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class representing a path template</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.PathTemplate.len">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">len</span></span><a class="headerlink" href="#nephosem.deprel.basic.PathTemplate.len" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.PathTemplate.match_edge">
+<span class="sig-name descname"><span class="pre">match_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.PathTemplate.match_edge" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.PathTemplate.match_node">
+<span class="sig-name descname"><span class="pre">match_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.PathTemplate.match_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Sentence">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">Sentence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.Sentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Sentence.get_content">
+<span class="sig-name descname"><span class="pre">get_content</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.Sentence.get_content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.Sentence.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.Sentence.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>parse sentence text (raw string from corpus file)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.SentenceGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">SentenceGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.SentenceGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nephosem.deprel.basic.DiGraph" title="nephosem.deprel.basic.DiGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">nephosem.deprel.basic.DiGraph</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.SentenceGraph.build_graph">
+<span class="sig-name descname"><span class="pre">build_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.SentenceGraph.build_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a graph from raw text (of a sentence)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sentence</strong> (<em>iterable</em>) – A list of strings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.SentenceGraph.generate_graph">
+<span class="sig-name descname"><span class="pre">generate_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.SentenceGraph.generate_graph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.SentenceGraph.match_feature">
+<span class="sig-name descname"><span class="pre">match_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.SentenceGraph.match_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match a sentence with a feature (and target pair)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.SentenceGraph.match_target_feature">
+<span class="sig-name descname"><span class="pre">match_target_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.SentenceGraph.match_target_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match a graph with a path (a tree/graph object).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<a class="reference internal" href="#nephosem.deprel.basic.FeatureGraph" title="nephosem.deprel.basic.FeatureGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureGraph</span></code></a>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>valid matches</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>iterable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.SentenceGraph.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.SentenceGraph.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.TemplateGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">TemplateGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.TemplateGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nephosem.deprel.basic.DiGraph" title="nephosem.deprel.basic.DiGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">nephosem.deprel.basic.DiGraph</span></code></a></p>
+<p>Class representing a dependency template tree/graph</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.TemplateGraph.islinear">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">islinear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.TemplateGraph.islinear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.TemplateGraph.match_edge">
+<span class="sig-name descname"><span class="pre">match_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.TemplateGraph.match_edge" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.TemplateGraph.match_node">
+<span class="sig-name descname"><span class="pre">match_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.TemplateGraph.match_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.TemplateGraph.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.TemplateGraph.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.get_depth">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">get_depth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.get_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the depth of a tree</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.get_depth_of_node">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">get_depth_of_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.get_depth_of_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the depth of a node</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.get_root">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">get_root</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.get_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the root of a tree</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.match_level">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">match_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">currmap</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.match_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match the next level based on the index mapping (feature index -&gt; sentence index) of current level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sentence</strong> (<a class="reference internal" href="#nephosem.deprel.basic.SentenceGraph" title="nephosem.deprel.basic.SentenceGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">SentenceGraph</span></code></a>) – </p></li>
+<li><p><strong>feature</strong> (<a class="reference internal" href="#nephosem.deprel.basic.FeatureGraph" title="nephosem.deprel.basic.FeatureGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureGraph</span></code></a>) – </p></li>
+<li><p><strong>currmap</strong> (<em>dict</em>) – Index mapping from sentence node to feature node (of current level).
+e.g. feature node idx -&gt; sentence node idx</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>A list of dicts</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>feature node idx -&gt; sentence node idx</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.match_sub_template">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">match_sub_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.match_sub_template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.match_successors">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">match_successors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fcur</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.match_successors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match sentence successors with feature successors based on current sentence node and feature node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sentence</strong> (<a class="reference internal" href="#nephosem.deprel.basic.SentenceGraph" title="nephosem.deprel.basic.SentenceGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">SentenceGraph</span></code></a>) – </p></li>
+<li><p><strong>scur</strong> (<em>int</em>) – Current node index of sentence</p></li>
+<li><p><strong>feature</strong> (<a class="reference internal" href="#nephosem.deprel.basic.FeatureGraph" title="nephosem.deprel.basic.FeatureGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureGraph</span></code></a>) – </p></li>
+<li><p><strong>fcur</strong> (<em>int</em>) – Current node index of feature</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>A list of dicts</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>feature node idx -&gt; sentence node idx</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.subtree_match">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">subtree_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lmatches</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.subtree_match" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sentence</strong> (<a class="reference internal" href="#nephosem.deprel.basic.SentenceGraph" title="nephosem.deprel.basic.SentenceGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">SentenceGraph</span></code></a>) – </p></li>
+<li><p><strong>feature</strong> (<a class="reference internal" href="#nephosem.deprel.basic.FeatureGraph" title="nephosem.deprel.basic.FeatureGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureGraph</span></code></a>) – </p></li>
+<li><p><strong>lmatches</strong> (<em>queue</em><em> (</em><em>collections.deque</em><em>)</em>) – Contains a list of possible matches.
+Each match is a (finally the length is <cite>feature.depth</cite>) lists of levels of the feature.
+Element example: feature node idx -&gt; sentence node idx.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.basic.tree_match">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.basic.</span></span><span class="sig-name descname"><span class="pre">tree_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.basic.tree_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match the sentence with the feature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sentence</strong> (<a class="reference internal" href="#nephosem.deprel.basic.SentenceGraph" title="nephosem.deprel.basic.SentenceGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">SentenceGraph</span></code></a>) – </p></li>
+<li><p><strong>feature</strong> (<a class="reference internal" href="#nephosem.deprel.basic.FeatureGraph" title="nephosem.deprel.basic.FeatureGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureGraph</span></code></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="nephosem-deprel-corpus-module">
+<h2>nephosem.deprel.corpus module<a class="headerlink" href="#nephosem-deprel-corpus-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-nephosem.deprel.dephandler">
+<span id="nephosem-deprel-dephandler-module"></span><h2>nephosem.deprel.dephandler module<a class="headerlink" href="#module-nephosem.deprel.dephandler" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.DepRelManager">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.deprel.dephandler.</span></span><span class="sig-name descname"><span class="pre">DepRelManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.DepRelManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="nephosem.core.html#nephosem.core.handler.BaseHandler" title="nephosem.core.handler.BaseHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">nephosem.core.handler.BaseHandler</span></code></a></p>
+<p>Handler Class for processing dependency relations</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.DepRelManager.build_dep_rel">
+<span class="sig-name descname"><span class="pre">build_dep_rel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multicore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.DepRelManager.build_dep_rel" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function will treat all different word types as possible target or context words.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fnames</strong> (<em>str</em><em>, </em><em>optional</em>) – Filename of a file which records all (a user wants to process) file names of a corpus.
+Format: corpus_name + settings[“fnames-ext”]</p></li>
+<li><p><strong>row_vocab</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code>) – Target words (types) vocabulary.
+If a non-empty vocabulary is passed, only target words (types) in this vocab
+should be processed.
+Otherwise all possible words (types) should be processed.</p></li>
+<li><p><strong>col_vocab</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code>) – Context features vocabulary.
+If a non-empty vocabulary is passed, only context features in this vocab
+should be processed.
+Otherwise all possible contexts should be processed.</p></li>
+<li><p><strong>multicore</strong> (<em>bool</em>) – Use multicore version of the method or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.DepRelManager.do_job_single">
+<span class="sig-name descname"><span class="pre">do_job_single</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">superkwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.DepRelManager.do_job_single" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method doing job for handler class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fnames</strong> (<em>iterable</em>) – A list of filenames</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.DepRelManager.merge_results">
+<span class="sig-name descname"><span class="pre">merge_results</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.DepRelManager.merge_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge subprocess matrices into one final matrix.
+sub-process matrices filename format: …/matches.sub.pid</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.DepRelManager.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queue_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.DepRelManager.process" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fnames</strong> – </p></li>
+<li><p><strong>queue_factor</strong> (<em>int</em><em>, </em><em>optional</em>) – Multiplier for size of queue -&gt; size = number of workers * queue_factor.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.DepRelManager.read_features">
+<span class="sig-name descname"><span class="pre">read_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.DepRelManager.read_features" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.DepRelManager.read_template">
+<span class="sig-name descname"><span class="pre">read_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.DepRelManager.read_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read paths from file</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.update_dep_rel_caller">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.dephandler.</span></span><span class="sig-name descname"><span class="pre">update_dep_rel_caller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tmpdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.update_dep_rel_caller" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will save path template matches of sub-process.
+Filename format of sub-process objects:</p>
+<blockquote>
+<div><p>matrix: paths.sub.pid</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fnames</strong> (<em>iterable</em>) – A list of filenames</p></li>
+<li><p><strong>tmpdir</strong> (<em>str</em>) – Temporary folder</p></li>
+<li><p><strong>settings</strong> (<em>dict</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nephosem.deprel.deputils">
+<span id="nephosem-deprel-deputils-module"></span><h2>nephosem.deprel.deputils module<a class="headerlink" href="#module-nephosem.deprel.deputils" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.cartesian_product">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">cartesian_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.cartesian_product" title="Permalink to this definition">¶</a></dt>
+<dd><p>{1: (1, 2), 2: (3, 4)} -&gt; [{1:1, 2:3}, {1:2, 2:3}, {1:1, 2:4}, {1:2, 2:4}]
+Should perform:
+{1: (1, 2), 2: (1, 2)} -&gt;
+[{1: 1, 2: 2}] (if the target is not in (1, 2))
+[{1: 1, 2: 2}, {1: 2, 2: 1}]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.group">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodemap</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.judgeIn">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">judgeIn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sLine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.judgeIn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.judgeIn_v1">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">judgeIn_v1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sLine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.judgeIn_v1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.judgeOut">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">judgeOut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sLine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.judgeOut" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.outMap">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">outMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.outMap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.process_sentence">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">process_sentence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sLine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.process_sentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process a sentence line.
+line : ‘sid:edge1;edge2;edge3…’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sLine</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.read_nodes">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">read_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.read_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read nodes from file.
+i.e. :</p>
+<blockquote>
+<div><p>a/DT    4
+an/DT   21
+…</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.split_large_file">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">split_large_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.split_large_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split large corpus file into samller ones for multicore processing</p>
+</dd></dl>
+
+</div>
+<div class="section" id="nephosem-deprel-tmp-module">
+<h2>nephosem.deprel.tmp module<a class="headerlink" href="#nephosem-deprel-tmp-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-nephosem.deprel">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-nephosem.deprel" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="nephosem.models.html" class="btn btn-neutral float-right" title="nephosem.models package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="nephosem.core.html" class="btn btn-neutral float-left" title="nephosem.core package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
