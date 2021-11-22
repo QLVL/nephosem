@@ -78,5 +78,5 @@ Indices and tables
 
 .. rubric:: Footnotes
 
-.. [#ann] These are not semantic annotations but model-related: context words captured by a given model are
-   highlighted and weighting values may be included as superscript.
+.. [#ann] These are not semantic annotations but model-related: context words captured by a given model are highlighted and weighting values may be included as superscript.
+

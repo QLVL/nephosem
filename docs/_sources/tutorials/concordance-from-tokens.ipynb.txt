@@ -1,0 +1,302 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Creating a concordance with TokenHandler\n",
+    "\n",
+    "The `type2toks` attribute is of `TokenHandler` a dictionary with types as keys and and a `TypeNode` object as value, which has `tokens` attribute that is a list of `TokenNode` objects. From them, we can create a concordance with a function like `tokenConcordance()` below :)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd # to see concordance\n",
+    "import sys\n",
+    "nephosemdir = \"../../nephosem/\"\n",
+    "sys.path.append(nephosemdir)\n",
+    "mydir = f\"./\"\n",
+    "from nephosem import ConfigLoader, Vocab, TokenHandler\n",
+    "conf = ConfigLoader()\n",
+    "settings = conf.update_config('config.ini')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Collect tokens"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "query = Vocab({'girl/N' : 0}) # dummy query just for illustration"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "Not provide the temporary path!\n",
+      "Use the default tmp directory: '~/tmp'!\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[21, 39]                    say/V  healthy/J  what/W  she/P  boy/N  ask/V  be/V  ...\n",
+       "girl/N/StanfDepSents.6/6    NaN    3          NaN     NaN    -3     NaN    NaN   ...\n",
+       "girl/N/StanfDepSents.6/21   NaN    NaN        NaN     NaN    NaN    NaN    NaN   ...\n",
+       "girl/N/StanfDepSents.2/29   NaN    NaN        NaN     NaN    NaN    NaN    -4    ...\n",
+       "girl/N/StanfDepSents.8/3    NaN    NaN        NaN     NaN    NaN    NaN    NaN   ...\n",
+       "girl/N/StanfDepSents.8/15   NaN    NaN        NaN     NaN    -4     NaN    NaN   ...\n",
+       "girl/N/StanfDepSents.8/25   NaN    NaN        NaN     NaN    -3     NaN    NaN   ...\n",
+       "girl/N/StanfDepSents.10/13  NaN    NaN        NaN     NaN    NaN    NaN    NaN   ...\n",
+       "...                         ...    ...        ...     ...    ...    ...    ...   ..."
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tokhan = TokenHandler(query, settings=settings)\n",
+    "tokens = tokhan.retrieve_tokens()\n",
+    "tokens"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## type2toks\n",
+    "\n",
+    "The concordance information is stored in the `type2toks` attribute."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'girl/N': girl/N}"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tokhan.type2toks"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "nephosem.core.terms.TypeNode"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(tokhan.type2toks[\"girl/N\"])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "nephosem.core.terms.TokenNode"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "firstToken = tokhan.type2toks[\"girl/N\"].tokens[0]\n",
+    "type(firstToken)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The following function obtains the `word` attribute of each context word and brings them together in a character string."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def tokenConcordance(token):\n",
+    "    leftContext = \" \".join([x.word for x in token.lcollocs])\n",
+    "    rightContext = \" \".join([x.word for x in token.rcollocs])\n",
+    "    return f\"{leftContext} {token.word} {rightContext}\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'The boy gives the girl a tasty healthy apple'"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tokenConcordance(firstToken)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>text</th>\n",
+       "      <th>token_id</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>The boy gives the girl a tasty healthy apple</td>\n",
+       "      <td>girl/N/StanfDepSents.6/6</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>The girl does n't eat</td>\n",
+       "      <td>girl/N/StanfDepSents.6/21</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>are eaten by the girl</td>\n",
+       "      <td>girl/N/StanfDepSents.2/29</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>The girl sat on the apple</td>\n",
+       "      <td>girl/N/StanfDepSents.8/3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>boy looked at the girl 's apple</td>\n",
+       "      <td>girl/N/StanfDepSents.8/15</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "                                           text                   token_id\n",
+       "0  The boy gives the girl a tasty healthy apple   girl/N/StanfDepSents.6/6\n",
+       "1                         The girl does n't eat  girl/N/StanfDepSents.6/21\n",
+       "2                        are eaten by the girl   girl/N/StanfDepSents.2/29\n",
+       "3                     The girl sat on the apple   girl/N/StanfDepSents.8/3\n",
+       "4               boy looked at the girl 's apple  girl/N/StanfDepSents.8/15"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pd.DataFrame([\n",
+    "    {\"token_id\" : str(token), \"text\" : tokenConcordance(token)}\n",
+    "    for token in tokhan.type2toks[\"girl/N\"].tokens]).head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If you have several queries, you just need to replace `tokhan.type2toks[\"girl/N\"].tokens` with a flattened version `[tok for typ in tokhan.type2toks.values() for tok in ctyp.tokens]`\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

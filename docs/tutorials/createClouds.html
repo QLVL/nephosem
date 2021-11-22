@@ -11,10 +11,10 @@
   
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -26,27 +26,27 @@
 
   
   <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
+    <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     
-    <script type="text/javascript" src="_static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-    <link rel="author" title="About these documents" href="about.html" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="nephosem package" href="nephosem.html" />
-    <link rel="prev" title="Tutorials" href="tutorials.html" /> 
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The full python workflow for semasiological token-level clouds" href="createClouds-loop.html" />
+    <link rel="prev" title="Working with syntactic information" href="dependencies.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -60,7 +60,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Nephological Semantics
+            <a href="../index.html" class="icon icon-home"> Nephological Semantics
           
 
           
@@ -73,7 +73,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -93,8 +93,13 @@
             
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="all-in-one.html">All-in-one nephosem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vocab.html">Editing your vocabulary object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrices.html">All about matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concordance-from-tokens.html">Creating a concordance with TokenHandler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Working with syntactic information</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">The full python workflow for semasiological token-level clouds</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#0.-Initial-setup">0. Initial setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#1.-Configuration">1. Configuration</a></li>
@@ -116,11 +121,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#Bonus:-context-word-detail">Bonus: context word detail</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="createClouds-loop.html">Semasiological Workflow on a loop</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="nephosem.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nephosem.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About us</a></li>
 </ul>
 
             
@@ -136,7 +142,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Nephological Semantics</a>
+          <a href="../index.html">Nephological Semantics</a>
         
       </nav>
 
@@ -167,9 +173,9 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
+          <li><a href="../tutorials.html">Tutorials</a> &raquo;</li>
         
       <li>The full python workflow for semasiological token-level clouds</li>
     
@@ -177,7 +183,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/createClouds.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tutorials/createClouds.ipynb.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -462,12 +468,16 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="The-full-python-workflow-for-semasiological-token-level-clouds">
 <h1>The full python workflow for semasiological token-level clouds<a class="headerlink" href="#The-full-python-workflow-for-semasiological-token-level-clouds" title="Permalink to this headline">¶</a></h1>
-<p>This notebook shows the full workflow followed to create the clouds in Chapter 5 of the monograph (and my dissertation).</p>
-<p>(Eventually, add Kris’s chapter too)</p>
-<p>For this purpose I’m creating a Python package with more order than my previous attempts. It is called <code class="docutils literal notranslate"><span class="pre">semasioFlow</span></code> and has the most verbose code; its documentation can be explored <a class="reference external" href="docs/build/html/index.html">here</a>.</p>
+<p>This notebook walks you through all the steps, from setting up the code based on your corpus to getting token-level distance matrices. They can be based on individual lemmas (like <a class="reference external" href="https://cloudspotting.marianamontes.me/">here</a>) or on groups of related lemmas (like <a class="reference external" href="https://www.degruyter.com/document/doi/10.1515/9783110733945-021/html">here</a>).</p>
+<p>Unlike the basic workflow shown in the <a class="reference internal" href="all-in-one.html"><span class="doc">“All in one” tutorial</span></a>, here we rely on the extension package <code class="docutils literal notranslate"><span class="pre">semasioFlow</span></code> (see <a class="reference external" href="https://github.com/montesmariana/semasioFlow">repo</a>) to facilitatie loops across different parameter settings. The main additions are:</p>
+<ul class="simple">
+<li><p>Functions that check for the existence of a file (e.g. Vocabulary, collocation matrix), load it if it exists and create it otherwise.</p></li>
+<li><p>Functions that take parameter settings definitions and run loops with all the possible combinations; the output is stored with automatically generated filenames and a dataframe is returned with a log of the results</p></li>
+<li><p>Register of parameter settings combination and which context words are captured per token by different models</p></li>
+</ul>
 <div class="section" id="0.-Initial-setup">
 <h2>0. Initial setup<a class="headerlink" href="#0.-Initial-setup" title="Permalink to this headline">¶</a></h2>
-<p>So first we have to add this directory to the path in order to import <code class="docutils literal notranslate"><span class="pre">semasioFlow</span></code>. When it initializes, it loads other libraries we need as well as the <code class="docutils literal notranslate"><span class="pre">qlvl</span></code> library from the <code class="docutils literal notranslate"><span class="pre">depmodel</span></code> repository.</p>
+<p>The first step is to load some packages, including both <code class="docutils literal notranslate"><span class="pre">nephosem</span></code> and <code class="docutils literal notranslate"><span class="pre">semasioFlow</span></code>. Then we export functions directly from <code class="docutils literal notranslate"><span class="pre">semasioFlow</span></code> (although <code class="docutils literal notranslate"><span class="pre">ConfigLoader</span></code> is extracted from <code class="docutils literal notranslate"><span class="pre">nephosem</span></code>).</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -476,9 +486,8 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">logging</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/home/aardvark/code/nephosem&quot;</span><span class="p">)</span>
-<span class="n">mypackage</span> <span class="o">=</span> <span class="s2">&quot;/home/projects/semmetrix/mariana_wolken/cleanWorkflow/scripts/&quot;</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mypackage</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/../../nephosem&quot;</span><span class="p">)</span> <span class="c1"># my path to nephosem</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;../scripts/&quot;</span><span class="p">)</span> <span class="c1"># my path to semasioFlow</span>
 </pre></div>
 </div>
 </div>
@@ -505,7 +514,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mydir</span> <span class="o">=</span> <span class="s2">&quot;/home/projects/semmetrix/mariana_wolken/cleanWorkflow/&quot;</span>
+<span></span><span class="n">mydir</span> <span class="o">=</span> <span class="s2">&quot;../</span>
 <span class="n">output_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/output/&quot;</span>
 <span class="n">github_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/github/&quot;</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s1">/testlog.log&#39;</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
@@ -1151,7 +1160,7 @@ Stored in file:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/createClouds_31_0.png" src="_images/createClouds_31_0.png" />
+<img alt="../_images/tutorials_createClouds_31_0.png" src="../_images/tutorials_createClouds_31_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -12698,8 +12707,8 @@ Stored in file:
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="nephosem.html" class="btn btn-neutral float-right" title="nephosem package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="tutorials.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="createClouds-loop.html" class="btn btn-neutral float-right" title="The full python workflow for semasiological token-level clouds" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dependencies.html" class="btn btn-neutral float-left" title="Working with syntactic information" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
