@@ -3,6 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+
+.. WARNING::
+
+  This website is still a work in progress!
+
 Nephological Semantics
 ======================
 
@@ -43,7 +48,7 @@ The Nephosem package is at the core of this workflow, but is then expanded with 
   for exhaustive, qualitative exploration of the models.
 * The `Level 3 ShinyApp <https://github.com/montesmariana/Level3>`_ for deeper exploration of individual models.
 
-To start, you can take a look at :doc:`this notebook <createClouds>`, which shows the main steps using
+To start, you can take a look at :doc:`this notebook <tutorials/createClouds>`, which shows the main steps using
 semasioFlow and Nephosem, starting with a corpus in conll format (one token per line, columns for different
 features) and ending with token-by-token distance matrices as well as a number of metadata registers.
 
@@ -74,4 +79,4 @@ Indices and tables
 .. rubric:: Footnotes
 
 .. [#ann] These are not semantic annotations but model-related: context words captured by a given model are
-highlighted and weighting values may be included as superscript.
+   highlighted and weighting values may be included as superscript.
