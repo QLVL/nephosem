@@ -1,0 +1,3075 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# The full python workflow for semasiological token-level clouds "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In this notebook we will used the `nephosem` module in the `qlvl/nephosem` repository."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 0. Initial setup "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This initial setup should probably be run in some sort of setup file or at the beginning of any script, in any case.\n",
+    "I'll try to run it with the newer deprel model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd # to see concordance\n",
+    "import numpy as np # for \"booleanize()\"\n",
+    "from scipy import sparse # for \"booleanize()\"\n",
+    "import sys"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Then, the `nephosem` module itself has to be included.\n",
+    "Until we can deploy it and install it with `pip`, we need to attach the path to the repository where it is hosted.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "nephosemdir = \"/home/projects/semmetrix/mariana_wolken/nephosem\"\n",
+    "sys.path.append(nephosemdir)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "From there, we can import the different functions that we need from the `nephosem` module. They could be imported as necessary for the different tasks, especially in a tutorial like this one."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from nephosem.conf import ConfigLoader # to setup the configuration\n",
+    "from nephosem import Vocab, TypeTokenMatrix # to manage frequency lists and matrices\n",
+    "from nephosem import ItemFreqHandler, ColFreqHandler, TokenHandler # to generate frequency lists and matrices\n",
+    "from nephosem import compute_association, compute_distance # to compute PPMI and distances\n",
+    "# compute_cosine would return similarities (I think), compute_simrank, similarity ranks\n",
+    "from nephosem.specutils.mxcalc import compute_token_weights, compute_token_vectors # for token level. I have incorporated Stefano's modifications in my copy, with adjustments\n",
+    "# from qlvl.basics.mxcalc import compute_token_weights, compute_token_vectors # non depmodel version\n",
+    "from nephosem.models.typetoken import build_tc_weight_matrix # for weighting at token level\n",
+    "\n",
+    "# For dependencies\n",
+    "from nephosem.core.graph import SentenceGraph, MacroGraph, PatternGraph\n",
+    "from nephosem.models.deprel import DepRelHandler, read_sentence"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 1. Configuration "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Depending on what you need, you will have to set up some useful paths settings.\n",
+    "I like to have at least the path to my project (`mydir`), an output path within (`mydir + \"output\"`) and a GitHub path for the datasets that I will use in the visualization. There is no real reason not to have everything together, except that I did not think of it at the moment.\n",
+    "\n",
+    "For this notebook, we will use a dataset in the same directory of the package: `tests/data/StanfDepSents`, because it includes dependency information.\n",
+    "\n",
+    "You could also set up a file with filenames, but we won't use that here."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# mydir = \"/home/projects/semmetrix/mariana_wolken/Wolken/\"\n",
+    "mydir = f\"{nephosemdir}/qlvl/tests/data\"\n",
+    "output_path = f\"{mydir}/output/\"\n",
+    "# fnames_file = \"{}/sources/LeNC260TwNC260.fnames\".format(mydir)\n",
+    "# coldir = \"/home/projects/semmetrix/NephoSem/input-data/frequency-matrices/QLVLNewsCorpus/\""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The variables with paths is just meant to make it easier to manipulate filenames. The most important concrete step is to adapt the configuration file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "conf = ConfigLoader()\n",
+    "default_settings = conf.settings\n",
+    "settings = default_settings"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The `line-machine` and `line-format` settings relate to the shape of the corpus file, or concretely to the lines of the tokens, and their content.\n",
+    "\n",
+    "The first is a regular expression with capturing groups:\n",
+    "the versions for *QLVLNewsCorpus* and *Brown* are commented; the one for Stanford Dependency Sentences captures six items separated by tabs.\n",
+    "\n",
+    "The `global-columns` (previously `line-format`) refers to the capturing groups in the line machine and labels them. In the case of the Stanford toy corpus, that is the word form, part-of-speech, lemma, id (index of item in the sentence), head (id of its dependency head) and dependency relation.\n",
+    "\n",
+    "The `type`, `colloc` and `token` settings indicate the format of the type, collocate and token ID's. Here the target and collocate types are set to the default (combination of 'lemma' and 'pos'), and the token ID uses the values of the 'lemma' and 'pos' fields along with the file name/ID ('fid') and the line number starting from 1 ('lid'), all separated by slashes. The 'fid' is computed as the basename of the filename, without extension.\n",
+    "\n",
+    "Afterwards we have settings for dependency-based models: the format of the node and edges in the graph, and the labels of the index and head information.\n",
+    "\n",
+    "The `separator-line-machine` is optional for bag-of-words models (it indicates that we want to stop the window when we encounter it) but necessary for dependency-models:  it tells the software where sentences end."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "([^\t]+)\t([^\t])[^\t]*\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\n",
+      "word,pos,lemma,id,head,deprel\n",
+      "lemma/pos lemma/pos lemma/pos/fid/lid\n"
+     ]
+    }
+   ],
+   "source": [
+    "# settings['line-machine'] = '[^\\t]+\\t([^\\t]+)\\t([^\\t]+)\\t([^\\t]+)\\t[^\\t]+\\t[^\\t]+\\t_\\t_' #QLVLNewsCorpus, no dep\n",
+    "# settings['line-machine'] = '([^\\t]+)\\t([^\\t])[^\\t]*\\t([^\\t]+)' #Brown corpus\n",
+    "settings['line-machine'] = '([^\\t]+)\\t([^\\t])[^\\t]*\\t([^\\t]+)\\t([^\\t]+)\\t([^\\t]+)\\t([^\\t]+)' #Stanford corpus\n",
+    "# settings['line-format'] = 'word,lemma,pos'\n",
+    "#settings['line-format'] = 'word,pos,lemma'\n",
+    "settings['global-columns'] = \"word,pos,lemma,id,head,deprel\" \n",
+    "\n",
+    "settings['type'] = 'lemma/pos'\n",
+    "settings['colloc'] = 'lemma/pos'\n",
+    "settings['token'] = 'lemma/pos/fid/lid'\n",
+    "\n",
+    "# For dependencies\n",
+    "settings['node-attr'] = 'lemma,pos'\n",
+    "settings['edge-attr'] = 'deprel'\n",
+    "settings['currID'] = 'id'\n",
+    "settings['headID'] = 'head'\n",
+    "\n",
+    "settings['separator-line-machine'] = '</s>'\n",
+    "\n",
+    "print(settings['line-machine'])\n",
+    "print(settings['global-columns'])\n",
+    "print(settings['type'], settings['colloc'], settings['token'])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Finally, you can set up the file encoding and the paths for corpus and output (although the output is specified separately as well, I think, and the 'corpus-path' is only useful if you do not specify filenames). The *QLVLNewsCorpus*  has a 'latin1' encoding, but we want 'utf-8' for the output."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "utf-8\n",
+      "utf-8\n",
+      "output path:  /home/projects/semmetrix/mariana_wolken/depmodel/qlvl/tests/data/output/\n",
+      "corpus path:  /home/projects/semmetrix/mariana_wolken/depmodel/qlvl/tests/data/StanfDepSents/\n"
+     ]
+    }
+   ],
+   "source": [
+    "# settings['file-encoding'] = 'latin1'\n",
+    "settings['file-encoding'] = 'utf-8'\n",
+    "settings['outfile-encoding'] = 'utf-8'\n",
+    "print(settings['file-encoding'])\n",
+    "print(settings['outfile-encoding'])\n",
+    "# output_path = settings['output-path']\n",
+    "settings['output-path'] = output_path\n",
+    "print(\"output path: \", output_path)\n",
+    "corpus_name = 'StanfDepSents'\n",
+    "settings['corpus-path'] = f\"{mydir}/{corpus_name}/\"\n",
+    "# settings['corpus-path'] = '/home/aardvark/corp/nl/'\n",
+    "print(\"corpus path: \", settings['corpus-path'])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2. Frequency lists"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The Vocab class is a dictionary (but with a `.dataframe` attribute that also returns a Pandas DataFrame with `item` and `freq` column). The steps to create one are twofold:\n",
+    "\n",
+    "- Set up an ItemFreqHandler class with the settings\n",
+    "- Build the frequency list with its `.build_item_freq()` method. The `fnames` argument can be a list of paths or a path to a file with a list of paths. If it is not provided, the full content of `corpus-path` will be used."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Building item frequency list...\n"
+     ]
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "c124b59e6fe045b883d765184c836810",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "HBox(children=(IntProgress(value=0, max=12), HTML(value='')))"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "ifhan = ItemFreqHandler(settings = settings)\n",
+    "vocab = ifhan.build_item_freq() # by default it uses multiprocessor, which is overkill with the toy Brown corpus"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[('the/D', 53),('boy/N', 25),('eat/V', 22) ... ('ten/C', 1),('ask/V', 1),('about/I', 1)]"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "vocab # it looks like a list of tuples but it is not: you cannot manipulate it as such"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>item</th>\n",
+       "      <th>freq</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>the/D</td>\n",
+       "      <td>53</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>boy/N</td>\n",
+       "      <td>25</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>eat/V</td>\n",
+       "      <td>22</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>apple/N</td>\n",
+       "      <td>21</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>girl/N</td>\n",
+       "      <td>21</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5</th>\n",
+       "      <td>be/V</td>\n",
+       "      <td>11</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>6</th>\n",
+       "      <td>healthy/J</td>\n",
+       "      <td>10</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>7</th>\n",
+       "      <td>look/V</td>\n",
+       "      <td>8</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>8</th>\n",
+       "      <td>a/D</td>\n",
+       "      <td>6</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>9</th>\n",
+       "      <td>at/I</td>\n",
+       "      <td>6</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>10</th>\n",
+       "      <td>give/V</td>\n",
+       "      <td>6</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>11</th>\n",
+       "      <td>and/C</td>\n",
+       "      <td>5</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>12</th>\n",
+       "      <td>tasty/J</td>\n",
+       "      <td>5</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>13</th>\n",
+       "      <td>food/N</td>\n",
+       "      <td>4</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>14</th>\n",
+       "      <td>old/J</td>\n",
+       "      <td>4</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>15</th>\n",
+       "      <td>,/,</td>\n",
+       "      <td>3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>16</th>\n",
+       "      <td>an/D</td>\n",
+       "      <td>3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>17</th>\n",
+       "      <td>by/I</td>\n",
+       "      <td>3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>18</th>\n",
+       "      <td>sit/V</td>\n",
+       "      <td>3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>19</th>\n",
+       "      <td>year/N</td>\n",
+       "      <td>3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>20</th>\n",
+       "      <td>baby/N</td>\n",
+       "      <td>2</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>21</th>\n",
+       "      <td>have/V</td>\n",
+       "      <td>2</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>22</th>\n",
+       "      <td>not/R</td>\n",
+       "      <td>2</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>23</th>\n",
+       "      <td>she/P</td>\n",
+       "      <td>2</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>24</th>\n",
+       "      <td>should/M</td>\n",
+       "      <td>2</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>25</th>\n",
+       "      <td>to/T</td>\n",
+       "      <td>2</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>26</th>\n",
+       "      <td>what/W</td>\n",
+       "      <td>2</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>27</th>\n",
+       "      <td>'s/P</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>28</th>\n",
+       "      <td>about/I</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>29</th>\n",
+       "      <td>about/R</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>30</th>\n",
+       "      <td>all/P</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>31</th>\n",
+       "      <td>as/I</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>32</th>\n",
+       "      <td>ask/V</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>33</th>\n",
+       "      <td>both/D</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>34</th>\n",
+       "      <td>do/V</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>35</th>\n",
+       "      <td>down/R</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>36</th>\n",
+       "      <td>during/I</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>37</th>\n",
+       "      <td>for/I</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>38</th>\n",
+       "      <td>her/P</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>39</th>\n",
+       "      <td>him/P</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>40</th>\n",
+       "      <td>house/N</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>41</th>\n",
+       "      <td>in/I</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>42</th>\n",
+       "      <td>less/R</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>43</th>\n",
+       "      <td>like/V</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>44</th>\n",
+       "      <td>love/V</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>45</th>\n",
+       "      <td>on/I</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>46</th>\n",
+       "      <td>say/V</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>47</th>\n",
+       "      <td>ten/C</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>48</th>\n",
+       "      <td>ten/J</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>49</th>\n",
+       "      <td>that/I</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>50</th>\n",
+       "      <td>that/W</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>51</th>\n",
+       "      <td>this/D</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>52</th>\n",
+       "      <td>very/R</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>53</th>\n",
+       "      <td>which/W</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>54</th>\n",
+       "      <td>without/I</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "         item  freq\n",
+       "0       the/D    53\n",
+       "1       boy/N    25\n",
+       "2       eat/V    22\n",
+       "3     apple/N    21\n",
+       "4      girl/N    21\n",
+       "5        be/V    11\n",
+       "6   healthy/J    10\n",
+       "7      look/V     8\n",
+       "8         a/D     6\n",
+       "9        at/I     6\n",
+       "10     give/V     6\n",
+       "11      and/C     5\n",
+       "12    tasty/J     5\n",
+       "13     food/N     4\n",
+       "14      old/J     4\n",
+       "15        ,/,     3\n",
+       "16       an/D     3\n",
+       "17       by/I     3\n",
+       "18      sit/V     3\n",
+       "19     year/N     3\n",
+       "20     baby/N     2\n",
+       "21     have/V     2\n",
+       "22      not/R     2\n",
+       "23      she/P     2\n",
+       "24   should/M     2\n",
+       "25       to/T     2\n",
+       "26     what/W     2\n",
+       "27       's/P     1\n",
+       "28    about/I     1\n",
+       "29    about/R     1\n",
+       "30      all/P     1\n",
+       "31       as/I     1\n",
+       "32      ask/V     1\n",
+       "33     both/D     1\n",
+       "34       do/V     1\n",
+       "35     down/R     1\n",
+       "36   during/I     1\n",
+       "37      for/I     1\n",
+       "38      her/P     1\n",
+       "39      him/P     1\n",
+       "40    house/N     1\n",
+       "41       in/I     1\n",
+       "42     less/R     1\n",
+       "43     like/V     1\n",
+       "44     love/V     1\n",
+       "45       on/I     1\n",
+       "46      say/V     1\n",
+       "47      ten/C     1\n",
+       "48      ten/J     1\n",
+       "49     that/I     1\n",
+       "50     that/W     1\n",
+       "51     this/D     1\n",
+       "52     very/R     1\n",
+       "53    which/W     1\n",
+       "54  without/I     1"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "vocab.dataframe #the dataframe attribute returns a Pandas Dataframe and can be manipulated as such"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "53"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "vocab['the/D'] # The names of the items are the keys in the dictionary"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['the/D',\n",
+       " 'boy/N',\n",
+       " 'should/M',\n",
+       " 'eat/V',\n",
+       " 'an/D',\n",
+       " 'apple/N',\n",
+       " 'have/V',\n",
+       " 'be/V',\n",
+       " 'and/C',\n",
+       " 'girl/N',\n",
+       " 'a/D',\n",
+       " 'healthy/J',\n",
+       " 'tasty/J',\n",
+       " 'all/P',\n",
+       " 'old/J',\n",
+       " 'give/V',\n",
+       " 'look/V',\n",
+       " 'at/I',\n",
+       " 'in/I',\n",
+       " 'house/N',\n",
+       " 'for/I',\n",
+       " 'say/V',\n",
+       " 'that/I',\n",
+       " 'that/W',\n",
+       " 'baby/N',\n",
+       " 'her/P',\n",
+       " 'by/I',\n",
+       " 'very/R',\n",
+       " 'food/N',\n",
+       " ',/,',\n",
+       " 'during/I',\n",
+       " 'year/N',\n",
+       " 'like/V',\n",
+       " 'to/T',\n",
+       " 'without/I',\n",
+       " 'sit/V',\n",
+       " 'down/R',\n",
+       " 'about/R',\n",
+       " 'ten/J',\n",
+       " 'she/P',\n",
+       " 'love/V',\n",
+       " 'which/W',\n",
+       " 'him/P',\n",
+       " 'this/D',\n",
+       " 'not/R',\n",
+       " 'do/V',\n",
+       " 'as/I',\n",
+       " 'less/R',\n",
+       " 'what/W',\n",
+       " 'on/I',\n",
+       " \"'s/P\",\n",
+       " 'both/D',\n",
+       " 'ten/C',\n",
+       " 'ask/V',\n",
+       " 'about/I']"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "vocab.keys()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[('the/D', 53),('boy/N', 25),('eat/V', 22) ... ('very/R', 1),('which/W', 1),('without/I', 1)]"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "Vocab(vocab.dataframe) # The dataframe can be retransformed into a Vocab object with Vocab"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Saving frequency list (vocabulary)... (in 'utf-8')\n",
+      "Stored in /home/projects/semmetrix/mariana_wolken/depmodel/qlvl/tests/data/output//StanfDepSents.nfreq\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[('the/D', 53),('boy/N', 25),('eat/V', 22) ... ('ten/C', 1),('ask/V', 1),('about/I', 1)]"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "vocab_fname = f\"{output_path}/{corpus_name}.nfreq\"\n",
+    "vocab.save(vocab_fname) # save method\n",
+    "Vocab.load(vocab_fname) # load method"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This is probably done only once per corpus. Once the main vocabulary list is compiled and stored, it can be further filtered.\n",
+    "\n",
+    "It can be used to simply extract the frequency of a lemma, and for the `row_vocab` and `col_vocab` arguments of the `build_col_freq` method below."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3. Co-occurrence matrix"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.1. Creating type-level matrices "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Among the important settings to be fed to the object is the window span for the co-occurrence frequency."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "settings['left-span'] = 4\n",
+    "settings['right-span'] = 4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Bag-of-words\n",
+    "\n",
+    "Like creating the vocabulary list, creating a co-occurrence frequency matrix has two steps: set up the `ColFreqHandler` object and running its `.build_col_freq()` method."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n"
+     ]
+    }
+   ],
+   "source": [
+    "cfhan = ColFreqHandler(settings=settings, row_vocab = vocab, col_vocab = vocab)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The `.build_col_freq()` method also has an optional `fname` argument requiring a list of paths or a path to a list of paths.\n",
+    "In addition, `row_vocab` and `col_vocab` ask for `Vocab` objects like `vocab` above.\n",
+    "\n",
+    "In principle, you would create one overarching collocational matrix for all weight computations, with the full vocabulary for both rows and columns. But if the corpus is big, it may result in a huge files that can take a few minutes to load (and hours to create), so if you are only interested in the co-occurrence frequency between certain groups of items, you can use filtered vocabularies.\n",
+    "\n",
+    "The result is a `TypeTokenMatrix` object."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Building collocate frequency matrix...\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[1, 3]  of/C  be/V  a/D\n",
+       "the/D   1     11    5"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "freqMTX = cfhan.build_col_freq()\n",
+    "freqMTX.submatrix(row = [\"the/D\"], col=['of/C', 'be/V', 'a/D'])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Building collocate frequency matrix...\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[1, 2]  a/D  be/V\n",
+       "the/D   5    11"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "sub_cfhan = ColFreqHandler(settings=settings, row_vocab=vocab[['the/D']], col_vocab=vocab[['of/C', 'be/V', 'a/D']])\n",
+    "subfreqMTX = sub_cfhan.build_col_freq()\n",
+    "subfreqMTX"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "Saving matrix...\n",
+      "Stored in file:\n",
+      "  /home/projects/semmetrix/mariana_wolken/depmodel/qlvl/tests/data/output//StanfDepSents.wcmx.pac\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[55, 55]  's/P  ,/,  a/D  about/I  about/R  all/P  an/D  ...\n",
+       "'s/P      NaN   NaN  NaN  NaN      NaN      NaN    NaN   ...\n",
+       ",/,       NaN   2    2    NaN      NaN      NaN    NaN   ...\n",
+       "a/D       NaN   2    NaN  NaN      NaN      NaN    NaN   ...\n",
+       "about/I   NaN   NaN  NaN  NaN      NaN      NaN    NaN   ...\n",
+       "about/R   NaN   NaN  NaN  NaN      NaN      NaN    NaN   ...\n",
+       "all/P     NaN   NaN  NaN  NaN      NaN      NaN    NaN   ...\n",
+       "an/D      NaN   NaN  NaN  NaN      NaN      NaN    NaN   ...\n",
+       "...       ...   ...  ...  ...      ...      ...    ...   ..."
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "fname = f\"{output_path}/{corpus_name}.wcmx.pac\" # ideally you will code parameter settings into the name\n",
+    "freqMTX.save(fname) # save method\n",
+    "TypeTokenMatrix.load(fname)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Important attributes of `TypeTokenMatrix` are `row_items` and `col_items`: the names of the rows and columns.\n",
+    "\n",
+    "One of the important methods of the `TypeTokenMatrix` class is `.submatrix()`, which takes lists of items, as would be returned by `row_items` and `col_items`, to **subset the matrix**. *However*, it does not respond well when the requested list includes items that are missing from the row/column names of the matrix. It is best to first obtain the intersection between the items in the row/column names and the desired list before using it for subsetting."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[1, 3]  of/C  be/V  a/D\n",
+       "the/D   1     11    5"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "freqMTX.submatrix(row = [\"the/D\"], col=['of/C', 'be/V', 'a/D'])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "\"bird/N\" in freqMTX.col_items"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[1, 3]  of/C  be/V  bird/N\n",
+       "the/D   1     11    1"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "freqMTX.submatrix(row = [\"the/D\"], col=['of/C', 'be/V', 'bird/N'])\n",
+    "# Instead of an error or warning or just dropping the extra element, it copies the value of another column and creates it"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[1, 1]  be/V\n",
+       "the/D   11"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "freqMTX.submatrix(row = [\"the/D\"], col=[c for c in ['of/C', 'be/V', 'bird/N'] if c in freqMTX.col_items])\n",
+    "# Best to first check the intersection"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Dependency-based\n",
+    "\n",
+    "Dependency-based models require yet another piece of information: templates. On the one hand, we have .graphml files that indicate relationships between elements. On the other, we have .xml files which specify the role of the node and features in the relationships. For example, in .graphml you would say that you want the relationship between a verb and its direct object; in the .xml, you would clarify that the verb is your feature and the object is your target. You would also specify whether you want the lemma of the verb as the feature or, instead, the full path (just *eat/V* or `eat/v->dobj:#T`, with `#T` filling in the role of the target.\n",
+    "\n",
+    "For the type-level, we will exemplify with patterns that do not specify the *kind* of relationships but the number of steps, only selecting paths with one step between the target and the context word (*aka* LEMMAPATH1).\n",
+    "\n",
+    "First, we have to upload the files."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "path_graphml_fname = f\"{mydir}/templates/LEMMAPATH-Stanford.template.graphml\"\n",
+    "path_patterns = PatternGraph.read_graphml(path_graphml_fname)\n",
+    "\n",
+    "path_macro_fname = f\"{mydir}/templates/LEMMAPATH1-Stanford.target-feature-macro.xml\"\n",
+    "path_macros = MacroGraph.read_xml(path_macro_fname, path_patterns)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This is a fragment of the raw `path_patterns`, the .graphml file:\n",
+    "\n",
+    "```xml\n",
+    "<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\"\n",
+    "      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n",
+    "      xsi:schemaLocation=\"http://graphml.graphdrawing.org/xmlns\n",
+    "        http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd\">\n",
+    "    <key id=\"n1\" for=\"node\" attr.name=\"lemma\" attr.type=\"string\">\n",
+    "        <default>(.+)</default>\n",
+    "    </key>\n",
+    "    <key id=\"n2\" for=\"node\" attr.name=\"pos\" attr.type=\"string\">\n",
+    "        <default>(\\w+)</default>\n",
+    "    </key>\n",
+    "    <key id=\"e1\" for=\"edge\" attr.name=\"deprel\" attr.type=\"string\"/>\n",
+    "    <graph id=\"1\" edgedefault=\"directed\">\n",
+    "        <node id=\"1\"></node>\n",
+    "        <node id=\"2\"></node>\n",
+    "        <edge source=\"1\" target=\"2\">\n",
+    "            <data key=\"e1\">\\w+</data>\n",
+    "        </edge>\n",
+    "    </graph>\n",
+    "</graphml>\n",
+    "```\n",
+    "\n",
+    "The structure is as follows: the main element is a `<graphml>` tag, that always stay the same, within which we have three `<key>` tags setting up the main elements we are now interested in: lemma and pos for the nodes, and deprel for the key. Inside them, the `<default>` tag lets us set up a default regex expression for filtering these items, but then we can make further specifications within the specific graphs. Afterwards, we can add as many `<graph>` tags as we want, each of them representing one pattern to match.\n",
+    "\n",
+    "Each `<graph>` tag has an id (which is a string with a number) and a property `edgedefault=\"directed\"` (not sure how compulsory that is). Inside the `<graph>` tag we can have `<node>` and `<edge>` tags indicating the nodes (items) and edges (relationships) in the pattern. Here we have two nodes, 1 and 2, joined by an edge that goes from 1 (source attribute) to 2 (target attribute): node 1 is the head of node 2, e.g the verb for its direct object. We could specify that we want the direct object by filling in the `<data>` element within `<edge>` as \"dobj\" instead of \"\\w+\". Note that this `<data>` element has a `key` attribute with value \"e1\", meaning that it's talking about a \"deprel\" element. Within the nodes, we could have a similar `<data>` element with a `key` attribute and valeue \"n1\" if we want to filter by lemma or \"n2\" if we want to filter by part-of-speech.\n",
+    "\n",
+    "Next, we have a fragment of the raw `path_macros`, the .xml file:\n",
+    "\n",
+    "```xml\n",
+    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+    "<target-feature-list>\n",
+    "    <target-fmt>\n",
+    "        <node-fmt>\n",
+    "            <lemma group=\"1\"/>\n",
+    "            <pos group=\"1\"/>\n",
+    "            <fid group=\"1\"/>\n",
+    "            <lid group=\"1\"/>\n",
+    "            <string connector=\"/\">lemma/pos/fid/lid</string>\n",
+    "        </node-fmt>\n",
+    "    </target-fmt>\n",
+    "    <feature-fmt>\n",
+    "        <node-fmt>\n",
+    "            <lemma group=\"1\"/>\n",
+    "            <pos group=\"1\"/>\n",
+    "            <string connector=\"/\">lemma/pos</string>\n",
+    "        </node-fmt>\n",
+    "        <edge-fmt>deprel</edge-fmt>\n",
+    "    </feature-fmt>\n",
+    "    <target-feature-macro id=\"1\">\n",
+    "        <sub-graph-pattern id=\"1\"/>\n",
+    "        <target nodeID=\"1\">\n",
+    "            <description>Empty</description>\n",
+    "        </target>\n",
+    "        <feature featureID=\"2\">\n",
+    "            <description>Words that depend directly on the target.</description>\n",
+    "        </feature>\n",
+    "    </target-feature-macro>\n",
+    "</target-feature-list>\n",
+    "```\n",
+    "\n",
+    "In this case, after the small xml preamble, we have the mail element `<target-feature-list>`, within which we find one `<target-fmt>` element to specify the format of the target, one `<feature-fmt>` tag to specify the format of the feature elements (the columns of our matrices), and as many `<target-feature-macro>` elements as we have templates/macros to describe.\n",
+    "\n",
+    "In the `<target-fmt>` element, the `<node-fmt>` element gives instructions to capture the elements of a node and chain them. The `fid` and `lid` elements are only relevant at token-level. The same goes for `<feature-fmt>`, where a reference to the edge is included.\n",
+    "\n",
+    "The `<target-feature-macro>` element has an attribute \"id\" (with a number as a string) and three child elements. The first, `<sub-graph-pattern>`, also has an attribute \"id\" that points to the id of a `<graph>` element in the .graphml file. Totally different from the \"id\" of the parent element. The `<target>` and `<feature>` elements point to the nodes in that `<graph>` that take the roles of node and feature. Here, because the \"nodeID\" attribute of `<target>` is \"1\", the target is the head of the relationship in that graph; because the \"featureID\" attribute of `<feature>` is \"2\", the feature is the dependent. Optionally, you can add a description of the item. With this format, the features will be the lemma/pos combination; if you exclude the \"featureID\" attribute altogether, the full template will become the feature (including dependency information)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 1440x2304 with 2 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "from nephosem.specutils.deputils import parse_pattern, draw_tree, draw_match, draw_labels, get_root\n",
+    "import matplotlib.pyplot as plt\n",
+    "%matplotlib inline\n",
+    "def plot_patterns(macros_list):\n",
+    "    plt.rcParams['figure.figsize'] = (20.0, 32.0)\n",
+    "    for i in range(len(macros_list)):\n",
+    "        plt.subplot(5, 2, i+1)\n",
+    "        draw_labels(macros_list[i].graph, v_labels='pos', e_labels='deprel')\n",
+    "    plt.show()\n",
+    "\n",
+    "# This shows the patterns included with these files --- it is always the same pattern,\n",
+    "# but in the macros file we include relationships in both directions, so we have two macros.\n",
+    "plot_patterns(path_macros)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Building dependency features...\n"
+     ]
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "c60b49ccfb4a413aa127b4d46805068c",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "HBox(children=(IntProgress(value=0, max=12), HTML(value='')))"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "Building matrix...\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[1, 12]  's/P  apple/N  ask/V  at/I  boy/N  by/I  eat/V  ...\n",
+       "girl/N   1     1        1      1     2      1     6      ..."
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# The only difference between type- and token-level here is the \"mode\" argument\n",
+    "path_dephan_type = DepRelHandler(settings, workers=4, targets = vocab, mode='type')\n",
+    "path_dephan_type.read_templates(macros=path_macros)\n",
+    "pathMTX = path_dephan_type.build_dependency()\n",
+    "pathMTX.submatrix(row = [\"girl/N\"]).drop(axis = 1, n_nonzero = 0)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Building dependency features...\n"
+     ]
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "d61181bea2804c0c8f9dd3f854a580d2",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "HBox(children=(IntProgress(value=0, max=12), HTML(value='')))"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "Building matrix...\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[1, 12]  #T#->*:'s/P  #T#->*:old/J  #T#->*:the/D  apple/N->*:#T#  ask/V->*:#T#  at/I->*:#T#  boy/N->*:#T#  ...\n",
+       "girl/N   1            1             21            1               1             1            2             ..."
+      ]
+     },
+     "execution_count": 27,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pathfull_macro_fname = f\"{mydir}/templates/LEMMAPATH1-Stanford-full.target-feature-macro.xml\"\n",
+    "pathfull_macros = MacroGraph.read_xml(pathfull_macro_fname, path_patterns)\n",
+    "pathfull_dephan_type = DepRelHandler(settings, workers=4, targets = vocab, mode='type')\n",
+    "pathfull_dephan_type.read_templates(macros=pathfull_macros)\n",
+    "pathfullMTX = pathfull_dephan_type.build_dependency()\n",
+    "pathfullMTX.submatrix(row = [\"girl/N\"]).drop(axis = 1, n_nonzero = 0)\n",
+    "# Note that the dependency itself is replaced by \"*\" because the regex in the patterns file does not capture it\n",
+    "# (it doesn't have parentheses)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In practice, we will be more interested in the transposed counterpart of this matrix: when we obtain token-level matrices of this kind, the patterns will be the columns and will need to be multiplied by a SOCC matrix where the patterns are the rows :)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[24, 2]        girl/N  boy/N\n",
+       "#T#->*:'s/P    1       NaN\n",
+       "#T#->*:a/D     NaN     2\n",
+       "#T#->*:all/P   NaN     1\n",
+       "#T#->*:and/C   NaN     2\n",
+       "#T#->*:baby/N  NaN     1\n",
+       "#T#->*:both/D  NaN     1\n",
+       "#T#->*:girl/N  NaN     2\n",
+       "...            ...     ..."
+      ]
+     },
+     "execution_count": 28,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pathfullMTX.transpose().submatrix(col = [\"girl/N\", \"boy/N\"]).drop(axis = 0, n_nonzero = 0)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 Manipulating co-occurrence matrices"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "One of the things you will want to do is **compute association measures**, which will be the values of the vectors, either for type or token level matrices. This is done with the `compute_association()`, a function that takes a (sub)matrix, row and column vocabulary objects and the kind of measure.\n",
+    "\n",
+    "Something else you might be interested in is computing a distance matrix, but we will look into that with the token-level matrix (even though it is, of course, possible at type-level as well)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "8de14ea87b544530bbdb7c70269b33f2",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "HBox(children=(IntProgress(value=0, max=606), HTML(value='')))"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "\n",
+      "************************************\n",
+      "function    = compute_association\n",
+      "  time      = 0.01668 sec\n",
+      "************************************\n",
+      "\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[55, 55]  's/P  ,/,        a/D        about/I  about/R  all/P  an/D  ...\n",
+       "'s/P      NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...\n",
+       ",/,       NaN   2.0384464  1.2940059  NaN      NaN      NaN    NaN   ...\n",
+       "a/D       NaN   1.2940059  NaN        NaN      NaN      NaN    NaN   ...\n",
+       "about/I   NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...\n",
+       "about/R   NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...\n",
+       "all/P     NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...\n",
+       "an/D      NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...\n",
+       "...       ...   ...        ...        ...      ...      ...    ...   ..."
+      ]
+     },
+     "execution_count": 29,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "nfreq = Vocab(freqMTX.sum(axis=1))\n",
+    "cfreq = Vocab(freqMTX.sum(axis=0))\n",
+    "pmi = compute_association(freqMTX, nfreq=nfreq, cfreq=cfreq, meas = 'pmi')\n",
+    "pmi"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Even if you only want the values for a few of the items, you will need to use the full row and column sums for `nfreq` and `cfreq`.\n",
+    "\n",
+    "You can also use the `.drop()` method (of `TypeTokenMatrix`) to **remove** all the rows (`axis = 0`) or columns (`axis = 1`) with no positive values."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "9655b00a815840cd9bb4646db9c4d809",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "HBox(children=(IntProgress(value=0, max=53), HTML(value='')))"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "\n",
+      "************************************\n",
+      "function    = compute_association\n",
+      "  time      = 0.01447 sec\n",
+      "************************************\n",
+      "\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[1, 53]  's/P         ,/,        a/D          about/I      about/R      all/P       an/D        ...\n",
+       "the/D    0.030027887  -0.611826  -0.43997574  -0.15229367  0.030027887  0.25317144  -1.0685844  ..."
+      ]
+     },
+     "execution_count": 30,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "subMTX = freqMTX.submatrix(row = [\"the/D\"]).drop(axis = 1, n_nonzero = 0)\n",
+    "subpmi = compute_association(subMTX, nfreq=nfreq, cfreq=cfreq, meas = 'pmi')\n",
+    "subpmi"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Read the documentation to find other possible measures."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "a09b18b8d6474667b1f2cf40cdb8bd7c",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "HBox(children=(IntProgress(value=0, max=53), HTML(value='')))"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "\n",
+      "************************************\n",
+      "function    = compute_association\n",
+      "  time      = 0.01483 sec\n",
+      "************************************\n",
+      "\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[1, 53]  's/P          ,/,        a/D        about/I      about/R       all/P      an/D       ...\n",
+       "the/D    0.0011144616  1.1206855  1.3934952  0.030076249  0.0011144616  0.0751342  1.9897448  ..."
+      ]
+     },
+     "execution_count": 31,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "subllr = compute_association(subMTX, nfreq=nfreq, cfreq=cfreq, meas = 'llik')\n",
+    "subllr"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 4. Token level\n",
+    "\n",
+    "All matrices below belong to the `TypeTokenMatrix` class, so even if I don't, they can be saved with the `.save()` method and loaded with `TypeTokenMatrix.load()`."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.1 Collecting tokens"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "query = vocab.subvocab([\"girl/N\"]) # which is equivalent to vocab[[\"girl/N\"]]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Bag-of-words"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "As always, collecting tokens go into two steps: setting up the `TokenHandler` class and then running the `retrieve_tokens()` method (there are other alternative methods too, I understand). The `query` argument of the class is a Vocab object with the types from which we want the tokens.\n",
+    "Among the important settings you might want to reconfigure are the **window span** (like above) and the `single-boundary-machine`, a regular expression to match lines that correspond to sentence (or whatever) boundaries, such as `^</sentence>$` in the case of *QLVLNewsCorpus* or `</s>` for this case.\n",
+    "\n",
+    "Next to `fnames`, the method (as well as the class itself) includes a `col_vocab` argument which takes a `Vocab` object to select which context words can be captured (rather than, by default, all context words).\n",
+    "\n",
+    "I find `fnames` particularly useful to avoid browsing all of a huge corpus if I already know that I want to extract a sample and which files that sample resides in."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "(Some notes comparing to the old code:\n",
+    "\n",
+    "Before, the code required us to specify col_vocab, or it crashed. Now it doesn't.\n",
+    "\n",
+    "The new code also ignores all the context words that do not occur in the window of the tokens (unlike the previous code, which could include many empty columns)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Scanning tokens of queries in corpus...\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[21, 39]                   that/W  which/W  about/R  be/V  ,/,  this/D  apple/N  ...\n",
+       "girl/N/StanfDepSents.4/7   NaN     NaN      NaN      NaN   NaN  NaN     4        ...\n",
+       "girl/N/StanfDepSents.4/15  4       NaN      NaN      NaN   NaN  NaN     3        ...\n",
+       "girl/N/StanfDepSents.3/21  NaN     NaN      NaN      NaN   NaN  NaN     NaN      ...\n",
+       "girl/N/StanfDepSents.7/7   NaN     NaN      NaN      NaN   NaN  NaN     3        ...\n",
+       "girl/N/StanfDepSents.7/25  NaN     NaN      NaN      NaN   NaN  NaN     3        ...\n",
+       "girl/N/StanfDepSents.2/29  NaN     NaN      NaN      -4    NaN  NaN     NaN      ...\n",
+       "girl/N/StanfDepSents.9/14  NaN     NaN      NaN      NaN   NaN  NaN     NaN      ...\n",
+       "...                        ...     ...      ...      ...   ...  ...     ...      ..."
+      ]
+     },
+     "execution_count": 33,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tokhan = TokenHandler(query, settings=settings)\n",
+    "tokens = tokhan.retrieve_tokens()\n",
+    "tokens"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For the ones interested in running `retrieve_token_nodes()` instead, that method doesn't exist anymore as a separate function, but its output can be found in the `type2toks` attribute of the `TokenHandler`.\n",
+    "\n",
+    "The `type2toks` attribute is then a dictionary with types as keys and and a `TypeNode` object as value, which has `tokens` attribute that is a list of `TokenNode` objects. From them, we can create a concordance with a function like `tokenConcordance()` below :)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'girl/N': girl/N}"
+      ]
+     },
+     "execution_count": 34,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tokhan.type2toks"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "qlvl.core.terms.TypeNode"
+      ]
+     },
+     "execution_count": 35,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(tokhan.type2toks[\"girl/N\"])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 57,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "qlvl.core.terms.TokenNode"
+      ]
+     },
+     "execution_count": 57,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "firstToken = tokhan.type2toks[\"girl/N\"].tokens[0]\n",
+    "type(firstToken)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 80,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def tokenConcordance(token):\n",
+    "    leftContext = \" \".join([x.word for x in token.lcollocs])\n",
+    "    rightContext = \" \".join([x.word for x in token.rcollocs])\n",
+    "    return f\"{leftContext} {token.word} {rightContext}\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 70,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'boy says that the girl should eat the apple'"
+      ]
+     },
+     "execution_count": 70,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tokenConcordance(firstToken)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 81,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>text</th>\n",
+       "      <th>token_id</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>boy says that the girl should eat the apple</td>\n",
+       "      <td>girl/N/StanfDepSents.4/7</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>The girl eats the apple that</td>\n",
+       "      <td>girl/N/StanfDepSents.4/15</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>The boy and the girl eat a healthy and</td>\n",
+       "      <td>girl/N/StanfDepSents.3/21</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>old boy gives the girl a baby apple</td>\n",
+       "      <td>girl/N/StanfDepSents.7/7</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>The boy asked the girl about eating apples</td>\n",
+       "      <td>girl/N/StanfDepSents.7/25</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5</th>\n",
+       "      <td>are eaten by the girl</td>\n",
+       "      <td>girl/N/StanfDepSents.2/29</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>6</th>\n",
+       "      <td>The older girl looks at a boy</td>\n",
+       "      <td>girl/N/StanfDepSents.9/14</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>7</th>\n",
+       "      <td>The boy gives the girl a tasty healthy apple</td>\n",
+       "      <td>girl/N/StanfDepSents.6/6</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>8</th>\n",
+       "      <td>The girl does n't eat</td>\n",
+       "      <td>girl/N/StanfDepSents.6/21</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>9</th>\n",
+       "      <td>The girl sits down</td>\n",
+       "      <td>girl/N/StanfDepSents.10/13</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>10</th>\n",
+       "      <td>The girl eats about ten apples</td>\n",
+       "      <td>girl/N/StanfDepSents.10/19</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>11</th>\n",
+       "      <td>The girl looks at the boy</td>\n",
+       "      <td>girl/N/StanfDepSents.11/3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>12</th>\n",
+       "      <td>the apple which the girl gave him</td>\n",
+       "      <td>girl/N/StanfDepSents.11/19</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>13</th>\n",
+       "      <td>This year , the girl looked at a boy</td>\n",
+       "      <td>girl/N/StanfDepSents.11/28</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>14</th>\n",
+       "      <td>What the girl eats was given by</td>\n",
+       "      <td>girl/N/StanfDepSents.5/19</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>15</th>\n",
+       "      <td>The girl looks healthy</td>\n",
+       "      <td>girl/N/StanfDepSents.1/3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>16</th>\n",
+       "      <td>boy looks at the girl as she eats</td>\n",
+       "      <td>girl/N/StanfDepSents.1/13</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>17</th>\n",
+       "      <td>The girl eats less healthy food</td>\n",
+       "      <td>girl/N/StanfDepSents.1/20</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>18</th>\n",
+       "      <td>The girl sat on the apple</td>\n",
+       "      <td>girl/N/StanfDepSents.8/3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>19</th>\n",
+       "      <td>boy looked at the girl 's apple</td>\n",
+       "      <td>girl/N/StanfDepSents.8/15</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>20</th>\n",
+       "      <td>the boys and the girls eat apples</td>\n",
+       "      <td>girl/N/StanfDepSents.8/25</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "                                            text                    token_id\n",
+       "0    boy says that the girl should eat the apple    girl/N/StanfDepSents.4/7\n",
+       "1                   The girl eats the apple that   girl/N/StanfDepSents.4/15\n",
+       "2         The boy and the girl eat a healthy and   girl/N/StanfDepSents.3/21\n",
+       "3            old boy gives the girl a baby apple    girl/N/StanfDepSents.7/7\n",
+       "4     The boy asked the girl about eating apples   girl/N/StanfDepSents.7/25\n",
+       "5                         are eaten by the girl    girl/N/StanfDepSents.2/29\n",
+       "6                  The older girl looks at a boy   girl/N/StanfDepSents.9/14\n",
+       "7   The boy gives the girl a tasty healthy apple    girl/N/StanfDepSents.6/6\n",
+       "8                          The girl does n't eat   girl/N/StanfDepSents.6/21\n",
+       "9                             The girl sits down  girl/N/StanfDepSents.10/13\n",
+       "10                The girl eats about ten apples  girl/N/StanfDepSents.10/19\n",
+       "11                     The girl looks at the boy   girl/N/StanfDepSents.11/3\n",
+       "12             the apple which the girl gave him  girl/N/StanfDepSents.11/19\n",
+       "13          This year , the girl looked at a boy  girl/N/StanfDepSents.11/28\n",
+       "14               What the girl eats was given by   girl/N/StanfDepSents.5/19\n",
+       "15                        The girl looks healthy    girl/N/StanfDepSents.1/3\n",
+       "16             boy looks at the girl as she eats   girl/N/StanfDepSents.1/13\n",
+       "17               The girl eats less healthy food   girl/N/StanfDepSents.1/20\n",
+       "18                     The girl sat on the apple    girl/N/StanfDepSents.8/3\n",
+       "19               boy looked at the girl 's apple   girl/N/StanfDepSents.8/15\n",
+       "20             the boys and the girls eat apples   girl/N/StanfDepSents.8/25"
+      ]
+     },
+     "execution_count": 81,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#If you have several queries, you just need to replace tokhan.type2toks[\"girl/N\"].tokens with a flattened version\n",
+    "# [tok for typ in tokhan.type2toks.values() for tok in ctyp.tokens]\n",
+    "pd.DataFrame([{\"token_id\" : str(token), \"text\" : tokenConcordance(token)} for token in tokhan.type2toks[\"girl/N\"].tokens])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "nouns = vocab.subvocab([x for x in vocab.keys() if x.endswith(\"N\")])\n",
+    "query2 = vocab.subvocab([\"girl/N\", \"boy/N\"])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Scanning tokens of queries in corpus...\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[46, 7]                    year/N  apple/N  girl/N  food/N  house/N  boy/N  baby/N\n",
+       "girl/N/StanfDepSents.6/6   NaN     1        NaN     NaN     NaN      -1     NaN\n",
+       "girl/N/StanfDepSents.6/21  NaN     NaN      NaN     NaN     NaN      NaN    NaN\n",
+       "girl/N/StanfDepSents.5/19  NaN     NaN      NaN     NaN     NaN      NaN    NaN\n",
+       "girl/N/StanfDepSents.2/29  NaN     NaN      NaN     NaN     NaN      NaN    NaN\n",
+       "girl/N/StanfDepSents.3/21  NaN     NaN      NaN     NaN     NaN      -1     NaN\n",
+       "girl/N/StanfDepSents.9/14  NaN     NaN      NaN     NaN     NaN      1      NaN\n",
+       "girl/N/StanfDepSents.4/7   NaN     1        NaN     NaN     NaN      -1     NaN\n",
+       "...                        ...     ...      ...     ...     ...      ...    ..."
+      ]
+     },
+     "execution_count": 38,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tokhan2 = TokenHandler(query2, settings=settings, col_vocab = nouns) # multiple types as targets\n",
+    "tokens2 = tokhan2.retrieve_tokens() # Subset of context words\n",
+    "tokens2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 100,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>text</th>\n",
+       "      <th>token_id</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>boy girl apple</td>\n",
+       "      <td>girl/N/StanfDepSents.6/6</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>girl</td>\n",
+       "      <td>girl/N/StanfDepSents.6/21</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>girl</td>\n",
+       "      <td>girl/N/StanfDepSents.5/19</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>girl</td>\n",
+       "      <td>girl/N/StanfDepSents.2/29</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>boy girl</td>\n",
+       "      <td>girl/N/StanfDepSents.3/21</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5</th>\n",
+       "      <td>girl boy</td>\n",
+       "      <td>girl/N/StanfDepSents.9/14</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>6</th>\n",
+       "      <td>boy girl apple</td>\n",
+       "      <td>girl/N/StanfDepSents.4/7</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>7</th>\n",
+       "      <td>girl apple</td>\n",
+       "      <td>girl/N/StanfDepSents.4/15</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>8</th>\n",
+       "      <td>girl boy</td>\n",
+       "      <td>girl/N/StanfDepSents.11/3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>9</th>\n",
+       "      <td>apple girl</td>\n",
+       "      <td>girl/N/StanfDepSents.11/19</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>10</th>\n",
+       "      <td>year girl boy</td>\n",
+       "      <td>girl/N/StanfDepSents.11/28</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>11</th>\n",
+       "      <td>girl</td>\n",
+       "      <td>girl/N/StanfDepSents.1/3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>12</th>\n",
+       "      <td>boy girl</td>\n",
+       "      <td>girl/N/StanfDepSents.1/13</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>13</th>\n",
+       "      <td>girl food</td>\n",
+       "      <td>girl/N/StanfDepSents.1/20</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>14</th>\n",
+       "      <td>girl</td>\n",
+       "      <td>girl/N/StanfDepSents.10/13</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>15</th>\n",
+       "      <td>girl apples</td>\n",
+       "      <td>girl/N/StanfDepSents.10/19</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>16</th>\n",
+       "      <td>girl apple</td>\n",
+       "      <td>girl/N/StanfDepSents.8/3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>17</th>\n",
+       "      <td>boy girl apple</td>\n",
+       "      <td>girl/N/StanfDepSents.8/15</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>18</th>\n",
+       "      <td>boys girls apples</td>\n",
+       "      <td>girl/N/StanfDepSents.8/25</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>19</th>\n",
+       "      <td>boy girl baby apple</td>\n",
+       "      <td>girl/N/StanfDepSents.7/7</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>20</th>\n",
+       "      <td>boy girl apples</td>\n",
+       "      <td>girl/N/StanfDepSents.7/25</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>21</th>\n",
+       "      <td>boy girl</td>\n",
+       "      <td>boy/N/StanfDepSents.6/3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>22</th>\n",
+       "      <td>boy</td>\n",
+       "      <td>boy/N/StanfDepSents.6/14</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>23</th>\n",
+       "      <td>boy</td>\n",
+       "      <td>boy/N/StanfDepSents.5/3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>24</th>\n",
+       "      <td>boy</td>\n",
+       "      <td>boy/N/StanfDepSents.5/11</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>25</th>\n",
+       "      <td>boy</td>\n",
+       "      <td>boy/N/StanfDepSents.5/25</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>26</th>\n",
+       "      <td>boy</td>\n",
+       "      <td>boy/N/StanfDepSents.2/8</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>27</th>\n",
+       "      <td>boy food</td>\n",
+       "      <td>boy/N/StanfDepSents.2/12</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>28</th>\n",
+       "      <td>boy apple</td>\n",
+       "      <td>boy/N/StanfDepSents.3/3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>29</th>\n",
+       "      <td>boy girl</td>\n",
+       "      <td>boy/N/StanfDepSents.3/18</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>30</th>\n",
+       "      <td>boys apple</td>\n",
+       "      <td>boy/N/StanfDepSents.9/5</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>31</th>\n",
+       "      <td>girl boy house</td>\n",
+       "      <td>boy/N/StanfDepSents.9/18</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>32</th>\n",
+       "      <td>Apples boys</td>\n",
+       "      <td>boy/N/StanfDepSents.9/28</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>33</th>\n",
+       "      <td>boy</td>\n",
+       "      <td>boy/N/StanfDepSents.12/12</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>34</th>\n",
+       "      <td>boy girl</td>\n",
+       "      <td>boy/N/StanfDepSents.4/3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>35</th>\n",
+       "      <td>apple baby boy</td>\n",
+       "      <td>boy/N/StanfDepSents.4/22</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>36</th>\n",
+       "      <td>girl boy</td>\n",
+       "      <td>boy/N/StanfDepSents.11/7</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>37</th>\n",
+       "      <td>boy apple</td>\n",
+       "      <td>boy/N/StanfDepSents.11/13</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>38</th>\n",
+       "      <td>girl boy</td>\n",
+       "      <td>boy/N/StanfDepSents.11/32</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>39</th>\n",
+       "      <td>boy girl</td>\n",
+       "      <td>boy/N/StanfDepSents.1/9</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>40</th>\n",
+       "      <td>boy</td>\n",
+       "      <td>boy/N/StanfDepSents.10/3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>41</th>\n",
+       "      <td>boy girl</td>\n",
+       "      <td>boy/N/StanfDepSents.8/11</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>42</th>\n",
+       "      <td>boys girls</td>\n",
+       "      <td>boy/N/StanfDepSents.8/22</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>43</th>\n",
+       "      <td>boy girl</td>\n",
+       "      <td>boy/N/StanfDepSents.7/4</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>44</th>\n",
+       "      <td>boy years</td>\n",
+       "      <td>boy/N/StanfDepSents.7/14</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>45</th>\n",
+       "      <td>boy girl</td>\n",
+       "      <td>boy/N/StanfDepSents.7/22</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "                   text                    token_id\n",
+       "0        boy girl apple    girl/N/StanfDepSents.6/6\n",
+       "1                 girl    girl/N/StanfDepSents.6/21\n",
+       "2                 girl    girl/N/StanfDepSents.5/19\n",
+       "3                 girl    girl/N/StanfDepSents.2/29\n",
+       "4             boy girl    girl/N/StanfDepSents.3/21\n",
+       "5              girl boy   girl/N/StanfDepSents.9/14\n",
+       "6        boy girl apple    girl/N/StanfDepSents.4/7\n",
+       "7            girl apple   girl/N/StanfDepSents.4/15\n",
+       "8              girl boy   girl/N/StanfDepSents.11/3\n",
+       "9           apple girl   girl/N/StanfDepSents.11/19\n",
+       "10        year girl boy  girl/N/StanfDepSents.11/28\n",
+       "11                girl     girl/N/StanfDepSents.1/3\n",
+       "12            boy girl    girl/N/StanfDepSents.1/13\n",
+       "13            girl food   girl/N/StanfDepSents.1/20\n",
+       "14                girl   girl/N/StanfDepSents.10/13\n",
+       "15          girl apples  girl/N/StanfDepSents.10/19\n",
+       "16           girl apple    girl/N/StanfDepSents.8/3\n",
+       "17       boy girl apple   girl/N/StanfDepSents.8/15\n",
+       "18    boys girls apples   girl/N/StanfDepSents.8/25\n",
+       "19  boy girl baby apple    girl/N/StanfDepSents.7/7\n",
+       "20      boy girl apples   girl/N/StanfDepSents.7/25\n",
+       "21             boy girl     boy/N/StanfDepSents.6/3\n",
+       "22                 boy     boy/N/StanfDepSents.6/14\n",
+       "23                 boy      boy/N/StanfDepSents.5/3\n",
+       "24                 boy     boy/N/StanfDepSents.5/11\n",
+       "25                 boy     boy/N/StanfDepSents.5/25\n",
+       "26                 boy      boy/N/StanfDepSents.2/8\n",
+       "27             boy food    boy/N/StanfDepSents.2/12\n",
+       "28            boy apple     boy/N/StanfDepSents.3/3\n",
+       "29             boy girl    boy/N/StanfDepSents.3/18\n",
+       "30           boys apple     boy/N/StanfDepSents.9/5\n",
+       "31       girl boy house    boy/N/StanfDepSents.9/18\n",
+       "32         Apples boys     boy/N/StanfDepSents.9/28\n",
+       "33                 boy    boy/N/StanfDepSents.12/12\n",
+       "34             boy girl     boy/N/StanfDepSents.4/3\n",
+       "35      apple baby boy     boy/N/StanfDepSents.4/22\n",
+       "36            girl boy     boy/N/StanfDepSents.11/7\n",
+       "37            boy apple   boy/N/StanfDepSents.11/13\n",
+       "38            girl boy    boy/N/StanfDepSents.11/32\n",
+       "39             boy girl     boy/N/StanfDepSents.1/9\n",
+       "40                 boy     boy/N/StanfDepSents.10/3\n",
+       "41             boy girl    boy/N/StanfDepSents.8/11\n",
+       "42           boys girls    boy/N/StanfDepSents.8/22\n",
+       "43             boy girl     boy/N/StanfDepSents.7/4\n",
+       "44            boy years    boy/N/StanfDepSents.7/14\n",
+       "45             boy girl    boy/N/StanfDepSents.7/22"
+      ]
+     },
+     "execution_count": 100,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# In this case, the concordance looks weird because we have only used nouns as collocates\n",
+    "# In order to capture the full concordance, we should run TokenHandler with the full vocabulary and THEN filter the columns\n",
+    "allTokens = [tok for typ in tokhan2.type2toks.values() for tok in typ.tokens]\n",
+    "pd.DataFrame([{\"token_id\" : str(token), \"text\" : tokenConcordance(token)} for token in allTokens])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Dependency models can use different types of patterns. Here we will see three:\n",
+    "\n",
+    "- Lemmarel, where the dependency is selected by a specific set of relationships and the context feature is a lemma.\n",
+    "- Lemmapath, where the dependency is selected based on the number of steps on the dependency path (like above) and the context feature is a lemma.\n",
+    "- Deppath, where the dependency is selected based on the number of steps on the dependency path but the full dependency relation is the context feature. (Deprel is of course also possible but I will not show it.)\n",
+    "\n",
+    "#### Lemmarel\n",
+    "\n",
+    "In the first dependency-based model, we will look at templates where a noun is the target and the features could be the verb of which it is subject or direct object, its modifier or an item from which it depends via a preposition."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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GhhXO3fuzHXXXZf7778/g4ODuf/++3Pdddelv78/nZ2du18AAIzIC5P0N3nM/iQva/KYwEHGptLAuGpra8vnPve5vOY1r9l97vrrr883vvGNLF68uIWVAQAckmaNwZjdSY4cg3GBg4glY0CzjGjJ2IwZM/LYY4+lre23ExQHBwdz+OGHZ9OmTcPdYskYAMD+XZrk2iTTmzjmziTvS/LRJo4JHGTMEALG1axZs3L77bfnJS95ye5z3/3ud3PUUUe1sCoAgInt+OOPz/4mA6xYsWKcqwEOBgIhYFxdeeWVeeUrX5mFCxdm7ty5WblyZW644YZcc801rS4NAGDC+tCHPrTX8UMPPZTFixfnda97XYsqAlrNkjGgWUb82Pn/+I//yD//8z/ngQceyJw5c/L6178+z3/+8/d3uSVjAAD7d8BLxu6999686U1vyne+851937JkDApghhAw5i655JJ85Stf2X38/Oc//4kCIAAAxsEzn/nM/OQnP2l1GUCLCISAMbd06dL83d/9XU4//fS0t7fv97rzzjsvSfKDH/wg55xzzniVBwAw4d1xxx17Hff29ua6667L8ccf36KKgFazZAxolv0uGbvtttvyl3/5l7nvvvvS19c37M11Xae/vz9J0tPTkw0bNux6y5IxAID9G9GSsa6uvVu0gYGBHHfccfmXf/mXnHLKKftebskYFKDtyS8BGJ3zzz8/S5cuzdatW9PX1zfsa1cYlGTPMAgAgCbYt/dat25dfv/3fz+//OUvW10a0CICIQAAgML09PTkk5/8ZN7//ve3uhSgRewhBIy5TZs2ZePGjU/pnmc84xljVA0AAEmybt26rF+/vtVlAC0iEALG3Kc+9al84AMfGPH1dV1ncHBwDCsCACjLZZddttdxb29vbr/99lxyySUtqghoNUvGgDF35ZVXZmBgYMQvYRAAQHN1dnbu9ZozZ04++clP5p/+6Z9aXRrQImYIAQAATHCLFy/O5s2bc8stt2T16tV5+tOfnosuuihtbeYIQKkEQsC4uuOOO/b73nnnnTeOlQAAlOPOO+/MhRdemK6ursydOzerVq3K29/+9tx666059dRTW10e0AICIWBcXXDBBXsdDwwMpK7rtLe37/XoeQAAmucv/uIv8ra3vS1/9Vd/tfvchz/84bz97W/Pbbfd1sLKgFYRCAHjqq+vb6/jDRs25IorrvidoAgAgOZZunRpvvnNb+517l3velc+9rGPtagioNUsGAVaqqenJ1dffXXe+973troUAIAJa+bMmbn//vv3Ord8+fL09PS0qCKg1cwQAlpu69atefTRR1tdBgDAhLVo0aJcdNFFefe7351nPvOZWb58eT760Y9m0aJFrS4NaBGBEDCuPvCBD+x1vG3btvzrv/5rLrzwwhZVBAAw8b33ve/N5MmT84lPfGL3U8be/OY35x3veEerSwNapKrrutU1ABPDzCRrk3Q90UX7Bj/Tpk3LGWeckbe+9a057LDDhrvlZ0nOaFaRAAATzKVJrk0yvYlj7kzyviQfbeKYwEHGDCFgXN16662tLgEAoEibNm3K1772tTz44IN52tOelle+8pWZPr2ZORJwKBEIAePqu9/9bqZOnZozzzwzSXLHHXekr6/PU8YAAMbQj370o1x00UWZOnVqnvGMZ2TVqlV529velq9//es566yzWl0e0AKeMgaMq3e+853ZsWNHkmTJkiV59atfnUWLFuWv//qvW1wZAMDE9Za3vCXvec97snLlytxxxx1ZuXJlrrjiirzlLW9pdWlAi9hDCGiWEe0hNGPGjKxbty5dXV0599xz8773vS+nnHJKzjzzzDz44IPD3WIPIQCA/RvRHkLTp0/Phg0b0tHx20UiO3fuTE9PTzZv3rzv5fYQggKYIQSMq/b29rS3t2f79u258847M3/+/MyePTtbt25tdWkAABPWaaedljvvvHOvc0uXLs1pp53WooqAVrOHEDCuTjnllHzkIx/Jli1b8oIXvCCTJk3K+vXrc8QRR7S6NACACevCCy/MK17xiixatCjHHXdcVqxYkU9/+tN585vfnM9//vO7r/uTP/mTFlYJjCdLxoBmGdGSsZ/+9Kd5zWtek507d+bGG2/M6aefnl/84hf5wQ9+sL817JaMAQDs34iWjB1//PFPOlBd11mxYkViyRgUQSAENMuIAqEDIBACANi/EQVCT5FACApgyRgw7rZu3Zp77703W7Zs2ev8eeed16KKAAAOWYNjMGY9RuMCBxGBEDCubrzxxlx22WXZunVr2tvbd5+v6zr9/f0trAwA4JD00BiMuT3JmjEYFziIeMoYMK7e9a535aqrrsr27dvT19e3+yUMAgA4ID8agzEnJfnGGIwLHEQEQsC4Wr9+fd70pjels7Oz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EYEQAADAnNlUGlhXF154Ye985zsfc+8d73hHz3/+8zeoIgAAgOnRIQTMy6o6hD75yU/2qle9qrPPPrtnPetZ3XXXXR0+fLibbrqpl7zkjI1AOoQAAADmTCAEzMuqAqGqQ4cO9eEPf7i77rqrCy64oNe85jXt2LHjiYYLhAAAAObMKWPAujp+/Hjvete7es973vNoILR///7e9ra3tby8vNHlAQAATIJACFhXb3/727v++ut729ve1p49e9q/f39XX311x44d66qrrtro8gAAACbBkjFgXla1ZOzZz352H/3oR9u7d++j9+64446+//u/vzvvvPNMj1gyBgAAMGdOGQPW1cGDB9uzZ89j7u3Zs6f7779/YwoCAACYIIEQsK6+7du+rauvvrpT3YnjOPYzP/MzvehFL9rgygAAAKbDkjFgXla1ZOy2227rsssua3l5+dE9hE6cONHHPvaxLrroojM9YskYAADAnAmEgHlZ9bHzDz74YDfddFNf/OIXe+Yzn9mrX/1qx84DAACsI4EQMC+rDoT+ngRCAAAAc+bYeWBdvfGNb1zVuF/5lV9ZcCUAAADTZVNpYF0dP3686667rs997nOdPHmyz33uc1133XUdO3aszZs3P/oPAACAxdEhBKyrpaWl3vve9/b617/+0XvXX399H/nIR7r22ms3sDIAAIDpsIcQMC+r2kNo165dHThwoKWlv2lQPHnyZLt37+6BBx440yP2EAIAAJgzS8aAdXXeeed1yy23PObeb/7mb/b0pz99YwoCAACYIEvGgHV11VVX9ZrXvKYrrriiPXv2tH///m644YZ+4Rd+YaNLAwAAmAwdQsC6esMb3tDNN9/c9u3b+5M/+ZO2b9/exz/+8d7whjdsdGkAAACTYQ8hYF6ecA+h1772tf36r//6k53XHkIAAABzZskYsHC33nprP/dzP9eLX/zilpeXn3DcJZdcUtUnPvGJLr744vUqDwAAYHJ0CAHz8oQdQjfffHNvfetb++xnP9vRo0fP+PA4jh07dqyqc889t/vuu+/UWzqEAAAA5kwgBMzLqo6dfxIEQgAAAHNmU2kAAACAiREIAfPySIvZl+yhBcwJAAAwaQIhYF4eqfbPec4j1c1znhMAAGDyBELAPP2n5tvRc7z6H3OcDwAAgBw7D8zXu6pvqP5ds+6e4dQbR4+2+eTJM4fQmzd3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\n",
+      "text/plain": [
+       "<Figure size 1440x2304 with 3 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "rel_graphml_fname = f\"{mydir}/templates/LEMMAREL-Stanford.nouns.template.graphml\"\n",
+    "rel_patterns = PatternGraph.read_graphml(rel_graphml_fname)\n",
+    "\n",
+    "rel_macro_fname = f\"{mydir}/templates/LEMMAREL1-Stanford.nouns.target-feature-macro.xml\"\n",
+    "rel_macros = MacroGraph.read_xml(rel_macro_fname, rel_patterns)\n",
+    "plot_patterns(rel_macros)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Like in all other dependency-based models, we first create an object of the `DepRelHandler` class (with either mode 'type' or, in this case, 'token') and then we give the macros to the `.read_templates()` method."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Building dependency features...\n"
+     ]
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "0b179a75a142445d8f8b9dbc6af139d3",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "HBox(children=(IntProgress(value=0, max=12), HTML(value='')))"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "Building matrix...\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[15, 6]                     ask/V  at/I  eat/V  give/V  look/V  sit/V\n",
+       "girl/N/StanfDepSents.1/13   NaN    1     NaN    NaN     NaN     NaN\n",
+       "girl/N/StanfDepSents.1/20   NaN    NaN   1      NaN     NaN     NaN\n",
+       "girl/N/StanfDepSents.1/3    NaN    NaN   NaN    NaN     1       NaN\n",
+       "girl/N/StanfDepSents.10/13  NaN    NaN   NaN    NaN     NaN     1\n",
+       "girl/N/StanfDepSents.10/19  NaN    NaN   1      NaN     NaN     NaN\n",
+       "girl/N/StanfDepSents.11/19  NaN    NaN   NaN    1       NaN     NaN\n",
+       "girl/N/StanfDepSents.11/28  NaN    NaN   NaN    NaN     1       NaN\n",
+       "...                         ...    ...   ...    ...     ...     ..."
+      ]
+     },
+     "execution_count": 40,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "rel_dephan = DepRelHandler(settings, workers=4, targets=query, mode='token')\n",
+    "rel_dephan.read_templates(macros=rel_macros)\n",
+    "rel_tokens = rel_dephan.build_dependency()\n",
+    "rel_tokens"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Lemmapath\n",
+    "\n",
+    "This is the token-level counterpart of the type-level model shown above: the rows are individual instances instead of type-level vectors."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Building dependency features...\n"
+     ]
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "ee42df516a304d53bc52dd7bb0924adf",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "HBox(children=(IntProgress(value=0, max=12), HTML(value='')))"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "Building matrix...\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[21, 12]                    's/P  apple/N  ask/V  at/I  boy/N  by/I  eat/V  ...\n",
+       "girl/N/StanfDepSents.1/13   NaN   NaN      NaN    1     NaN    NaN   NaN    ...\n",
+       "girl/N/StanfDepSents.1/20   NaN   NaN      NaN    NaN   NaN    NaN   1      ...\n",
+       "girl/N/StanfDepSents.1/3    NaN   NaN      NaN    NaN   NaN    NaN   NaN    ...\n",
+       "girl/N/StanfDepSents.10/13  NaN   NaN      NaN    NaN   NaN    NaN   NaN    ...\n",
+       "girl/N/StanfDepSents.10/19  NaN   NaN      NaN    NaN   NaN    NaN   1      ...\n",
+       "girl/N/StanfDepSents.11/19  NaN   NaN      NaN    NaN   NaN    NaN   NaN    ...\n",
+       "girl/N/StanfDepSents.11/28  NaN   NaN      NaN    NaN   NaN    NaN   NaN    ...\n",
+       "...                         ...   ...      ...    ...   ...    ...   ...    ..."
+      ]
+     },
+     "execution_count": 41,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "path_dephan = DepRelHandler(settings, workers=4, targets=query, mode='token')\n",
+    "path_dephan.read_templates(macros=path_macros)\n",
+    "path_tokens = path_dephan.build_dependency()\n",
+    "path_tokens"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Deppath\n",
+    "\n",
+    "This is the token-level counterpart of the second type-level model shown above; that (transposed) type-level model would serve as the second-order matrix for this token-level matrix."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Building dependency features...\n"
+     ]
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "bdeb25390ba44172a0a5afc4bd64633b",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "HBox(children=(IntProgress(value=0, max=12), HTML(value='')))"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "Building matrix...\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[21, 12]                    #T#->*:'s/P  #T#->*:old/J  #T#->*:the/D  apple/N->*:#T#  ask/V->*:#T#  at/I->*:#T#  boy/N->*:#T#  ...\n",
+       "girl/N/StanfDepSents.1/13   NaN          NaN           1             NaN             NaN           1            NaN           ...\n",
+       "girl/N/StanfDepSents.1/20   NaN          NaN           1             NaN             NaN           NaN          NaN           ...\n",
+       "girl/N/StanfDepSents.1/3    NaN          NaN           1             NaN             NaN           NaN          NaN           ...\n",
+       "girl/N/StanfDepSents.10/13  NaN          NaN           1             NaN             NaN           NaN          NaN           ...\n",
+       "girl/N/StanfDepSents.10/19  NaN          NaN           1             NaN             NaN           NaN          NaN           ...\n",
+       "girl/N/StanfDepSents.11/19  NaN          NaN           1             NaN             NaN           NaN          NaN           ...\n",
+       "girl/N/StanfDepSents.11/28  NaN          NaN           1             NaN             NaN           NaN          NaN           ...\n",
+       "...                         ...          ...           ...           ...             ...           ...          ...           ..."
+      ]
+     },
+     "execution_count": 42,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pathfull_dephan = DepRelHandler(settings, workers=4, targets=query, mode='token')\n",
+    "pathfull_dephan.read_templates(macros=pathfull_macros)\n",
+    "pathfull_tokens = pathfull_dephan.build_dependency()\n",
+    "pathfull_tokens"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2 Weight or booleanize"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The result is also a `TypeTokenMatrix` object, with `.submatrix()` and `.drop()` methods, but with tokens instead of types on its rows and with *positions* as its values. It can be directly fed into a `compute_token_weights()` function in order to replace the positions with weights, but if we do not want to implement any weighting we should do something else: transform it into a boolean matrix.\n",
+    "\n",
+    "Here, `tokens` could be replaced by `rel_tokens`, `path_tokens` or `pathfull_tokens`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[21, 39]                   that/W  which/W  about/R  be/V  ,/,  this/D  apple/N  ...\n",
+       "girl/N/StanfDepSents.4/7   NaN     NaN      NaN      NaN   NaN  NaN     1        ...\n",
+       "girl/N/StanfDepSents.4/15  1       NaN      NaN      NaN   NaN  NaN     1        ...\n",
+       "girl/N/StanfDepSents.3/21  NaN     NaN      NaN      NaN   NaN  NaN     NaN      ...\n",
+       "girl/N/StanfDepSents.7/7   NaN     NaN      NaN      NaN   NaN  NaN     1        ...\n",
+       "girl/N/StanfDepSents.7/25  NaN     NaN      NaN      NaN   NaN  NaN     1        ...\n",
+       "girl/N/StanfDepSents.2/29  NaN     NaN      NaN      1     NaN  NaN     NaN      ...\n",
+       "girl/N/StanfDepSents.9/14  NaN     NaN      NaN      NaN   NaN  NaN     NaN      ...\n",
+       "...                        ...     ...      ...      ...   ...  ...     ...      ..."
+      ]
+     },
+     "execution_count": 43,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "def booleanize(ttmx, include_negative = True):\n",
+    "    # For PPMI matrices, include_negative should be False\n",
+    "    boolean_array = ttmx.matrix.toarray() != 0 if include_negative else ttmx.matrix.toarray() > 0\n",
+    "    boolean_sparse = sparse.csr_matrix(boolean_array.astype(np.int))\n",
+    "    return TypeTokenMatrix(boolean_sparse, ttmx.row_items, ttmx.col_items).drop(axis = 1, n_nonzero = 0)\n",
+    "tokens = booleanize(tokens)\n",
+    "tokens"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Then, if we want to weight the values with the PPMI between the context words and the target, we can use `compute_token_weights()` and the PPMI matrix; if we only want to *select* the context words with a positive PMI, we can use the boolean version of the PPMI matrix.\n",
+    "\n",
+    "This PPMI matrix has to have the same column items as the token-level matrix, and at least the types of the targets in its row names."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[1, 39]  that/W     which/W    about/R    be/V         ,/,         this/D     apple/N     ...\n",
+       "girl/N   0.3507146  0.3507146  0.8207182  -0.97104126  -0.5142828  1.0438617  0.18944645  ..."
+      ]
+     },
+     "execution_count": 44,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "sub_pmi = pmi.submatrix(row = query.get_item_list(), col = tokens.col_items).drop(axis = 1, n_nonzero = 0) #Of course, it's best to check for the intersection...\n",
+    "sub_pmi"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The bag-of-words pmi matrix works for all token-level matrices except the one with full dependencies as features. In order to weight that one, we would need to calculate PMI values between the lemmas and the paths."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "156ca367cdc742059e8211d65c6b95ac",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "HBox(children=(IntProgress(value=0, max=214), HTML(value='')))"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "\n",
+      "************************************\n",
+      "function    = compute_association\n",
+      "  time      = 0.01623 sec\n",
+      "************************************\n",
+      "\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[1, 12]  #T#->*:'s/P  #T#->*:old/J  #T#->*:the/D  apple/N->*:#T#  ask/V->*:#T#  at/I->*:#T#  boy/N->*:#T#  ...\n",
+       "girl/N   2.325058     0.93876356    1.3992884     -0.81043625     1.2264457     0.5332985    -0.5081554    ..."
+      ]
+     },
+     "execution_count": 45,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pathfull_nfreq = Vocab(pathfullMTX.sum(axis=1))\n",
+    "pathfull_cfreq = Vocab(pathfullMTX.sum(axis=0))\n",
+    "pathfull_pmi = compute_association(pathfullMTX, nfreq=pathfull_nfreq, cfreq=pathfull_cfreq, meas = 'pmi')\n",
+    "pathfull_pmi.submatrix(row = query.get_item_list(), col = pathfull_tokens.col_items).drop(axis = 1, n_nonzero = 0)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[21, 39]                   that/W  which/W  about/R  be/V     ,/,  this/D  apple/N  ...\n",
+       "girl/N/StanfDepSents.4/7   NaN     NaN      NaN      NaN      NaN  NaN     0.1894   ...\n",
+       "girl/N/StanfDepSents.4/15  0.3507  NaN      NaN      NaN      NaN  NaN     0.1894   ...\n",
+       "girl/N/StanfDepSents.3/21  NaN     NaN      NaN      NaN      NaN  NaN     NaN      ...\n",
+       "girl/N/StanfDepSents.7/7   NaN     NaN      NaN      NaN      NaN  NaN     0.1894   ...\n",
+       "girl/N/StanfDepSents.7/25  NaN     NaN      NaN      NaN      NaN  NaN     0.1894   ...\n",
+       "girl/N/StanfDepSents.2/29  NaN     NaN      NaN      -0.9710  NaN  NaN     NaN      ...\n",
+       "girl/N/StanfDepSents.9/14  NaN     NaN      NaN      NaN      NaN  NaN     NaN      ...\n",
+       "...                        ...     ...      ...      ...      ...  ...     ...      ..."
+      ]
+     },
+     "execution_count": 46,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "weighted_tokens = compute_token_weights(tokens.submatrix(col = sub_pmi.col_items), sub_pmi)\n",
+    "weighted_tokens"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[21, 39]                   that/W  which/W  about/R  be/V    ,/,  this/D  apple/N  ...\n",
+       "girl/N/StanfDepSents.4/7   NaN     NaN      NaN      NaN     NaN  NaN     1.0000   ...\n",
+       "girl/N/StanfDepSents.4/15  1.0000  NaN      NaN      NaN     NaN  NaN     1.0000   ...\n",
+       "girl/N/StanfDepSents.3/21  NaN     NaN      NaN      NaN     NaN  NaN     NaN      ...\n",
+       "girl/N/StanfDepSents.7/7   NaN     NaN      NaN      NaN     NaN  NaN     1.0000   ...\n",
+       "girl/N/StanfDepSents.7/25  NaN     NaN      NaN      NaN     NaN  NaN     1.0000   ...\n",
+       "girl/N/StanfDepSents.2/29  NaN     NaN      NaN      1.0000  NaN  NaN     NaN      ...\n",
+       "girl/N/StanfDepSents.9/14  NaN     NaN      NaN      NaN     NaN  NaN     NaN      ...\n",
+       "...                        ...     ...      ...      ...     ...  ...     ...      ..."
+      ]
+     },
+     "execution_count": 47,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "selected_tokens = compute_token_weights(tokens.submatrix(col = sub_pmi.col_items), booleanize(sub_pmi))\n",
+    "selected_tokens"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.3 Second-order dimensions"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now `tokens`, `weighted_tokens` and `selected_tokens` are alternatives that can be used to create the final vectors, for which we need one final type-level (PPMI) matrix to multiply them for and the `compute_token_vectors()` function.\n",
+    "\n",
+    "The first two arguments of this function, `tcWeightMTX` and `soccMTX`, are the token level and second-order type level matrices involved. Next to them there is an argument `operation` to decide how to merge the type level vectors of the context words to form the token-level vector: by default, it's addition, but it could also be multiplication or a weighted mean. In addition, the argument `normalization`, with L1 as default, sets whether and how the vectors should be normalized.\n",
+    "\n",
+    "The second-order matrix has to have, as rows, the columns of the token-level matrix, while the columns will be the final dimensions. I understand that if we wanted to use SVD, it would be applied to that second-order matrix before the multiplication."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[55, 55]  's/P  ,/,        a/D        about/I  about/R  all/P  an/D  ...\n",
+       "'s/P      NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...\n",
+       ",/,       NaN   2.0384464  1.2940059  NaN      NaN      NaN    NaN   ...\n",
+       "a/D       NaN   1.2940059  NaN        NaN      NaN      NaN    NaN   ...\n",
+       "about/I   NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...\n",
+       "about/R   NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...\n",
+       "all/P     NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...\n",
+       "an/D      NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...\n",
+       "...       ...   ...        ...        ...      ...      ...    ...   ..."
+      ]
+     },
+     "execution_count": 48,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ppmi = pmi.multiply(pmi > 0).drop(axis = 1, n_nonzero = 0) # The multiply() method with the boolean matrix lets us set all values below 0 to 0\n",
+    "intersection_cw = [x for x in tokens.col_items if x in ppmi.row_items]\n",
+    "ppmi"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "  Operation: addition 'token-feature weight matrix' X 'socc matrix'...\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[21, 55]                   's/P    ,/,     a/D     about/I  about/R  all/P   an/D    ...\n",
+       "girl/N/StanfDepSents.4/7   0.0130  NaN     0.0055  0.0253   0.0230   0.0146  0.0509  ...\n",
+       "girl/N/StanfDepSents.4/15  0.0220  NaN     0.0077  0.0311   0.0389   0.0050  0.0303  ...\n",
+       "girl/N/StanfDepSents.3/21  0.0004  0.0311  0.0229  0.0160   0.0112   0.0159  0.0155  ...\n",
+       "girl/N/StanfDepSents.7/7   0.0117  0.0136  0.0279  0.0157   0.0117   0.0432  0.0456  ...\n",
+       "girl/N/StanfDepSents.7/25  0.0154  NaN     0.0065  0.0808   0.0273   0.0174  0.0320  ...\n",
+       "girl/N/StanfDepSents.2/29  0.0006  0.0327  NaN     0.0138   0.0181   0.0412  0.0181  ...\n",
+       "girl/N/StanfDepSents.9/14  0.0461  0.0286  0.0191  0.0073   0.0004   0.0508  0.0286  ...\n",
+       "...                        ...     ...     ...     ...      ...      ...     ...     ..."
+      ]
+     },
+     "execution_count": 49,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "filtered_tokens = tokens.submatrix(col = intersection_cw).drop(axis = 0, n_nonzero = 0)\n",
+    "filtered_soc = ppmi.submatrix(row = intersection_cw).drop(axis = 1, n_nonzero = 0)\n",
+    "tokvecs = compute_token_vectors(filtered_tokens, filtered_soc) # This is currently the old version: I think Stefano should commit his fix himself\n",
+    "tokvecs"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "Saving matrix...\n",
+      "Stored in file:\n",
+      "  /home/projects/semmetrix/mariana_wolken/depmodel/qlvl/tests/data/output//StanfDepSents.ttmx.ppmi.pac\n"
+     ]
+    }
+   ],
+   "source": [
+    "tokvecs.save(f\"{output_path}/{corpus_name}.ttmx.ppmi.pac\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.4 Cosine distances"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The final element, `tokvecs`, is the actual token-level matrix we are interested in. We could use it to average vectors over a set of tokens, for example, but normally we go straight to computing distances, with the `compute_distance()` function. The default measure is cosine, but it could also be euclidean, cityblock, or other options. It could also compute distances between columns rather than, as default, by row."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 51,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "************************************\n",
+      "function    = compute_distance\n",
+      "  time      = 0.0008376 sec\n",
+      "************************************\n",
+      "\n",
+      "\n",
+      "Saving matrix...\n",
+      "Stored in file:\n",
+      "  /home/projects/semmetrix/mariana_wolken/depmodel/qlvl/tests/data/output//StanfDepSents.ttmx.dist.pac\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[21, 21]                   girl/N/StanfDepSents.4/7  girl/N/StanfDepSents.4/15  girl/N/StanfDepSents.3/21  girl/N/StanfDepSents.7/7  girl/N/StanfDepSents.7/25  girl/N/StanfDepSents.2/29  girl/N/StanfDepSents.9/14  ...\n",
+       "girl/N/StanfDepSents.4/7   0.0000                    0.3498                     0.4297                     0.4806                    0.3102                     0.4148                     0.5820                     ...\n",
+       "girl/N/StanfDepSents.4/15  0.3498                    0.0000                     0.3867                     0.3655                    0.2375                     0.3159                     0.6249                     ...\n",
+       "girl/N/StanfDepSents.3/21  0.4297                    0.3867                     0.0000                     0.3425                    0.3082                     0.2551                     0.3583                     ...\n",
+       "girl/N/StanfDepSents.7/7   0.4806                    0.3655                     0.3425                     0.0000                    0.3908                     0.3923                     0.3277                     ...\n",
+       "girl/N/StanfDepSents.7/25  0.3102                    0.2375                     0.3082                     0.3908                    0.0000                     0.3052                     0.5041                     ...\n",
+       "girl/N/StanfDepSents.2/29  0.4148                    0.3159                     0.2551                     0.3923                    0.3052                     0.0000                     0.4530                     ...\n",
+       "girl/N/StanfDepSents.9/14  0.5820                    0.6249                     0.3583                     0.3277                    0.5041                     0.4530                     0.0000                     ...\n",
+       "...                        ...                       ...                        ...                        ...                       ...                        ...                        ...                        ..."
+      ]
+     },
+     "execution_count": 51,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tokdists = compute_distance(tokvecs)\n",
+    "tokdists.save(f\"{output_path}/{corpus_name}.ttmx.dist.pac\")\n",
+    "tokdists"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Of course, this could be used to compute the distances between the context words themselves!"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "************************************\n",
+      "function    = compute_distance\n",
+      "  time      = 0.0005112 sec\n",
+      "************************************\n",
+      "\n",
+      "\n",
+      "Saving matrix...\n",
+      "Stored in file:\n",
+      "  /home/projects/semmetrix/mariana_wolken/depmodel/qlvl/tests/data/output//StanfDepSents.wwmx.dist.pac\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[39, 39]  that/W  which/W  about/R  be/V    ,/,     this/D  apple/N  ...\n",
+       "that/W    0.0000  0.9507   0.9237   0.8441  1.0000  0.9735  0.7750   ...\n",
+       "which/W   0.9507  0.0000   0.9278   0.9611  1.0000  0.9750  0.9858   ...\n",
+       "about/R   0.9237  0.9278   0.0000   0.9707  1.0000  0.9525  0.7109   ...\n",
+       "be/V      0.8441  0.9611   0.9707   0.0000  0.7636  0.8006  0.6355   ...\n",
+       ",/,       1.0000  1.0000   1.0000   0.7636  0.0000  0.5079  0.9361   ...\n",
+       "this/D    0.9735  0.9750   0.9525   0.8006  0.5079  0.0000  0.9871   ...\n",
+       "apple/N   0.7750  0.9858   0.7109   0.6355  0.9361  0.9871  0.0000   ...\n",
+       "...       ...     ...      ...      ...     ...     ...     ...      ..."
+      ]
+     },
+     "execution_count": 52,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "focdists = compute_distance(filtered_soc)\n",
+    "focdists.save(f\"{output_path}/{corpus_name}.wwmx.dist.pac\")\n",
+    "focdists"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Further steps\n",
+    "\n",
+    "I normally do the rest on R: either t-SNE or MDS, HDBSCAN... But nothing stops us from running it in Python.\n",
+    "An important point is being able to create a `for loop` or alike that goes through all the combinations of parameter settings, and runs this workflow with all those values, returning multiple models. This requires some thinking in order to avoid running (costly) operations with the same result multiple times --- and also planning to set up a proper registrer of parameter settings and selection of context words per token: that is what my `workflow.py` module tries to achieve. I will make it nicer :)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

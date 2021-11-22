@@ -1,0 +1,1132 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>The full python workflow for semasiological token-level clouds &mdash; Nephological Semantics 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nephosem.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>The full python workflow for semasiological token-level clouds</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/tutorials/createClouds-loop.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="The-full-python-workflow-for-semasiological-token-level-clouds">
+<h1>The full python workflow for semasiological token-level clouds<a class="headerlink" href="#The-full-python-workflow-for-semasiological-token-level-clouds" title="Permalink to this headline">¶</a></h1>
+<p>This notebook shows the full workflow followed to create the clouds in Chapter 5 of the monograph (and my dissertation).</p>
+<p>(Eventually, add Kris’s chapter too)</p>
+<p>For this purpose I’m creating a Python package with more order than my previous attempts. It is called <code class="docutils literal notranslate"><span class="pre">semasioFlow</span></code> and has the most verbose code; its documentation can be explored <a class="reference external" href="docs/build/html/index.html">here</a>.</p>
+<div class="section" id="0.-Initial-setup">
+<h2>0. Initial setup<a class="headerlink" href="#0.-Initial-setup" title="Permalink to this headline">¶</a></h2>
+<p>So first we have to add this directory to the path in order to import <code class="docutils literal notranslate"><span class="pre">semasioFlow</span></code>. When it initializes, it loads other libraries we need as well as the <code class="docutils literal notranslate"><span class="pre">qlvl</span></code> library from the <code class="docutils literal notranslate"><span class="pre">depmodel</span></code> repository.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/home/aardvark/code/nephosem/&#39;</span><span class="p">)</span>
+<span class="n">mypackage</span> <span class="o">=</span> <span class="s2">&quot;/home/projects/semmetrix/mariana_wolken/cleanWorkflow/scripts/&quot;</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mypackage</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">semasioFlow</span> <span class="kn">import</span> <span class="n">ConfigLoader</span>
+<span class="kn">from</span> <span class="nn">semasioFlow.load</span> <span class="kn">import</span> <span class="n">loadVocab</span><span class="p">,</span> <span class="n">loadMacro</span><span class="p">,</span> <span class="n">loadColloc</span><span class="p">,</span> <span class="n">loadFocRegisters</span>
+<span class="kn">from</span> <span class="nn">semasioFlow.sample</span> <span class="kn">import</span> <span class="n">sampleTypes</span>
+<span class="kn">from</span> <span class="nn">semasioFlow.focmodels</span> <span class="kn">import</span> <span class="n">createBow</span><span class="p">,</span> <span class="n">createRel</span><span class="p">,</span> <span class="n">createPath</span>
+<span class="kn">from</span> <span class="nn">semasioFlow.socmodels</span> <span class="kn">import</span> <span class="n">targetPPMI</span><span class="p">,</span> <span class="n">weightTokens</span><span class="p">,</span> <span class="n">createSoc</span>
+<span class="kn">from</span> <span class="nn">semasioFlow.utils</span> <span class="kn">import</span> <span class="n">plotPatterns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="1.-Configuration">
+<h2>1. Configuration<a class="headerlink" href="#1.-Configuration" title="Permalink to this headline">¶</a></h2>
+<p>Depending on what you need, you will have to set up some useful paths settings. I like to have at least the path to my project (<code class="docutils literal notranslate"><span class="pre">mydir</span></code>), an output path within (<code class="docutils literal notranslate"><span class="pre">mydir</span> <span class="pre">+</span> <span class="pre">&quot;output&quot;</span></code>) and a GitHub path for the datasets that I will use in the visualization. There is no real reason not to have everything together, except that I did not think of it at the moment. (Actually, there is: the GitHub stuff will be public and huge data would not be included. How much do we want to have public?)</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">mydir</span> <span class="o">=</span> <span class="s2">&quot;/home/projects/semmetrix/mariana_wolken/cleanWorkflow/&quot;</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/output/&quot;</span>
+<span class="n">github_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/github/&quot;</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s1">/mylog.log&#39;</span><span class="p">,</span> <span class="n">filemode</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The variables with paths is just meant to make it easier to manipulate filenames. The most important concrete step is to adapt the configuration file.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">conf</span> <span class="o">=</span> <span class="n">ConfigLoader</span><span class="p">()</span>
+<span class="n">default_settings</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">settings</span>
+<span class="n">settings</span> <span class="o">=</span> <span class="n">default_settings</span>
+<span class="c1"># Regular expression to capture data from the QLVLNewsCorpus</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;line-machine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;([^</span><span class="se">\t</span><span class="s1">]+)</span><span class="se">\t</span><span class="s1">([^</span><span class="se">\t</span><span class="s1">]+)</span><span class="se">\t</span><span class="s1">([^</span><span class="se">\t</span><span class="s1">]+)</span><span class="se">\t</span><span class="s1">([^</span><span class="se">\t</span><span class="s1">]+)</span><span class="se">\t</span><span class="s1">([^</span><span class="se">\t</span><span class="s1">]+)</span><span class="se">\t</span><span class="s1">([^</span><span class="se">\t</span><span class="s1">]+)</span><span class="se">\t</span><span class="s1">_</span><span class="se">\t</span><span class="s1">_&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;separator-line-machine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;^&lt;/sentence&gt;$&quot;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;global-columns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;id,word,lemma,pos,head,deprel&quot;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;note-attr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;word,lemma,pos&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;edge-attr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;deprel&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;currID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;headID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;head&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lemma/pos&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;colloc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lemma/pos&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lemma/pos/fid/lid&#39;</span>
+
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;file-encoding&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;latin1&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;outfile-encoding&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;output-path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_path</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;corpus-path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/home/aardvark/corp/nl/&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;line-machine&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;global-columns&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">],</span> <span class="n">settings</span><span class="p">[</span><span class="s1">&#39;colloc&#39;</span><span class="p">],</span> <span class="n">settings</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+([^     ]+)     ([^     ]+)     ([^     ]+)     ([^     ]+)     ([^     ]+)     ([^     ]+)     _       _
+id,word,lemma,pos,head,deprel
+lemma/pos lemma/pos lemma/pos/fid/lid
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="2.-Frequency-lists">
+<h2>2. Frequency lists<a class="headerlink" href="#2.-Frequency-lists" title="Permalink to this headline">¶</a></h2>
+<p>The frequency lists are the first thing to create, but once you have them, you just load them. So what we are going to do here is define the filename where we <em>would</em> store the frequency list (in this case, where it is actually stored), and if it exists it loads it; if it doesn’t, it creates and store it.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">full_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/vocab/QLVLNews.nodefreq&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">full_name</span><span class="p">)</span>
+<span class="n">full</span> <span class="o">=</span> <span class="n">loadVocab</span><span class="p">(</span><span class="n">full_name</span><span class="p">,</span> <span class="n">settings</span><span class="p">)</span>
+<span class="n">full</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">foc_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/vocab/QLVLNews.FOC.nodefreq&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">foc_name</span><span class="p">)</span>
+<span class="n">foc</span> <span class="o">=</span> <span class="n">loadVocab</span><span class="p">(</span><span class="n">foc_name</span><span class="p">,</span> <span class="n">settings</span><span class="p">)</span>
+<span class="n">foc</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">soc_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/vocab/QLVLNews.contextwords_final.nodefreq&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soc_name</span><span class="p">)</span>
+<span class="n">soc</span> <span class="o">=</span> <span class="n">loadVocab</span><span class="p">(</span><span class="n">soc_name</span><span class="p">,</span> <span class="n">settings</span><span class="p">)</span>
+<span class="n">soc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="3.-Boolean-token-level-matrices">
+<h2>3. Boolean token-level matrices<a class="headerlink" href="#3.-Boolean-token-level-matrices" title="Permalink to this headline">¶</a></h2>
+<p>Even though we first think of the type leven and only afterwards of the token level, with this workflow we don’t really need to touch type level until after we obtain the boolean token-level matrices, that is, until we need to use PPMI values to select or weight the context words.</p>
+<p>As a first step, we need the type or list of types we want to run; for example <code class="docutils literal notranslate"><span class="pre">&quot;heet/adj&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">[&quot;vernietig/verb&quot;,</span> <span class="pre">&quot;verniel/verb&quot;]</span></code>, and we subset the vocabulary for that query.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fnames</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/sources/LeNC260TwNC260.fnames&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">noun_lemmas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;horde&#39;</span><span class="p">,</span> <span class="s1">&#39;hoop&#39;</span><span class="p">,</span> <span class="s1">&#39;spot&#39;</span><span class="p">,</span> <span class="s1">&#39;staal&#39;</span><span class="p">,</span> <span class="s1">&#39;stof&#39;</span><span class="p">,</span> <span class="s1">&#39;schaal&#39;</span><span class="p">,</span> <span class="s1">&#39;blik&#39;</span><span class="p">]</span>
+<span class="n">adj_lemmas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;heilzaam&#39;</span><span class="p">,</span> <span class="s1">&#39;hoekig&#39;</span><span class="p">,</span> <span class="s1">&#39;gekleurd&#39;</span><span class="p">,</span> <span class="s1">&#39;dof&#39;</span><span class="p">,</span> <span class="s1">&#39;hachelijk&#39;</span><span class="p">,</span> <span class="s1">&#39;geestig&#39;</span><span class="p">,</span> <span class="s1">&#39;hoopvol&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;hemels&#39;</span><span class="p">,</span> <span class="s1">&#39;geldig&#39;</span><span class="p">,</span> <span class="s1">&#39;gemeen&#39;</span><span class="p">,</span> <span class="s1">&#39;goedkoop&#39;</span><span class="p">,</span> <span class="s1">&#39;grijs&#39;</span><span class="p">,</span> <span class="s1">&#39;heet&#39;</span><span class="p">]</span>
+<span class="n">verb_lemmas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;herroepen&#39;</span><span class="p">,</span> <span class="s1">&#39;heffen&#39;</span><span class="p">,</span> <span class="s1">&#39;huldigen&#39;</span><span class="p">,</span> <span class="s1">&#39;haten&#39;</span><span class="p">,</span> <span class="s1">&#39;herhalen&#39;</span><span class="p">,</span> <span class="s1">&#39;herinneren&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;diskwalificeren&#39;</span><span class="p">,</span> <span class="s1">&#39;harden&#39;</span><span class="p">,</span> <span class="s1">&#39;herstellen&#39;</span><span class="p">,</span> <span class="s1">&#39;helpen&#39;</span><span class="p">,</span> <span class="s1">&#39;haken&#39;</span><span class="p">,</span> <span class="s1">&#39;herstructureren&#39;</span><span class="p">]</span>
+<span class="n">verb_stems</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;herroep&#39;</span><span class="p">,</span> <span class="s1">&#39;hef&#39;</span><span class="p">,</span> <span class="s1">&#39;huldig&#39;</span><span class="p">,</span> <span class="s1">&#39;haat&#39;</span><span class="p">,</span> <span class="s1">&#39;herhaal&#39;</span><span class="p">,</span> <span class="s1">&#39;herinner&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;diskwalificeer&#39;</span><span class="p">,</span> <span class="s1">&#39;hard&#39;</span><span class="p">,</span> <span class="s1">&#39;herstel&#39;</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">,</span> <span class="s1">&#39;haak&#39;</span><span class="p">,</span> <span class="s1">&#39;herstructureer&#39;</span><span class="p">]</span>
+<span class="n">only_nouns</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="s1">&#39;/noun&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">noun_lemmas</span><span class="p">]</span>
+<span class="n">only_adjs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="s1">&#39;/adj&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">adj_lemmas</span><span class="p">]</span>
+<span class="n">only_verbs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="s1">&#39;/verb&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">verb_lemmas</span><span class="p">,</span> <span class="n">verb_stems</span><span class="p">)]</span>
+<span class="n">everything</span> <span class="o">=</span> <span class="n">only_nouns</span> <span class="o">+</span> <span class="n">only_adjs</span> <span class="o">+</span> <span class="n">only_verbs</span>
+</pre></div>
+</div>
+</div>
+<p>We could generate the tokens for all 10k tokens, or create a random selection with a certain number and then only use those files. The output of sampleTypes includes a list of token IDs as well as the list of filenames that suffices to extract those tokens. We can then use the new list of filenames when we collect tokens, and the list of tokens to subset the resulting matrices.</p>
+<p>Of course, to keep the sample fixed it would be more useful to generate the list, store it and then retrieve it in future runs.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/sources/adjIds.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f1</span><span class="p">:</span>
+    <span class="n">adjs</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">f1</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/sources/nounIds.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f2</span><span class="p">:</span>
+    <span class="n">nouns</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">f2</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/sources/verbIds.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f3</span><span class="p">:</span>
+    <span class="n">verbs</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">f3</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
+<span class="n">tokenlist</span> <span class="o">=</span> <span class="n">adjs</span> <span class="o">+</span> <span class="n">nouns</span> <span class="o">+</span> <span class="n">verbs</span>
+
+<span class="c1"># 3. Extract filenames from token ID&#39;s and map to paths ================================</span>
+<span class="n">token2fname</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;.conll&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tokenlist</span><span class="p">]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fnames</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">q</span><span class="p">:</span>
+    <span class="n">fnameSample</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">q</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">token2fname</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">len</span><span class="p">(</span><span class="n">tokenlist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+9174
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">len</span><span class="p">(</span><span class="n">fnameSample</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">len</span><span class="p">(</span><span class="n">everything</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="3.1-Bag-of-words">
+<h3>3.1 Bag-of-words<a class="headerlink" href="#3.1-Bag-of-words" title="Permalink to this headline">¶</a></h3>
+<p>The code to generate one matrix is very straightforward, but what if we want to use different combinations of parameter settings to create multiple matrices?</p>
+<p>The code below assumes that the boolean BOW matrices may vary across three parameters:</p>
+<ul class="simple">
+<li><p><strong>foc_win</strong>: window size, which is set with numbers for let and right window. <em>This has the settings above for default</em></p></li>
+<li><p><strong>foc_pos</strong>: part-of-speech filter, which will actually be set as a previously filtered list of context words. <em>By default, all context words are included.</em></p></li>
+<li><p><strong>bound</strong>: the match for sentence boundaries and whether the models respond to them or not. <em>By default, sentence boundaries are ignored.</em></p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">lex_pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">foc</span><span class="o">.</span><span class="n">get_item_list</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;noun&quot;</span><span class="p">,</span> <span class="s2">&quot;adj&quot;</span><span class="p">,</span> <span class="s2">&quot;verb&quot;</span><span class="p">,</span> <span class="s2">&quot;adv&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">foc_win</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span> <span class="c1">#three options of symmetric windows with 3, 5 or 10 words to each side</span>
+<span class="n">foc_pos</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;all&quot;</span> <span class="p">:</span> <span class="n">foc</span><span class="o">.</span><span class="n">get_item_list</span><span class="p">(),</span> <span class="c1"># the filter has already been applied in the FOC list</span>
+    <span class="s2">&quot;lex&quot;</span> <span class="p">:</span> <span class="n">lex_pos</span> <span class="c1"># further filter by part-of-speech</span>
+<span class="p">}</span>
+<span class="n">bound</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;match&quot;</span> <span class="p">:</span> <span class="s2">&quot;^&lt;/sentence&gt;$&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]}</span>
+</pre></div>
+</div>
+</div>
+<p>The function below combines a number of necessary functions:</p>
+<ul class="simple">
+<li><p>it creates a loop over the different combinations of parameter settings specified</p></li>
+<li><p>it collects the tokens and computes and filters the corresponding matrices</p></li>
+<li><p>it transforms the matrices in “boolean” integer matrices, with only 0’s and 1’s</p></li>
+<li><p>it stores the matrices in their respective files</p></li>
+<li><p>it records the combinations of parameter settings and which values are taken by each model</p></li>
+<li><p>it records the context words captured by each model for each token</p></li>
+<li><p>it returns both records to be stored wherever you want</p></li>
+</ul>
+<p>If you have many lemmas (like I did) you would want to have code like the following:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 4. On a loop per item, row create Bow ================================</span>
+<span class="k">for</span> <span class="n">type_name</span><span class="p">,</span> <span class="n">query_list</span> <span class="ow">in</span> <span class="n">everything</span><span class="p">:</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">full</span><span class="o">.</span><span class="n">subvocab</span><span class="p">(</span><span class="n">query_list</span><span class="p">)</span>
+    <span class="n">bowdata</span> <span class="o">=</span> <span class="n">createBow</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">type_name</span> <span class="o">=</span> <span class="n">type_name</span><span class="p">,</span> <span class="n">fnames</span> <span class="o">=</span> <span class="n">fnameSample</span><span class="p">,</span> <span class="n">tokenlist</span> <span class="o">=</span> <span class="n">tokenlist</span><span class="p">,</span>
+         <span class="n">foc_win</span> <span class="o">=</span> <span class="n">foc_win</span><span class="p">,</span> <span class="n">foc_pos</span> <span class="o">=</span> <span class="n">foc_pos</span><span class="p">,</span> <span class="n">bound</span> <span class="o">=</span> <span class="n">bound</span><span class="p">)</span>
+
+    <span class="c1"># 5. Most probably, store register ================================</span>
+    <span class="n">models_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/registers/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">.bow-models.tsv&quot;</span>
+    <span class="n">bowdata</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">models_fname</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_label</span> <span class="o">=</span> <span class="s1">&#39;_model&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="3.2-Lemmarel">
+<h3>3.2 Lemmarel<a class="headerlink" href="#3.2-Lemmarel" title="Permalink to this headline">¶</a></h3>
+<p>For dependency models we need specific templates and and patterns — especially for LEMMAREL, they need to be tailored to the part-of-speech that you are looking into. Since I’m exemplifying with a verb, I will use those templates.</p>
+<p><strong>IMPORTANT</strong>: In order to work, dependency models require the ‘separator-line-machine’ value.</p>
+<p><strong>Note</strong>: The old code used a lot of upper case; these copies of templates use only lower case. I will soon fix that in the other templates and move them to this directory.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;separator-line-machine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;^&lt;/sentence&gt;$&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">only_verbs</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 6. On a loop per item, row create Path ================================</span>
+<span class="n">graphml_name</span> <span class="o">=</span> <span class="s2">&quot;LEMMAREL.verbs&quot;</span>
+<span class="n">templates_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/templates&quot;</span>
+<span class="n">rel_macros</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;LEMMAREL1&quot;</span><span class="p">,</span> <span class="n">loadMacro</span><span class="p">(</span><span class="n">templates_dir</span><span class="p">,</span> <span class="n">graphml_name</span><span class="p">,</span> <span class="s2">&quot;LEMMAREL1.verbs&quot;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s2">&quot;LEMMAREL2&quot;</span><span class="p">,</span> <span class="n">loadMacro</span><span class="p">(</span><span class="n">templates_dir</span><span class="p">,</span> <span class="n">graphml_name</span><span class="p">,</span> <span class="s2">&quot;LEMMAREL2.verbs&quot;</span><span class="p">))</span>
+<span class="p">]</span>
+<span class="k">for</span> <span class="n">type_name</span><span class="p">,</span> <span class="n">query_list</span> <span class="ow">in</span> <span class="n">only_verbs</span><span class="p">:</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">full</span><span class="o">.</span><span class="n">subvocab</span><span class="p">(</span><span class="n">query_list</span><span class="p">)</span>
+    <span class="n">sub_tokenlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tokenlist</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">query_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+    <span class="n">sub_fnameSample</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fnameSample</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;.conll&#39;</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">sub_tokenlist</span><span class="p">]]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">query_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">reldata</span> <span class="o">=</span> <span class="n">createRel</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">rel_macros</span><span class="p">,</span> <span class="n">type_name</span> <span class="o">=</span> <span class="n">type_name</span><span class="p">,</span>
+                        <span class="n">fnames</span> <span class="o">=</span> <span class="n">sub_fnameSample</span><span class="p">,</span> <span class="n">tokenlist</span> <span class="o">=</span> <span class="n">sub_tokenlist</span><span class="p">,</span> <span class="n">foc_filter</span> <span class="o">=</span> <span class="n">foc</span><span class="o">.</span><span class="n">get_item_list</span><span class="p">())</span>
+
+    <span class="c1"># 7. Most probably, store register ================================</span>
+    <span class="n">models_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/registers/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">.rel-models.tsv&quot;</span>
+    <span class="n">reldata</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">models_fname</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_label</span> <span class="o">=</span> <span class="s1">&#39;_model&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 6. On a loop per item, row create Path ================================</span>
+<span class="n">graphml_name</span> <span class="o">=</span> <span class="s2">&quot;LEMMAREL.nouns&quot;</span>
+<span class="n">templates_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/templates&quot;</span>
+<span class="n">rel_macros</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;LEMMAREL1&quot;</span><span class="p">,</span> <span class="n">loadMacro</span><span class="p">(</span><span class="n">templates_dir</span><span class="p">,</span> <span class="n">graphml_name</span><span class="p">,</span> <span class="s2">&quot;LEMMAREL1.nouns&quot;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s2">&quot;LEMMAREL2&quot;</span><span class="p">,</span> <span class="n">loadMacro</span><span class="p">(</span><span class="n">templates_dir</span><span class="p">,</span> <span class="n">graphml_name</span><span class="p">,</span> <span class="s2">&quot;LEMMAREL2.nouns&quot;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s2">&quot;LEMMAREL3&quot;</span><span class="p">,</span> <span class="n">loadMacro</span><span class="p">(</span><span class="n">templates_dir</span><span class="p">,</span> <span class="n">graphml_name</span><span class="p">,</span> <span class="s2">&quot;LEMMAREL3.nouns&quot;</span><span class="p">))</span>
+<span class="p">]</span>
+<span class="k">for</span> <span class="n">type_name</span><span class="p">,</span> <span class="n">query_list</span> <span class="ow">in</span> <span class="n">only_nouns</span><span class="p">:</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">full</span><span class="o">.</span><span class="n">subvocab</span><span class="p">(</span><span class="n">query_list</span><span class="p">)</span>
+    <span class="n">sub_tokenlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tokenlist</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">query_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+    <span class="n">sub_fnameSample</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fnameSample</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;.conll&#39;</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">sub_tokenlist</span><span class="p">]]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">query_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">reldata</span> <span class="o">=</span> <span class="n">createRel</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">rel_macros</span><span class="p">,</span> <span class="n">type_name</span> <span class="o">=</span> <span class="n">type_name</span><span class="p">,</span>
+                        <span class="n">fnames</span> <span class="o">=</span> <span class="n">sub_fnameSample</span><span class="p">,</span> <span class="n">tokenlist</span> <span class="o">=</span> <span class="n">sub_tokenlist</span><span class="p">,</span> <span class="n">foc_filter</span> <span class="o">=</span> <span class="n">foc</span><span class="o">.</span><span class="n">get_item_list</span><span class="p">())</span>
+
+    <span class="c1"># 7. Most probably, store register ================================</span>
+    <span class="n">models_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/registers/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">.rel-models.tsv&quot;</span>
+    <span class="n">reldata</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">models_fname</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_label</span> <span class="o">=</span> <span class="s1">&#39;_model&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 6. On a loop per item, row create Path ================================</span>
+<span class="n">graphml_name</span> <span class="o">=</span> <span class="s2">&quot;LEMMAREL.adjs&quot;</span>
+<span class="n">templates_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/templates&quot;</span>
+<span class="n">rel_macros</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;LEMMAREL1&quot;</span><span class="p">,</span> <span class="n">loadMacro</span><span class="p">(</span><span class="n">templates_dir</span><span class="p">,</span> <span class="n">graphml_name</span><span class="p">,</span> <span class="s2">&quot;LEMMAREL1.adjs&quot;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s2">&quot;LEMMAREL2&quot;</span><span class="p">,</span> <span class="n">loadMacro</span><span class="p">(</span><span class="n">templates_dir</span><span class="p">,</span> <span class="n">graphml_name</span><span class="p">,</span> <span class="s2">&quot;LEMMAREL2.adjs&quot;</span><span class="p">))</span>
+<span class="p">]</span>
+<span class="k">for</span> <span class="n">type_name</span><span class="p">,</span> <span class="n">query_list</span> <span class="ow">in</span> <span class="n">only_adjs</span><span class="p">:</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">full</span><span class="o">.</span><span class="n">subvocab</span><span class="p">(</span><span class="n">query_list</span><span class="p">)</span>
+    <span class="n">sub_tokenlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tokenlist</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">query_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+    <span class="n">sub_fnameSample</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fnameSample</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;.conll&#39;</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">sub_tokenlist</span><span class="p">]]</span>
+    <span class="n">reldata</span> <span class="o">=</span> <span class="n">createRel</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">rel_macros</span><span class="p">,</span> <span class="n">type_name</span> <span class="o">=</span> <span class="n">type_name</span><span class="p">,</span>
+                        <span class="n">fnames</span> <span class="o">=</span> <span class="n">sub_fnameSample</span><span class="p">,</span> <span class="n">tokenlist</span> <span class="o">=</span> <span class="n">sub_tokenlist</span><span class="p">,</span> <span class="n">foc_filter</span> <span class="o">=</span> <span class="n">foc</span><span class="o">.</span><span class="n">get_item_list</span><span class="p">())</span>
+
+    <span class="c1"># 7. Most probably, store register ================================</span>
+    <span class="n">models_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/registers/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">.rel-models.tsv&quot;</span>
+    <span class="n">reldata</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">models_fname</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_label</span> <span class="o">=</span> <span class="s1">&#39;_model&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="3.3-Lemmapath">
+<h3>3.3 Lemmapath<a class="headerlink" href="#3.3-Lemmapath" title="Permalink to this headline">¶</a></h3>
+<p>Like LEMMAREL, the LEMMAPATH models need ‘separator-line-machine’ to be properly set and the templates to be loaded. Unlike LEMMAREL, the templates are not cumulative: LEMMAPATH1 models only cover those with one step between target and context word, while LEMMAPATH2 covers those with two steps. We <em>could</em> make them cumulative, but this setup allows us to give them different weights in PATHweight models.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">graphml_name</span> <span class="o">=</span> <span class="s2">&quot;LEMMAPATH&quot;</span>
+<span class="n">templates_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/templates&quot;</span>
+<span class="n">path_templates</span> <span class="o">=</span> <span class="p">[</span><span class="n">loadMacro</span><span class="p">(</span><span class="n">templates_dir</span><span class="p">,</span> <span class="n">graphml_name</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;LEMMAPATH</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+<span class="n">path_macros</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># First group includes templates with one and two steps, no weight</span>
+    <span class="p">(</span><span class="s2">&quot;LEMMAPATH2&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">path_templates</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">path_templates</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="kc">None</span><span class="p">),</span>
+    <span class="c1"># Second group includes templates with up to three steps, no weight</span>
+    <span class="p">(</span><span class="s2">&quot;LEMMAPATH3&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">path_templates</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">path_templates</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">path_templates</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="kc">None</span><span class="p">),</span>
+    <span class="c1"># Third group includes templates with up to three steps, with weight</span>
+    <span class="p">(</span><span class="s2">&quot;LEMMAPATHweight&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">path_templates</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">path_templates</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">path_templates</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
+<span class="p">]</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;separator-line-machine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;^&lt;/sentence&gt;$&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 8. On a loop per item, row create Path ================================</span>
+<span class="k">for</span> <span class="n">type_name</span><span class="p">,</span> <span class="n">query_list</span> <span class="ow">in</span> <span class="n">everything</span><span class="p">:</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">full</span><span class="o">.</span><span class="n">subvocab</span><span class="p">(</span><span class="n">query_list</span><span class="p">)</span>
+    <span class="n">sub_tokenlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tokenlist</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">query_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+    <span class="n">sub_fnameSample</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fnameSample</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;.conll&#39;</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">sub_tokenlist</span><span class="p">]]</span>
+    <span class="n">pathdata</span> <span class="o">=</span> <span class="n">createPath</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">path_macros</span><span class="p">,</span> <span class="n">type_name</span> <span class="o">=</span> <span class="n">type_name</span><span class="p">,</span>
+          <span class="n">fnames</span> <span class="o">=</span> <span class="n">sub_fnameSample</span><span class="p">,</span> <span class="n">tokenlist</span> <span class="o">=</span> <span class="n">sub_tokenlist</span><span class="p">,</span> <span class="n">foc_filter</span> <span class="o">=</span> <span class="n">foc</span><span class="o">.</span><span class="n">get_item_list</span><span class="p">())</span>
+
+    <span class="c1"># 9. Most probably, store register ================================</span>
+    <span class="n">models_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/registers/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">.path-models.tsv&quot;</span>
+    <span class="n">pathdata</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">models_fname</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_label</span> <span class="o">=</span> <span class="s1">&#39;_model&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="4-Weight-or-booleanize">
+<h2>4 Weight or booleanize<a class="headerlink" href="#4-Weight-or-booleanize" title="Permalink to this headline">¶</a></h2>
+<p>Once we have our boolean token-by-feature matrices, we can start combining them with type-level matrices: first to weight them and then to obtain second-order features. These functions will require us to specify the directory where we store our token matrices (in case we want different directories).</p>
+<div class="section" id="4.1.-Create/load-collocation-matrix">
+<h3>4.1. Create/load collocation matrix<a class="headerlink" href="#4.1.-Create/load-collocation-matrix" title="Permalink to this headline">¶</a></h3>
+<p>First of all, we need to have a collocation matrix. The following function checks if the given filename exists and, if it doesn’t, it creates the matrix from scratch.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">coldir</span> <span class="o">=</span> <span class="s2">&quot;/home/projects/semmetrix/NephoSem/input-data/frequency-matrices/QLVLNewsCorpus/&quot;</span>
+<span class="n">freq_fname_CW4</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">coldir</span><span class="si">}</span><span class="s2">/QLVLNews.fullcorpus_CW4.wcmx.freq.pac&quot;</span> <span class="c1"># window size of 4</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#settings[&#39;left-span&#39;] = 4</span>
+<span class="c1">#settings[&#39;right-span = 4&#39;]</span>
+<span class="n">freqMTX_CW4</span> <span class="o">=</span> <span class="n">loadColloc</span><span class="p">(</span><span class="n">freq_fname_CW4</span><span class="p">,</span> <span class="n">settings</span><span class="p">)</span>
+<span class="n">freqMTX_CW4</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">freq_fname_CW10</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">coldir</span><span class="si">}</span><span class="s2">/QLVLNews.fullcorpus_CW10.wcmx.freq.pac&quot;</span> <span class="c1"># window size of 4</span>
+<span class="c1">#settings[&#39;left-span&#39;] = 10</span>
+<span class="c1">#settings[&#39;right-span = 10&#39;]</span>
+<span class="n">freqMTX_CW10</span> <span class="o">=</span> <span class="n">loadColloc</span><span class="p">(</span><span class="n">freq_fname_CW10</span><span class="p">,</span> <span class="n">settings</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="4.2-Register-PPMI-values">
+<h3>4.2 Register PPMI values<a class="headerlink" href="#4.2-Register-PPMI-values" title="Permalink to this headline">¶</a></h3>
+<p>The function below subsets collocation matrices and calculates PMI values based on collocation matrices and frequencies based on vocabularies, to register the information in a dataframe. It returns a specific PPMI dataframe to use for weighting.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 10. On a loop per item, row weight models ================================</span>
+<span class="c1"># Done on the loop below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="4.3-Implement-weighting-on-selection">
+<h3>4.3 Implement weighting on selection<a class="headerlink" href="#4.3-Implement-weighting-on-selection" title="Permalink to this headline">¶</a></h3>
+<p>This step is performed on all the matrices created up to this moment. A useful thing to do first is to combine all the first-order register information we have from the different kinds of models.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">semasioFlow.utils</span> <span class="kn">import</span> <span class="n">booleanize</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 11. On a loop per item, row weight models ================================</span>
+<span class="k">for</span> <span class="n">type_name</span><span class="p">,</span> <span class="n">query_list</span> <span class="ow">in</span> <span class="n">everything</span><span class="p">:</span>
+    <span class="n">ppmi</span> <span class="o">=</span> <span class="n">targetPPMI</span><span class="p">(</span><span class="n">query_list</span><span class="p">,</span> <span class="n">vocabs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;freq&quot;</span> <span class="p">:</span> <span class="n">full</span><span class="p">},</span>
+               <span class="n">collocs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;4&quot;</span> <span class="p">:</span> <span class="n">freqMTX_CW4</span><span class="p">,</span> <span class="s2">&quot;10&quot;</span> <span class="p">:</span> <span class="n">freqMTX_CW10</span><span class="p">},</span>
+               <span class="n">type_name</span> <span class="o">=</span> <span class="n">type_name</span><span class="p">,</span> <span class="n">output_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/registers/&quot;</span><span class="p">,</span>
+               <span class="n">main_matrix</span> <span class="o">=</span> <span class="s2">&quot;4&quot;</span><span class="p">)</span>
+    <span class="n">weighting</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;no&quot;</span> <span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;selection&quot;</span> <span class="p">:</span> <span class="n">booleanize</span><span class="p">(</span><span class="n">ppmi</span><span class="p">,</span> <span class="n">include_negative</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+        <span class="s2">&quot;weight&quot;</span> <span class="p">:</span> <span class="n">ppmi</span>
+    <span class="p">}</span>
+    <span class="n">token_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/tokens/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">foc_registers</span> <span class="o">=</span> <span class="n">loadFocRegisters</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/registers&quot;</span><span class="p">,</span> <span class="n">type_name</span><span class="p">)</span>
+    <span class="n">weight_data</span> <span class="o">=</span> <span class="n">weightTokens</span><span class="p">(</span><span class="n">token_dir</span><span class="p">,</span> <span class="n">weighting</span><span class="p">,</span> <span class="n">foc_registers</span><span class="p">)</span>
+    <span class="n">weight_data</span><span class="p">[</span><span class="s2">&quot;model_register&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/registers/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">.focmodels.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span>
+                                         <span class="n">index_label</span> <span class="o">=</span> <span class="s2">&quot;_model&quot;</span><span class="p">)</span>
+    <span class="n">github_type</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">github_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">github_type</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">github_type</span><span class="p">)</span>
+    <span class="n">weight_data</span><span class="p">[</span><span class="s2">&quot;token_register&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">github_type</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">.variables.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span>
+                                         <span class="n">index_label</span> <span class="o">=</span> <span class="s2">&quot;_id&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="5-Second-order-dimensions">
+<h3>5 Second-order dimensions<a class="headerlink" href="#5-Second-order-dimensions" title="Permalink to this headline">¶</a></h3>
+<p>The final step to obtain our token-level vectors is to multiply the token-foc matrices for type-level matrices to obtain second-order vectors. We will loop over the models in the index of <code class="docutils literal notranslate"><span class="pre">weight_data[&quot;model_register&quot;]</span></code> and over second-order parameter settings to filter <code class="docutils literal notranslate"><span class="pre">freqMTX_CW4</span></code> and obtain different models.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">soc_pos</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;all&quot;</span> <span class="p">:</span> <span class="n">foc</span><span class="p">,</span>
+    <span class="s2">&quot;nav&quot;</span> <span class="p">:</span> <span class="n">soc</span>
+<span class="p">}</span>
+<span class="n">lengths</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;FOC&quot;</span><span class="p">,</span> <span class="mi">5000</span><span class="p">]</span> <span class="c1"># a number will take the most frequent; something else will take the FOC items</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 12. On a loop per item, create Soc models ================================</span>
+<span class="k">for</span> <span class="n">type_name</span><span class="p">,</span> <span class="n">query_list</span> <span class="ow">in</span> <span class="n">everything</span><span class="p">:</span>
+    <span class="n">registers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/registers/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">.focmodels.tsv&quot;</span><span class="p">,</span>
+                            <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="s2">&quot;_model&quot;</span><span class="p">)</span>
+    <span class="n">token_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/tokens/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">socdata</span> <span class="o">=</span> <span class="n">createSoc</span><span class="p">(</span><span class="n">token_dir</span><span class="p">,</span> <span class="n">registers</span> <span class="o">=</span> <span class="n">registers</span><span class="p">,</span>
+                        <span class="n">soc_pos</span> <span class="o">=</span> <span class="n">soc_pos</span><span class="p">,</span> <span class="n">lengths</span> <span class="o">=</span> <span class="n">lengths</span><span class="p">,</span>
+                        <span class="n">socMTX</span> <span class="o">=</span> <span class="n">freqMTX_CW4</span><span class="p">,</span> <span class="n">store_focdists</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/cws/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">)</span>
+    <span class="n">socdata</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">github_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">.models.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_label</span><span class="o">=</span><span class="s2">&quot;_model&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="6-Cosine-distances">
+<h3>6 Cosine distances<a class="headerlink" href="#6-Cosine-distances" title="Permalink to this headline">¶</a></h3>
+<p>Once we have all the token-level vectors, as well as our registers, we can quickly compute and store their cosine distances.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qlvl</span> <span class="kn">import</span> <span class="n">TypeTokenMatrix</span>
+<span class="kn">from</span> <span class="nn">qlvl.specutils.mxcalc</span> <span class="kn">import</span> <span class="n">compute_distance</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 13. On a loop per item, compute distances ======================================</span>
+<span class="n">input_suffix</span> <span class="o">=</span> <span class="s2">&quot;.tcmx.soc.pac&quot;</span> <span class="c1">#token by context matrix</span>
+<span class="n">output_suffix</span> <span class="o">=</span> <span class="s2">&quot;.ttmx.dist.pac&quot;</span> <span class="c1"># token by token matrix</span>
+<span class="k">for</span> <span class="n">type_name</span><span class="p">,</span> <span class="n">query_list</span> <span class="ow">in</span> <span class="n">everything</span><span class="p">:</span>
+    <span class="n">token_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/tokens/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">socdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">github_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">.models.tsv&quot;</span><span class="p">,</span>
+                         <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="s2">&quot;_model&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">modelname</span> <span class="ow">in</span> <span class="n">socdata</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+        <span class="n">input_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">token_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">modelname</span><span class="si">}{</span><span class="n">input_suffix</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">output_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">token_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">modelname</span><span class="si">}{</span><span class="n">output_suffix</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">compute_distance</span><span class="p">(</span><span class="n">TypeTokenMatrix</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">input_name</span><span class="p">))</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">output_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>For the rest, we go to R!</p>
+<p>The R code is in the processClouds notebook, which uses the <a class="reference external" href="https://github.com/montesmariana/semcloud">semcloud</a> package. I plan to incorporate small clouds into the package to use for examples and recreate the processClouds notebook as a vignette for the package.</p>
+</div>
+</div>
+<div class="section" id="Bonus:-context-word-detail">
+<h2>Bonus: context word detail<a class="headerlink" href="#Bonus:-context-word-detail" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">semasioFlow.contextwords</span> <span class="kn">import</span> <span class="n">listContextwords</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># # On a loop</span>
+<span class="k">for</span> <span class="n">type_name</span><span class="p">,</span> <span class="n">query_list</span> <span class="ow">in</span> <span class="n">everything</span><span class="p">:</span>
+    <span class="n">cws</span> <span class="o">=</span> <span class="n">listContextwords</span><span class="p">(</span><span class="n">type_name</span><span class="p">,</span> <span class="n">tokenlist</span><span class="p">,</span> <span class="n">fnameSample</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">left_win</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">right_win</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+    <span class="n">cw_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/registers/</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">.cws.detail.tsv&quot;</span>
+    <span class="n">cws</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">cw_fname</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_label</span> <span class="o">=</span> <span class="s2">&quot;cw_id&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 9081/9081 [10:08&lt;00:00, 14.92it/s]
+100%|██████████| 9081/9081 [10:09&lt;00:00, 14.91it/s]
+100%|██████████| 9081/9081 [10:09&lt;00:00, 14.90it/s]
+100%|██████████| 9081/9081 [10:09&lt;00:00, 14.89it/s]
+100%|██████████| 9081/9081 [10:07&lt;00:00, 14.94it/s]
+100%|██████████| 9081/9081 [10:08&lt;00:00, 14.91it/s]
+100%|██████████| 9081/9081 [10:09&lt;00:00, 14.91it/s]
+100%|██████████| 9081/9081 [10:08&lt;00:00, 14.92it/s]
+100%|██████████| 9081/9081 [10:07&lt;00:00, 14.95it/s]
+100%|██████████| 9081/9081 [10:08&lt;00:00, 14.93it/s]
+100%|██████████| 9081/9081 [10:06&lt;00:00, 14.97it/s]
+100%|██████████| 9081/9081 [10:08&lt;00:00, 14.91it/s]
+100%|██████████| 9081/9081 [10:09&lt;00:00, 14.91it/s]
+ 40%|████      | 3644/9081 [04:04&lt;06:03, 14.98it/s]
+</pre></div></div>
+</div>
+<p>From this table, it is relatively straightforward to extract concordances and highlight the context words that match certain filters. Note that by default the left contexts are in reverse order.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

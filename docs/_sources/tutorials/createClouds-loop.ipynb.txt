@@ -1,0 +1,832 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# The full python workflow for semasiological token-level clouds "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This notebook shows the full workflow followed to create the clouds in Chapter 5 of the monograph (and my dissertation).\n",
+    "\n",
+    "(Eventually, add Kris's chapter too)\n",
+    "\n",
+    "For this purpose I'm creating a Python package with more order than my previous attempts. It is called `semasioFlow` and has the most verbose code; its documentation can be explored [here](docs/build/html/index.html)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 0. Initial setup "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "So first we have to add this directory to the path in order to import `semasioFlow`. When it initializes, it loads other libraries we need as well as the `qlvl` library from the `depmodel` repository."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import os\n",
+    "import sys\n",
+    "import logging\n",
+    "import pandas as pd\n",
+    "sys.path.append('/home/aardvark/code/nephosem/')\n",
+    "mypackage = \"/home/projects/semmetrix/mariana_wolken/cleanWorkflow/scripts/\"\n",
+    "sys.path.append(mypackage)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "from semasioFlow import ConfigLoader\n",
+    "from semasioFlow.load import loadVocab, loadMacro, loadColloc, loadFocRegisters\n",
+    "from semasioFlow.sample import sampleTypes\n",
+    "from semasioFlow.focmodels import createBow, createRel, createPath\n",
+    "from semasioFlow.socmodels import targetPPMI, weightTokens, createSoc\n",
+    "from semasioFlow.utils import plotPatterns"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 1. Configuration "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Depending on what you need, you will have to set up some useful paths settings.\n",
+    "I like to have at least the path to my project (`mydir`), an output path within (`mydir + \"output\"`) and a GitHub path for the datasets that I will use in the visualization. There is no real reason not to have everything together, except that I did not think of it at the moment. (Actually, there is: the GitHub stuff will be public and huge data would not be included. How much do we want to have public?)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "mydir = \"/home/projects/semmetrix/mariana_wolken/cleanWorkflow/\"\n",
+    "output_path = f\"{mydir}/output/\"\n",
+    "github_dir = f\"{mydir}/github/\"\n",
+    "logging.basicConfig(filename = f'{mydir}/mylog.log', filemode = 'w', level = logging.DEBUG)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The variables with paths is just meant to make it easier to manipulate filenames. The most important concrete step is to adapt the configuration file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t_\t_\n",
+      "id,word,lemma,pos,head,deprel\n",
+      "lemma/pos lemma/pos lemma/pos/fid/lid\n"
+     ]
+    }
+   ],
+   "source": [
+    "conf = ConfigLoader()\n",
+    "default_settings = conf.settings\n",
+    "settings = default_settings\n",
+    "# Regular expression to capture data from the QLVLNewsCorpus\n",
+    "settings['line-machine'] = '([^\\t]+)\\t([^\\t]+)\\t([^\\t]+)\\t([^\\t]+)\\t([^\\t]+)\\t([^\\t]+)\\t_\\t_'\n",
+    "settings['separator-line-machine'] = \"^</sentence>$\"\n",
+    "settings['global-columns'] = \"id,word,lemma,pos,head,deprel\"\n",
+    "settings['note-attr'] = 'word,lemma,pos'\n",
+    "settings['edge-attr'] = 'deprel'\n",
+    "settings['currID'] = 'id'\n",
+    "settings['headID'] = 'head'\n",
+    "settings['type'] = 'lemma/pos'\n",
+    "settings['colloc'] = 'lemma/pos'\n",
+    "settings['token'] = 'lemma/pos/fid/lid'\n",
+    "\n",
+    "settings['file-encoding'] = 'latin1'\n",
+    "settings['outfile-encoding'] = 'utf-8'\n",
+    "settings['output-path'] = output_path\n",
+    "settings['corpus-path'] = '/home/aardvark/corp/nl/'\n",
+    "\n",
+    "print(settings['line-machine'])\n",
+    "print(settings['global-columns'])\n",
+    "print(settings['type'], settings['colloc'], settings['token'])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2. Frequency lists"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The frequency lists are the first thing to create, but once you have them, you just load them. So what we are going to do here is define the filename where we *would* store the frequency list (in this case, where it is actually stored), and if it exists it loads it; if it doesn't, it creates and store it."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "full_name = f\"{output_path}/vocab/QLVLNews.nodefreq\"\n",
+    "print(full_name)\n",
+    "full = loadVocab(full_name, settings)\n",
+    "full"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "foc_name = f\"{output_path}/vocab/QLVLNews.FOC.nodefreq\"\n",
+    "print(foc_name)\n",
+    "foc = loadVocab(foc_name, settings)\n",
+    "foc"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "soc_name = f\"{output_path}/vocab/QLVLNews.contextwords_final.nodefreq\"\n",
+    "print(soc_name)\n",
+    "soc = loadVocab(soc_name, settings)\n",
+    "soc"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3. Boolean token-level matrices\n",
+    "\n",
+    "Even though we first think of the type leven and only afterwards of the token level, with this workflow we don't really need to touch type level until after we obtain the boolean token-level matrices, that is, until we need to use PPMI values to select or weight the context words.\n",
+    "\n",
+    "As a first step, we need the type or list of types we want to run; for example `\"heet/adj\"` or `[\"vernietig/verb\", \"verniel/verb\"]`, and we subset the vocabulary for that query."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fnames = f\"{mydir}/sources/LeNC260TwNC260.fnames\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "noun_lemmas = ['horde', 'hoop', 'spot', 'staal', 'stof', 'schaal', 'blik']\n",
+    "adj_lemmas = ['heilzaam', 'hoekig', 'gekleurd', 'dof', 'hachelijk', 'geestig', 'hoopvol',\n",
+    "              'hemels', 'geldig', 'gemeen', 'goedkoop', 'grijs', 'heet']\n",
+    "verb_lemmas = ['herroepen', 'heffen', 'huldigen', 'haten', 'herhalen', 'herinneren',\n",
+    "              'diskwalificeren', 'harden', 'herstellen', 'helpen', 'haken', 'herstructureren']\n",
+    "verb_stems = ['herroep', 'hef', 'huldig', 'haat', 'herhaal', 'herinner',\n",
+    "              'diskwalificeer', 'hard', 'herstel', 'help', 'haak', 'herstructureer']\n",
+    "only_nouns = [(x, [x+'/noun']) for x in noun_lemmas]\n",
+    "only_adjs = [(x, [x+'/adj']) for x in adj_lemmas]\n",
+    "only_verbs = [(x, [y+'/verb']) for x, y in zip(verb_lemmas, verb_stems)]\n",
+    "everything = only_nouns + only_adjs + only_verbs"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We could generate the tokens for all 10k tokens, or create a random selection with a certain number and then only use those files. The output of sampleTypes includes a list of token IDs as well as the list of filenames that suffices to extract those tokens. We can then use the new list of filenames when we collect tokens, and the list of tokens to subset the resulting matrices.\n",
+    "\n",
+    "Of course, to keep the sample fixed it would be more useful to generate the list, store it and then retrieve it in future runs."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "import json\n",
+    "import os.path\n",
+    "\n",
+    "with open(f\"{mydir}/sources/adjIds.txt\", 'r') as f1:\n",
+    "    adjs = [x.strip() for x in f1.readlines()]\n",
+    "with open(f\"{mydir}/sources/nounIds.txt\", 'r') as f2:\n",
+    "    nouns = [x.strip() for x in f2.readlines()]\n",
+    "with open(f\"{mydir}/sources/verbIds.txt\", 'r') as f3:\n",
+    "    verbs = [x.strip() for x in f3.readlines()]\n",
+    "tokenlist = adjs + nouns + verbs\n",
+    "\n",
+    "# 3. Extract filenames from token ID's and map to paths ================================\n",
+    "token2fname = [x.split('/')[2]+'.conll' for x in tokenlist]\n",
+    "with open(fnames, 'r') as q:\n",
+    "    fnameSample = [x.strip() for x in q.readlines() if x.strip().rsplit('/', 1)[1] in token2fname]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "9174"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "len(tokenlist)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "len(fnameSample)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "len(everything)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.1 Bag-of-words\n",
+    "\n",
+    "The code to generate one matrix is very straightforward, but what if we want to use different combinations of parameter settings to create multiple matrices?\n",
+    "\n",
+    "The code below assumes that the boolean BOW matrices may vary across three parameters:\n",
+    "\n",
+    "- **foc_win**: window size, which is set with numbers for let and right window. *This has the settings above for default*\n",
+    "- **foc_pos**: part-of-speech filter, which will actually be set as a previously filtered list of context words. *By default, all context words are included.*\n",
+    "- **bound**: the match for sentence boundaries and whether the models respond to them or not. *By default, sentence boundaries are ignored.*"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "lex_pos = [x for x in foc.get_item_list() if x.split(\"/\")[1] in [\"noun\", \"adj\", \"verb\", \"adv\"]]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "foc_win = [(3, 3), (5, 5), (10, 10)] #three options of symmetric windows with 3, 5 or 10 words to each side\n",
+    "foc_pos = {\n",
+    "    \"all\" : foc.get_item_list(), # the filter has already been applied in the FOC list\n",
+    "    \"lex\" : lex_pos # further filter by part-of-speech\n",
+    "}\n",
+    "bound = { \"match\" : \"^</sentence>$\", \"values\" : [True, False]}"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The function below combines a number of necessary functions:\n",
+    "\n",
+    "- it creates a loop over the different combinations of parameter settings specified\n",
+    "- it collects the tokens and computes and filters the corresponding matrices\n",
+    "- it transforms the matrices in \"boolean\" integer matrices, with only 0's and 1's\n",
+    "- it stores the matrices in their respective files\n",
+    "- it records the combinations of parameter settings and which values are taken by each model\n",
+    "- it records the context words captured by each model for each token\n",
+    "- it returns both records to be stored wherever you want"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If you have many lemmas (like I did) you would want to have code like the following:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# 4. On a loop per item, row create Bow ================================\n",
+    "for type_name, query_list in everything:\n",
+    "    query = full.subvocab(query_list)\n",
+    "    bowdata = createBow(query, settings, type_name = type_name, fnames = fnameSample, tokenlist = tokenlist,\n",
+    "         foc_win = foc_win, foc_pos = foc_pos, bound = bound)\n",
+    "    \n",
+    "    # 5. Most probably, store register ================================\n",
+    "    models_fname = f\"{output_path}/registers/{type_name}.bow-models.tsv\"\n",
+    "    bowdata.to_csv(models_fname, sep=\"\\t\", index_label = '_model')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 Lemmarel\n",
+    "\n",
+    "For dependency models we need specific templates and and patterns --- especially for LEMMAREL, they need to be tailored to the part-of-speech that you are looking into. Since I'm exemplifying with a verb, I will use those templates.\n",
+    "\n",
+    "**IMPORTANT**: In order to work, dependency models require the 'separator-line-machine' value.\n",
+    "\n",
+    "**Note**: The old code used a lot of upper case; these copies of templates use only lower case. I will soon fix that in the other templates and move them to this directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "settings['separator-line-machine'] = \"^</sentence>$\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "only_verbs"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# 6. On a loop per item, row create Path ================================\n",
+    "graphml_name = \"LEMMAREL.verbs\"\n",
+    "templates_dir = f\"{mydir}/templates\"\n",
+    "rel_macros = [\n",
+    "    (\"LEMMAREL1\", loadMacro(templates_dir, graphml_name, \"LEMMAREL1.verbs\")),\n",
+    "    (\"LEMMAREL2\", loadMacro(templates_dir, graphml_name, \"LEMMAREL2.verbs\"))\n",
+    "]\n",
+    "for type_name, query_list in only_verbs:\n",
+    "    query = full.subvocab(query_list)\n",
+    "    sub_tokenlist = [x for x in tokenlist if x.startswith(query_list[0])]\n",
+    "    sub_fnameSample = [x for x in fnameSample if x.rsplit(\"/\", 1)[1] in [y.split(\"/\")[2]+'.conll' for y in sub_tokenlist]]\n",
+    "    print(query_list[0])\n",
+    "    reldata = createRel(query, settings, rel_macros, type_name = type_name,\n",
+    "                        fnames = sub_fnameSample, tokenlist = sub_tokenlist, foc_filter = foc.get_item_list())\n",
+    "    \n",
+    "    # 7. Most probably, store register ================================\n",
+    "    models_fname = f\"{output_path}/registers/{type_name}.rel-models.tsv\"\n",
+    "    reldata.to_csv(models_fname, sep=\"\\t\", index_label = '_model')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "# 6. On a loop per item, row create Path ================================\n",
+    "graphml_name = \"LEMMAREL.nouns\"\n",
+    "templates_dir = f\"{mydir}/templates\"\n",
+    "rel_macros = [\n",
+    "    (\"LEMMAREL1\", loadMacro(templates_dir, graphml_name, \"LEMMAREL1.nouns\")),\n",
+    "    (\"LEMMAREL2\", loadMacro(templates_dir, graphml_name, \"LEMMAREL2.nouns\")),\n",
+    "    (\"LEMMAREL3\", loadMacro(templates_dir, graphml_name, \"LEMMAREL3.nouns\"))\n",
+    "]\n",
+    "for type_name, query_list in only_nouns:\n",
+    "    query = full.subvocab(query_list)\n",
+    "    sub_tokenlist = [x for x in tokenlist if x.startswith(query_list[0])]\n",
+    "    sub_fnameSample = [x for x in fnameSample if x.rsplit(\"/\", 1)[1] in [y.split(\"/\")[2]+'.conll' for y in sub_tokenlist]]\n",
+    "    print(query_list[0])\n",
+    "    reldata = createRel(query, settings, rel_macros, type_name = type_name,\n",
+    "                        fnames = sub_fnameSample, tokenlist = sub_tokenlist, foc_filter = foc.get_item_list())\n",
+    "    \n",
+    "    # 7. Most probably, store register ================================\n",
+    "    models_fname = f\"{output_path}/registers/{type_name}.rel-models.tsv\"\n",
+    "    reldata.to_csv(models_fname, sep=\"\\t\", index_label = '_model')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "# 6. On a loop per item, row create Path ================================\n",
+    "graphml_name = \"LEMMAREL.adjs\"\n",
+    "templates_dir = f\"{mydir}/templates\"\n",
+    "rel_macros = [\n",
+    "    (\"LEMMAREL1\", loadMacro(templates_dir, graphml_name, \"LEMMAREL1.adjs\")),\n",
+    "    (\"LEMMAREL2\", loadMacro(templates_dir, graphml_name, \"LEMMAREL2.adjs\"))\n",
+    "]\n",
+    "for type_name, query_list in only_adjs:\n",
+    "    query = full.subvocab(query_list)\n",
+    "    sub_tokenlist = [x for x in tokenlist if x.startswith(query_list[0])]\n",
+    "    sub_fnameSample = [x for x in fnameSample if x.rsplit(\"/\", 1)[1] in [y.split(\"/\")[2]+'.conll' for y in sub_tokenlist]]\n",
+    "    reldata = createRel(query, settings, rel_macros, type_name = type_name,\n",
+    "                        fnames = sub_fnameSample, tokenlist = sub_tokenlist, foc_filter = foc.get_item_list())\n",
+    "    \n",
+    "    # 7. Most probably, store register ================================\n",
+    "    models_fname = f\"{output_path}/registers/{type_name}.rel-models.tsv\"\n",
+    "    reldata.to_csv(models_fname, sep=\"\\t\", index_label = '_model')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3 Lemmapath\n",
+    "\n",
+    "Like LEMMAREL, the LEMMAPATH models need 'separator-line-machine' to be properly set and the templates to be loaded.\n",
+    "Unlike LEMMAREL, the templates are not cumulative: LEMMAPATH1 models only cover those with one step between target and context word, while LEMMAPATH2 covers those with two steps. We *could* make them cumulative, but this setup allows us to give them different weights in PATHweight models."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "graphml_name = \"LEMMAPATH\"\n",
+    "templates_dir = f\"{mydir}/templates\"\n",
+    "path_templates = [loadMacro(templates_dir, graphml_name, f\"LEMMAPATH{i}\") for i in [1, 2, 3]]\n",
+    "path_macros = [\n",
+    "    # First group includes templates with one and two steps, no weight\n",
+    "    (\"LEMMAPATH2\", [path_templates[0], path_templates[1]], None),\n",
+    "    # Second group includes templates with up to three steps, no weight\n",
+    "    (\"LEMMAPATH3\", [path_templates[0], path_templates[1], path_templates[2]], None),\n",
+    "    # Third group includes templates with up to three steps, with weight\n",
+    "    (\"LEMMAPATHweight\", [path_templates[0], path_templates[1], path_templates[2]], [1, 0.6, 0.3])\n",
+    "]\n",
+    "settings['separator-line-machine'] = \"^</sentence>$\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# 8. On a loop per item, row create Path ================================\n",
+    "for type_name, query_list in everything:\n",
+    "    query = full.subvocab(query_list)\n",
+    "    sub_tokenlist = [x for x in tokenlist if x.startswith(query_list[0])]\n",
+    "    sub_fnameSample = [x for x in fnameSample if x.rsplit(\"/\", 1)[1] in [y.split(\"/\")[2]+'.conll' for y in sub_tokenlist]]\n",
+    "    pathdata = createPath(query, settings, path_macros, type_name = type_name,\n",
+    "          fnames = sub_fnameSample, tokenlist = sub_tokenlist, foc_filter = foc.get_item_list())\n",
+    "    \n",
+    "    # 9. Most probably, store register ================================\n",
+    "    models_fname = f\"{output_path}/registers/{type_name}.path-models.tsv\"\n",
+    "    pathdata.to_csv(models_fname, sep=\"\\t\", index_label = '_model')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 4 Weight or booleanize\n",
+    "\n",
+    "Once we have our boolean token-by-feature matrices, we can start combining them with type-level matrices: first to weight them and then to obtain second-order features. These functions will require us to specify the directory where we store our token matrices (in case we want different directories)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.1. Create/load collocation matrix\n",
+    "First of all, we need to have a collocation matrix. The following function checks if the given filename exists and, if it doesn't, it creates the matrix from scratch."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "coldir = \"/home/projects/semmetrix/NephoSem/input-data/frequency-matrices/QLVLNewsCorpus/\"\n",
+    "freq_fname_CW4 = f\"{coldir}/QLVLNews.fullcorpus_CW4.wcmx.freq.pac\" # window size of 4"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#settings['left-span'] = 4\n",
+    "#settings['right-span = 4']\n",
+    "freqMTX_CW4 = loadColloc(freq_fname_CW4, settings)\n",
+    "freqMTX_CW4"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "freq_fname_CW10 = f\"{coldir}/QLVLNews.fullcorpus_CW10.wcmx.freq.pac\" # window size of 4\n",
+    "#settings['left-span'] = 10\n",
+    "#settings['right-span = 10']\n",
+    "freqMTX_CW10 = loadColloc(freq_fname_CW10, settings)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2 Register PPMI values\n",
+    "\n",
+    "The function below subsets collocation matrices and calculates PMI values based on collocation matrices and frequencies based on vocabularies, to register the information in a dataframe. It returns a specific PPMI dataframe to use for weighting."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# 10. On a loop per item, row weight models ================================\n",
+    "# Done on the loop below\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.3 Implement weighting on selection\n",
+    "\n",
+    "This step is performed on all the matrices created up to this moment. A useful thing to do first is to combine all the first-order register information we have from the different kinds of models."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from semasioFlow.utils import booleanize"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# 11. On a loop per item, row weight models ================================\n",
+    "for type_name, query_list in everything:\n",
+    "    ppmi = targetPPMI(query_list, vocabs = {\"freq\" : full},\n",
+    "               collocs = {\"4\" : freqMTX_CW4, \"10\" : freqMTX_CW10},\n",
+    "               type_name = type_name, output_dir = f\"{output_path}/registers/\",\n",
+    "               main_matrix = \"4\")\n",
+    "    weighting = {\n",
+    "        \"no\" : None,\n",
+    "        \"selection\" : booleanize(ppmi, include_negative=False),\n",
+    "        \"weight\" : ppmi\n",
+    "    }\n",
+    "    token_dir = f\"{output_path}/tokens/{type_name}\"\n",
+    "    foc_registers = loadFocRegisters(f\"{output_path}/registers\", type_name)\n",
+    "    weight_data = weightTokens(token_dir, weighting, foc_registers)\n",
+    "    weight_data[\"model_register\"].to_csv(f\"{output_path}/registers/{type_name}.focmodels.tsv\", sep = '\\t',\n",
+    "                                         index_label = \"_model\")\n",
+    "    github_type = f\"{github_dir}/{type_name}\"\n",
+    "    if not os.path.exists(github_type):\n",
+    "        os.makedirs(github_type)\n",
+    "    weight_data[\"token_register\"].to_csv(f\"{github_type}/{type_name}.variables.tsv\", sep = '\\t',\n",
+    "                                         index_label = \"_id\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5 Second-order dimensions"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The final step to obtain our token-level vectors is to multiply the token-foc matrices for type-level matrices to obtain second-order vectors. We will loop over the models in the index of `weight_data[\"model_register\"]` and over second-order parameter settings to filter `freqMTX_CW4` and obtain different models."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "soc_pos = {\n",
+    "    \"all\" : foc,\n",
+    "    \"nav\" : soc\n",
+    "}\n",
+    "lengths = [\"FOC\", 5000] # a number will take the most frequent; something else will take the FOC items"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# 12. On a loop per item, create Soc models ================================\n",
+    "for type_name, query_list in everything:\n",
+    "    registers = pd.read_csv(f\"{output_path}/registers/{type_name}.focmodels.tsv\",\n",
+    "                            sep = \"\\t\", index_col = \"_model\")\n",
+    "    token_dir = f\"{output_path}/tokens/{type_name}\"\n",
+    "    socdata = createSoc(token_dir, registers = registers,\n",
+    "                        soc_pos = soc_pos, lengths = lengths,\n",
+    "                        socMTX = freqMTX_CW4, store_focdists = f\"{output_path}/cws/{type_name}/\")\n",
+    "    socdata.to_csv(f\"{github_dir}/{type_name}/{type_name}.models.tsv\", sep = \"\\t\", index_label=\"_model\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 6 Cosine distances\n",
+    "Once we have all the token-level vectors, as well as our registers,\n",
+    "we can quickly compute and store their cosine distances."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from qlvl import TypeTokenMatrix\n",
+    "from qlvl.specutils.mxcalc import compute_distance"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# 13. On a loop per item, compute distances ======================================\n",
+    "input_suffix = \".tcmx.soc.pac\" #token by context matrix\n",
+    "output_suffix = \".ttmx.dist.pac\" # token by token matrix\n",
+    "for type_name, query_list in everything:\n",
+    "    token_dir = f\"{output_path}/tokens/{type_name}\"\n",
+    "    socdata = pd.read_csv(f\"{github_dir}/{type_name}/{type_name}.models.tsv\",\n",
+    "                         sep = \"\\t\", index_col = \"_model\")\n",
+    "    for modelname in socdata.index:\n",
+    "        input_name = f\"{token_dir}/{modelname}{input_suffix}\"\n",
+    "        output_name = f\"{token_dir}/{modelname}{output_suffix}\"\n",
+    "        compute_distance(TypeTokenMatrix.load(input_name)).save(output_name)\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For the rest, we go to R!\n",
+    "\n",
+    "The R code is in the processClouds notebook, which uses the [semcloud](https://github.com/montesmariana/semcloud) package. I plan to incorporate small clouds into the package to use for examples and recreate the processClouds notebook as a vignette for the package."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Bonus: context word detail"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from semasioFlow.contextwords import listContextwords"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 9081/9081 [10:08<00:00, 14.92it/s]\n",
+      "100%|██████████| 9081/9081 [10:09<00:00, 14.91it/s]\n",
+      "100%|██████████| 9081/9081 [10:09<00:00, 14.90it/s]\n",
+      "100%|██████████| 9081/9081 [10:09<00:00, 14.89it/s]\n",
+      "100%|██████████| 9081/9081 [10:07<00:00, 14.94it/s]\n",
+      "100%|██████████| 9081/9081 [10:08<00:00, 14.91it/s]\n",
+      "100%|██████████| 9081/9081 [10:09<00:00, 14.91it/s]\n",
+      "100%|██████████| 9081/9081 [10:08<00:00, 14.92it/s]\n",
+      "100%|██████████| 9081/9081 [10:07<00:00, 14.95it/s]\n",
+      "100%|██████████| 9081/9081 [10:08<00:00, 14.93it/s]\n",
+      "100%|██████████| 9081/9081 [10:06<00:00, 14.97it/s]\n",
+      "100%|██████████| 9081/9081 [10:08<00:00, 14.91it/s]\n",
+      "100%|██████████| 9081/9081 [10:09<00:00, 14.91it/s]\n",
+      " 40%|████      | 3644/9081 [04:04<06:03, 14.98it/s]"
+     ]
+    }
+   ],
+   "source": [
+    "# # On a loop\n",
+    "for type_name, query_list in everything:\n",
+    "    cws = listContextwords(type_name, tokenlist, fnameSample, settings, left_win=15, right_win = 15)\n",
+    "    cw_fname = f\"{output_path}/registers/{type_name}.cws.detail.tsv\"\n",
+    "    cws.to_csv(cw_fname, sep = \"\\t\", index_label = \"cw_id\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "From this table, it is relatively straightforward to extract concordances and highlight the context words that match certain filters. Note that by default the left contexts are in reverse order."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
