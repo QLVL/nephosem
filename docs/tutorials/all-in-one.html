@@ -44,7 +44,9 @@
     
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Editing your vocabulary object" href="vocab.html" />
+    <link rel="prev" title="Tutorials" href="../tutorials.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,9 +92,45 @@
             
             
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">All-in-one nephosem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#0.-Initial-setup">0. Initial setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#1.-Configuration">1. Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#1.1-Maleable-settings">1.1 Maleable settings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2.-Frequency-lists">2. Frequency lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#3.-Co-occurrence-matrix">3. Co-occurrence matrix</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#3.1.-Bag-of-words">3.1. Bag-of-words</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#3.2-Dependency-based">3.2 Dependency-based</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4.-Association-measures">4. Association measures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#5.-Basic-token-level">5. Basic token level</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#5.1.-Bag-of-words">5.1. Bag-of-words</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#5.2.-Lemmarel">5.2. Lemmarel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#5.3.-Lemmapath">5.3. Lemmapath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#5.4.-Deppath">5.4. Deppath</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#6.-Full-token-level">6. Full token level</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#6.1.-Weight-context-words">6.1. Weight context words</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#6.2.-Second-order-dimensions">6.2. Second-order dimensions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#7.-Cosine-distances">7. Cosine distances</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vocab.html">Editing your vocabulary object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrices.html">All about matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concordance-from-tokens.html">Creating a concordance with TokenHandler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Working with syntactic information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createClouds.html">The full python workflow for semasiological token-level clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createClouds-loop.html">Semasiological Workflow on a loop</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../nephosem.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about.html">About us</a></li>
@@ -143,6 +181,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../tutorials.html">Tutorials</a> &raquo;</li>
         
       <li>All-in-one nephosem</li>
     
@@ -643,7 +683,7 @@ extension.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ff894278772544c891cfd84a078cb23a", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ae6f69f2c2474599827ef1b325f4e400", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -704,6 +744,20 @@ extension.</p>
 <span class="n">freqMTX</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "23812e018838488d8a91c2c9d424c3c5", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
@@ -799,7 +853,7 @@ full path (just <em>eat/V</em> or <code class="docutils literal notranslate"><sp
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "265be092828e46b089222f001b25a7c9", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f60cd2f0709e449686519a8f2ab0fdbe", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -869,7 +923,7 @@ girl/N   1     1        1      1     2      1     6      ...
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8365e07f70b0434dbd6bdb91ce8a0a65", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "889a8ba1e341430a9ab76c06d16ec76d", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -912,7 +966,7 @@ girl/N   1            1             21            1               1             
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "781628a0c90c4392a151770e804de6cc", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1db1295a3eb14978aac565a29f260c8c", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -923,7 +977,7 @@ girl/N   1            1             21            1               1             
 
 ************************************
 function    = compute_association
-  time      = 0.01772 sec
+  time      = 0.01691 sec
 ************************************
 
 </pre></div></div>
@@ -961,7 +1015,7 @@ an/D      NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "676f41cf628a4986bacb60f22d0430c7", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a407bf6b7fcc497096054e1e2f4e8fde", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -972,7 +1026,7 @@ an/D      NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...
 
 ************************************
 function    = compute_association
-  time      = 0.01516 sec
+  time      = 0.01432 sec
 ************************************
 
 </pre></div></div>
@@ -1028,15 +1082,15 @@ to match lines that correspond to sentence (or whatever) boundaries, such as ‘
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[21, 39]                    ask/V  food/N  do/V  give/V  be/V  about/R  eat/V  ...
-girl/N/StanfDepSents.5/19   NaN    NaN     NaN   3       2     NaN      1      ...
-girl/N/StanfDepSents.6/6    NaN    NaN     NaN   -2      NaN   NaN      NaN    ...
-girl/N/StanfDepSents.6/21   NaN    NaN     1     NaN     NaN   NaN      3      ...
-girl/N/StanfDepSents.7/7    NaN    NaN     NaN   -2      NaN   NaN      NaN    ...
-girl/N/StanfDepSents.7/25   -2     NaN     NaN   NaN     NaN   NaN      2      ...
-girl/N/StanfDepSents.3/21   NaN    NaN     NaN   NaN     NaN   NaN      1      ...
-girl/N/StanfDepSents.10/13  NaN    NaN     NaN   NaN     NaN   NaN      NaN    ...
-...                         ...    ...     ...   ...     ...   ...      ...    ...
+[21, 39]                    baby/N  down/R  that/W  healthy/J  on/I  about/I  apple/N  ...
+girl/N/StanfDepSents.4/7    NaN     NaN     NaN     NaN        NaN   NaN      4        ...
+girl/N/StanfDepSents.4/15   NaN     NaN     4       NaN        NaN   NaN      3        ...
+girl/N/StanfDepSents.10/13  NaN     2       NaN     NaN        NaN   NaN      NaN      ...
+girl/N/StanfDepSents.10/19  NaN     NaN     NaN     NaN        NaN   NaN      4        ...
+girl/N/StanfDepSents.3/21   NaN     NaN     NaN     3          NaN   NaN      NaN      ...
+girl/N/StanfDepSents.11/3   NaN     NaN     NaN     NaN        NaN   NaN      NaN      ...
+girl/N/StanfDepSents.11/19  NaN     NaN     NaN     NaN        NaN   NaN      -3       ...
+...                         ...     ...     ...     ...        ...   ...      ...      ...
 </pre></div></div>
 </div>
 </div>
@@ -1073,7 +1127,7 @@ girl/N/StanfDepSents.10/13  NaN    NaN     NaN   NaN     NaN   NaN      NaN    .
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1724536d5dc64c73b31c517ddc4d5e9d", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "42ffc5c9ecfe4adab224f249e0b3355d", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -1120,7 +1174,7 @@ girl/N/StanfDepSents.11/28  NaN    NaN   NaN    NaN     1       NaN
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f562bff7f468405591a3149ca662bfd2", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c50898e019e0408499bb164b7b5cdd55", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -1167,7 +1221,7 @@ girl/N/StanfDepSents.11/28  NaN   NaN      NaN    NaN   NaN    NaN   NaN    ...
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "cdd95ada0a994c95b0d70f876c7d060e", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2f642e9027d24a0d9297f10319e7613e", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -1217,7 +1271,7 @@ context words of the tokens in its columns.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f041d8bcc18a4194848f664927bb9917", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8cb8a473304e4621b54660822d9e7bec", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -1228,7 +1282,7 @@ context words of the tokens in its columns.</p>
 
 ************************************
 function    = compute_association
-  time      = 0.01543 sec
+  time      = 0.01638 sec
 ************************************
 
 </pre></div></div>
@@ -1239,8 +1293,8 @@ function    = compute_association
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1, 39]  ask/V      food/N  do/V       give/V      be/V  about/R    eat/V        ...
-girl/N   0.6383967  0.0     1.0438617  0.23293155  0.0   0.8207182  0.057366785  ...
+[1, 39]  baby/N  down/R     that/W     healthy/J  on/I       about/I    apple/N     ...
+girl/N   0.0     1.3315438  0.3507146  0.0        0.8207182  0.6383967  0.18944645  ...
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -1263,8 +1317,8 @@ girl/N   0.6383967  0.0     1.0438617  0.23293155  0.0   0.8207182  0.057366785 
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">subMTX</span> <span class="o">=</span> <span class="n">ppmiMTX</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="n">weighted</span><span class="o">.</span><span class="n">col_items</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">subMTX</span>
+<span></span><span class="n">socMTX</span> <span class="o">=</span> <span class="n">ppmiMTX</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="n">weighted</span><span class="o">.</span><span class="n">col_items</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">socMTX</span>
 </pre></div>
 </div>
 </div>
@@ -1274,15 +1328,15 @@ girl/N   0.6383967  0.0     1.0438617  0.23293155  0.0   0.8207182  0.057366785 
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[39, 55]  &#39;s/P  ,/,         a/D         about/I    about/R     all/P      an/D        ...
-ask/V     NaN   NaN         NaN         3.6506581  NaN         NaN        NaN         ...
-food/N    NaN   1.987153    0.54956543  NaN        NaN         NaN        NaN         ...
-do/V      NaN   NaN         NaN         NaN        NaN         NaN        NaN         ...
-give/V    NaN   NaN         0.65492594  NaN        NaN         NaN        0.94260806  ...
-be/V      NaN   0.19539364  0.0         NaN        NaN         1.7535383  0.43178242  ...
-about/R   NaN   NaN         NaN         NaN        NaN         NaN        NaN         ...
-eat/V     NaN   0.0         0.0         0.6717331  0.85405463  NaN        0.44858953  ...
-...       ...   ...         ...         ...        ...         ...        ...         ...
+[39, 55]   &#39;s/P       ,/,       a/D         about/I     about/R    all/P  an/D       ...
+baby/N     NaN        NaN       0.98034835  NaN         NaN        NaN    NaN        ...
+down/R     NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...
+that/W     NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...
+healthy/J  NaN        1.154244  0.81526864  NaN         NaN        NaN    NaN        ...
+on/I       NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...
+about/I    NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...
+apple/N    1.0814445  0.0       0.3882973   0.89912295  1.0814445  NaN    1.0814445  ...
+...        ...        ...       ...         ...         ...        ...    ...        ...
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1296,21 +1350,24 @@ eat/V     NaN   0.0         0.0         0.6717331  0.85405463  NaN        0.4485
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-32-ad45d911637f&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>tokvecs <span class="ansi-blue-fg">=</span> compute_token_vectors<span class="ansi-blue-fg">(</span>weighted<span class="ansi-blue-fg">,</span> socMTX<span class="ansi-blue-fg">,</span> operation<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;weightedmean&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> tokvecs
-
-<span class="ansi-red-fg">NameError</span>: name &#39;socMTX&#39; is not defined
+[21, 55]                    &#39;s/P    ,/,     a/D     about/I  about/R  all/P   an/D    ...
+girl/N/StanfDepSents.4/7    0.0135  NaN     0.0047  0.0132   0.0166   0.0039  0.0146  ...
+girl/N/StanfDepSents.4/15   0.0232  NaN     0.0080  0.0228   0.0286   0.0068  0.0252  ...
+girl/N/StanfDepSents.10/13  0.0008  NaN     NaN     NaN      0.0008   0.0066  NaN     ...
+girl/N/StanfDepSents.10/19  0.0119  NaN     0.0041  0.0118   0.2003   0.0035  0.0130  ...
+girl/N/StanfDepSents.3/21   0.0008  0.0485  0.0191  0.0041   0.0060   0.0066  0.0028  ...
+girl/N/StanfDepSents.11/3   0.1028  0.0279  0.0251  NaN      0.0006   0.0048  NaN     ...
+girl/N/StanfDepSents.11/19  0.0110  NaN     0.0117  0.0088   0.0110   0.0032  0.0220  ...
+...                         ...     ...     ...     ...      ...      ...     ...     ...
 </pre></div></div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1318,13 +1375,22 @@ eat/V     NaN   0.0         0.0         0.6717331  0.85405463  NaN        0.4485
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Stored in file:
+  .//output//Toy.ttmx.ppmi.pac
+</pre></div></div>
+</div>
 </div>
 </div>
 <div class="section" id="7.-Cosine-distances">
 <h2>7. Cosine distances<a class="headerlink" href="#7.-Cosine-distances" title="Permalink to this headline">¶</a></h2>
 <p>The final element, <code class="docutils literal notranslate"><span class="pre">tokvecs</span></code>, is the actual token-level matrix we are interested in. We could use it to average vectors over a set of tokens or directly compute the distances or similarities between the vectors. See the documentation for options on different measures</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1333,8 +1399,38 @@ eat/V     NaN   0.0         0.0         0.6717331  0.85405463  NaN        0.4485
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+************************************
+function    = compute_distance
+  time      = 0.0009825 sec
+************************************
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[21, 21]                    girl/N/StanfDepSents.4/7  girl/N/StanfDepSents.4/15  girl/N/StanfDepSents.10/13  girl/N/StanfDepSents.10/19  girl/N/StanfDepSents.3/21  girl/N/StanfDepSents.11/3  girl/N/StanfDepSents.11/19  ...
+girl/N/StanfDepSents.4/7    0.0000                    0.6533                     0.8416                      0.7850                      0.7641                     0.8476                     0.8256                      ...
+girl/N/StanfDepSents.4/15   0.6533                    0.0000                     0.7402                      0.6142                      0.5763                     0.7897                     0.6702                      ...
+girl/N/StanfDepSents.10/13  0.8416                    0.7402                     0.0000                      0.8721                      0.7514                     0.8736                     0.8654                      ...
+girl/N/StanfDepSents.10/19  0.7850                    0.6142                     0.8721                      0.0000                      0.7803                     0.9064                     0.8111                      ...
+girl/N/StanfDepSents.3/21   0.7641                    0.5763                     0.7514                      0.7803                      0.0000                     0.5974                     0.7332                      ...
+girl/N/StanfDepSents.11/3   0.8476                    0.7897                     0.8736                      0.9064                      0.5974                     0.0000                     0.8789                      ...
+girl/N/StanfDepSents.11/19  0.8256                    0.6702                     0.8654                      0.8111                      0.7332                     0.8789                     0.0000                      ...
+...                         ...                       ...                        ...                         ...                         ...                        ...                        ...                         ...
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1342,9 +1438,18 @@ eat/V     NaN   0.0         0.0         0.6717331  0.85405463  NaN        0.4485
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Stored in file:
+  .//output//Toy.ttmx.dist.pac
+</pre></div></div>
+</div>
 <p>Of course, this could be used to compute the distances between the context words themselves!</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1352,6 +1457,36 @@ eat/V     NaN   0.0         0.0         0.6717331  0.85405463  NaN        0.4485
 <span class="n">focdists</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+************************************
+function    = compute_distance
+  time      = 0.0004909 sec
+************************************
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[39, 39]   baby/N  down/R  that/W  healthy/J  on/I    about/I  apple/N  ...
+baby/N     0.0000  1.0000  0.6509  0.9456     0.9462  0.9644   0.8596   ...
+down/R     1.0000  0.0000  1.0000  1.0000     1.0000  1.0000   1.0000   ...
+that/W     0.6509  1.0000  0.0000  0.9731     0.9182  0.9209   0.7750   ...
+healthy/J  0.9456  1.0000  0.9731  0.0000     0.9575  0.9587   0.6761   ...
+on/I       0.9462  1.0000  0.9182  0.9575     0.0000  0.8916   0.9196   ...
+about/I    0.9644  1.0000  0.9209  0.9587     0.8916  0.0000   0.9733   ...
+apple/N    0.8596  1.0000  0.7750  0.6761     0.9196  0.9733   0.0000   ...
+...        ...     ...     ...     ...        ...     ...      ...      ...
+</pre></div></div>
 </div>
 </div>
 </div>
@@ -1361,6 +1496,10 @@ eat/V     NaN   0.0         0.0         0.6717331  0.85405463  NaN        0.4485
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="vocab.html" class="btn btn-neutral float-right" title="Editing your vocabulary object" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../tutorials.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 

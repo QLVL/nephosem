@@ -310,7 +310,7 @@
     {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "ff894278772544c891cfd84a078cb23a",
+       "model_id": "ae6f69f2c2474599827ef1b325f4e400",
        "version_major": 2,
        "version_minor": 0
       },
@@ -416,6 +416,27 @@
     "scrolled": false
    },
    "outputs": [
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "23812e018838488d8a91c2c9d424c3c5",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "HBox(children=(IntProgress(value=0, max=47), HTML(value='')))"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
     {
      "data": {
       "text/plain": [
@@ -528,7 +549,7 @@
     {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "265be092828e46b089222f001b25a7c9",
+       "model_id": "f60cd2f0709e449686519a8f2ab0fdbe",
        "version_major": 2,
        "version_minor": 0
       },
@@ -620,7 +641,7 @@
     {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "8365e07f70b0434dbd6bdb91ce8a0a65",
+       "model_id": "889a8ba1e341430a9ab76c06d16ec76d",
        "version_major": 2,
        "version_minor": 0
       },
@@ -696,7 +717,7 @@
     {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "781628a0c90c4392a151770e804de6cc",
+       "model_id": "1db1295a3eb14978aac565a29f260c8c",
        "version_major": 2,
        "version_minor": 0
       },
@@ -715,7 +736,7 @@
       "\n",
       "************************************\n",
       "function    = compute_association\n",
-      "  time      = 0.01772 sec\n",
+      "  time      = 0.01691 sec\n",
       "************************************\n",
       "\n"
      ]
@@ -763,7 +784,7 @@
     {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "676f41cf628a4986bacb60f22d0430c7",
+       "model_id": "a407bf6b7fcc497096054e1e2f4e8fde",
        "version_major": 2,
        "version_minor": 0
       },
@@ -782,7 +803,7 @@
       "\n",
       "************************************\n",
       "function    = compute_association\n",
-      "  time      = 0.01516 sec\n",
+      "  time      = 0.01432 sec\n",
       "************************************\n",
       "\n"
      ]
@@ -864,15 +885,15 @@
     {
      "data": {
       "text/plain": [
-       "[21, 39]                    ask/V  food/N  do/V  give/V  be/V  about/R  eat/V  ...\n",
-       "girl/N/StanfDepSents.5/19   NaN    NaN     NaN   3       2     NaN      1      ...\n",
-       "girl/N/StanfDepSents.6/6    NaN    NaN     NaN   -2      NaN   NaN      NaN    ...\n",
-       "girl/N/StanfDepSents.6/21   NaN    NaN     1     NaN     NaN   NaN      3      ...\n",
-       "girl/N/StanfDepSents.7/7    NaN    NaN     NaN   -2      NaN   NaN      NaN    ...\n",
-       "girl/N/StanfDepSents.7/25   -2     NaN     NaN   NaN     NaN   NaN      2      ...\n",
-       "girl/N/StanfDepSents.3/21   NaN    NaN     NaN   NaN     NaN   NaN      1      ...\n",
-       "girl/N/StanfDepSents.10/13  NaN    NaN     NaN   NaN     NaN   NaN      NaN    ...\n",
-       "...                         ...    ...     ...   ...     ...   ...      ...    ..."
+       "[21, 39]                    baby/N  down/R  that/W  healthy/J  on/I  about/I  apple/N  ...\n",
+       "girl/N/StanfDepSents.4/7    NaN     NaN     NaN     NaN        NaN   NaN      4        ...\n",
+       "girl/N/StanfDepSents.4/15   NaN     NaN     4       NaN        NaN   NaN      3        ...\n",
+       "girl/N/StanfDepSents.10/13  NaN     2       NaN     NaN        NaN   NaN      NaN      ...\n",
+       "girl/N/StanfDepSents.10/19  NaN     NaN     NaN     NaN        NaN   NaN      4        ...\n",
+       "girl/N/StanfDepSents.3/21   NaN     NaN     NaN     3          NaN   NaN      NaN      ...\n",
+       "girl/N/StanfDepSents.11/3   NaN     NaN     NaN     NaN        NaN   NaN      NaN      ...\n",
+       "girl/N/StanfDepSents.11/19  NaN     NaN     NaN     NaN        NaN   NaN      -3       ...\n",
+       "...                         ...     ...     ...     ...        ...   ...      ...      ..."
       ]
      },
      "execution_count": 24,
@@ -927,7 +948,7 @@
     {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "1724536d5dc64c73b31c517ddc4d5e9d",
+       "model_id": "42ffc5c9ecfe4adab224f249e0b3355d",
        "version_major": 2,
        "version_minor": 0
       },
@@ -990,7 +1011,7 @@
     {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "f562bff7f468405591a3149ca662bfd2",
+       "model_id": "c50898e019e0408499bb164b7b5cdd55",
        "version_major": 2,
        "version_minor": 0
       },
@@ -1053,7 +1074,7 @@
     {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "cdd95ada0a994c95b0d70f876c7d060e",
+       "model_id": "2f642e9027d24a0d9297f10319e7613e",
        "version_major": 2,
        "version_minor": 0
       },
@@ -1121,7 +1142,7 @@
     {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "f041d8bcc18a4194848f664927bb9917",
+       "model_id": "8cb8a473304e4621b54660822d9e7bec",
        "version_major": 2,
        "version_minor": 0
       },
@@ -1140,7 +1161,7 @@
       "\n",
       "************************************\n",
       "function    = compute_association\n",
-      "  time      = 0.01543 sec\n",
+      "  time      = 0.01638 sec\n",
       "************************************\n",
       "\n"
      ]
@@ -1148,8 +1169,8 @@
     {
      "data": {
       "text/plain": [
-       "[1, 39]  ask/V      food/N  do/V       give/V      be/V  about/R    eat/V        ...\n",
-       "girl/N   0.6383967  0.0     1.0438617  0.23293155  0.0   0.8207182  0.057366785  ..."
+       "[1, 39]  baby/N  down/R     that/W     healthy/J  on/I       about/I    apple/N     ...\n",
+       "girl/N   0.0     1.3315438  0.3507146  0.0        0.8207182  0.6383967  0.18944645  ..."
       ]
      },
      "execution_count": 29,
@@ -1198,15 +1219,15 @@
     {
      "data": {
       "text/plain": [
-       "[39, 55]  's/P  ,/,         a/D         about/I    about/R     all/P      an/D        ...\n",
-       "ask/V     NaN   NaN         NaN         3.6506581  NaN         NaN        NaN         ...\n",
-       "food/N    NaN   1.987153    0.54956543  NaN        NaN         NaN        NaN         ...\n",
-       "do/V      NaN   NaN         NaN         NaN        NaN         NaN        NaN         ...\n",
-       "give/V    NaN   NaN         0.65492594  NaN        NaN         NaN        0.94260806  ...\n",
-       "be/V      NaN   0.19539364  0.0         NaN        NaN         1.7535383  0.43178242  ...\n",
-       "about/R   NaN   NaN         NaN         NaN        NaN         NaN        NaN         ...\n",
-       "eat/V     NaN   0.0         0.0         0.6717331  0.85405463  NaN        0.44858953  ...\n",
-       "...       ...   ...         ...         ...        ...         ...        ...         ..."
+       "[39, 55]   's/P       ,/,       a/D         about/I     about/R    all/P  an/D       ...\n",
+       "baby/N     NaN        NaN       0.98034835  NaN         NaN        NaN    NaN        ...\n",
+       "down/R     NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...\n",
+       "that/W     NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...\n",
+       "healthy/J  NaN        1.154244  0.81526864  NaN         NaN        NaN    NaN        ...\n",
+       "on/I       NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...\n",
+       "about/I    NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...\n",
+       "apple/N    1.0814445  0.0       0.3882973   0.89912295  1.0814445  NaN    1.0814445  ...\n",
+       "...        ...        ...       ...         ...         ...        ...    ...        ..."
       ]
      },
      "execution_count": 31,
@@ -1215,8 +1236,8 @@
     }
    ],
    "source": [
-    "subMTX = ppmiMTX.submatrix(row = weighted.col_items).drop(axis = 1)\n",
-    "subMTX"
+    "socMTX = ppmiMTX.submatrix(row = weighted.col_items).drop(axis = 1)\n",
+    "socMTX"
    ]
   },
   {
@@ -1227,15 +1248,22 @@
    },
    "outputs": [
     {
-     "ename": "NameError",
-     "evalue": "name 'socMTX' is not defined",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
-      "\u001b[0;32m<ipython-input-32-ad45d911637f>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mtokvecs\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mcompute_token_vectors\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mweighted\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0msocMTX\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0moperation\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;34m'weightedmean'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      2\u001b[0m \u001b[0mtokvecs\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
-      "\u001b[0;31mNameError\u001b[0m: name 'socMTX' is not defined"
-     ]
+     "data": {
+      "text/plain": [
+       "[21, 55]                    's/P    ,/,     a/D     about/I  about/R  all/P   an/D    ...\n",
+       "girl/N/StanfDepSents.4/7    0.0135  NaN     0.0047  0.0132   0.0166   0.0039  0.0146  ...\n",
+       "girl/N/StanfDepSents.4/15   0.0232  NaN     0.0080  0.0228   0.0286   0.0068  0.0252  ...\n",
+       "girl/N/StanfDepSents.10/13  0.0008  NaN     NaN     NaN      0.0008   0.0066  NaN     ...\n",
+       "girl/N/StanfDepSents.10/19  0.0119  NaN     0.0041  0.0118   0.2003   0.0035  0.0130  ...\n",
+       "girl/N/StanfDepSents.3/21   0.0008  0.0485  0.0191  0.0041   0.0060   0.0066  0.0028  ...\n",
+       "girl/N/StanfDepSents.11/3   0.1028  0.0279  0.0251  NaN      0.0006   0.0048  NaN     ...\n",
+       "girl/N/StanfDepSents.11/19  0.0110  NaN     0.0117  0.0088   0.0110   0.0032  0.0220  ...\n",
+       "...                         ...     ...     ...     ...      ...      ...     ...     ..."
+      ]
+     },
+     "execution_count": 32,
+     "metadata": {},
+     "output_type": "execute_result"
     }
    ],
    "source": [
@@ -1245,9 +1273,18 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 33,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Stored in file:\n",
+      "  .//output//Toy.ttmx.ppmi.pac\n"
+     ]
+    }
+   ],
    "source": [
     "tokvecs.save(f\"{output_path}/{corpus_name}.ttmx.ppmi.pac\")"
    ]
@@ -1268,11 +1305,42 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 34,
    "metadata": {
     "scrolled": false
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "************************************\n",
+      "function    = compute_distance\n",
+      "  time      = 0.0009825 sec\n",
+      "************************************\n",
+      "\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[21, 21]                    girl/N/StanfDepSents.4/7  girl/N/StanfDepSents.4/15  girl/N/StanfDepSents.10/13  girl/N/StanfDepSents.10/19  girl/N/StanfDepSents.3/21  girl/N/StanfDepSents.11/3  girl/N/StanfDepSents.11/19  ...\n",
+       "girl/N/StanfDepSents.4/7    0.0000                    0.6533                     0.8416                      0.7850                      0.7641                     0.8476                     0.8256                      ...\n",
+       "girl/N/StanfDepSents.4/15   0.6533                    0.0000                     0.7402                      0.6142                      0.5763                     0.7897                     0.6702                      ...\n",
+       "girl/N/StanfDepSents.10/13  0.8416                    0.7402                     0.0000                      0.8721                      0.7514                     0.8736                     0.8654                      ...\n",
+       "girl/N/StanfDepSents.10/19  0.7850                    0.6142                     0.8721                      0.0000                      0.7803                     0.9064                     0.8111                      ...\n",
+       "girl/N/StanfDepSents.3/21   0.7641                    0.5763                     0.7514                      0.7803                      0.0000                     0.5974                     0.7332                      ...\n",
+       "girl/N/StanfDepSents.11/3   0.8476                    0.7897                     0.8736                      0.9064                      0.5974                     0.0000                     0.8789                      ...\n",
+       "girl/N/StanfDepSents.11/19  0.8256                    0.6702                     0.8654                      0.8111                      0.7332                     0.8789                     0.0000                      ...\n",
+       "...                         ...                       ...                        ...                         ...                         ...                        ...                        ...                         ..."
+      ]
+     },
+     "execution_count": 34,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "tokdists = compute_distance(tokvecs)\n",
     "tokdists"
@@ -1280,9 +1348,18 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 35,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Stored in file:\n",
+      "  .//output//Toy.ttmx.dist.pac\n"
+     ]
+    }
+   ],
    "source": [
     "tokdists.save(f\"{output_path}/{corpus_name}.ttmx.dist.pac\")"
    ]
@@ -1296,11 +1373,42 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 36,
    "metadata": {
     "scrolled": true
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "************************************\n",
+      "function    = compute_distance\n",
+      "  time      = 0.0004909 sec\n",
+      "************************************\n",
+      "\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[39, 39]   baby/N  down/R  that/W  healthy/J  on/I    about/I  apple/N  ...\n",
+       "baby/N     0.0000  1.0000  0.6509  0.9456     0.9462  0.9644   0.8596   ...\n",
+       "down/R     1.0000  0.0000  1.0000  1.0000     1.0000  1.0000   1.0000   ...\n",
+       "that/W     0.6509  1.0000  0.0000  0.9731     0.9182  0.9209   0.7750   ...\n",
+       "healthy/J  0.9456  1.0000  0.9731  0.0000     0.9575  0.9587   0.6761   ...\n",
+       "on/I       0.9462  1.0000  0.9182  0.9575     0.0000  0.8916   0.9196   ...\n",
+       "about/I    0.9644  1.0000  0.9209  0.9587     0.8916  0.0000   0.9733   ...\n",
+       "apple/N    0.8596  1.0000  0.7750  0.6761     0.9196  0.9733   0.0000   ...\n",
+       "...        ...     ...     ...     ...        ...     ...      ...      ..."
+      ]
+     },
+     "execution_count": 36,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "focdists = compute_distance(socMTX)\n",
     "focdists"

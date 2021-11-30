@@ -407,7 +407,7 @@ Procedures:
 </div>
 <div class="section" id="module-nephosem.models.typetoken">
 <span id="nephosem-models-typetoken-module"></span><h2>nephosem.models.typetoken module<a class="headerlink" href="#module-nephosem.models.typetoken" title="Permalink to this headline">¶</a></h2>
-<p>This module implements the models model.</p>
+<p>This module implements the Bag-of-words models.</p>
 <div class="section" id="other-models">
 <h3>Other models<a class="headerlink" href="#other-models" title="Permalink to this headline">¶</a></h3>
 </div>
@@ -435,7 +435,8 @@ Procedures:
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fnames</strong> (<em>str</em><em>, </em><em>optional</em>) – Filename of a file which records all (a user wants to process) file names of a corpus.
+<li><p><strong>fnames</strong> (<em>str</em><em> or </em><em>list of str</em><em>, </em><em>optional</em>) – Filename of a file which records all (a user wants to process) file names of a corpus
+or list of file names of corpus.
 Format: corpus_name + settings[“fnames-ext”]</p></li>
 <li><p><strong>row_vocab</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code>) – If it is not provided here or when initializing the class, the code will stop.</p></li>
 <li><p><strong>col_vocab</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code>) – </p></li>
@@ -535,10 +536,11 @@ words of left span and right span stored in two queues.</p></li>
 <dt class="sig sig-object py" id="nephosem.models.typetoken.ItemFreqHandler.build_item_freq">
 <span class="sig-name descname"><span class="pre">build_item_freq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.models.typetoken.ItemFreqHandler.build_item_freq" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make a list of all word types that occurred in the corpus
-and write in json format</p>
+and write in json format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fnames</strong> (<em>str</em><em>, </em><em>optional</em>) – Path of file recording corpus file names (‘fnames’ file of a corpus).
+<dd class="field-odd"><p><strong>fnames</strong> (<em>str</em><em> or </em><em>list of str</em><em>, </em><em>optional</em>) – Path of file recording corpus file names (‘fnames’ file of a corpus)
+or list of file names.
 If this is provided, only the files recorded in this fnames file
 would be processed.
 Else, all files and folders inside the ‘corpus-path’ of settings

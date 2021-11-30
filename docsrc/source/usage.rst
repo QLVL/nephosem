@@ -14,6 +14,9 @@ To use Nephosem, clone the `repository`_ and append it to the path in your Pytho
 
 .. _repository: https://github.com/QLVL/nephosem/
 
+The "/path/to/repository" is the path leading to the cloned repository, which by default will be called
+`nephosem`. It will have a subdirectory `nephosem` inside, which has the code per se.
+
 Citation
 --------
 
