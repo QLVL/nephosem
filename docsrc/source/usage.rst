@@ -22,6 +22,9 @@ Citation
 
 If you use this code, use the information below:
 
+.. .. literalinclude:: ../../CITATION.cff
+..    :language: cff
+
 .. code-block:: bibtex
 
     @software{QLVL_nephosem,

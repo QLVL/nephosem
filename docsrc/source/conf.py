@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath('../../'))
 # -- Project information -----------------------------------------------------
 
 project = 'Nephological Semantics'
-copyright = '2021, QLVL'
+copyright = '2021, QLVL (documentation by Mariana Montes)'
 author = 'QLVL'
 
 # The full version, including alpha/beta/rc tags
@@ -58,6 +58,8 @@ html_theme = 'sphinx_rtd_theme'
 #     "documentwidth" : "75vw",
 #     "sidebarwidth" : "20vw"
 # }
+# html_logo = 'cloud-qlvl-blue.png'
+html_favicon = 'favicon.ico'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
