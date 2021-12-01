@@ -44,7 +44,9 @@
     
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The full python workflow for semasiological token-level clouds" href="createClouds.html" />
+    <link rel="prev" title="Creating a concordance with TokenHandler" href="concordance-from-tokens.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,9 +92,18 @@
             
             
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="all-in-one.html">All-in-one nephosem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vocab.html">Editing your vocabulary object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrices.html">All about matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concordance-from-tokens.html">Creating a concordance with TokenHandler</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Working with syntactic information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createClouds.html">The full python workflow for semasiological token-level clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createClouds-loop.html">Semasiological Workflow on a loop</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../nephosem.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about.html">About us</a></li>
@@ -143,6 +154,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../tutorials.html">Tutorials</a> &raquo;</li>
         
       <li>Working with syntactic information</li>
     
@@ -435,6 +448,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Working-with-syntactic-information">
 <h1>Working with syntactic information<a class="headerlink" href="#Working-with-syntactic-information" title="Permalink to this headline">¶</a></h1>
+<p>This notebook introduces how to write and parse instructions to interpret dependency information for dependency-based models in the <code class="docutils literal notranslate"><span class="pre">nephosem</span></code> package.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -448,6 +462,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<p>The instructions for the code to parse the dependency information in the corpus are coded as .graphml and .xml files, that are read to create <code class="docutils literal notranslate"><span class="pre">nephosem.PatternGraph</span></code> and <code class="docutils literal notranslate"><span class="pre">nephosem.MacroGraph</span></code> objects respectively.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -485,9 +500,9 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>The structure is as follows: the main element is a <code class="docutils literal notranslate"><span class="pre">&lt;graphml&gt;</span></code> tag, that always stay the same, within which we have three <code class="docutils literal notranslate"><span class="pre">&lt;key&gt;</span></code> tags setting up the main elements we are now interested in: lemma and pos for the nodes, and deprel for the key. Inside them, the <code class="docutils literal notranslate"><span class="pre">&lt;default&gt;</span></code> tag lets us set up a default regex expression for filtering these items, but then we can make further specifications within the specific graphs. Afterwards, we can add as many <code class="docutils literal notranslate"><span class="pre">&lt;graph&gt;</span></code> tags as we want, each of them
 representing one pattern to match.</p>
-<p>Each <code class="docutils literal notranslate"><span class="pre">&lt;graph&gt;</span></code> tag has an id (which is a string with a number) and a property <code class="docutils literal notranslate"><span class="pre">edgedefault=&quot;directed&quot;</span></code> (not sure how compulsory that is). Inside the <code class="docutils literal notranslate"><span class="pre">&lt;graph&gt;</span></code> tag we can have <code class="docutils literal notranslate"><span class="pre">&lt;node&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;edge&gt;</span></code> tags indicating the nodes (items) and edges (relationships) in the pattern. Here we have two nodes, 1 and 2, joined by an edge that goes from 1 (source attribute) to 2 (target attribute): node 1 is the head of node 2, e.g the verb for its direct object. We could specify that we want the
-direct object by filling in the <code class="docutils literal notranslate"><span class="pre">&lt;data&gt;</span></code> element within <code class="docutils literal notranslate"><span class="pre">&lt;edge&gt;</span></code> as “dobj” instead of “<span class="math">\w`+”. Note that this ``<data>`</span> element has a <code class="docutils literal notranslate"><span class="pre">key</span></code> attribute with value “e1”, meaning that it’s talking about a “deprel” element. Within the nodes, we could have a similar <code class="docutils literal notranslate"><span class="pre">&lt;data&gt;</span></code> element with a <code class="docutils literal notranslate"><span class="pre">key</span></code> attribute and valeue “n1” if we want to filter by lemma or “n2” if we want to filter by part-of-speech.</p>
-<p>Next, we have a fragment of the raw <code class="docutils literal notranslate"><span class="pre">path_macros</span></code>, the .xml file:</p>
+<p>Each <code class="docutils literal notranslate"><span class="pre">&lt;graph&gt;</span></code> tag has an id (which is a string with a number) and a property <code class="docutils literal notranslate"><span class="pre">edgedefault=&quot;directed&quot;</span></code>. Inside the <code class="docutils literal notranslate"><span class="pre">&lt;graph&gt;</span></code> tag we can have <code class="docutils literal notranslate"><span class="pre">&lt;node&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;edge&gt;</span></code> tags indicating the nodes (items) and edges (relationships) in the pattern. Here we have two nodes, 1 and 2, joined by an edge that goes from 1 (source attribute) to 2 (target attribute): node 1 is the head of node 2, e.g the verb for its direct object. We could specify that we want the direct object by filling in the
+<code class="docutils literal notranslate"><span class="pre">&lt;data&gt;</span></code> element within <code class="docutils literal notranslate"><span class="pre">&lt;edge&gt;</span></code> as <code class="docutils literal notranslate"><span class="pre">&quot;dobj&quot;</span></code> instead of <code class="docutils literal notranslate"><span class="pre">&quot;\w+&quot;</span></code>. Note that this <code class="docutils literal notranslate"><span class="pre">&lt;data&gt;</span></code> element has a <code class="docutils literal notranslate"><span class="pre">key</span></code> attribute with value <code class="docutils literal notranslate"><span class="pre">&quot;e1&quot;</span></code>, indicating that it points to the element defined by <code class="docutils literal notranslate"><span class="pre">&lt;key</span> <span class="pre">id=&quot;e1&quot;</span> <span class="pre">...&gt;</span></code>. Within the nodes, we could have a similar <code class="docutils literal notranslate"><span class="pre">&lt;data&gt;</span></code> element with a <code class="docutils literal notranslate"><span class="pre">key</span></code> attribute and valeue <code class="docutils literal notranslate"><span class="pre">&quot;n1&quot;</span></code> if we want to filter by lemma or <code class="docutils literal notranslate"><span class="pre">&quot;n2&quot;</span></code> if we want to filter by part-of-speech.</p>
+<p>The following is a fragment of the raw <code class="docutils literal notranslate"><span class="pre">path_macros</span></code>, the .xml file:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;target-feature-list&gt;</span>
     <span class="nt">&lt;target-fmt&gt;</span>
@@ -521,8 +536,10 @@ direct object by filling in the <code class="docutils literal notranslate"><span
 </div>
 <p>In this case, after the small xml preamble, we have the mail element <code class="docutils literal notranslate"><span class="pre">&lt;target-feature-list&gt;</span></code>, within which we find one <code class="docutils literal notranslate"><span class="pre">&lt;target-fmt&gt;</span></code> element to specify the format of the target, one <code class="docutils literal notranslate"><span class="pre">&lt;feature-fmt&gt;</span></code> tag to specify the format of the feature elements (the columns of our matrices), and as many <code class="docutils literal notranslate"><span class="pre">&lt;target-feature-macro&gt;</span></code> elements as we have templates/macros to describe.</p>
 <p>In the <code class="docutils literal notranslate"><span class="pre">&lt;target-fmt&gt;</span></code> element, the <code class="docutils literal notranslate"><span class="pre">&lt;node-fmt&gt;</span></code> element gives instructions to capture the elements of a node and chain them. The <code class="docutils literal notranslate"><span class="pre">fid</span></code> and <code class="docutils literal notranslate"><span class="pre">lid</span></code> elements are only relevant at token-level. The same goes for <code class="docutils literal notranslate"><span class="pre">&lt;feature-fmt&gt;</span></code>, where a reference to the edge is included.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">&lt;target-feature-macro&gt;</span></code> element has an attribute “id” (with a number as a string) and three child elements. The first, <code class="docutils literal notranslate"><span class="pre">&lt;sub-graph-pattern&gt;</span></code>, also has an attribute “id” that points to the id of a <code class="docutils literal notranslate"><span class="pre">&lt;graph&gt;</span></code> element in the .graphml file. Totally different from the “id” of the parent element. The <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;feature&gt;</span></code> elements point to the nodes in that <code class="docutils literal notranslate"><span class="pre">&lt;graph&gt;</span></code> that take the roles of node and feature. Here, because the “nodeID” attribute of <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> is “1”, the target is
-the head of the relationship in that graph; because the “featureID” attribute of <code class="docutils literal notranslate"><span class="pre">&lt;feature&gt;</span></code> is “2”, the feature is the dependent. Optionally, you can add a description of the item. With this format, the features will be the lemma/pos combination; if you exclude the “featureID” attribute altogether, the full template will become the feature (including dependency information).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;target-feature-macro&gt;</span></code> element has an attribute <code class="docutils literal notranslate"><span class="pre">&quot;id&quot;</span></code> (with a number as a string) and three child elements. The first element inside it, <code class="docutils literal notranslate"><span class="pre">&lt;sub-graph-pattern&gt;</span></code>, also has an attribute <code class="docutils literal notranslate"><span class="pre">&quot;id&quot;</span></code> that points to the id of a <code class="docutils literal notranslate"><span class="pre">&lt;graph&gt;</span></code> element in the .graphml file. It is unrelated to the <code class="docutils literal notranslate"><span class="pre">&quot;id&quot;</span></code> of the parent element. The <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;feature&gt;</span></code> elements point to the nodes in that <code class="docutils literal notranslate"><span class="pre">&lt;graph&gt;</span></code> that take the roles of node and feature. Here, because the <code class="docutils literal notranslate"><span class="pre">&quot;nodeID&quot;</span></code> attribute of
+<code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;1&quot;</span></code>, the target is the head of the relationship in that graph; because the <code class="docutils literal notranslate"><span class="pre">&quot;featureID&quot;</span></code> attribute of <code class="docutils literal notranslate"><span class="pre">&lt;feature&gt;</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;2&quot;</span></code>, the feature is the dependent. Optionally, you can add a description of the item. With this format, the features will be the lemma/pos combination; if you exclude the <code class="docutils literal notranslate"><span class="pre">&quot;featureID&quot;</span></code> attribute altogether, the full template will become the feature (including dependency information).</p>
+<p>Examples of application at type level can be found in <a class="reference internal" href="all-in-one.html#3.2-Dependency-based"><span class="std std-ref">section 3.2</span></a> of the comprehensive tutorial; applications at token level are found in sections <a class="reference internal" href="all-in-one.html#5.2.-Lemmarel"><span class="std std-ref">5.2</span></a> and <a class="reference internal" href="all-in-one.html#5.3.-Lemmapath"><span class="std std-ref">5.3</span></a> for lemma/pos as features and <a class="reference internal" href="all-in-one.html#5.4.-Deppath"><span class="std std-ref">5.4</span></a> for full path as feature.</p>
+<p>The functions below let you visualize the graphs used for the patterns.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -546,7 +563,7 @@ the head of the relationship in that graph; because the “featureID” attribut
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_dependencies_4_0.png" src="../_images/tutorials_dependencies_4_0.png" />
+<img alt="../_images/tutorials_dependencies_5_0.png" src="../_images/tutorials_dependencies_5_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -567,7 +584,7 @@ the head of the relationship in that graph; because the “featureID” attribut
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_dependencies_5_0.png" src="../_images/tutorials_dependencies_5_0.png" />
+<img alt="../_images/tutorials_dependencies_6_0.png" src="../_images/tutorials_dependencies_6_0.png" />
 </div>
 </div>
 </div>
@@ -577,6 +594,10 @@ the head of the relationship in that graph; because the “featureID” attribut
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="createClouds.html" class="btn btn-neutral float-right" title="The full python workflow for semasiological token-level clouds" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="concordance-from-tokens.html" class="btn btn-neutral float-left" title="Creating a concordance with TokenHandler" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 

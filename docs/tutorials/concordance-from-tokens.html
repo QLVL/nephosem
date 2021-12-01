@@ -44,7 +44,9 @@
     
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Working with syntactic information" href="dependencies.html" />
+    <link rel="prev" title="All about matrices" href="matrices.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,9 +92,22 @@
             
             
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="all-in-one.html">All-in-one nephosem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vocab.html">Editing your vocabulary object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrices.html">All about matrices</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creating a concordance with TokenHandler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Collect-tokens">Collect tokens</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#type2toks">type2toks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Working with syntactic information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createClouds.html">The full python workflow for semasiological token-level clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createClouds-loop.html">Semasiological Workflow on a loop</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../nephosem.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about.html">About us</a></li>
@@ -143,6 +158,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../tutorials.html">Tutorials</a> &raquo;</li>
         
       <li>Creating a concordance with TokenHandler</li>
     
@@ -435,7 +452,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Creating-a-concordance-with-TokenHandler">
 <h1>Creating a concordance with TokenHandler<a class="headerlink" href="#Creating-a-concordance-with-TokenHandler" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">type2toks</span></code> attribute is of <code class="docutils literal notranslate"><span class="pre">TokenHandler</span></code> a dictionary with types as keys and and a <code class="docutils literal notranslate"><span class="pre">TypeNode</span></code> object as value, which has <code class="docutils literal notranslate"><span class="pre">tokens</span></code> attribute that is a list of <code class="docutils literal notranslate"><span class="pre">TokenNode</span></code> objects. From them, we can create a concordance with a function like <code class="docutils literal notranslate"><span class="pre">tokenConcordance()</span></code> below :)</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">type2toks</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">nephosem.TokenHandler</span></code> class is a dictionary with type names as keys and <code class="docutils literal notranslate"><span class="pre">nephosem.TypeNode</span></code> objects as values. The <code class="docutils literal notranslate"><span class="pre">TypeNode</span></code> objects have a <code class="docutils literal notranslate"><span class="pre">tokens</span></code> attribute, which is a list of <code class="docutils literal notranslate"><span class="pre">nephosem.TokenNode</span></code> objects with information on each collected token. From them, we can create a concordance with a function like <code class="docutils literal notranslate"><span class="pre">tokenConcordance()</span></code> below.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -445,7 +462,7 @@ div.rendered_html tbody tr:hover {
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">nephosemdir</span> <span class="o">=</span> <span class="s2">&quot;../../nephosem/&quot;</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nephosemdir</span><span class="p">)</span>
-<span class="n">mydir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;./&quot;</span>
+<span class="n">mydir</span> <span class="o">=</span> <span class="s2">&quot;./&quot;</span>
 <span class="kn">from</span> <span class="nn">nephosem</span> <span class="kn">import</span> <span class="n">ConfigLoader</span><span class="p">,</span> <span class="n">Vocab</span><span class="p">,</span> <span class="n">TokenHandler</span>
 <span class="n">conf</span> <span class="o">=</span> <span class="n">ConfigLoader</span><span class="p">()</span>
 <span class="n">settings</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">update_config</span><span class="p">(</span><span class="s1">&#39;config.ini&#39;</span><span class="p">)</span>
@@ -460,6 +477,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">query</span> <span class="o">=</span> <span class="n">Vocab</span><span class="p">({</span><span class="s1">&#39;girl/N&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">})</span> <span class="c1"># dummy query just for illustration</span>
+<span class="c1"># alternatively, if you already have a vocabulary, vocab.subvocab([&#39;girl/N&#39;])</span>
 </pre></div>
 </div>
 </div>
@@ -559,7 +577,7 @@ nephosem.core.terms.TypeNode
 nephosem.core.terms.TokenNode
 </pre></div></div>
 </div>
-<p>The following function obtains the <code class="docutils literal notranslate"><span class="pre">word</span></code> attribute of each context word and brings them together in a character string.</p>
+<p>The following function obtains the <code class="docutils literal notranslate"><span class="pre">word</span></code> attribute of each context word and brings them together in a character string. Such attributes are named based on the labels in <code class="docutils literal notranslate"><span class="pre">settings['global-columns']</span></code>.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
@@ -658,7 +676,7 @@ nephosem.core.terms.TokenNode
 </table>
 </div></div>
 </div>
-<p>If you have several queries, you just need to replace <code class="docutils literal notranslate"><span class="pre">tokhan.type2toks[&quot;girl/N&quot;].tokens</span></code> with a flattened version <code class="docutils literal notranslate"><span class="pre">[tok</span> <span class="pre">for</span> <span class="pre">typ</span> <span class="pre">in</span> <span class="pre">tokhan.type2toks.values()</span> <span class="pre">for</span> <span class="pre">tok</span> <span class="pre">in</span> <span class="pre">ctyp.tokens]</span></code></p>
+<p>If you have several types in your query, you just need to replace <code class="docutils literal notranslate"><span class="pre">tokhan.type2toks[&quot;girl/N&quot;].tokens</span></code> with a flattened version <code class="docutils literal notranslate"><span class="pre">[tok</span> <span class="pre">for</span> <span class="pre">typ</span> <span class="pre">in</span> <span class="pre">tokhan.type2toks.values()</span> <span class="pre">for</span> <span class="pre">tok</span> <span class="pre">in</span> <span class="pre">ctyp.tokens]</span></code>.</p>
 </div>
 </div>
 
@@ -667,6 +685,10 @@ nephosem.core.terms.TokenNode
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="dependencies.html" class="btn btn-neutral float-right" title="Working with syntactic information" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="matrices.html" class="btn btn-neutral float-left" title="All about matrices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 

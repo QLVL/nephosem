@@ -179,7 +179,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "In addition, the `sum()` method gives you marginal frequencies: of the rows for `mtx.sum(axis=1)`, of the columns for `mtx.sum(axis=2)` and the full sum otherwise. You can use them, transformed to `Vocab` objects, as marginal frequencies for [`compute_association`](all-in-one#4.-Association-measures):"
+    "In addition, the `sum()` method gives you marginal frequencies: of the rows for `mtx.sum(axis=1)`, of the columns for `mtx.sum(axis=2)` and the full sum otherwise. You can use them, transformed to `Vocab` objects, as marginal frequencies for `compute_association()` (when [weighting matrices](all-in-one.ipynb#4.-Association-measures)):"
    ]
   },
   {
@@ -357,7 +357,9 @@
   {
    "cell_type": "code",
    "execution_count": 14,
-   "metadata": {},
+   "metadata": {
+    "scrolled": true
+   },
    "outputs": [
     {
      "data": {
@@ -386,6 +388,33 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "If you just want to obtain the value for a given row-column combination, you can simply subset with square brackets."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "10"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "mtx['apple/N','girl/N']"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
     "## Boolean filter\n",
     "\n",
     "You can use any boolean matrix with the same dimensions to filter, for example, cells with certain values. The code below returns a boolean matrix with `True` where the values are larger than 1 and `False` where they are not (but `NaN` where it was `NaN`)."
@@ -393,7 +422,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 15,
+   "execution_count": 16,
    "metadata": {},
    "outputs": [
     {
@@ -410,7 +439,7 @@
        "...       ...   ...   ...   ...      ...      ...    ...   ..."
       ]
      },
-     "execution_count": 15,
+     "execution_count": 16,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -428,7 +457,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 16,
+   "execution_count": 17,
    "metadata": {},
    "outputs": [
     {
@@ -445,7 +474,7 @@
        "...       ...  ...  ...   ...    ...      ...    ...   ..."
       ]
      },
-     "execution_count": 16,
+     "execution_count": 17,
      "metadata": {},
      "output_type": "execute_result"
     }
