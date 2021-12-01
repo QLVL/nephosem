@@ -50,6 +50,7 @@ from collections import defaultdict
 from copy import deepcopy
 
 import numpy as np
+import time
 
 try:
     import cPickle as _pickle
@@ -249,33 +250,33 @@ class ColFreqHandler(BaseHandler):
 
             # 3. for different tasks, one could add extra data processing part
             chunk = count_values(mtx_dict)
-            if chunk > self.chunksize:
-                # transform the matrix dict to a TypeTokenMatrix object
-                submtx = self.dict2matrix(mtx_dict, row_items, col_items)
-                # save the matrix object of current chunk to a temporary file
-                tmp_fname = "{}/sub.{}".format(self.subtmpdir, i)
-                submtx.save(tmp_fname, pack=False, verbose=False)
-                logger.debug("Saved the tmp matrix into {}".format(tmp_fname))
-                # put the temporary file name to result queue
-                res_queue.put(tmp_fname)
-                print(tmp_fname)
+#             if chunk > self.chunksize:
+#                 # transform the matrix dict to a TypeTokenMatrix object
+#                 submtx = self.dict2matrix(mtx_dict, row_items, col_items)
+#                 # save the matrix object of current chunk to a temporary file
+#                 tmp_fname = "{}/sub.{}".format(self.subtmpdir, i)
+#                 submtx.save(tmp_fname, pack=False, verbose=False)
+#                 logger.debug("Saved the tmp matrix into {} at {}".format(tmp_fname, time.ctime()))
+#                 # put the temporary file name to result queue
+#                 res_queue.put(tmp_fname)
+#                 print(tmp_fname)
 
-                # reset parameters
-                mtx_dict = defaultdict(lambda: defaultdict(int))
-                i += 1; chunk = 0
-            elif first:
-                # do not put the first indicator to the result queue
-                first = False
-            else:
-                # put -1 to the result queue as the indicator for the progress bar
-                res_queue.put(-1)
+#                 # reset parameters
+#                 mtx_dict = defaultdict(lambda: defaultdict(int))
+#                 i += 1; chunk = 0
+#             elif first:
+#                 # do not put the first indicator to the result queue
+#                 first = False
+#             else:
+#                 # put -1 to the result queue as the indicator for the progress bar
+#                 res_queue.put(-1)
 
         # for the last chunk
         if chunk > 0:
             submtx = self.dict2matrix(mtx_dict, row_items, col_items)
             tmp_fname = "{}/sub.{}".format(self.subtmpdir, i)
             submtx.save(tmp_fname, pack=False, verbose=False)
-            logger.debug("Saved the tmp matrix into {}".format(tmp_fname))
+            logger.debug("Saved the tmp matrix into {} at {}".format(tmp_fname, time.ctime()))
             res_queue.put(tmp_fname)
             del mtx_dict
             i += 1; chunk = 0
@@ -291,7 +292,7 @@ class ColFreqHandler(BaseHandler):
         self.chunk_col_vocab = Vocab()  # emtpy vocab for current chunk
         mtx_dict = defaultdict(lambda: defaultdict(int))
 
-        first = True
+#         first = True
         while True:
             job = job_queue.get()
             if job is None:
@@ -299,34 +300,36 @@ class ColFreqHandler(BaseHandler):
             self._do_process_job(job, mtx_dict=mtx_dict)
 
             chunk = count_values(mtx_dict)
-            if chunk > self.chunksize:
-                col_items = self.chunk_col_vocab.get_item_list()  # column item list of current chunk
-                submtx = self.dict2matrix(mtx_dict, row_items, col_items)
-                tmp_fname = "{}/sub.{}".format(self.subtmpdir, i)
-                submtx.save(tmp_fname, pack=False, verbose=False)
-                logger.debug("Saved the tmp matrix into {}".format(tmp_fname))
-                res_queue.put(tmp_fname)
+            logger.debug("Size of chunk at process {} is {} at {}".format(self.pid, chunk, time.ctime()))
+#             if chunk > self.chunksize:
+#                 col_items = self.chunk_col_vocab.get_item_list()  # column item list of current chunk
+#                 submtx = self.dict2matrix(mtx_dict, row_items, col_items)
+#                 tmp_fname = "{}/sub.{}".format(self.subtmpdir, i)
+#                 submtx.save(tmp_fname, pack=False, verbose=False)
+#                 logger.debug("Saved the tmp matrix into {} at {}".format(tmp_fname, time.ctime()))
+#                 res_queue.put(tmp_fname)
 
-                mtx_dict = defaultdict(lambda: defaultdict(int))
-                self.chunk_col_vocab = Vocab()
-                i += 1; chunk = 0
-            elif first:
-                first = False
-            else:
-                res_queue.put(-1)
+#                 mtx_dict = defaultdict(lambda: defaultdict(int))
+#                 self.chunk_col_vocab = Vocab()
+#                 i += 1; chunk = 0
+#             elif first:
+#                 first = False
+#             else:
+#                 res_queue.put(-1)
 
         if chunk > 0:
             col_items = self.chunk_col_vocab.get_item_list()
             submtx = self.dict2matrix(mtx_dict, row_items, col_items)
             tmp_fname = "{}/sub.{}".format(self.subtmpdir, i)
             submtx.save(tmp_fname, pack=False, verbose=False)
-            logger.debug("Saved the tmp matrix into {}".format(tmp_fname))
+            logger.debug("Saved the tmp matrix into {} at {}".format(tmp_fname, time.ctime()))
             res_queue.put(tmp_fname)
-
+            
+            del mtx_dict
             self.chunk_col_vocab = Vocab()
             i += 1; chunk = 0
-        else:
-            res_queue.put(-1)
+#         else:
+#             res_queue.put(-1)
 
     def _worker_loop(self, job_queue, res_queue):
         """Worker loop function which gets one by one job from the job queue.
@@ -443,12 +446,13 @@ class ColFreqHandler(BaseHandler):
     def _process_results(self, res_queue, n=0, **kwargs):
         resmtx = None  # final matrix
         # get results from queue
-        while not res_queue.empty():
-#         for _ in trange(n):
+        #while not res_queue.empty():
+        for _ in trange(res_queue.qsize()): # for the process bar, although it grows very quick and then sooo sloooow
             res = res_queue.get()
             # when data in res_queue is a tmp file name
             if isinstance(res, str):
                 mtx = TypeTokenMatrix.load(res, pack=False)
+                logger.debug("Retrieved file from {} at {}".format(res, time.ctime()))
                 if not resmtx:
                     resmtx = mtx
                 else:
@@ -457,7 +461,9 @@ class ColFreqHandler(BaseHandler):
                 try:
                     os.remove('{}.{}'.format(res, 'meta'))
                     os.remove('{}.{}'.format(res, 'npz'))
-                    os.rmdir(os.path.dirname(res))
+                    parentdir = os.path.dirname(res)
+                    if len(os.listdir(parentdir)) == 0:
+                        os.rmdir(parentdir)
                 except Exception as err:
                     logger.exception("Cannot remove *.meta or *.npz tmp files.\n{}".format(err))
             # else: the indicator -1, do nothing
