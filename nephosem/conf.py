@@ -94,11 +94,6 @@ class ConfigLoader(object):
 
         return sett
 
-    def updateConfig(self, config_file):
-        # duplicate and deprecated method
-        logger.info("Please use `update_config()`, this one is deprecated!")
-        return self.update_config(config_file)
-
     def update_config(self, config_file):
         """Update settings based on a config file."""
         sett = self.load_config(config_file)
