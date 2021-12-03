@@ -39,7 +39,7 @@ default_conf = os.path.join(curdir, 'config.ini')
 class ConfigLoader(object):
     """
     Examples
-    ========
+    --------
     >>> from nephosem.conf import ConfigLoader
     >>> conf = ConfigLoader()  # will read default settings
 
