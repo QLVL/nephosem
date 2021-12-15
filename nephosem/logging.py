@@ -93,8 +93,8 @@ class DefaultFormatter(logging.Formatter):
 
 
 def init_logging():
-    """This function creates the root logger of the qlvl module.
-    This logger has one stream handler (shown in console) and one file handler (in file `~/tmp/qlvl.log`).
+    """This function creates the root logger of the nephosem module.
+    This logger has one stream handler (shown in console) and one file handler (in file `~/tmp/nephosem.log`).
     All other loggers created in sub-modules / files will inherit these two handlers.
     The logger has the message level `logging.INFO`. While the stream handler has the message level `logging.DEBUG`,
     and the file handler has the message level `logging.WARNING`.
@@ -125,14 +125,14 @@ def init_logging():
         os.makedirs(tmpdir)
 
     # create a file handler
-    file_handler = logging.FileHandler('{}/qlvl.log'.format(tmpdir))  # ~/tmp/qlvl.log
+    file_handler = logging.FileHandler('{}/nephosem.log'.format(tmpdir))  # ~/tmp/nephosem.log
     file_formatter = logging.Formatter('%(asctime)s [%(levelname)s]: %(message)s',
                                        datefmt='%d/%m/%Y %H:%M:%S')
     file_handler.setFormatter(file_formatter)
     file_handler.setLevel(logging.WARNING)
 
     # logger for the whole module
-    logger = logging.getLogger('qlvl')
+    logger = logging.getLogger('nephosem')
     if len(logger.handlers) > 0:
         # if there are handlers in this logger, clean them
         logger.handlers = []
