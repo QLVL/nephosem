@@ -102,12 +102,10 @@
 <li class="toctree-l2"><a class="reference internal" href="matrices.html">All about matrices</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Creating a concordance with TokenHandler</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Collect-tokens">Collect tokens</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#type2toks">type2toks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Read-concordance">Read concordance</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="dependencies.html">Working with syntactic information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="createClouds.html">The full python workflow for semasiological token-level clouds</a></li>
-<li class="toctree-l2"><a class="reference internal" href="createClouds-loop.html">Semasiological Workflow on a loop</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../nephosem.html">Reference</a></li>
@@ -456,16 +454,16 @@ div.rendered_html tbody tr:hover {
 <h1>Creating a concordance with TokenHandler<a class="headerlink" href="#Creating-a-concordance-with-TokenHandler" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">type2toks</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">nephosem.TokenHandler</span></code> class is a dictionary with type names as keys and <code class="docutils literal notranslate"><span class="pre">nephosem.TypeNode</span></code> objects as values. The <code class="docutils literal notranslate"><span class="pre">TypeNode</span></code> objects have a <code class="docutils literal notranslate"><span class="pre">tokens</span></code> attribute, which is a list of <code class="docutils literal notranslate"><span class="pre">nephosem.TokenNode</span></code> objects with information on each collected token. From them, we can create a concordance with a function like <code class="docutils literal notranslate"><span class="pre">tokenConcordance()</span></code> below.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># to see concordance</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+<span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">nephosemdir</span> <span class="o">=</span> <span class="s2">&quot;../../nephosem/&quot;</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nephosemdir</span><span class="p">)</span>
 <span class="n">mydir</span> <span class="o">=</span> <span class="s2">&quot;./&quot;</span>
 <span class="kn">from</span> <span class="nn">nephosem</span> <span class="kn">import</span> <span class="n">ConfigLoader</span><span class="p">,</span> <span class="n">Vocab</span><span class="p">,</span> <span class="n">TokenHandler</span>
+<span class="kn">from</span> <span class="nn">nephosem.utils</span> <span class="kn">import</span> <span class="n">save_concordance</span>
 <span class="n">conf</span> <span class="o">=</span> <span class="n">ConfigLoader</span><span class="p">()</span>
 <span class="n">settings</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">update_config</span><span class="p">(</span><span class="s1">&#39;config.ini&#39;</span><span class="p">)</span>
 </pre></div>
@@ -497,10 +495,11 @@ div.rendered_html tbody tr:hover {
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area stderr docutils container">
+<div class="output_area docutils container">
 <div class="highlight"><pre>
-Not provide the temporary path!
-Use the default tmp directory: &#39;~/tmp&#39;!
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Scanning tokens of queries in corpus...
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -509,120 +508,43 @@ Use the default tmp directory: &#39;~/tmp&#39;!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[21, 39]                    say/V  healthy/J  what/W  she/P  boy/N  ask/V  be/V  ...
-girl/N/StanfDepSents.6/6    NaN    3          NaN     NaN    -3     NaN    NaN   ...
-girl/N/StanfDepSents.6/21   NaN    NaN        NaN     NaN    NaN    NaN    NaN   ...
-girl/N/StanfDepSents.2/29   NaN    NaN        NaN     NaN    NaN    NaN    -4    ...
-girl/N/StanfDepSents.8/3    NaN    NaN        NaN     NaN    NaN    NaN    NaN   ...
-girl/N/StanfDepSents.8/15   NaN    NaN        NaN     NaN    -4     NaN    NaN   ...
-girl/N/StanfDepSents.8/25   NaN    NaN        NaN     NaN    -3     NaN    NaN   ...
-girl/N/StanfDepSents.10/13  NaN    NaN        NaN     NaN    NaN    NaN    NaN   ...
-...                         ...    ...        ...     ...    ...    ...    ...   ...
+[21, 39]                   be/V  what/W  that/I  a/D  ,/,  ask/V  and/C  ...
+girl/N/StanfDepSents.1/3   NaN   NaN     NaN     NaN  NaN  NaN    NaN    ...
+girl/N/StanfDepSents.1/13  NaN   NaN     NaN     NaN  NaN  NaN    NaN    ...
+girl/N/StanfDepSents.1/20  NaN   NaN     NaN     NaN  NaN  NaN    NaN    ...
+girl/N/StanfDepSents.2/29  -4    NaN     NaN     NaN  NaN  NaN    NaN    ...
+girl/N/StanfDepSents.8/3   NaN   NaN     NaN     NaN  NaN  NaN    NaN    ...
+girl/N/StanfDepSents.8/15  NaN   NaN     NaN     NaN  NaN  NaN    NaN    ...
+girl/N/StanfDepSents.8/25  NaN   NaN     NaN     NaN  NaN  NaN    -2     ...
+...                        ...   ...     ...     ...  ...  ...    ...    ...
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="type2toks">
-<h2>type2toks<a class="headerlink" href="#type2toks" title="Permalink to this headline">¶</a></h2>
-<p>The concordance information is stored in the <code class="docutils literal notranslate"><span class="pre">type2toks</span></code> attribute.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">tokhan</span><span class="o">.</span><span class="n">type2toks</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-{&#39;girl/N&#39;: girl/N}
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">type</span><span class="p">(</span><span class="n">tokhan</span><span class="o">.</span><span class="n">type2toks</span><span class="p">[</span><span class="s2">&quot;girl/N&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-nephosem.core.terms.TypeNode
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">firstToken</span> <span class="o">=</span> <span class="n">tokhan</span><span class="o">.</span><span class="n">type2toks</span><span class="p">[</span><span class="s2">&quot;girl/N&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">firstToken</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-nephosem.core.terms.TokenNode
-</pre></div></div>
-</div>
-<p>The following function obtains the <code class="docutils literal notranslate"><span class="pre">word</span></code> attribute of each context word and brings them together in a character string. Such attributes are named based on the labels in <code class="docutils literal notranslate"><span class="pre">settings['global-columns']</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">tokenConcordance</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
-    <span class="n">leftContext</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">word</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">token</span><span class="o">.</span><span class="n">lcollocs</span><span class="p">])</span>
-    <span class="n">rightContext</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">word</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">token</span><span class="o">.</span><span class="n">rcollocs</span><span class="p">])</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">leftContext</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">token</span><span class="o">.</span><span class="n">word</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">rightContext</span><span class="si">}</span><span class="s2">&quot;</span>
+<span></span><span class="n">outputfile</span> <span class="o">=</span> <span class="s1">&#39;output/concordance.tsv&#39;</span>
+<span class="n">save_concordance</span><span class="p">(</span><span class="n">outputfile</span><span class="p">,</span> <span class="n">tokhan</span><span class="o">.</span><span class="n">type2toks</span><span class="p">,</span> <span class="n">colloc_fmt</span><span class="o">=</span><span class="s1">&#39;word&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="Read-concordance">
+<h2>Read concordance<a class="headerlink" href="#Read-concordance" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nephosem.utils.save_concordance()</span></code> directly stores the concordance as a tab-separated dataframe in <code class="docutils literal notranslate"><span class="pre">outputfile</span></code>, without headers.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">tokenConcordance</span><span class="p">(</span><span class="n">firstToken</span><span class="p">)</span>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">outputfile</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;token_id&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&#39;The boy gives the girl a tasty healthy apple&#39;
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
-    <span class="p">{</span><span class="s2">&quot;token_id&quot;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">token</span><span class="p">),</span> <span class="s2">&quot;text&quot;</span> <span class="p">:</span> <span class="n">tokenConcordance</span><span class="p">(</span><span class="n">token</span><span class="p">)}</span>
-    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokhan</span><span class="o">.</span><span class="n">type2toks</span><span class="p">[</span><span class="s2">&quot;girl/N&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tokens</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -644,41 +566,164 @@ nephosem.core.terms.TokenNode
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>text</th>
       <th>token_id</th>
+      <th>left</th>
+      <th>target</th>
+      <th>right</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>The boy gives the girl a tasty healthy apple</td>
-      <td>girl/N/StanfDepSents.6/6</td>
+      <td>girl/N/StanfDepSents.1/3</td>
+      <td>The</td>
+      <td>girl</td>
+      <td>looks healthy</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>The girl does n't eat</td>
-      <td>girl/N/StanfDepSents.6/21</td>
+      <td>girl/N/StanfDepSents.1/13</td>
+      <td>boy looks at the</td>
+      <td>girl</td>
+      <td>as she eats</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>are eaten by the girl</td>
-      <td>girl/N/StanfDepSents.2/29</td>
+      <td>girl/N/StanfDepSents.1/20</td>
+      <td>The</td>
+      <td>girl</td>
+      <td>eats less healthy food</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>The girl sat on the apple</td>
-      <td>girl/N/StanfDepSents.8/3</td>
+      <td>girl/N/StanfDepSents.2/29</td>
+      <td>are eaten by the</td>
+      <td>girl</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>boy looked at the girl 's apple</td>
+      <td>girl/N/StanfDepSents.8/3</td>
+      <td>The</td>
+      <td>girl</td>
+      <td>sat on the apple</td>
+    </tr>
+    <tr>
+      <th>5</th>
       <td>girl/N/StanfDepSents.8/15</td>
+      <td>boy looked at the</td>
+      <td>girl</td>
+      <td>'s apple</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>girl/N/StanfDepSents.8/25</td>
+      <td>the boys and the</td>
+      <td>girls</td>
+      <td>eat apples</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>girl/N/StanfDepSents.4/7</td>
+      <td>boy says that the</td>
+      <td>girl</td>
+      <td>should eat the apple</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>girl/N/StanfDepSents.4/15</td>
+      <td>The</td>
+      <td>girl</td>
+      <td>eats the apple that</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>girl/N/StanfDepSents.9/14</td>
+      <td>The older</td>
+      <td>girl</td>
+      <td>looks at a boy</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>girl/N/StanfDepSents.5/19</td>
+      <td>What the</td>
+      <td>girl</td>
+      <td>eats was given by</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>girl/N/StanfDepSents.11/3</td>
+      <td>The</td>
+      <td>girl</td>
+      <td>looks at the boy</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>girl/N/StanfDepSents.11/19</td>
+      <td>the apple which the</td>
+      <td>girl</td>
+      <td>gave him</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>girl/N/StanfDepSents.11/28</td>
+      <td>This year , the</td>
+      <td>girl</td>
+      <td>looked at a boy</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>girl/N/StanfDepSents.3/21</td>
+      <td>The boy and the</td>
+      <td>girl</td>
+      <td>eat a healthy and</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>girl/N/StanfDepSents.6/6</td>
+      <td>The boy gives the</td>
+      <td>girl</td>
+      <td>a tasty healthy apple</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>girl/N/StanfDepSents.6/21</td>
+      <td>The</td>
+      <td>girl</td>
+      <td>does n't eat</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>girl/N/StanfDepSents.10/13</td>
+      <td>The</td>
+      <td>girl</td>
+      <td>sits down</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>girl/N/StanfDepSents.10/19</td>
+      <td>The</td>
+      <td>girl</td>
+      <td>eats about ten apples</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>girl/N/StanfDepSents.7/7</td>
+      <td>old boy gives the</td>
+      <td>girl</td>
+      <td>a baby apple</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>girl/N/StanfDepSents.7/25</td>
+      <td>The boy asked the</td>
+      <td>girl</td>
+      <td>about eating apples</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
-<p>If you have several types in your query, you just need to replace <code class="docutils literal notranslate"><span class="pre">tokhan.type2toks[&quot;girl/N&quot;].tokens</span></code> with a flattened version <code class="docutils literal notranslate"><span class="pre">[tok</span> <span class="pre">for</span> <span class="pre">typ</span> <span class="pre">in</span> <span class="pre">tokhan.type2toks.values()</span> <span class="pre">for</span> <span class="pre">tok</span> <span class="pre">in</span> <span class="pre">ctyp.tokens]</span></code>.</p>
 </div>
 </div>
 

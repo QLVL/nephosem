@@ -1,0 +1,7 @@
+nephosem.specutils.mxutils module
+=================================
+
+.. automodule:: nephosem.specutils.mxutils
+   :members:
+   :undoc-members:
+   :show-inheritance:

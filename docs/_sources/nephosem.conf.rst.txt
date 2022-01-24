@@ -1,0 +1,7 @@
+nephosem.conf module
+====================
+
+.. automodule:: nephosem.conf
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+nephosem.deprel.corpus module
+=============================
+
+.. automodule:: nephosem.deprel.corpus
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>nephosem.deprel.dephandler module &mdash; Nephological Semantics 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nephosem.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>nephosem.deprel.dephandler module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/nephosem.deprel.dephandler.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-nephosem.deprel.dephandler">
+<span id="nephosem-deprel-dephandler-module"></span><h1>nephosem.deprel.dephandler module<a class="headerlink" href="#module-nephosem.deprel.dephandler" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.DepRelManager">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.deprel.dephandler.</span></span><span class="sig-name descname"><span class="pre">DepRelManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.DepRelManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="nephosem.core.handler.html#nephosem.core.handler.BaseHandler" title="nephosem.core.handler.BaseHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">nephosem.core.handler.BaseHandler</span></code></a></p>
+<p>Handler Class for processing dependency relations</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.DepRelManager.build_dep_rel">
+<span class="sig-name descname"><span class="pre">build_dep_rel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multicore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.DepRelManager.build_dep_rel" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function will treat all different word types as possible target or context words.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fnames</strong> (<em>str</em><em>, </em><em>optional</em>) – Filename of a file which records all (a user wants to process) file names of a corpus.
+Format: corpus_name + settings[“fnames-ext”]</p></li>
+<li><p><strong>row_vocab</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code>) – Target words (types) vocabulary.
+If a non-empty vocabulary is passed, only target words (types) in this vocab
+should be processed.
+Otherwise all possible words (types) should be processed.</p></li>
+<li><p><strong>col_vocab</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code>) – Context features vocabulary.
+If a non-empty vocabulary is passed, only context features in this vocab
+should be processed.
+Otherwise all possible contexts should be processed.</p></li>
+<li><p><strong>multicore</strong> (<em>bool</em>) – Use multicore version of the method or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.DepRelManager.do_job_single">
+<span class="sig-name descname"><span class="pre">do_job_single</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">superkwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.DepRelManager.do_job_single" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method doing job for handler class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fnames</strong> (<em>iterable</em>) – A list of filenames</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.DepRelManager.merge_results">
+<span class="sig-name descname"><span class="pre">merge_results</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.DepRelManager.merge_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge subprocess matrices into one final matrix.
+sub-process matrices filename format: …/matches.sub.pid</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.DepRelManager.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queue_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.DepRelManager.process" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fnames</strong> – </p></li>
+<li><p><strong>queue_factor</strong> (<em>int</em><em>, </em><em>optional</em>) – Multiplier for size of queue -&gt; size = number of workers * queue_factor.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.DepRelManager.read_features">
+<span class="sig-name descname"><span class="pre">read_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.DepRelManager.read_features" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.DepRelManager.read_template">
+<span class="sig-name descname"><span class="pre">read_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.DepRelManager.read_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read paths from file</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.dephandler.update_dep_rel_caller">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.dephandler.</span></span><span class="sig-name descname"><span class="pre">update_dep_rel_caller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tmpdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.dephandler.update_dep_rel_caller" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will save path template matches of sub-process.
+Filename format of sub-process objects:</p>
+<blockquote>
+<div><p>matrix: paths.sub.pid</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fnames</strong> (<em>iterable</em>) – A list of filenames</p></li>
+<li><p><strong>tmpdir</strong> (<em>str</em>) – Temporary folder</p></li>
+<li><p><strong>settings</strong> (<em>dict</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL (documentation by Mariana Montes).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

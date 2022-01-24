@@ -308,9 +308,18 @@
    "metadata": {},
    "outputs": [
     {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Building item frequency list...\n"
+     ]
+    },
+    {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "ae6f69f2c2474599827ef1b325f4e400",
+       "model_id": "b68b1fa0fdb8413b95cd5beda4a19292",
        "version_major": 2,
        "version_minor": 0
       },
@@ -349,7 +358,16 @@
    "cell_type": "code",
    "execution_count": 12,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Saving frequency list (vocabulary)... (in 'utf-8')\n",
+      "Stored in .//output//Toy.nfreq\n"
+     ]
+    }
+   ],
    "source": [
     "vocab_fname = f\"{output_path}/{corpus_name}.nfreq\"\n",
     "vocab.save(vocab_fname)"
@@ -395,7 +413,16 @@
    "metadata": {
     "scrolled": true
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n"
+     ]
+    }
+   ],
    "source": [
     "cfhan = ColFreqHandler(settings=settings, row_vocab = vocab, col_vocab = vocab)"
    ]
@@ -417,9 +444,16 @@
    },
    "outputs": [
     {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Building collocate frequency matrix...\n"
+     ]
+    },
+    {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "23812e018838488d8a91c2c9d424c3c5",
+       "model_id": "6f6b95ff39c74d5cb5588dc166957cbf",
        "version_major": 2,
        "version_minor": 0
       },
@@ -502,13 +536,15 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
+      "\n",
+      "Saving matrix...\n",
       "Stored in file:\n",
-      "  .//output//Toy.bow.wwmx.pac\n"
+      "  .//output//Toy.bow.wcmx.pac\n"
      ]
     }
    ],
    "source": [
-    "freqMTX.save(f\"{output_path}/{corpus_name}.bow.wwmx.pac\")"
+    "freqMTX.save(f\"{output_path}/{corpus_name}.bow.wcmx.pac\")"
    ]
   },
   {
@@ -547,9 +583,18 @@
    },
    "outputs": [
     {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Building dependency features...\n"
+     ]
+    },
+    {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "f60cd2f0709e449686519a8f2ab0fdbe",
+       "model_id": "b2b9c6bbc19644e991e255965f9c73a3",
        "version_major": 2,
        "version_minor": 0
       },
@@ -564,7 +609,8 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "\n"
+      "\n",
+      "Building matrix...\n"
      ]
     },
     {
@@ -639,9 +685,18 @@
    },
    "outputs": [
     {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Building dependency features...\n"
+     ]
+    },
+    {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "889a8ba1e341430a9ab76c06d16ec76d",
+       "model_id": "f2d550d490a04c7a94b26ea535cea5c0",
        "version_major": 2,
        "version_minor": 0
       },
@@ -656,7 +711,8 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "\n"
+      "\n",
+      "Building matrix...\n"
      ]
     },
     {
@@ -717,7 +773,7 @@
     {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "1db1295a3eb14978aac565a29f260c8c",
+       "model_id": "f7fcd948df7748c9aca2bd9ef2581efe",
        "version_major": 2,
        "version_minor": 0
       },
@@ -736,7 +792,7 @@
       "\n",
       "************************************\n",
       "function    = compute_association\n",
-      "  time      = 0.01691 sec\n",
+      "  time      = 0.01725 sec\n",
       "************************************\n",
       "\n"
      ]
@@ -784,7 +840,7 @@
     {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "a407bf6b7fcc497096054e1e2f4e8fde",
+       "model_id": "d658e9a06d044b57af122cd41218fed2",
        "version_major": 2,
        "version_minor": 0
       },
@@ -803,7 +859,7 @@
       "\n",
       "************************************\n",
       "function    = compute_association\n",
-      "  time      = 0.01432 sec\n",
+      "  time      = 0.01555 sec\n",
       "************************************\n",
       "\n"
      ]
@@ -883,17 +939,26 @@
    },
    "outputs": [
     {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Scanning tokens of queries in corpus...\n"
+     ]
+    },
+    {
      "data": {
       "text/plain": [
-       "[21, 39]                    baby/N  down/R  that/W  healthy/J  on/I  about/I  apple/N  ...\n",
-       "girl/N/StanfDepSents.4/7    NaN     NaN     NaN     NaN        NaN   NaN      4        ...\n",
-       "girl/N/StanfDepSents.4/15   NaN     NaN     4       NaN        NaN   NaN      3        ...\n",
-       "girl/N/StanfDepSents.10/13  NaN     2       NaN     NaN        NaN   NaN      NaN      ...\n",
-       "girl/N/StanfDepSents.10/19  NaN     NaN     NaN     NaN        NaN   NaN      4        ...\n",
-       "girl/N/StanfDepSents.3/21   NaN     NaN     NaN     3          NaN   NaN      NaN      ...\n",
-       "girl/N/StanfDepSents.11/3   NaN     NaN     NaN     NaN        NaN   NaN      NaN      ...\n",
-       "girl/N/StanfDepSents.11/19  NaN     NaN     NaN     NaN        NaN   NaN      -3       ...\n",
-       "...                         ...     ...     ...     ...        ...   ...      ...      ..."
+       "[21, 39]                    which/W  say/V  she/P  boy/N  this/D  about/I  give/V  ...\n",
+       "girl/N/StanfDepSents.10/13  NaN      NaN    NaN    NaN    NaN     NaN      NaN     ...\n",
+       "girl/N/StanfDepSents.10/19  NaN      NaN    NaN    NaN    NaN     NaN      NaN     ...\n",
+       "girl/N/StanfDepSents.11/3   NaN      NaN    NaN    4      NaN     NaN      NaN     ...\n",
+       "girl/N/StanfDepSents.11/19  -2       NaN    NaN    NaN    NaN     NaN      1       ...\n",
+       "girl/N/StanfDepSents.11/28  NaN      NaN    NaN    4      -4      NaN      NaN     ...\n",
+       "girl/N/StanfDepSents.7/7    NaN      NaN    NaN    -3     NaN     NaN      -2      ...\n",
+       "girl/N/StanfDepSents.7/25   NaN      NaN    NaN    -3     NaN     1        NaN     ...\n",
+       "...                         ...      ...    ...    ...    ...     ...      ...     ..."
       ]
      },
      "execution_count": 24,
@@ -946,9 +1011,18 @@
    },
    "outputs": [
     {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Building dependency features...\n"
+     ]
+    },
+    {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "42ffc5c9ecfe4adab224f249e0b3355d",
+       "model_id": "7885747a3cf1414bbbdff17421fbfdde",
        "version_major": 2,
        "version_minor": 0
       },
@@ -963,7 +1037,8 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "\n"
+      "\n",
+      "Building matrix...\n"
      ]
     },
     {
@@ -1009,9 +1084,18 @@
    },
    "outputs": [
     {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Building dependency features...\n"
+     ]
+    },
+    {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "c50898e019e0408499bb164b7b5cdd55",
+       "model_id": "220f4ef8c2a64af3a24514ce15d3e634",
        "version_major": 2,
        "version_minor": 0
       },
@@ -1026,7 +1110,8 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "\n"
+      "\n",
+      "Building matrix...\n"
      ]
     },
     {
@@ -1072,9 +1157,18 @@
    },
    "outputs": [
     {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Building dependency features...\n"
+     ]
+    },
+    {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "2f642e9027d24a0d9297f10319e7613e",
+       "model_id": "c3d4740f9529444c9b6e647a316618a3",
        "version_major": 2,
        "version_minor": 0
       },
@@ -1089,7 +1183,8 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "\n"
+      "\n",
+      "Building matrix...\n"
      ]
     },
     {
@@ -1142,7 +1237,7 @@
     {
      "data": {
       "application/vnd.jupyter.widget-view+json": {
-       "model_id": "8cb8a473304e4621b54660822d9e7bec",
+       "model_id": "c77fa0f9606f411b8a1eba9cf898f681",
        "version_major": 2,
        "version_minor": 0
       },
@@ -1161,7 +1256,7 @@
       "\n",
       "************************************\n",
       "function    = compute_association\n",
-      "  time      = 0.01638 sec\n",
+      "  time      = 0.01584 sec\n",
       "************************************\n",
       "\n"
      ]
@@ -1169,8 +1264,8 @@
     {
      "data": {
       "text/plain": [
-       "[1, 39]  baby/N  down/R     that/W     healthy/J  on/I       about/I    apple/N     ...\n",
-       "girl/N   0.0     1.3315438  0.3507146  0.0        0.8207182  0.6383967  0.18944645  ..."
+       "[1, 39]  which/W    say/V      she/P       boy/N  this/D     about/I    give/V      ...\n",
+       "girl/N   0.3507146  0.6383967  0.12757105  0.0    1.0438617  0.6383967  0.23293155  ..."
       ]
      },
      "execution_count": 29,
@@ -1219,15 +1314,15 @@
     {
      "data": {
       "text/plain": [
-       "[39, 55]   's/P       ,/,       a/D         about/I     about/R    all/P  an/D       ...\n",
-       "baby/N     NaN        NaN       0.98034835  NaN         NaN        NaN    NaN        ...\n",
-       "down/R     NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...\n",
-       "that/W     NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...\n",
-       "healthy/J  NaN        1.154244  0.81526864  NaN         NaN        NaN    NaN        ...\n",
-       "on/I       NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...\n",
-       "about/I    NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...\n",
-       "apple/N    1.0814445  0.0       0.3882973   0.89912295  1.0814445  NaN    1.0814445  ...\n",
-       "...        ...        ...       ...         ...         ...        ...    ...        ..."
+       "[39, 55]  's/P  ,/,        a/D         about/I     about/R  all/P       an/D        ...\n",
+       "which/W   NaN   NaN        NaN         NaN         NaN      NaN         NaN         ...\n",
+       "say/V     NaN   NaN        NaN         NaN         NaN      NaN         NaN         ...\n",
+       "she/P     NaN   NaN        NaN         NaN         NaN      NaN         NaN         ...\n",
+       "boy/N     NaN   NaN        0.07956182  0.59038746  NaN      0.99585253  0.772709    ...\n",
+       "this/D    NaN   2.9034438  NaN         NaN         NaN      NaN         NaN         ...\n",
+       "about/I   NaN   NaN        NaN         NaN         NaN      NaN         NaN         ...\n",
+       "give/V    NaN   NaN        0.65492594  NaN         NaN      NaN         0.94260806  ...\n",
+       "...       ...   ...        ...         ...         ...      ...         ...         ..."
       ]
      },
      "execution_count": 31,
@@ -1248,16 +1343,23 @@
    },
    "outputs": [
     {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "  Operation: weighted mean 'token-feature weight matrix' X 'socc matrix'...\n"
+     ]
+    },
+    {
      "data": {
       "text/plain": [
        "[21, 55]                    's/P    ,/,     a/D     about/I  about/R  all/P   an/D    ...\n",
-       "girl/N/StanfDepSents.4/7    0.0135  NaN     0.0047  0.0132   0.0166   0.0039  0.0146  ...\n",
-       "girl/N/StanfDepSents.4/15   0.0232  NaN     0.0080  0.0228   0.0286   0.0068  0.0252  ...\n",
        "girl/N/StanfDepSents.10/13  0.0008  NaN     NaN     NaN      0.0008   0.0066  NaN     ...\n",
        "girl/N/StanfDepSents.10/19  0.0119  NaN     0.0041  0.0118   0.2003   0.0035  0.0130  ...\n",
-       "girl/N/StanfDepSents.3/21   0.0008  0.0485  0.0191  0.0041   0.0060   0.0066  0.0028  ...\n",
        "girl/N/StanfDepSents.11/3   0.1028  0.0279  0.0251  NaN      0.0006   0.0048  NaN     ...\n",
        "girl/N/StanfDepSents.11/19  0.0110  NaN     0.0117  0.0088   0.0110   0.0032  0.0220  ...\n",
+       "girl/N/StanfDepSents.11/28  0.0533  0.1544  0.0130  NaN      0.0003   0.0025  NaN     ...\n",
+       "girl/N/StanfDepSents.7/7    0.0141  0.0302  0.0197  0.0113   0.0141   0.0283  0.0412  ...\n",
+       "girl/N/StanfDepSents.7/25   0.0145  NaN     0.0050  0.1741   0.0179   0.0042  0.0158  ...\n",
        "...                         ...     ...     ...     ...      ...      ...     ...     ..."
       ]
      },
@@ -1280,6 +1382,8 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
+      "\n",
+      "Saving matrix...\n",
       "Stored in file:\n",
       "  .//output//Toy.ttmx.ppmi.pac\n"
      ]
@@ -1317,7 +1421,7 @@
       "\n",
       "************************************\n",
       "function    = compute_distance\n",
-      "  time      = 0.0009825 sec\n",
+      "  time      = 0.02593 sec\n",
       "************************************\n",
       "\n"
      ]
@@ -1325,15 +1429,15 @@
     {
      "data": {
       "text/plain": [
-       "[21, 21]                    girl/N/StanfDepSents.4/7  girl/N/StanfDepSents.4/15  girl/N/StanfDepSents.10/13  girl/N/StanfDepSents.10/19  girl/N/StanfDepSents.3/21  girl/N/StanfDepSents.11/3  girl/N/StanfDepSents.11/19  ...\n",
-       "girl/N/StanfDepSents.4/7    0.0000                    0.6533                     0.8416                      0.7850                      0.7641                     0.8476                     0.8256                      ...\n",
-       "girl/N/StanfDepSents.4/15   0.6533                    0.0000                     0.7402                      0.6142                      0.5763                     0.7897                     0.6702                      ...\n",
-       "girl/N/StanfDepSents.10/13  0.8416                    0.7402                     0.0000                      0.8721                      0.7514                     0.8736                     0.8654                      ...\n",
-       "girl/N/StanfDepSents.10/19  0.7850                    0.6142                     0.8721                      0.0000                      0.7803                     0.9064                     0.8111                      ...\n",
-       "girl/N/StanfDepSents.3/21   0.7641                    0.5763                     0.7514                      0.7803                      0.0000                     0.5974                     0.7332                      ...\n",
-       "girl/N/StanfDepSents.11/3   0.8476                    0.7897                     0.8736                      0.9064                      0.5974                     0.0000                     0.8789                      ...\n",
-       "girl/N/StanfDepSents.11/19  0.8256                    0.6702                     0.8654                      0.8111                      0.7332                     0.8789                     0.0000                      ...\n",
-       "...                         ...                       ...                        ...                         ...                         ...                        ...                        ...                         ..."
+       "[21, 21]                    girl/N/StanfDepSents.10/13  girl/N/StanfDepSents.10/19  girl/N/StanfDepSents.11/3  girl/N/StanfDepSents.11/19  girl/N/StanfDepSents.11/28  girl/N/StanfDepSents.7/7  girl/N/StanfDepSents.7/25  ...\n",
+       "girl/N/StanfDepSents.10/13  0.0000                      0.8721                      0.8736                     0.8654                      0.8920                      0.7566                    0.8227                     ...\n",
+       "girl/N/StanfDepSents.10/19  0.8721                      0.0000                      0.9064                     0.8111                      0.8930                      0.7274                    0.6725                     ...\n",
+       "girl/N/StanfDepSents.11/3   0.8736                      0.9064                      0.0000                     0.8789                      0.3427                      0.6394                    0.8348                     ...\n",
+       "girl/N/StanfDepSents.11/19  0.8654                      0.8111                      0.8789                     0.0000                      0.8652                      0.4694                    0.7922                     ...\n",
+       "girl/N/StanfDepSents.11/28  0.8920                      0.8930                      0.3427                     0.8652                      0.0000                      0.5428                    0.8596                     ...\n",
+       "girl/N/StanfDepSents.7/7    0.7566                      0.7274                      0.6394                     0.4694                      0.5428                      0.0000                    0.6970                     ...\n",
+       "girl/N/StanfDepSents.7/25   0.8227                      0.6725                      0.8348                     0.7922                      0.8596                      0.6970                    0.0000                     ...\n",
+       "...                         ...                         ...                         ...                        ...                         ...                         ...                       ...                        ..."
       ]
      },
      "execution_count": 34,
@@ -1355,6 +1459,8 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
+      "\n",
+      "Saving matrix...\n",
       "Stored in file:\n",
       "  .//output//Toy.ttmx.dist.pac\n"
      ]
@@ -1385,7 +1491,7 @@
       "\n",
       "************************************\n",
       "function    = compute_distance\n",
-      "  time      = 0.0004909 sec\n",
+      "  time      = 0.003047 sec\n",
       "************************************\n",
       "\n"
      ]
@@ -1393,15 +1499,15 @@
     {
      "data": {
       "text/plain": [
-       "[39, 39]   baby/N  down/R  that/W  healthy/J  on/I    about/I  apple/N  ...\n",
-       "baby/N     0.0000  1.0000  0.6509  0.9456     0.9462  0.9644   0.8596   ...\n",
-       "down/R     1.0000  0.0000  1.0000  1.0000     1.0000  1.0000   1.0000   ...\n",
-       "that/W     0.6509  1.0000  0.0000  0.9731     0.9182  0.9209   0.7750   ...\n",
-       "healthy/J  0.9456  1.0000  0.9731  0.0000     0.9575  0.9587   0.6761   ...\n",
-       "on/I       0.9462  1.0000  0.9182  0.9575     0.0000  0.8916   0.9196   ...\n",
-       "about/I    0.9644  1.0000  0.9209  0.9587     0.8916  0.0000   0.9733   ...\n",
-       "apple/N    0.8596  1.0000  0.7750  0.6761     0.9196  0.9733   0.0000   ...\n",
-       "...        ...     ...     ...     ...        ...     ...      ...      ..."
+       "[39, 39]  which/W  say/V   she/P   boy/N   this/D  about/I  give/V  ...\n",
+       "which/W   0.0000   0.9714  0.9932  0.9494  0.9750  0.9251   0.5509  ...\n",
+       "say/V     0.9714   0.0000  0.9934  0.8941  0.9592  0.9578   0.9752  ...\n",
+       "she/P     0.9932   0.9934  0.0000  0.7166  0.9929  0.9878   0.9968  ...\n",
+       "boy/N     0.9494   0.8941  0.7166  0.0000  0.9954  0.8361   0.7142  ...\n",
+       "this/D    0.9750   0.9592  0.9929  0.9954  0.0000  0.9594   0.9838  ...\n",
+       "about/I   0.9251   0.9578  0.9878  0.8361  0.9594  0.0000   0.9780  ...\n",
+       "give/V    0.5509   0.9752  0.9968  0.7142  0.9838  0.9780   0.0000  ...\n",
+       "...       ...      ...     ...     ...     ...     ...      ...     ..."
       ]
      },
      "execution_count": 36,

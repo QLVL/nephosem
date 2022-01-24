@@ -1,0 +1,7 @@
+nephosem.core.graph module
+==========================
+
+.. automodule:: nephosem.core.graph
+   :members:
+   :undoc-members:
+   :show-inheritance:

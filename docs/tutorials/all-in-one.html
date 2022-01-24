@@ -129,8 +129,6 @@
 <li class="toctree-l2"><a class="reference internal" href="matrices.html">All about matrices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="concordance-from-tokens.html">Creating a concordance with TokenHandler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dependencies.html">Working with syntactic information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="createClouds.html">The full python workflow for semasiological token-level clouds</a></li>
-<li class="toctree-l2"><a class="reference internal" href="createClouds-loop.html">Semasiological Workflow on a loop</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../nephosem.html">Reference</a></li>
@@ -685,7 +683,17 @@ extension.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ae6f69f2c2474599827ef1b325f4e400", "version_major": 2, "version_minor": 0}</script></div>
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Building item frequency list...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b68b1fa0fdb8413b95cd5beda4a19292", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -704,7 +712,7 @@ extension.</p>
 [(&#39;the/D&#39;, 53),(&#39;boy/N&#39;, 25),(&#39;eat/V&#39;, 22) ... (&#39;ten/C&#39;, 1),(&#39;ask/V&#39;, 1),(&#39;about/I&#39;, 1)]
 </pre></div></div>
 </div>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
@@ -713,6 +721,15 @@ extension.</p>
 <span class="n">vocab</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">vocab_fname</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving frequency list (vocabulary)... (in &#39;utf-8&#39;)
+Stored in .//output//Toy.nfreq
+</pre></div></div>
 </div>
 <p>This is only once per corpus. Once the main vocabulary list is compiled and stored, it can be further filtered (see <a class="reference internal" href="vocab.html"><span class="doc">here</span></a>). It can be used for the following purposes:</p>
 <ul class="simple">
@@ -727,7 +744,7 @@ extension.</p>
 <div class="section" id="3.1.-Bag-of-words">
 <h3>3.1. Bag-of-words<a class="headerlink" href="#3.1.-Bag-of-words" title="Permalink to this headline">¶</a></h3>
 <p>Like creating the vocabulary list, creating a co-occurrence frequency matrix has two steps: set up the <code class="docutils literal notranslate"><span class="pre">ColFreqHandler</span></code> object and running its <code class="docutils literal notranslate"><span class="pre">.build_col_freq()</span></code> method.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
@@ -735,6 +752,15 @@ extension.</p>
 <span></span><span class="n">cfhan</span> <span class="o">=</span> <span class="n">ColFreqHandler</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span> <span class="n">row_vocab</span> <span class="o">=</span> <span class="n">vocab</span><span class="p">,</span> <span class="n">col_vocab</span> <span class="o">=</span> <span class="n">vocab</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+</pre></div></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">.build_col_freq()</span></code> method also has an optional <code class="docutils literal notranslate"><span class="pre">fname</span></code> argument requiring a list of paths or a path to a list of paths. In addition, <code class="docutils literal notranslate"><span class="pre">row_vocab</span></code> and <code class="docutils literal notranslate"><span class="pre">col_vocab</span></code> ask for <code class="docutils literal notranslate"><span class="pre">Vocab</span></code> objects like <code class="docutils literal notranslate"><span class="pre">vocab</span></code> above. The <code class="docutils literal notranslate"><span class="pre">row_vocab</span></code> argument, which indicates the node types to get co-occurrence information on, is compulsory.</p>
 <div class="nbinput docutils container">
@@ -751,7 +777,15 @@ extension.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "23812e018838488d8a91c2c9d424c3c5", "version_major": 2, "version_minor": 0}</script></div>
+<div class="highlight"><pre>
+Building collocate frequency matrix...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6f6b95ff39c74d5cb5588dc166957cbf", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -804,7 +838,7 @@ girl/N   1     1    5    1        1        3      10       ...
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">freqMTX</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">corpus_name</span><span class="si">}</span><span class="s2">.bow.wwmx.pac&quot;</span><span class="p">)</span>
+<span></span><span class="n">freqMTX</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">corpus_name</span><span class="si">}</span><span class="s2">.bow.wcmx.pac&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -813,8 +847,10 @@ girl/N   1     1    5    1        1        3      10       ...
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
+
+Saving matrix...
 Stored in file:
-  .//output//Toy.bow.wwmx.pac
+  .//output//Toy.bow.wcmx.pac
 </pre></div></div>
 </div>
 </div>
@@ -855,7 +891,17 @@ full path (just <em>eat/V</em> or <code class="docutils literal notranslate"><sp
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f60cd2f0709e449686519a8f2ab0fdbe", "version_major": 2, "version_minor": 0}</script></div>
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Building dependency features...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b2b9c6bbc19644e991e255965f9c73a3", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -863,6 +909,7 @@ full path (just <em>eat/V</em> or <code class="docutils literal notranslate"><sp
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 
+Building matrix...
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -925,7 +972,17 @@ girl/N   1     1        1      1     2      1     6      ...
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "889a8ba1e341430a9ab76c06d16ec76d", "version_major": 2, "version_minor": 0}</script></div>
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Building dependency features...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f2d550d490a04c7a94b26ea535cea5c0", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -933,6 +990,7 @@ girl/N   1     1        1      1     2      1     6      ...
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 
+Building matrix...
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -968,7 +1026,7 @@ girl/N   1            1             21            1               1             
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1db1295a3eb14978aac565a29f260c8c", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f7fcd948df7748c9aca2bd9ef2581efe", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -979,7 +1037,7 @@ girl/N   1            1             21            1               1             
 
 ************************************
 function    = compute_association
-  time      = 0.01691 sec
+  time      = 0.01725 sec
 ************************************
 
 </pre></div></div>
@@ -1017,7 +1075,7 @@ an/D      NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a407bf6b7fcc497096054e1e2f4e8fde", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d658e9a06d044b57af122cd41218fed2", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -1028,7 +1086,7 @@ an/D      NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...
 
 ************************************
 function    = compute_association
-  time      = 0.01432 sec
+  time      = 0.01555 sec
 ************************************
 
 </pre></div></div>
@@ -1078,21 +1136,31 @@ to match lines that correspond to sentence (or whatever) boundaries, such as ‘
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Scanning tokens of queries in corpus...
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[21, 39]                    baby/N  down/R  that/W  healthy/J  on/I  about/I  apple/N  ...
-girl/N/StanfDepSents.4/7    NaN     NaN     NaN     NaN        NaN   NaN      4        ...
-girl/N/StanfDepSents.4/15   NaN     NaN     4       NaN        NaN   NaN      3        ...
-girl/N/StanfDepSents.10/13  NaN     2       NaN     NaN        NaN   NaN      NaN      ...
-girl/N/StanfDepSents.10/19  NaN     NaN     NaN     NaN        NaN   NaN      4        ...
-girl/N/StanfDepSents.3/21   NaN     NaN     NaN     3          NaN   NaN      NaN      ...
-girl/N/StanfDepSents.11/3   NaN     NaN     NaN     NaN        NaN   NaN      NaN      ...
-girl/N/StanfDepSents.11/19  NaN     NaN     NaN     NaN        NaN   NaN      -3       ...
-...                         ...     ...     ...     ...        ...   ...      ...      ...
+[21, 39]                    which/W  say/V  she/P  boy/N  this/D  about/I  give/V  ...
+girl/N/StanfDepSents.10/13  NaN      NaN    NaN    NaN    NaN     NaN      NaN     ...
+girl/N/StanfDepSents.10/19  NaN      NaN    NaN    NaN    NaN     NaN      NaN     ...
+girl/N/StanfDepSents.11/3   NaN      NaN    NaN    4      NaN     NaN      NaN     ...
+girl/N/StanfDepSents.11/19  -2       NaN    NaN    NaN    NaN     NaN      1       ...
+girl/N/StanfDepSents.11/28  NaN      NaN    NaN    4      -4      NaN      NaN     ...
+girl/N/StanfDepSents.7/7    NaN      NaN    NaN    -3     NaN     NaN      -2      ...
+girl/N/StanfDepSents.7/25   NaN      NaN    NaN    -3     NaN     1        NaN     ...
+...                         ...      ...    ...    ...    ...     ...      ...     ...
 </pre></div></div>
 </div>
 </div>
@@ -1129,7 +1197,17 @@ girl/N/StanfDepSents.11/19  NaN     NaN     NaN     NaN        NaN   NaN      -3
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "42ffc5c9ecfe4adab224f249e0b3355d", "version_major": 2, "version_minor": 0}</script></div>
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Building dependency features...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7885747a3cf1414bbbdff17421fbfdde", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -1137,6 +1215,7 @@ girl/N/StanfDepSents.11/19  NaN     NaN     NaN     NaN        NaN   NaN      -3
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 
+Building matrix...
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1176,7 +1255,17 @@ girl/N/StanfDepSents.11/28  NaN    NaN   NaN    NaN     1       NaN
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c50898e019e0408499bb164b7b5cdd55", "version_major": 2, "version_minor": 0}</script></div>
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Building dependency features...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "220f4ef8c2a64af3a24514ce15d3e634", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -1184,6 +1273,7 @@ girl/N/StanfDepSents.11/28  NaN    NaN   NaN    NaN     1       NaN
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 
+Building matrix...
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1223,7 +1313,17 @@ girl/N/StanfDepSents.11/28  NaN   NaN      NaN    NaN   NaN    NaN   NaN    ...
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2f642e9027d24a0d9297f10319e7613e", "version_major": 2, "version_minor": 0}</script></div>
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Building dependency features...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c3d4740f9529444c9b6e647a316618a3", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -1231,6 +1331,7 @@ girl/N/StanfDepSents.11/28  NaN   NaN      NaN    NaN   NaN    NaN   NaN    ...
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 
+Building matrix...
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1273,7 +1374,7 @@ context words of the tokens in its columns.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8cb8a473304e4621b54660822d9e7bec", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c77fa0f9606f411b8a1eba9cf898f681", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -1284,7 +1385,7 @@ context words of the tokens in its columns.</p>
 
 ************************************
 function    = compute_association
-  time      = 0.01638 sec
+  time      = 0.01584 sec
 ************************************
 
 </pre></div></div>
@@ -1295,8 +1396,8 @@ function    = compute_association
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1, 39]  baby/N  down/R     that/W     healthy/J  on/I       about/I    apple/N     ...
-girl/N   0.0     1.3315438  0.3507146  0.0        0.8207182  0.6383967  0.18944645  ...
+[1, 39]  which/W    say/V      she/P       boy/N  this/D     about/I    give/V      ...
+girl/N   0.3507146  0.6383967  0.12757105  0.0    1.0438617  0.6383967  0.23293155  ...
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -1330,15 +1431,15 @@ girl/N   0.0     1.3315438  0.3507146  0.0        0.8207182  0.6383967  0.189446
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[39, 55]   &#39;s/P       ,/,       a/D         about/I     about/R    all/P  an/D       ...
-baby/N     NaN        NaN       0.98034835  NaN         NaN        NaN    NaN        ...
-down/R     NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...
-that/W     NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...
-healthy/J  NaN        1.154244  0.81526864  NaN         NaN        NaN    NaN        ...
-on/I       NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...
-about/I    NaN        NaN       NaN         NaN         NaN        NaN    NaN        ...
-apple/N    1.0814445  0.0       0.3882973   0.89912295  1.0814445  NaN    1.0814445  ...
-...        ...        ...       ...         ...         ...        ...    ...        ...
+[39, 55]  &#39;s/P  ,/,        a/D         about/I     about/R  all/P       an/D        ...
+which/W   NaN   NaN        NaN         NaN         NaN      NaN         NaN         ...
+say/V     NaN   NaN        NaN         NaN         NaN      NaN         NaN         ...
+she/P     NaN   NaN        NaN         NaN         NaN      NaN         NaN         ...
+boy/N     NaN   NaN        0.07956182  0.59038746  NaN      0.99585253  0.772709    ...
+this/D    NaN   2.9034438  NaN         NaN         NaN      NaN         NaN         ...
+about/I   NaN   NaN        NaN         NaN         NaN      NaN         NaN         ...
+give/V    NaN   NaN        0.65492594  NaN         NaN      NaN         0.94260806  ...
+...       ...   ...        ...         ...         ...      ...         ...         ...
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1351,6 +1452,14 @@ apple/N    1.0814445  0.0       0.3882973   0.89912295  1.0814445  NaN    1.0814
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+  Operation: weighted mean &#39;token-feature weight matrix&#39; X &#39;socc matrix&#39;...
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
@@ -1358,13 +1467,13 @@ apple/N    1.0814445  0.0       0.3882973   0.89912295  1.0814445  NaN    1.0814
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 [21, 55]                    &#39;s/P    ,/,     a/D     about/I  about/R  all/P   an/D    ...
-girl/N/StanfDepSents.4/7    0.0135  NaN     0.0047  0.0132   0.0166   0.0039  0.0146  ...
-girl/N/StanfDepSents.4/15   0.0232  NaN     0.0080  0.0228   0.0286   0.0068  0.0252  ...
 girl/N/StanfDepSents.10/13  0.0008  NaN     NaN     NaN      0.0008   0.0066  NaN     ...
 girl/N/StanfDepSents.10/19  0.0119  NaN     0.0041  0.0118   0.2003   0.0035  0.0130  ...
-girl/N/StanfDepSents.3/21   0.0008  0.0485  0.0191  0.0041   0.0060   0.0066  0.0028  ...
 girl/N/StanfDepSents.11/3   0.1028  0.0279  0.0251  NaN      0.0006   0.0048  NaN     ...
 girl/N/StanfDepSents.11/19  0.0110  NaN     0.0117  0.0088   0.0110   0.0032  0.0220  ...
+girl/N/StanfDepSents.11/28  0.0533  0.1544  0.0130  NaN      0.0003   0.0025  NaN     ...
+girl/N/StanfDepSents.7/7    0.0141  0.0302  0.0197  0.0113   0.0141   0.0283  0.0412  ...
+girl/N/StanfDepSents.7/25   0.0145  NaN     0.0050  0.1741   0.0179   0.0042  0.0158  ...
 ...                         ...     ...     ...     ...      ...      ...     ...     ...
 </pre></div></div>
 </div>
@@ -1382,6 +1491,8 @@ girl/N/StanfDepSents.11/19  0.0110  NaN     0.0117  0.0088   0.0110   0.0032  0.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
+
+Saving matrix...
 Stored in file:
   .//output//Toy.ttmx.ppmi.pac
 </pre></div></div>
@@ -1409,7 +1520,7 @@ Stored in file:
 
 ************************************
 function    = compute_distance
-  time      = 0.0009825 sec
+  time      = 0.02593 sec
 ************************************
 
 </pre></div></div>
@@ -1420,15 +1531,15 @@ function    = compute_distance
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[21, 21]                    girl/N/StanfDepSents.4/7  girl/N/StanfDepSents.4/15  girl/N/StanfDepSents.10/13  girl/N/StanfDepSents.10/19  girl/N/StanfDepSents.3/21  girl/N/StanfDepSents.11/3  girl/N/StanfDepSents.11/19  ...
-girl/N/StanfDepSents.4/7    0.0000                    0.6533                     0.8416                      0.7850                      0.7641                     0.8476                     0.8256                      ...
-girl/N/StanfDepSents.4/15   0.6533                    0.0000                     0.7402                      0.6142                      0.5763                     0.7897                     0.6702                      ...
-girl/N/StanfDepSents.10/13  0.8416                    0.7402                     0.0000                      0.8721                      0.7514                     0.8736                     0.8654                      ...
-girl/N/StanfDepSents.10/19  0.7850                    0.6142                     0.8721                      0.0000                      0.7803                     0.9064                     0.8111                      ...
-girl/N/StanfDepSents.3/21   0.7641                    0.5763                     0.7514                      0.7803                      0.0000                     0.5974                     0.7332                      ...
-girl/N/StanfDepSents.11/3   0.8476                    0.7897                     0.8736                      0.9064                      0.5974                     0.0000                     0.8789                      ...
-girl/N/StanfDepSents.11/19  0.8256                    0.6702                     0.8654                      0.8111                      0.7332                     0.8789                     0.0000                      ...
-...                         ...                       ...                        ...                         ...                         ...                        ...                        ...                         ...
+[21, 21]                    girl/N/StanfDepSents.10/13  girl/N/StanfDepSents.10/19  girl/N/StanfDepSents.11/3  girl/N/StanfDepSents.11/19  girl/N/StanfDepSents.11/28  girl/N/StanfDepSents.7/7  girl/N/StanfDepSents.7/25  ...
+girl/N/StanfDepSents.10/13  0.0000                      0.8721                      0.8736                     0.8654                      0.8920                      0.7566                    0.8227                     ...
+girl/N/StanfDepSents.10/19  0.8721                      0.0000                      0.9064                     0.8111                      0.8930                      0.7274                    0.6725                     ...
+girl/N/StanfDepSents.11/3   0.8736                      0.9064                      0.0000                     0.8789                      0.3427                      0.6394                    0.8348                     ...
+girl/N/StanfDepSents.11/19  0.8654                      0.8111                      0.8789                     0.0000                      0.8652                      0.4694                    0.7922                     ...
+girl/N/StanfDepSents.11/28  0.8920                      0.8930                      0.3427                     0.8652                      0.0000                      0.5428                    0.8596                     ...
+girl/N/StanfDepSents.7/7    0.7566                      0.7274                      0.6394                     0.4694                      0.5428                      0.0000                    0.6970                     ...
+girl/N/StanfDepSents.7/25   0.8227                      0.6725                      0.8348                     0.7922                      0.8596                      0.6970                    0.0000                     ...
+...                         ...                         ...                         ...                        ...                         ...                         ...                       ...                        ...
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1445,6 +1556,8 @@ girl/N/StanfDepSents.11/19  0.8256                    0.6702                    
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
+
+Saving matrix...
 Stored in file:
   .//output//Toy.ttmx.dist.pac
 </pre></div></div>
@@ -1468,7 +1581,7 @@ Stored in file:
 
 ************************************
 function    = compute_distance
-  time      = 0.0004909 sec
+  time      = 0.003047 sec
 ************************************
 
 </pre></div></div>
@@ -1479,15 +1592,15 @@ function    = compute_distance
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[39, 39]   baby/N  down/R  that/W  healthy/J  on/I    about/I  apple/N  ...
-baby/N     0.0000  1.0000  0.6509  0.9456     0.9462  0.9644   0.8596   ...
-down/R     1.0000  0.0000  1.0000  1.0000     1.0000  1.0000   1.0000   ...
-that/W     0.6509  1.0000  0.0000  0.9731     0.9182  0.9209   0.7750   ...
-healthy/J  0.9456  1.0000  0.9731  0.0000     0.9575  0.9587   0.6761   ...
-on/I       0.9462  1.0000  0.9182  0.9575     0.0000  0.8916   0.9196   ...
-about/I    0.9644  1.0000  0.9209  0.9587     0.8916  0.0000   0.9733   ...
-apple/N    0.8596  1.0000  0.7750  0.6761     0.9196  0.9733   0.0000   ...
-...        ...     ...     ...     ...        ...     ...      ...      ...
+[39, 39]  which/W  say/V   she/P   boy/N   this/D  about/I  give/V  ...
+which/W   0.0000   0.9714  0.9932  0.9494  0.9750  0.9251   0.5509  ...
+say/V     0.9714   0.0000  0.9934  0.8941  0.9592  0.9578   0.9752  ...
+she/P     0.9932   0.9934  0.0000  0.7166  0.9929  0.9878   0.9968  ...
+boy/N     0.9494   0.8941  0.7166  0.0000  0.9954  0.8361   0.7142  ...
+this/D    0.9750   0.9592  0.9929  0.9954  0.0000  0.9594   0.9838  ...
+about/I   0.9251   0.9578  0.9878  0.8361  0.9594  0.0000   0.9780  ...
+give/V    0.5509   0.9752  0.9968  0.7142  0.9838  0.9780   0.0000  ...
+...       ...      ...     ...     ...     ...     ...      ...     ...
 </pre></div></div>
 </div>
 </div>

@@ -1,0 +1,7 @@
+nephosem.core.handler module
+============================
+
+.. automodule:: nephosem.core.handler
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -12,16 +12,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 1,
+   "execution_count": 9,
    "metadata": {},
    "outputs": [],
    "source": [
-    "import pandas as pd # to see concordance\n",
     "import sys\n",
     "nephosemdir = \"../../nephosem/\"\n",
     "sys.path.append(nephosemdir)\n",
     "mydir = \"./\"\n",
     "from nephosem import ConfigLoader, Vocab, TokenHandler\n",
+    "from nephosem.utils import save_concordance\n",
     "conf = ConfigLoader()\n",
     "settings = conf.update_config('config.ini')"
    ]
@@ -51,25 +51,26 @@
    },
    "outputs": [
     {
-     "name": "stderr",
+     "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Not provide the temporary path!\n",
-      "Use the default tmp directory: '~/tmp'!\n"
+      "WARNING: Not provide the temporary path!\n",
+      "WARNING: Use the default tmp directory: '~/tmp'!\n",
+      "Scanning tokens of queries in corpus...\n"
      ]
     },
     {
      "data": {
       "text/plain": [
-       "[21, 39]                    say/V  healthy/J  what/W  she/P  boy/N  ask/V  be/V  ...\n",
-       "girl/N/StanfDepSents.6/6    NaN    3          NaN     NaN    -3     NaN    NaN   ...\n",
-       "girl/N/StanfDepSents.6/21   NaN    NaN        NaN     NaN    NaN    NaN    NaN   ...\n",
-       "girl/N/StanfDepSents.2/29   NaN    NaN        NaN     NaN    NaN    NaN    -4    ...\n",
-       "girl/N/StanfDepSents.8/3    NaN    NaN        NaN     NaN    NaN    NaN    NaN   ...\n",
-       "girl/N/StanfDepSents.8/15   NaN    NaN        NaN     NaN    -4     NaN    NaN   ...\n",
-       "girl/N/StanfDepSents.8/25   NaN    NaN        NaN     NaN    -3     NaN    NaN   ...\n",
-       "girl/N/StanfDepSents.10/13  NaN    NaN        NaN     NaN    NaN    NaN    NaN   ...\n",
-       "...                         ...    ...        ...     ...    ...    ...    ...   ..."
+       "[21, 39]                   be/V  what/W  that/I  a/D  ,/,  ask/V  and/C  ...\n",
+       "girl/N/StanfDepSents.1/3   NaN   NaN     NaN     NaN  NaN  NaN    NaN    ...\n",
+       "girl/N/StanfDepSents.1/13  NaN   NaN     NaN     NaN  NaN  NaN    NaN    ...\n",
+       "girl/N/StanfDepSents.1/20  NaN   NaN     NaN     NaN  NaN  NaN    NaN    ...\n",
+       "girl/N/StanfDepSents.2/29  -4    NaN     NaN     NaN  NaN  NaN    NaN    ...\n",
+       "girl/N/StanfDepSents.8/3   NaN   NaN     NaN     NaN  NaN  NaN    NaN    ...\n",
+       "girl/N/StanfDepSents.8/15  NaN   NaN     NaN     NaN  NaN  NaN    NaN    ...\n",
+       "girl/N/StanfDepSents.8/25  NaN   NaN     NaN     NaN  NaN  NaN    -2     ...\n",
+       "...                        ...   ...     ...     ...  ...  ...    ...    ..."
       ]
      },
      "execution_count": 3,
@@ -84,117 +85,27 @@
    ]
   },
   {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "## type2toks\n",
-    "\n",
-    "The concordance information is stored in the `type2toks` attribute."
-   ]
-  },
-  {
    "cell_type": "code",
-   "execution_count": 4,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "{'girl/N': girl/N}"
-      ]
-     },
-     "execution_count": 4,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "tokhan.type2toks"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 5,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "nephosem.core.terms.TypeNode"
-      ]
-     },
-     "execution_count": 5,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "type(tokhan.type2toks[\"girl/N\"])"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 6,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "nephosem.core.terms.TokenNode"
-      ]
-     },
-     "execution_count": 6,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "firstToken = tokhan.type2toks[\"girl/N\"].tokens[0]\n",
-    "type(firstToken)"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "The following function obtains the `word` attribute of each context word and brings them together in a character string. Such attributes are named based on the labels in `settings['global-columns']`."
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 10,
    "metadata": {},
    "outputs": [],
    "source": [
-    "def tokenConcordance(token):\n",
-    "    leftContext = \" \".join([x.word for x in token.lcollocs])\n",
-    "    rightContext = \" \".join([x.word for x in token.rcollocs])\n",
-    "    return f\"{leftContext} {token.word} {rightContext}\""
+    "outputfile = 'output/concordance.tsv'\n",
+    "save_concordance(outputfile, tokhan.type2toks, colloc_fmt='word')"
    ]
   },
   {
-   "cell_type": "code",
-   "execution_count": 8,
+   "cell_type": "markdown",
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "'The boy gives the girl a tasty healthy apple'"
-      ]
-     },
-     "execution_count": 8,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
    "source": [
-    "tokenConcordance(firstToken)"
+    "## Read concordance\n",
+    "\n",
+    "`nephosem.utils.save_concordance()` directly stores the concordance as a tab-separated dataframe in `outputfile`, without headers."
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": 12,
    "metadata": {},
    "outputs": [
     {
@@ -218,71 +129,226 @@
        "  <thead>\n",
        "    <tr style=\"text-align: right;\">\n",
        "      <th></th>\n",
-       "      <th>text</th>\n",
        "      <th>token_id</th>\n",
+       "      <th>left</th>\n",
+       "      <th>target</th>\n",
+       "      <th>right</th>\n",
        "    </tr>\n",
        "  </thead>\n",
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>0</th>\n",
-       "      <td>The boy gives the girl a tasty healthy apple</td>\n",
-       "      <td>girl/N/StanfDepSents.6/6</td>\n",
+       "      <td>girl/N/StanfDepSents.1/3</td>\n",
+       "      <td>The</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>looks healthy</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>1</th>\n",
-       "      <td>The girl does n't eat</td>\n",
-       "      <td>girl/N/StanfDepSents.6/21</td>\n",
+       "      <td>girl/N/StanfDepSents.1/13</td>\n",
+       "      <td>boy looks at the</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>as she eats</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2</th>\n",
-       "      <td>are eaten by the girl</td>\n",
-       "      <td>girl/N/StanfDepSents.2/29</td>\n",
+       "      <td>girl/N/StanfDepSents.1/20</td>\n",
+       "      <td>The</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>eats less healthy food</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>3</th>\n",
-       "      <td>The girl sat on the apple</td>\n",
-       "      <td>girl/N/StanfDepSents.8/3</td>\n",
+       "      <td>girl/N/StanfDepSents.2/29</td>\n",
+       "      <td>are eaten by the</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>NaN</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>4</th>\n",
-       "      <td>boy looked at the girl 's apple</td>\n",
+       "      <td>girl/N/StanfDepSents.8/3</td>\n",
+       "      <td>The</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>sat on the apple</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5</th>\n",
        "      <td>girl/N/StanfDepSents.8/15</td>\n",
+       "      <td>boy looked at the</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>'s apple</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>6</th>\n",
+       "      <td>girl/N/StanfDepSents.8/25</td>\n",
+       "      <td>the boys and the</td>\n",
+       "      <td>girls</td>\n",
+       "      <td>eat apples</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>7</th>\n",
+       "      <td>girl/N/StanfDepSents.4/7</td>\n",
+       "      <td>boy says that the</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>should eat the apple</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>8</th>\n",
+       "      <td>girl/N/StanfDepSents.4/15</td>\n",
+       "      <td>The</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>eats the apple that</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>9</th>\n",
+       "      <td>girl/N/StanfDepSents.9/14</td>\n",
+       "      <td>The older</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>looks at a boy</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>10</th>\n",
+       "      <td>girl/N/StanfDepSents.5/19</td>\n",
+       "      <td>What the</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>eats was given by</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>11</th>\n",
+       "      <td>girl/N/StanfDepSents.11/3</td>\n",
+       "      <td>The</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>looks at the boy</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>12</th>\n",
+       "      <td>girl/N/StanfDepSents.11/19</td>\n",
+       "      <td>the apple which the</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>gave him</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>13</th>\n",
+       "      <td>girl/N/StanfDepSents.11/28</td>\n",
+       "      <td>This year , the</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>looked at a boy</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>14</th>\n",
+       "      <td>girl/N/StanfDepSents.3/21</td>\n",
+       "      <td>The boy and the</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>eat a healthy and</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>15</th>\n",
+       "      <td>girl/N/StanfDepSents.6/6</td>\n",
+       "      <td>The boy gives the</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>a tasty healthy apple</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>16</th>\n",
+       "      <td>girl/N/StanfDepSents.6/21</td>\n",
+       "      <td>The</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>does n't eat</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>17</th>\n",
+       "      <td>girl/N/StanfDepSents.10/13</td>\n",
+       "      <td>The</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>sits down</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>18</th>\n",
+       "      <td>girl/N/StanfDepSents.10/19</td>\n",
+       "      <td>The</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>eats about ten apples</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>19</th>\n",
+       "      <td>girl/N/StanfDepSents.7/7</td>\n",
+       "      <td>old boy gives the</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>a baby apple</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>20</th>\n",
+       "      <td>girl/N/StanfDepSents.7/25</td>\n",
+       "      <td>The boy asked the</td>\n",
+       "      <td>girl</td>\n",
+       "      <td>about eating apples</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
        "</div>"
       ],
       "text/plain": [
-       "                                           text                   token_id\n",
-       "0  The boy gives the girl a tasty healthy apple   girl/N/StanfDepSents.6/6\n",
-       "1                         The girl does n't eat  girl/N/StanfDepSents.6/21\n",
-       "2                        are eaten by the girl   girl/N/StanfDepSents.2/29\n",
-       "3                     The girl sat on the apple   girl/N/StanfDepSents.8/3\n",
-       "4               boy looked at the girl 's apple  girl/N/StanfDepSents.8/15"
+       "                      token_id                 left target  \\\n",
+       "0     girl/N/StanfDepSents.1/3                  The   girl   \n",
+       "1    girl/N/StanfDepSents.1/13     boy looks at the   girl   \n",
+       "2    girl/N/StanfDepSents.1/20                  The   girl   \n",
+       "3    girl/N/StanfDepSents.2/29     are eaten by the   girl   \n",
+       "4     girl/N/StanfDepSents.8/3                  The   girl   \n",
+       "5    girl/N/StanfDepSents.8/15    boy looked at the   girl   \n",
+       "6    girl/N/StanfDepSents.8/25     the boys and the  girls   \n",
+       "7     girl/N/StanfDepSents.4/7    boy says that the   girl   \n",
+       "8    girl/N/StanfDepSents.4/15                  The   girl   \n",
+       "9    girl/N/StanfDepSents.9/14            The older   girl   \n",
+       "10   girl/N/StanfDepSents.5/19             What the   girl   \n",
+       "11   girl/N/StanfDepSents.11/3                  The   girl   \n",
+       "12  girl/N/StanfDepSents.11/19  the apple which the   girl   \n",
+       "13  girl/N/StanfDepSents.11/28      This year , the   girl   \n",
+       "14   girl/N/StanfDepSents.3/21      The boy and the   girl   \n",
+       "15    girl/N/StanfDepSents.6/6    The boy gives the   girl   \n",
+       "16   girl/N/StanfDepSents.6/21                  The   girl   \n",
+       "17  girl/N/StanfDepSents.10/13                  The   girl   \n",
+       "18  girl/N/StanfDepSents.10/19                  The   girl   \n",
+       "19    girl/N/StanfDepSents.7/7    old boy gives the   girl   \n",
+       "20   girl/N/StanfDepSents.7/25    The boy asked the   girl   \n",
+       "\n",
+       "                     right  \n",
+       "0            looks healthy  \n",
+       "1              as she eats  \n",
+       "2   eats less healthy food  \n",
+       "3                      NaN  \n",
+       "4         sat on the apple  \n",
+       "5                 's apple  \n",
+       "6               eat apples  \n",
+       "7     should eat the apple  \n",
+       "8      eats the apple that  \n",
+       "9           looks at a boy  \n",
+       "10       eats was given by  \n",
+       "11        looks at the boy  \n",
+       "12                gave him  \n",
+       "13         looked at a boy  \n",
+       "14       eat a healthy and  \n",
+       "15   a tasty healthy apple  \n",
+       "16            does n't eat  \n",
+       "17               sits down  \n",
+       "18   eats about ten apples  \n",
+       "19            a baby apple  \n",
+       "20     about eating apples  "
       ]
      },
-     "execution_count": 9,
+     "execution_count": 12,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
-    "pd.DataFrame([\n",
-    "    {\"token_id\" : str(token), \"text\" : tokenConcordance(token)}\n",
-    "    for token in tokhan.type2toks[\"girl/N\"].tokens]).head()"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "If you have several types in your query, you just need to replace `tokhan.type2toks[\"girl/N\"].tokens` with a flattened version `[tok for typ in tokhan.type2toks.values() for tok in ctyp.tokens]`."
+    "import pandas as pd\n",
+    "pd.read_csv(outputfile, sep = '\\t', names = ['token_id', 'left', 'target', 'right'])"
    ]
   }
  ],
  "metadata": {
   "kernelspec": {
-   "display_name": "Python 3",
+   "display_name": "Python 3.9",
    "language": "python",
    "name": "python3"
   },
@@ -296,7 +362,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.6.9"
+   "version": "3.9.9"
   }
  },
  "nbformat": 4,

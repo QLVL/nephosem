@@ -1,0 +1,724 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>nephosem.core.matrix module &mdash; Nephological Semantics 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nephosem.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>nephosem.core.matrix module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/nephosem.core.matrix.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-nephosem.core.matrix">
+<span id="nephosem-core-matrix-module"></span><h1>nephosem.core.matrix module<a class="headerlink" href="#module-nephosem.core.matrix" title="Permalink to this headline">¶</a></h1>
+<p>Matrix Classes</p>
+<div class="section" id="usage-examples">
+<h2>Usage examples<a class="headerlink" href="#usage-examples" title="Permalink to this headline">¶</a></h2>
+<p>Construct a TypeTokenMatrix with a Python dict e.g.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nephosem.tests.utils</span> <span class="kn">import</span> <span class="n">common_texts</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nephosem</span> <span class="kn">import</span> <span class="n">TypeTokenMatrix</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.core.matrix.</span></span><span class="sig-name descname"><span class="pre">TypeTokenMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nephosem.core.matrix.BaseMatrix</span></code></p>
+<p class="rubric">Examples</p>
+<p>Construction of a toy TypeTokenMatrix object:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">row_items</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;row0&#39;</span><span class="p">,</span> <span class="s1">&#39;row1&#39;</span><span class="p">,</span> <span class="s1">&#39;row2&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col_items</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;col0&#39;</span><span class="p">,</span> <span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col2&#39;</span><span class="p">,</span> <span class="s1">&#39;col3&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sparr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spMTX</span> <span class="o">=</span> <span class="n">TypeTokenMatrix</span><span class="p">(</span><span class="n">spmx</span><span class="p">,</span> <span class="n">row_items</span><span class="p">,</span> <span class="n">col_items</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">spMTX</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dsmx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nmMTX</span> <span class="o">=</span> <span class="n">TypeTokenMatrix</span><span class="p">(</span><span class="n">dsmx</span><span class="p">,</span> <span class="n">row_items</span><span class="p">,</span> <span class="n">col_items</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">nmMTX</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sqarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">squareform</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sqmx</span> <span class="o">=</span> <span class="n">squareform</span><span class="p">(</span><span class="n">sqarr</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sqMTX</span> <span class="o">=</span> <span class="n">TypeTokenMatrix</span><span class="p">(</span><span class="n">sqmx</span><span class="p">,</span> <span class="n">col_items</span><span class="p">,</span> <span class="n">col_items</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sqMTX</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.colid2item">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">colid2item</span></span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.colid2item" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.concatenate">
+<span class="sig-name descname"><span class="pre">concatenate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targetmx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.concatenate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concatenate target matrix with self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>targetmx</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – Target matrix</p></li>
+<li><p><strong>axis</strong> (<em>int</em>) – Axis of concatenation.
+If axis = 0, concatenate the targetmx as the new rows of self matrix.
+If axis = 1, concatenate the targetmx as the new columns of self matrix.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.count_nonzero">
+<span class="sig-name descname"><span class="pre">count_nonzero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.count_nonzero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Count the number of nonzero values for each row or each column.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.dataframe">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">dataframe</span></span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.dataframe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.deepcopy">
+<span class="sig-name descname"><span class="pre">deepcopy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.deepcopy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.describe">
+<span class="sig-name descname"><span class="pre">describe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.describe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates descriptive information of the matrix
+TODO: improve</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.drop">
+<span class="sig-name descname"><span class="pre">drop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_nonzero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.drop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drop rows which has fewer or equal nonzero values than <cite>n_nonzero</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>axis</strong> (<em>int</em>) – If axis is 0, drop rows that satisfy the given criteria.
+If axis is 1, drop columns that satisfy the given criteria.</p></li>
+<li><p><strong>n_nonzero</strong> (<em>int</em>) – The number of nonzero values in each row.
+If n_nonzero is 0, drop all empty rows.
+If n_nonzero is 1, drop all rows that only have 1 nonzero value or less.
+…</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>Dropped matrix</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.drop_empty">
+<span class="sig-name descname"><span class="pre">drop_empty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explicit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.drop_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drop empty rows and return a dropped matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>axis</strong> (<em>int</em>) – 0 or 1</p></li>
+<li><p><strong>explicit</strong> (<em>bool</em>) – If True, rows that only have explicit zeros are also empty.
+Else, rows that only have no stored values are empty.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.drop_empty_rows">
+<span class="sig-name descname"><span class="pre">drop_empty_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explicit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.drop_empty_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drop empty rows and return a dropped matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>explicit</strong> (<em>bool</em>) – If True, rows that only have explicit zeros are also empty.
+Else, rows that only have no stored values are empty.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.drop_zero_rows">
+<span class="sig-name descname"><span class="pre">drop_zero_rows</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.drop_zero_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drop rows with only zero values and return the dropped matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.empty_rows">
+<span class="sig-name descname"><span class="pre">empty_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explicit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.empty_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show types/tokens which have empty rows
+If this matrix is a token-context weight matrix,
+the row of a token would have all zero ppmi values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>explicit</strong> (<em>bool</em>) – If True, rows that only have explicit zeros are also empty.
+Else, rows that have no stored values are empty.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>a list of row indices</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.equal">
+<span class="sig-name descname"><span class="pre">equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">othermx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.from_dataframe">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">issparse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.from_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.get_colloc_contexts">
+<span class="sig-name descname"><span class="pre">get_colloc_contexts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.get_colloc_contexts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get collocate context features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.get_matrix">
+<span class="sig-name descname"><span class="pre">get_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.get_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>numpy.ndarray or scipy.sparse.csr_matrix</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.item2colid">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">item2colid</span></span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.item2colid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dict mapping from (column) items to corresponding indices.
+If <cite>self._item2colid</cite> is generated, just return it,
+else, create the <cite>self._item2colid</cite> dict and return it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>self._item2colid</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.item2rowid">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">item2rowid</span></span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.item2rowid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dict mapping from (row) items to corresponding indices.
+If <cite>self._item2rowid</cite> is generated, just return it,
+else, create the <cite>self._item2rowid</cite> dict and return it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>self._item2rowid</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.load">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pack</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.load" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>&quot;</em><em>...</em><em>/xx.wcmx.freq.pac&quot;</em>) – </p></li>
+<li><p><strong>encoding</strong> (<em>str</em>) – Default ‘utf-8’.</p></li>
+<li><p><strong>pack</strong> (<em>True</em><em> or </em><em>False</em>) – Indicate the file is packaged or not</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>meta data and matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targetmx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge two TypeTokenMatrix objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>targetmx</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – Target matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.meta_data">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">meta_data</span></span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.meta_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Meta data of the matrix.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.most_similar">
+<span class="sig-name descname"><span class="pre">most_similar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.most_similar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get most similar items of the target item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>str</em>) – Row item (word)</p></li>
+<li><p><strong>k</strong> (<em>int</em>) – Number of returned similar items.</p></li>
+<li><p><strong>descending</strong> (<em>bool</em>) – If descending is True, sort the elements according to descending order of the values.
+Else, sort the elements according to ascending order of the values.
+The values would be distance or similarity.
+So for similarity matrix, set <cite>descending</cite> to True, as we want elements with largest values (similarities).
+For distance matrix, set <cite>descending</cite> to False.
+For similarity rank matrix, same to similarity matrix.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>a list of elements</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.multiply">
+<span class="sig-name descname"><span class="pre">multiply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.multiply" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.print_matrix">
+<span class="sig-name descname"><span class="pre">print_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_rows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_cols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.print_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints n_rows and n_cols of the matrix.
+If either is set to None, print the standard amount.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_rows</strong> – </p></li>
+<li><p><strong>n_cols</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.read_csv">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">read_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'infer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">issparse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.read_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a comma(tab)-separated values (csv/tsv) file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – Filename of the csv file.</p></li>
+<li><p><strong>sep</strong> (<em>str</em><em>, </em><em>default '    '</em>) – Field delimiter to use.</p></li>
+<li><p><strong>header</strong> (<em>int</em><em> or </em><em>list of ints</em><em>, </em><em>default 'infer'</em>) – Row number(s) to use as the column names, and the start of the data.</p></li>
+<li><p><strong>index_col</strong> (<em>int</em><em> or </em><em>sequence</em><em> or </em><em>False</em><em>, </em><em>default None</em>) – Column to use as the row labels of the DataFrame.</p></li>
+<li><p><strong>issparse</strong> (<em>bool</em>) – True for sparse matrix (i.e. frequency matrix).
+False for dense matrix (i.e. distance matrix).</p></li>
+<li><p><strong>encoding</strong> (<em>str</em><em>, </em><em>default 'utf-8'</em>) – Encoding to use for UTF when reading/writing (ex. ‘utf-8’).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.reorder">
+<span class="sig-name descname"><span class="pre">reorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.reorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reorder the matrix based on a new item list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item_list</strong> (<em>list of str</em>) – A list of (string) items.</p></li>
+<li><p><strong>axis</strong> (<em>int</em><em>, </em><em>optional</em>) – 0 for row, 1 for column</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.rowid2item">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">rowid2item</span></span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.rowid2item" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample the matrix based on row</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>percent</strong> (<em>float</em>) – percentage of row dimension</p></li>
+<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>default</em>) – Random seed form sampling.
+When the seed is set to a non-default value (non-negative),
+the method uses this seed for numpy random sampling operation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pack</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.shape">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.spmatrix_to_dict">
+<span class="sig-name descname"><span class="pre">spmatrix_to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.spmatrix_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only for sparse matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.submatrix">
+<span class="sig-name descname"><span class="pre">submatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.submatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select a submatrix.
+If self is a sparse matrix (i.e. word-context frequency matrix),
+you can either specify only row or only col or both.
+If self is a square matrix (i.e. word-word distance matrix),
+normally you should select a square submatrix, therefore specify both row and col with the same list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>iterable</em><em> (</em><em>list of str</em><em>)</em>) – Only support a list of str</p></li>
+<li><p><strong>col</strong> (<em>iterable</em><em> (</em><em>list of str</em><em>)</em>) – Only support a list of str</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>submatrix</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.sum">
+<span class="sig-name descname"><span class="pre">sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sum the matrix over the given axis.
+If the axis is None, sum over both rows and columns, returning a scalar.</p>
+<blockquote>
+<div><p>axis = 1</p>
+</div></blockquote>
+<p>———–    ^
+| 1, 0, 2 |   [3]
+| 0, 3, 4 |   [7]
+———–</p>
+<blockquote>
+<div><p>[1, 3, 6]        &gt; axis = 0</p>
+<blockquote>
+<div><p>Collocate present   Collocate absent    Totals</p>
+</div></blockquote>
+</div></blockquote>
+<p>Node present  c_a_b               c_a_nb              R1
+Node absent   c_na_b              c_na_nb             R2
+Totals        C1                  C2                  N</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>axis</strong> (<em>int</em>) – If axis == 1, sum over rows.
+If axis == 0, sum over columns.
+If axis is None, return the total sum value (scalar).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A python dict with row/column items as keys and sum of that row/column as values.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.to_csv">
+<span class="sig-name descname"><span class="pre">to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.to_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write DataFrame to a comma-separated values (csv) file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – </p></li>
+<li><p><strong>sep</strong> (<em>character</em><em>, </em><em>default '      '</em>) – Field delimiter for the output file.</p></li>
+<li><p><strong>index</strong> (<em>boolean</em><em>, </em><em>default True</em>) – Write row names (index).</p></li>
+<li><p><strong>header</strong> (<em>boolean</em><em>, </em><em>default True</em>) – Write out the column names.</p></li>
+<li><p><strong>encoding</strong> (<em>string</em><em>, </em><em>optional</em>) – A string representing the encoding to use in the output file, defaults to ‘ascii’ on Python 2 and ‘utf-8’ on Python 3.</p></li>
+<li><p><strong>verbose</strong> (<em>boolean</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.todense">
+<span class="sig-name descname"><span class="pre">todense</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.todense" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.matrix.TypeTokenMatrix.transpose">
+<span class="sig-name descname"><span class="pre">transpose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.matrix.TypeTokenMatrix.transpose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the transpose of a matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The transpose.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL (documentation by Mariana Montes).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

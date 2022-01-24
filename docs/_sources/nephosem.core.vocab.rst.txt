@@ -1,0 +1,7 @@
+nephosem.core.vocab module
+==========================
+
+.. automodule:: nephosem.core.vocab
+   :members:
+   :undoc-members:
+   :show-inheritance:

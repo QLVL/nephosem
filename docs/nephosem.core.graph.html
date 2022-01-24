@@ -1,0 +1,732 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>nephosem.core.graph module &mdash; Nephological Semantics 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nephosem.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>nephosem.core.graph module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/nephosem.core.graph.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-nephosem.core.graph">
+<span id="nephosem-core-graph-module"></span><h1>nephosem.core.graph module<a class="headerlink" href="#module-nephosem.core.graph" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.core.graph.DiGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.core.graph.</span></span><span class="sig-name descname"><span class="pre">DiGraph</span></span><a class="headerlink" href="#nephosem.core.graph.DiGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.core.graph.DiGraph.graph">
+<span class="sig-name descname"><span class="pre">graph</span></span><a class="headerlink" href="#nephosem.core.graph.DiGraph.graph" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DiGraph</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.DiGraph.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_v</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.DiGraph.add_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an edge to graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.DiGraph.add_node">
+<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.DiGraph.add_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a node with id and label (optional) to graph.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.core.graph.DiGraph.edges">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#nephosem.core.graph.DiGraph.edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.DiGraph.in_degree">
+<span class="sig-name descname"><span class="pre">in_degree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.DiGraph.in_degree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.core.graph.DiGraph.istree">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">istree</span></span><a class="headerlink" href="#nephosem.core.graph.DiGraph.istree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.core.graph.DiGraph.nodes">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#nephosem.core.graph.DiGraph.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.DiGraph.out_degree">
+<span class="sig-name descname"><span class="pre">out_degree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.DiGraph.out_degree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.DiGraph.predecessors">
+<span class="sig-name descname"><span class="pre">predecessors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.DiGraph.predecessors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.DiGraph.successors">
+<span class="sig-name descname"><span class="pre">successors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.DiGraph.successors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.core.graph.Graph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.core.graph.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id2node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.Graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.Graph.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e_from_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_to_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.Graph.add_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an edge to graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.Graph.add_node">
+<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.Graph.add_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a node with id and label (optional) to graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.Graph.build_graph">
+<span class="sig-name descname"><span class="pre">build_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id2node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.Graph.build_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sentence</strong> (<em>iterable</em>) – A list of dependency relations.</p></li>
+<li><p><strong>id2node</strong> (<em>dict</em>) – Node id to node string mapping.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.Graph.build_graph_raw">
+<span class="sig-name descname"><span class="pre">build_graph_raw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.Graph.build_graph_raw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a graph from raw text (of a sentence)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sentence</strong> (<em>iterable</em>) – A list of strings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.core.graph.Graph.edges">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#nephosem.core.graph.Graph.edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.Graph.match">
+<span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.Graph.match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match a graph with path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">PathTemplate</span></code>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>valid matches</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>iterable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.core.graph.Graph.nodes">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#nephosem.core.graph.Graph.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.core.graph.</span></span><span class="sig-name descname"><span class="pre">MacroGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nephosem.core.graph.PatternGraph" title="nephosem.core.graph.PatternGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">nephosem.core.graph.PatternGraph</span></code></a></p>
+<p>Class representing a feature graph inherited from the class PatternGraph.
+So it will have the same structure of the template from which it is generated.
+The generating process of a feature object would be:
+* 1. replicate a (tree) structure of the template
+* 2. set target node index
+* 3. set feature properties for each node (except for the target) and each edge.</p>
+<blockquote>
+<div><p>The feature properties (i.e. True or False) would be stored in <strong>attributes</strong> of nodes and edges</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.add_match">
+<span class="sig-name descname"><span class="pre">add_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matched_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matched_edges</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.add_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add matched nodes and edges</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matched_nodes</strong> (<em>dict</em>) – mapping from node index to item string</p></li>
+<li><p><strong>matched_edges</strong> (<em>dict</em>) – mapping from edge index to relation string</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.connector">
+<span class="sig-name descname"><span class="pre">connector</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/'</span></em><a class="headerlink" href="#nephosem.core.graph.MacroGraph.connector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class representing a dependency template tree/graph</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.feature">
+<span class="sig-name descname"><span class="pre">feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform a matched node and edge to a feature string</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.feature_full">
+<span class="sig-name descname"><span class="pre">feature_full</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.feature_full" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.feature_old">
+<span class="sig-name descname"><span class="pre">feature_old</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.feature_old" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.feature_simple">
+<span class="sig-name descname"><span class="pre">feature_simple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.feature_simple" title="Permalink to this definition">¶</a></dt>
+<dd><p>The result feature string is a normal type.
+We only have one feature node (without edge) in the result feature representation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.get_edge_repr">
+<span class="sig-name descname"><span class="pre">get_edge_repr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_attrs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.get_edge_repr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get representation of an (matched) edge.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.get_node_repr">
+<span class="sig-name descname"><span class="pre">get_node_repr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_attrs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.get_node_repr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get representation of a (matched) node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.parse_macro_xml">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">parse_macro_xml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">macroxml</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id2patt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.parse_macro_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Example XML:
+<a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>xml
+&lt;target-feature-macro id=”1”&gt;</p>
+<blockquote>
+<div><p>&lt;sub-graph-pattern id=”1”/&gt;
+&lt;target nodeID=”2”&gt;</p>
+<blockquote>
+<div><p>&lt;description&gt;Empty&lt;/description&gt;</p>
+</div></blockquote>
+<p>&lt;/target&gt;
+&lt;feature nodeID=”1”&gt;</p>
+<blockquote>
+<div><p>&lt;description&gt;Words that depend directly on the target.&lt;/description&gt;</p>
+</div></blockquote>
+<p>&lt;/feature&gt;</p>
+</div></blockquote>
+<p>&lt;/target-feature-macro&gt;
+<a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>macroxml</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code>) – XML element of a macro</p></li>
+<li><p><strong>id2patt</strong> (<em>dict</em>) – The dict mapping index to pattern</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>class: <cite>~nephosem.core.graph.MacroGraph</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.preorder_recur">
+<span class="sig-name descname"><span class="pre">preorder_recur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reprs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.preorder_recur" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.read_csv">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">read_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_colname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Target</span> <span class="pre">Regex'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_colname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Feature</span> <span class="pre">Regex'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.read_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read feature patterns from a CSV/TSV file.
+This method uses <cite>pandas.read_csv()</cite>. If there is any reading error, please refer to the documentation of pandas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fname</strong> (<em>str</em>) – Filename of feature patterns in Kris’ notation.</p></li>
+<li><p><strong>target_colname</strong> (<em>str</em><em>, </em><em>default 'Target Regex'</em>) – Column name of the target regular expression in the CSV/TSV file.</p></li>
+<li><p><strong>feature_colname</strong> (<em>str</em><em>, </em><em>default 'Feature Regex'</em>) – Column name of the feature regular expression in the CSV/TSV file.</p></li>
+<li><p><strong>sep</strong> (<em>str</em><em>, </em><em>default '    '</em>) – Delimiter to use.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.read_xml">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">read_xml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patterns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.read_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Example XML:
+<a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a>xml
+&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;
+&lt;target-feature-list&gt;</p>
+<blockquote>
+<div><dl>
+<dt>&lt;target-fmt&gt;</dt><dd><dl class="simple">
+<dt>&lt;node-fmt&gt;</dt><dd><p>&lt;LEMMA group=”1”/&gt;
+&lt;POS group=”1”/&gt;
+&lt;string connector=”/”&gt;LEMMA/POS&lt;/string&gt;</p>
+</dd>
+</dl>
+<p>&lt;/node-fmt&gt;</p>
+</dd>
+</dl>
+<p>&lt;/target-fmt&gt;
+&lt;feature-fmt&gt;</p>
+<blockquote>
+<div><dl class="simple">
+<dt>&lt;node-fmt&gt;</dt><dd><p>&lt;LEMMA group=”1”/&gt;
+&lt;POS group=”1”/&gt;
+&lt;string connector=”/”&gt;LEMMA/POS&lt;/string&gt;</p>
+</dd>
+</dl>
+<p>&lt;/node-fmt&gt;
+&lt;edge-fmt&gt;DEPREL&lt;/edge-fmt&gt;</p>
+</div></blockquote>
+<p>&lt;/feature-fmt&gt;
+&lt;target-feature-macro id=”1”&gt;</p>
+<blockquote>
+<div><p>…</p>
+</div></blockquote>
+<p>&lt;/target-feature-macro&gt;
+…</p>
+</div></blockquote>
+<p>&lt;/target-feature-list&gt;
+<a href="#id13"><span class="problematic" id="id14">``</span></a><a href="#id15"><span class="problematic" id="id16">`</span></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fname</strong> (<em>str</em>) – </p></li>
+<li><p><strong>patterns</strong> (list, of <a class="reference internal" href="#nephosem.core.graph.PatternGraph" title="nephosem.core.graph.PatternGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternGraph</span></code></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list, of <a class="reference internal" href="#nephosem.core.graph.MacroGraph" title="nephosem.core.graph.MacroGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">MacroGraph</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.set_feature">
+<span class="sig-name descname"><span class="pre">set_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.set_feature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.set_target">
+<span class="sig-name descname"><span class="pre">set_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.set_target" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.show_match">
+<span class="sig-name descname"><span class="pre">show_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.show_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.size">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.MacroGraph.target">
+<span class="sig-name descname"><span class="pre">target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'type'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.MacroGraph.target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the target of the <cite>index</cite> match.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.core.graph.PatternGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.core.graph.</span></span><span class="sig-name descname"><span class="pre">PatternGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.PatternGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nephosem.core.graph.DiGraph" title="nephosem.core.graph.DiGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">nephosem.core.graph.DiGraph</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.core.graph.PatternGraph.connector">
+<span class="sig-name descname"><span class="pre">connector</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/'</span></em><a class="headerlink" href="#nephosem.core.graph.PatternGraph.connector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class representing a dependency template tree/graph</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.PatternGraph.islinear">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">islinear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.PatternGraph.islinear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.PatternGraph.match_edge">
+<span class="sig-name descname"><span class="pre">match_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.PatternGraph.match_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match the passing sentence edge with the corresponding edge in the pattern graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>edge</strong> (<em>dict</em>) – A dict of edge attributes of the sentence graph.
+For most cases, there is only one attribute <cite>DEPREL</cite>.</p></li>
+<li><p><strong>idx</strong> (<em>int</em><em> or </em><em>tuple of int</em>) – An integer index of the corresponding edge of the pattern graph.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.PatternGraph.match_node">
+<span class="sig-name descname"><span class="pre">match_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.PatternGraph.match_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match the passing sentence node with the corresponding node in the pattern graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dict of node attributes of the sentence graph.
+e.g. {‘FORM’: ‘The’, ‘POS’: ‘DT’, ‘LEMMA’: ‘the’}</p></li>
+<li><p><strong>idx</strong> (<em>int</em>) – An integer index of the corresponding node of the pattern graph.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.PatternGraph.read_csv">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">read_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_colname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Target</span> <span class="pre">Regex'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_colname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Feature</span> <span class="pre">Regex'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.PatternGraph.read_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read feature patterns from a CSV/TSV file.
+This method uses <cite>pandas.read_csv()</cite>. If there is any reading error, please refer to the documentation of pandas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fname</strong> (<em>str</em>) – Filename of feature patterns in Kris’ notation.</p></li>
+<li><p><strong>target_colname</strong> (<em>str</em><em>, </em><em>default 'Target Regex'</em>) – Column name of the target regular expression in the CSV/TSV file.</p></li>
+<li><p><strong>feature_colname</strong> (<em>str</em><em>, </em><em>default 'Feature Regex'</em>) – Column name of the feature regular expression in the CSV/TSV file.</p></li>
+<li><p><strong>sep</strong> (<em>str</em><em>, </em><em>default '    '</em>) – Delimiter to use.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.PatternGraph.read_graphml">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">read_graphml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.PatternGraph.read_graphml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.PatternGraph.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.PatternGraph.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.core.graph.SentenceGraph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.core.graph.</span></span><span class="sig-name descname"><span class="pre">SentenceGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'type'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.SentenceGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nephosem.core.graph.DiGraph" title="nephosem.core.graph.DiGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">nephosem.core.graph.DiGraph</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.SentenceGraph.build_graph">
+<span class="sig-name descname"><span class="pre">build_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.SentenceGraph.build_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a graph from raw text (of a sentence)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sentence</strong> (<em>iterable</em>) – A list of strings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.SentenceGraph.generate_graph">
+<span class="sig-name descname"><span class="pre">generate_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.SentenceGraph.generate_graph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.SentenceGraph.match_pattern">
+<span class="sig-name descname"><span class="pre">match_pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">macro</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.SentenceGraph.match_pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match a sentence with a feature pattern (and target pair).
+Append the results to the attribute lists <cite>matched_nodes</cite> and <cite>matched_edges</cite> of the feature object.
+A <cite>matched node</cite> is a dict mapping node index to type string.
+A <cite>matched edge</cite> is a dict mapping edge index to dependency relation.
+e.g. one match would be:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>nodes: <cite>{1: ‘boy/NN’, 2: ‘give/V’, 3: ‘girl/NN’}</cite></p></li>
+<li><p>edges: <cite>{(2, 1): ‘nsubj’, (2, 3): ‘iobj’}</cite></p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>macro</strong> (<a class="reference internal" href="#nephosem.core.graph.MacroGraph" title="nephosem.core.graph.MacroGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">MacroGraph</span></code></a>) – The feature pattern to be matched to the sentence.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.SentenceGraph.match_target_feature">
+<span class="sig-name descname"><span class="pre">match_target_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.SentenceGraph.match_target_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match a graph with a path (a tree/graph object).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<a class="reference internal" href="#nephosem.core.graph.MacroGraph" title="nephosem.core.graph.MacroGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">MacroGraph</span></code></a>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>valid matches</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>iterable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.graph.SentenceGraph.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.SentenceGraph.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.core.graph.match_sub_template">
+<span class="sig-prename descclassname"><span class="pre">nephosem.core.graph.</span></span><span class="sig-name descname"><span class="pre">match_sub_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.graph.match_sub_template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL (documentation by Mariana Montes).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

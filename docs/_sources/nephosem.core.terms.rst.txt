@@ -1,0 +1,7 @@
+nephosem.core.terms module
+==========================
+
+.. automodule:: nephosem.core.terms
+   :members:
+   :undoc-members:
+   :show-inheritance:

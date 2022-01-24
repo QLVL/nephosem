@@ -8,6 +8,8 @@ by cloning `the tutorials repository <https://github.com/montesmariana/tutorials
 In all cases, **replace the paths to the cloned repositories with your own**.
 See :doc:`usage` for an example.
 
+For the tutorial using ``semasioFlow`` go `here <https://montesmariana.github.io/semasioFlow/tutorials/createClouds.html>`_.
+
 .. toctree::
    :maxdepth: 1
    :caption: Tutorials:
@@ -17,5 +19,3 @@ See :doc:`usage` for an example.
    tutorials/matrices
    tutorials/concordance-from-tokens
    tutorials/dependencies
-   tutorials/createClouds
-   Semasiological Workflow on a loop <tutorials/createClouds-loop>

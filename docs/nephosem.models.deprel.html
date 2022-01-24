@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>nephosem.models.deprel module &mdash; Nephological Semantics 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nephosem.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>nephosem.models.deprel module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/nephosem.models.deprel.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-nephosem.models.deprel">
+<span id="nephosem-models-deprel-module"></span><h1>nephosem.models.deprel module<a class="headerlink" href="#module-nephosem.models.deprel" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.models.deprel.DepRelHandler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.models.deprel.</span></span><span class="sig-name descname"><span class="pre">DepRelHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'type'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.models.deprel.DepRelHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="nephosem.core.handler.html#nephosem.core.handler.BaseHandler" title="nephosem.core.handler.BaseHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">nephosem.core.handler.BaseHandler</span></code></a></p>
+<p>Handler Class for processing dependency relations</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.models.deprel.DepRelHandler.build_dependency">
+<span class="sig-name descname"><span class="pre">build_dependency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.models.deprel.DepRelHandler.build_dependency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a dependency frequency matrix for corpus files provided.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fnames</strong> (<em>str</em><em>, </em><em>optional</em>) – Path of file recording corpus file names (‘fnames’ file of a corpus).
+If this is provided, only the files recorded in this fnames file would be processed.
+Else, all files and folders inside the ‘corpus-path’ of settings would be processed.</p></li>
+<li><p><strong>targets</strong> (list of str or <a class="reference internal" href="nephosem.core.vocab.html#nephosem.core.vocab.Vocab" title="nephosem.core.vocab.Vocab"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code></a>, optional) – Target types/words to process.
+If this is provided, only process these targets when matching the sentence with macros.
+Else, all possible targets would be checked when matching sentences.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>features</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>iterable of <code class="xref py py-class docutils literal notranslate"><span class="pre">TemplateGraph</span></code></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p># create a DepRelHandler instance
+&gt;&gt;&gt; freqMTX = dephan.build_dependency()
+&gt;&gt;&gt; freqMTX
+[11, 24]  -&gt;[<a href="#id1"><span class="problematic" id="id2">agent_</span></a>/-&gt;[nsubjpass_boy/N],_apple/N]  -&gt;[<a href="#id3"><span class="problematic" id="id4">agent_</span></a>/-&gt;[nsubjpass_girl/N],_apple/N]  -&gt;[nsubj_apple/N]  -&gt;[nsubj_boy/N]  -&gt;[nsubj_girl/N]  &lt;-<a href="#id5"><span class="problematic" id="id6">nsubj_</span></a>/V-&gt;[acomp_healthy/JJ]  &lt;-<a href="#id7"><span class="problematic" id="id8">nsubj_</span></a>/V-&gt;[acomp_old/JJ]  …
+apple/N   NaN                                      NaN                                       NaN                NaN              NaN               3                               NaN                         …
+ask/V     NaN                                      NaN                                       NaN                1                NaN               NaN                             NaN                         …
+be/V      NaN                                      NaN                                       4                  2                NaN               NaN                             NaN                         …
+boy/N     NaN                                      NaN                                       NaN                NaN              NaN               1                               1                           …
+eat/V     1                                        1                                         NaN                7                6                 NaN                             NaN                         …
+girl/N    NaN                                      NaN                                       NaN                NaN              NaN               1                               NaN                         …
+give/V    NaN                                      NaN                                       NaN                3                1                 NaN                             NaN                         …
+…       …                                      …                                       …                …              …               …                             …                         …</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.models.deprel.DepRelHandler.build_matrix_by_matches">
+<span class="sig-name descname"><span class="pre">build_matrix_by_matches</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.models.deprel.DepRelHandler.build_matrix_by_matches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a frequency matrix by the matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.models.deprel.DepRelHandler.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.models.deprel.DepRelHandler.process" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>queue_factor<span class="classifier">int, optional</span></dt><dd><p>Multiplier for size of queue -&gt; size = number of workers * queue_factor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.models.deprel.DepRelHandler.read_templates">
+<span class="sig-name descname"><span class="pre">read_templates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">macros</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.models.deprel.DepRelHandler.read_templates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the templates from a CSV/TSV file.
+The file has lines of content like the following (including a header):</p>
+<blockquote>
+<div><p>ID  Target Regex    Feature Regex   Tareget Description     Feature Description     ID
+1   (?P&lt;LEMMA&gt;w+)/(?P&lt;POS&gt;N)w*    &lt;-(?P&lt;DEPREL&gt;nsubj)$ (?P&lt;LEMMA&gt;w+)/(?P&lt;POS&gt;V)w*       noun    subject of verb 1</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fname</strong> (<em>str</em><em>, </em><em>optional</em>) – File name of the templates file.</p></li>
+<li><p><strong>macros</strong> (iterable of <code class="xref py py-class docutils literal notranslate"><span class="pre">TemplateGraph</span></code>, optional) – TemplateGraph instances when not passing the file name.</p></li>
+<li><p><strong>encoding</strong> (<em>str</em><em>, </em><em>default 'utf-8'</em>) – File encoding of the template file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If either of the <cite>fname</cite> or <cite>templates</cite> is not provided.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dephan</span> <span class="o">=</span> <span class="n">DepRelHandler</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">template_fname</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/tests/data/DependencyFeatureTemplates.subgroup.tsv&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nephosem</span><span class="o">.</span><span class="n">rootdir</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dephan</span><span class="o">.</span><span class="n">read_templates</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="n">template_fname</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dephan</span><span class="o">.</span><span class="n">templates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">&lt;-(?P&lt;DEPREL&gt;nsubj)$ (?P&lt;LEMMA&gt;\w+)/(?P&lt;POS&gt;V)\w*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">templates</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">dephan</span><span class="o">.</span><span class="n">templates</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dephan</span><span class="o">.</span><span class="n">read_templates</span><span class="p">(</span><span class="n">macros</span><span class="o">=</span><span class="n">templates</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dephan</span><span class="o">.</span><span class="n">templates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">&lt;-(?P&lt;DEPREL&gt;nsubj)$ (?P&lt;LEMMA&gt;\w+)/(?P&lt;POS&gt;V)\w*</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.models.deprel.DepRelHandler.update_dep_rel">
+<span class="sig-name descname"><span class="pre">update_dep_rel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">macros</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.models.deprel.DepRelHandler.update_dep_rel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.models.deprel.DepRelHandler.update_dep_rel_token">
+<span class="sig-name descname"><span class="pre">update_dep_rel_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">macros</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.models.deprel.DepRelHandler.update_dep_rel_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the real method that is used for processing!!!
+Procedures:
+1. read sentences from the corpus file
+2. for each sentence, match every template/pattern</p>
+<blockquote>
+<div><p>2.1 if targets are provided, only match the sentence which satisfies the targets
+2.2 so the matching should be a target-feature matching
+2.3 this is a way of speeding up the process when the targets are provided</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.models.deprel.DepRelHandler.update_dep_rel_type">
+<span class="sig-name descname"><span class="pre">update_dep_rel_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">macros</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.models.deprel.DepRelHandler.update_dep_rel_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the real method that is used for processing!!!
+Procedures:
+1. read sentences from the corpus file
+2. for each sentence, match every template/pattern</p>
+<blockquote>
+<div><p>2.1 if targets are provided, only match the sentence which satisfies the targets
+2.2 so the matching should be a target-feature matching
+2.3 this is a way of speeding up the process when the targets are provided</p>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.models.deprel.read_sentence">
+<span class="sig-prename descclassname"><span class="pre">nephosem.models.deprel.</span></span><span class="sig-name descname"><span class="pre">read_sentence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.models.deprel.read_sentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read sentences from corpus file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – </p></li>
+<li><p><strong>formatter</strong> (<em>nephosem.CorpusFormatter</em>) – </p></li>
+<li><p><strong>encoding</strong> (<em>str</em>) – default ‘utf-8’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>generator of sentences (tuple(int, string))</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL (documentation by Mariana Montes).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
