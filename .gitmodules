@@ -1,0 +1,3 @@
+[submodule "docsrc/source/tutorials"]
+	path = docsrc/source/tutorials
+	url = https://github.com/montesmariana/tutorials.git

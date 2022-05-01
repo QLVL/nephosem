@@ -1,0 +1,7 @@
+nephosem.models.typetoken module
+================================
+
+.. automodule:: nephosem.models.typetoken
+   :members:
+   :undoc-members:
+   :show-inheritance:

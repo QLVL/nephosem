@@ -20,7 +20,7 @@
 # along with Nephosem. If not, see <https://www.gnu.org/licenses/>.
 
 
-"""This module implements the models model.
+"""This module implements the Bag-of-words models.
 
 Other models
 ============
@@ -80,12 +80,13 @@ class ItemFreqHandler(BaseHandler):
 
     def build_item_freq(self, fnames=None):
         """Make a list of all word types that occurred in the corpus
-        and write in json format
+        and write in json format.
 
         Parameters
         ----------
-        fnames : str, optional
-            Path of file recording corpus file names ('fnames' file of a corpus).
+        fnames : str or list of str, optional
+            Path of file recording corpus file names ('fnames' file of a corpus)
+            or list of file names.
             If this is provided, only the files recorded in this fnames file
             would be processed.
             Else, all files and folders inside the 'corpus-path' of settings
@@ -199,8 +200,9 @@ class ColFreqHandler(BaseHandler):
 
         Parameters
         ----------
-        fnames : str, optional
-            Filename of a file which records all (a user wants to process) file names of a corpus.
+        fnames : str or list of str, optional
+            Filename of a file which records all (a user wants to process) file names of a corpus
+            or list of file names of corpus.
             Format: corpus_name + settings["fnames-ext"]
         row_vocab : :class:`~nephosem.Vocab`
             If it is not provided here or when initializing the class, the code will stop.

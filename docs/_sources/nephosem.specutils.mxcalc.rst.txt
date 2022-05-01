@@ -1,0 +1,7 @@
+nephosem.specutils.mxcalc module
+================================
+
+.. automodule:: nephosem.specutils.mxcalc
+   :members:
+   :undoc-members:
+   :show-inheritance:

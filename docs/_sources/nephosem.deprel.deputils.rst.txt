@@ -1,0 +1,7 @@
+nephosem.deprel.deputils module
+===============================
+
+.. automodule:: nephosem.deprel.deputils
+   :members:
+   :undoc-members:
+   :show-inheritance:

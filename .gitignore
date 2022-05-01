@@ -17,3 +17,5 @@ test_data
 .pytest_cache
 *.pytest_cache
 *.pytest_cache/*
+
+docsrc/_build

@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>nephosem.deprel.deputils module &mdash; Nephological Semantics 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nephosem.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>nephosem.deprel.deputils module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/nephosem.deprel.deputils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-nephosem.deprel.deputils">
+<span id="nephosem-deprel-deputils-module"></span><h1>nephosem.deprel.deputils module<a class="headerlink" href="#module-nephosem.deprel.deputils" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.cartesian_product">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">cartesian_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.cartesian_product" title="Permalink to this definition">¶</a></dt>
+<dd><p>{1: (1, 2), 2: (3, 4)} -&gt; [{1:1, 2:3}, {1:2, 2:3}, {1:1, 2:4}, {1:2, 2:4}]
+Should perform:
+{1: (1, 2), 2: (1, 2)} -&gt;
+[{1: 1, 2: 2}] (if the target is not in (1, 2))
+[{1: 1, 2: 2}, {1: 2, 2: 1}]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.group">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodemap</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.judgeIn">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">judgeIn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sLine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.judgeIn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.judgeIn_v1">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">judgeIn_v1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sLine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.judgeIn_v1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.judgeOut">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">judgeOut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sLine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.judgeOut" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.outMap">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">outMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.outMap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.process_sentence">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">process_sentence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sLine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.process_sentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process a sentence line.
+line : ‘sid:edge1;edge2;edge3…’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sLine</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.read_nodes">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">read_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.read_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read nodes from file.
+i.e. :</p>
+<blockquote>
+<div><p>a/DT    4
+an/DT   21
+…</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.deprel.deputils.split_large_file">
+<span class="sig-prename descclassname"><span class="pre">nephosem.deprel.deputils.</span></span><span class="sig-name descname"><span class="pre">split_large_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.deprel.deputils.split_large_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split large corpus file into samller ones for multicore processing</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL (documentation by Mariana Montes).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

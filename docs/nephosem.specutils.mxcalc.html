@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>nephosem.specutils.mxcalc module &mdash; Nephological Semantics 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nephosem.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>nephosem.specutils.mxcalc module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/nephosem.specutils.mxcalc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-nephosem.specutils.mxcalc">
+<span id="nephosem-specutils-mxcalc-module"></span><h1>nephosem.specutils.mxcalc module<a class="headerlink" href="#module-nephosem.specutils.mxcalc" title="Permalink to this headline">¶</a></h1>
+<p>Calculations of Matrices</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.specutils.mxcalc.compute_association">
+<span class="sig-prename descclassname"><span class="pre">nephosem.specutils.mxcalc.</span></span><span class="sig-name descname"><span class="pre">compute_association</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freqMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfreq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfreq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ppmi'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.specutils.mxcalc.compute_association" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute association measures matrix.</p>
+<p>The matrix provided can be a submatrix with selected rows and/or columns, but <cite>nfreq</cite>
+and <cite>cfreq</cite> must be marginal frequencies from a reference matrix, i.e. with co-occurrence
+frequencies for the full corpus. <cite>N</cite> should be the sum of that reference matrix:
+if it is not provided, it will be computed as the sum of row or column marginal frequencies
+(whatever is largest).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>freqMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – Raw co-occurrence frequency matrix.</p></li>
+<li><p><strong>nfreq</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code>) – Marginal row frequencies of the reference matrix.</p></li>
+<li><p><strong>cfreq</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Vocab</span></code>) – Marginal collocate frequencies of the reference matrix.</p></li>
+<li><p><strong>N</strong> (<em>int</em>) – Sum of the reference frequency matrix.</p></li>
+<li><p><strong>meas</strong> (<em>str</em>) – Implemented association measures: ‘pmi’, ‘ppmi’, ‘llik’ (log likelihood),
+‘chisq’, ‘zscore’, ‘dice’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>association measure matrix</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.specutils.mxcalc.compute_cosine">
+<span class="sig-prename descclassname"><span class="pre">nephosem.specutils.mxcalc.</span></span><span class="sig-name descname"><span class="pre">compute_cosine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.specutils.mxcalc.compute_cosine" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>measMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.specutils.mxcalc.compute_distance">
+<span class="sig-prename descclassname"><span class="pre">nephosem.specutils.mxcalc.</span></span><span class="sig-name descname"><span class="pre">compute_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cosine'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.specutils.mxcalc.compute_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute distance matrix from association measure matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>measMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – </p></li>
+<li><p><strong>axis</strong> (<em>int</em>) – 0 (row) or 1 (column)</p></li>
+<li><p><strong>metric</strong> (<em>str</em>) – ‘cosine’ (default), ‘euclidean’, ‘cityblock’, ‘l1’, ‘l2’, ‘manhattan’
+metrics that are valid in <em>sklearn.metrics.pairwise_distances</em></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.specutils.mxcalc.compute_ppmi">
+<span class="sig-prename descclassname"><span class="pre">nephosem.specutils.mxcalc.</span></span><span class="sig-name descname"><span class="pre">compute_ppmi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freqMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfreq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfreq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.specutils.mxcalc.compute_ppmi" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is faster than <cite>compute_association()</cite>.
+Set positive to False to get pmi values.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.specutils.mxcalc.compute_simrank">
+<span class="sig-prename descclassname"><span class="pre">nephosem.specutils.mxcalc.</span></span><span class="sig-name descname"><span class="pre">compute_simrank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.specutils.mxcalc.compute_simrank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute similarity rank matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>simMTX</strong> (<em>cosine similarity SquareMatrix</em>) – </p></li>
+<li><p><strong>reverse</strong> (<em>boolean</em><em>, </em><em>default False</em>) – True: the rank 1 represents the most similar one of that row
+False the largest rank 1 represents the most similar one of that row</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.specutils.mxcalc.compute_token_vectors">
+<span class="sig-prename descclassname"><span class="pre">nephosem.specutils.mxcalc.</span></span><span class="sig-name descname"><span class="pre">compute_token_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tcWeightMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">soccMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'addition'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'l1'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.specutils.mxcalc.compute_token_vectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute token vectors.
+Build token vectors from a token weights (token-by-context weight matrix) and
+a second order matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tcWeightMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – Token-Context weight matrix.</p></li>
+<li><p><strong>soccMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – Second order collocate matrix.</p></li>
+<li><p><strong>operation</strong> (<em>str</em>) – ‘addition’, ‘multiplication’,’weightedmean’</p></li>
+<li><p><strong>normalization</strong> (<em>str</em>) – ‘l1’, ‘l2’, ‘no’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>token vectors</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Values for “normalization” are regulated by sklearn.preprocessing.normalize()</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.specutils.mxcalc.compute_token_weights">
+<span class="sig-prename descclassname"><span class="pre">nephosem.specutils.mxcalc.</span></span><span class="sig-name descname"><span class="pre">compute_token_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tcPositionMTX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">twMTX</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.specutils.mxcalc.compute_token_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute token-by-context weight matrix.
+Build token weights from a token-by-context position/boolean matrix and
+a type-by-context weight matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tcPositionMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – <dl>
+<dt>token-by-context position matrix</dt><dd><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>target words</p>
+</div></blockquote>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><a href="#id1"><span class="problematic" id="id2">|</span></a></div>
+</div>
+</div></blockquote>
+<dl>
+<dt>tokens |               |</dt><dd><div class="line-block">
+<div class="line">|
+—————</div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>twMTX</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – <dl>
+<dt>type-by-context weight matrix, i.e. ‘ppmi’ (transposed)</dt><dd><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>target words</p>
+</div></blockquote>
+</div></blockquote>
+<p>context |      …      |</p>
+</div></blockquote>
+<dl class="simple">
+<dt>features | …   x   … |</dt><dd><dl class="simple">
+<dt>(types) |      …      |</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>token weight matrix</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function will transform all explicit zeros in type-by-context weight matrix to implicit zeros.
+So, if those explicit zeros a important, be careful of them.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL (documentation by Mariana Montes).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+nephosem.models.cbc module
+==========================
+
+.. automodule:: nephosem.models.cbc
+   :members:
+   :undoc-members:
+   :show-inheritance:

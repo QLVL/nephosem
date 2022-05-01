@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>nephosem.specutils.mxutils module &mdash; Nephological Semantics 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nephosem.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>nephosem.specutils.mxutils module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/nephosem.specutils.mxutils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-nephosem.specutils.mxutils">
+<span id="nephosem-specutils-mxutils-module"></span><h1>nephosem.specutils.mxutils module<a class="headerlink" href="#module-nephosem.specutils.mxutils" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.specutils.mxutils.merge_matrices">
+<span class="sig-prename descclassname"><span class="pre">nephosem.specutils.mxutils.</span></span><span class="sig-name descname"><span class="pre">merge_matrices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.specutils.mxutils.merge_matrices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge a list of (TypeTokenMatrix) matrices into one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>matrices</strong> (<em>list</em>) – A list of matrices (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>spmatrix, row_items, col_items</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.specutils.mxutils.merge_two_matrices">
+<span class="sig-prename descclassname"><span class="pre">nephosem.specutils.mxutils.</span></span><span class="sig-name descname"><span class="pre">merge_two_matrices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mtx1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mtx2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.specutils.mxutils.merge_two_matrices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge two (TypeTokenMatrix) matrices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mtx1</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – </p></li>
+<li><p><strong>mtx2</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>merged matrix</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.specutils.mxutils.transform_dict_to_spmatrix">
+<span class="sig-prename descclassname"><span class="pre">nephosem.specutils.mxutils.</span></span><span class="sig-name descname"><span class="pre">transform_dict_to_spmatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_mtx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowid2item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colid2item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.specutils.mxutils.transform_dict_to_spmatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate sparse.csr_matrix from dict of dict,
+according to row item to id and col item to id mappings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_mtx</strong> (<em>dict of dict</em>) – Matrix represented by a Python dict of dict</p></li>
+<li><p><strong>rowid2item</strong> (<em>list of str</em>) – Alphabetically ascending sorted list of items</p></li>
+<li><p><strong>colid2item</strong> (<em>list of str</em>) – Alphabetically ascending sorted list of items</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>sparse.csr_matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.specutils.mxutils.transform_indices">
+<span class="sig-prename descclassname"><span class="pre">nephosem.specutils.mxutils.</span></span><span class="sig-name descname"><span class="pre">transform_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mtx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_col_items</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.specutils.mxutils.transform_indices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.specutils.mxutils.transform_nodes_to_matrix">
+<span class="sig-prename descclassname"><span class="pre">nephosem.specutils.mxutils.</span></span><span class="sig-name descname"><span class="pre">transform_nodes_to_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type2toks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colloc_fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lemma/pos'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.specutils.mxutils.transform_nodes_to_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform type nodes to token matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type2toks</strong> (<em>dict</em><em> or </em><em>iterable</em>) – Type string -&gt; token nodes of this type</p></li>
+<li><p><strong>colloc_fmt</strong> (<em>str</em><em>, </em><em>default=&quot;lemma/pos&quot;</em>) – Format for the column names</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>tokmx</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="nephosem.core.matrix.html#nephosem.core.matrix.TypeTokenMatrix" title="nephosem.core.matrix.TypeTokenMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nephosem.specutils.mxutils.transform_spmatrix_to_dict">
+<span class="sig-prename descclassname"><span class="pre">nephosem.specutils.mxutils.</span></span><span class="sig-name descname"><span class="pre">transform_spmatrix_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spmatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowid2item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colid2item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.specutils.mxutils.transform_spmatrix_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate dict of dict from sparse.csr_matrix,
+according to row item to id and col item to id mappings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spmatrix</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">csr_matrix</span></code>) – </p></li>
+<li><p><strong>rowid2item</strong> (<em>iterable</em><em> (</em><em>of str</em><em>)</em>) – Alphabetically ascending sorted list of items</p></li>
+<li><p><strong>colid2item</strong> (<em>iterable</em><em> (</em><em>of str</em><em>)</em>) – Alphabetically ascending sorted list of items</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Python dict of dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL (documentation by Mariana Montes).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+nephosem.specutils.deputils module
+==================================
+
+.. automodule:: nephosem.specutils.deputils
+   :members:
+   :undoc-members:
+   :show-inheritance:

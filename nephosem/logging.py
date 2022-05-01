@@ -21,7 +21,6 @@ from __future__ import absolute_import
 import os
 import sys
 import logging
-import tempfile
 
 try:
     import threading
@@ -93,16 +92,15 @@ class DefaultFormatter(logging.Formatter):
 
 
 def init_logging():
-    """This function creates the root logger of the nephosem module.
-    This logger has one stream handler (shown in console) and one file handler (in file `~/tmp/nephosem.log`).
+    """This function creates the root logger of the nephosem module and is run when the model initializes.
+    The logger, which can be called with `logger = loging.getLogger('nephosem')`,
+    has one stream handler (shown in console) and one file handler (in file `~/tmp/nephosem.log`).
     All other loggers created in sub-modules / files will inherit these two handlers.
-    The logger has the message level `logging.INFO`. While the stream handler has the message level `logging.DEBUG`,
+    The logger has the message level `logging.INFO`, while the stream handler has the message level `logging.DEBUG`
     and the file handler has the message level `logging.WARNING`.
-    Since the logger has the `INFO` level, those `DEBUG` messages would not be sent to the handlers.
-    So although the stream handler has the `DEBUG` level, it would not show any `DEBUG` message.
-    To let the stream handler show `DEBUG` messages, just use `logger.setLevel(logging.DEBUG)` to lower the level of
-    the logger. Then the `DEBUG` messages would be sent from the logger to the handlers.
-    However, since the file handler has the `WARNING` level, this action does not affect it.
+    Since the logger has the `INFO` level, not even the stream handler will show `DEBUG` messages.
+    To override thist use `logger.setLevel(logging.DEBUG)` to lower the level of
+    the logger. However, this will not affect the file handler (i.e. the log that is stored in file).
 
     Notes
     -----
@@ -163,7 +161,22 @@ def create_file_handler(log_fname):
 
 
 def change_log_file(logger, fname):
-    """Change filename for saving log"""
+    """Change filename for saving log
+    
+    Parameters
+    ----------
+    logger : logging.Logger
+    fname : str
+        The file name of the logging file handler.
+
+    Examples
+    --------
+    >>> import logging
+    >>> from nephosem.logging import change_log_file
+    >>> logger = logging.getLogger('nephosem')
+    >>> new_log_fname = "/path/of/new/log/file"
+    >>> change_log_file(logger, new_log_fname) # the file handler will now be stored in a new path 
+    """
     logger.handlers.pop()
     fhd = create_file_handler(fname)
     logger.addHandler(fhd)

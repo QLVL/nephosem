@@ -1,0 +1,7 @@
+nephosem.core.matrix module
+===========================
+
+.. automodule:: nephosem.core.matrix
+   :members:
+   :undoc-members:
+   :show-inheritance:

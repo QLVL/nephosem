@@ -1,0 +1,491 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>nephosem.core.handler module &mdash; Nephological Semantics 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nephosem.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>nephosem.core.handler module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/nephosem.core.handler.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-nephosem.core.handler">
+<span id="nephosem-core-handler-module"></span><h1>nephosem.core.handler module<a class="headerlink" href="#module-nephosem.core.handler" title="Permalink to this headline">¶</a></h1>
+<p>Handler Class</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.core.handler.BaseHandler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.core.handler.</span></span><span class="sig-name descname"><span class="pre">BaseHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.handler.BaseHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nephosem.core.handler.Paralleler" title="nephosem.core.handler.Paralleler"><code class="xref py py-class docutils literal notranslate"><span class="pre">nephosem.core.handler.Paralleler</span></code></a></p>
+<p>This is a base class of all handler classes.</p>
+<p>Contains framework for multicore method. The purpose of this class is to provide a
+reference interface for concrete handler implementations. At the same time,
+functionality that we expect to be common for those implementations is provided
+here to avoid code duplication.</p>
+<p>A typical procedure of processing a corpus would be</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.core.handler.BaseHandler.tmpindicator">
+<span class="sig-name descname"><span class="pre">tmpindicator</span></span><a class="headerlink" href="#nephosem.core.handler.BaseHandler.tmpindicator" title="Permalink to this definition">¶</a></dt>
+<dd><p>A string indicator for the temporary folder name used by all methods of this Class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.core.handler.BaseHandler.settings">
+<span class="sig-name descname"><span class="pre">settings</span></span><a class="headerlink" href="#nephosem.core.handler.BaseHandler.settings" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.core.handler.BaseHandler.corpus_path">
+<span class="sig-name descname"><span class="pre">corpus_path</span></span><a class="headerlink" href="#nephosem.core.handler.BaseHandler.corpus_path" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.core.handler.BaseHandler.output_path">
+<span class="sig-name descname"><span class="pre">output_path</span></span><a class="headerlink" href="#nephosem.core.handler.BaseHandler.output_path" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.core.handler.BaseHandler.encoding">
+<span class="sig-name descname"><span class="pre">encoding</span></span><a class="headerlink" href="#nephosem.core.handler.BaseHandler.encoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default ‘utf-8’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.core.handler.BaseHandler.input_encoding">
+<span class="sig-name descname"><span class="pre">input_encoding</span></span><a class="headerlink" href="#nephosem.core.handler.BaseHandler.input_encoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>File encoding of input corpus files.
+Default ‘utf-8’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.core.handler.BaseHandler.output_encoding">
+<span class="sig-name descname"><span class="pre">output_encoding</span></span><a class="headerlink" href="#nephosem.core.handler.BaseHandler.output_encoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>File encoding of output files.
+Could be different with input_encoding.
+e.g. :
+If input_encoding is ‘latin-1’, but we don’t want to use it for output files.
+We could use ‘utf-8’ for output files.
+Default ‘utf-8’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>A subclass should initialize the following attributes:</p>
+<ul class="simple">
+<li><p>self.settings - settings dict</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.handler.BaseHandler.prepare_fnames">
+<span class="sig-name descname"><span class="pre">prepare_fnames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.handler.BaseHandler.prepare_fnames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare corpus file names based on the fnames file path or the corpus path.
+If a valid <cite>fnames</cite> is passed, read all file names recorded inside this file.
+If not, use the corpus directory <cite>self.corpus_path</cite> and read all file names inside this folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fnames</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>optional</em>) – If str, then it is the filename of a file which records all (a user wants to process) file names of a corpus.
+If list, then it contains a list of filenames.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.handler.BaseHandler.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.handler.BaseHandler.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process files in the fnames list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fnames</strong> (<em>iterable</em>) – This fnames is a list of file names.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>For different tasks, this method returns different objects:</dt><dd><ul class="simple">
+<li><p>ItemFreqHandler: returns a <cite>Vocab</cite> object,</p></li>
+<li><p>ColFreqHandler: returns a <cite>TypeTokenMatrix</cite> co-occurrence frequency matrix,</p></li>
+<li><p>TokenHandler: returns a Python dict mapping the type strings to their lists of tokens (<cite>TokenNode</cite> objects).</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.handler.BaseHandler.process_right_window">
+<span class="sig-name descname"><span class="pre">process_right_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.handler.BaseHandler.process_right_window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">tmpindicator</span></span><em class="property"> <span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.handler.BaseHandler.update_one_file">
+<span class="sig-name descname"><span class="pre">update_one_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.handler.BaseHandler.update_one_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the template method updating data of one corpus file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.handler.BaseHandler.update_one_match">
+<span class="sig-name descname"><span class="pre">update_one_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.handler.BaseHandler.update_one_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nephosem.core.handler.Paralleler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">nephosem.core.handler.</span></span><span class="sig-name descname"><span class="pre">Paralleler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.handler.Paralleler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is a base class of all classes that work parallel.
+This class contains a framework for parallel tasks.
+Here is the description of the procedures:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The main entrance is the method <cite>process()</cite>. It creates a job queue (for tasks sent to all sub-processes)</p></li>
+</ul>
+<p>and a result queue (for results returned by all sub-processes). It also creates a number of worker processes,
+each of whom will execute the method <cite>_worker_loop()</cite>. After creating worker processes,
+it produces the job queue by the input fnames (data). The <cite>_worker_loop()</cite> will process
+the tasks in the job queue and return the results in the result queue. Finally it uses
+<cite>_process_results()</cite> method to post process (merge) the results of each worker process
+into one final Python object.
+* The default <cite>_job_producer()</cite> method produces the job queue by feeding with the input
+fnames. One fname will be fetched and processed by a worker process (<cite>_worker_loop()</cite>).
+A sub-class inheriting <cite>Paralleler</cite> could over-write this method and feed other data
+into the job queue. Just ensure that one piece of data could be used by the <cite>_do_process_job()</cite>
+method inside the <cite>_worker_loop()</cite>.
+* The <cite>_worker_loop()</cite> method will fetch one piece of data (default, one <cite>fname</cite>) and
+send it to the method <cite>_do_process_job()</cite> and send the corresponding result to the result
+queue. Any sub-class should implement this method for different tasks.
+* The <cite>_do_process_job</cite> gets one piece of data, send it to a function for processing,
+and returns the result back to the <cite>_worker_loop()</cite> method. Any sub-class should implement
+this method.</p>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.core.handler.Paralleler.workers">
+<span class="sig-name descname"><span class="pre">workers</span></span><a class="headerlink" href="#nephosem.core.handler.Paralleler.workers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of CPU cores to be used parallel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>integer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nephosem.core.handler.Paralleler.tmpdir">
+<span class="sig-name descname"><span class="pre">tmpdir</span></span><a class="headerlink" href="#nephosem.core.handler.Paralleler.tmpdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path of the temporary directory used by the Class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.core.handler.Paralleler.pid">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">pid</span></span><a class="headerlink" href="#nephosem.core.handler.Paralleler.pid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nephosem.core.handler.Paralleler.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnames</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nephosem.core.handler.Paralleler.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process files in the fnames list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fnames</strong> (<em>iterable</em>) – This fnames is a list of file names.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>For different tasks, this method returns different objects:</dt><dd><ul class="simple">
+<li><p>ItemFreqHandler: returns a <cite>Vocab</cite> object,</p></li>
+<li><p>ColFreqHandler: returns a <cite>TypeTokenMatrix</cite> co-occurrence frequency matrix,</p></li>
+<li><p>TokenHandler: returns a Python dict mapping the type strings to their lists of tokens (<cite>TokenNode</cite> objects).</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nephosem.core.handler.Paralleler.subtmpdir">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">subtmpdir</span></span><a class="headerlink" href="#nephosem.core.handler.Paralleler.subtmpdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>When the class is instanced in a subprocess, a temporary folder for this subprocess
+will be created for its temporary files.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL (documentation by Mariana Montes).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

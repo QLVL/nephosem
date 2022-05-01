@@ -1,0 +1,2920 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>The full python workflow for semasiological token-level clouds &mdash; Nephological Semantics 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Nephological Semantics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nephosem.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QLVL/nephosem/">Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nephological Semantics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>The full python workflow for semasiological token-level clouds</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/tutorials/fullTypeLevel.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="The-full-python-workflow-for-semasiological-token-level-clouds">
+<h1>The full python workflow for semasiological token-level clouds<a class="headerlink" href="#The-full-python-workflow-for-semasiological-token-level-clouds" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we will used the <code class="docutils literal notranslate"><span class="pre">nephosem</span></code> module in the <code class="docutils literal notranslate"><span class="pre">qlvl/nephosem</span></code> repository.</p>
+<div class="section" id="0.-Initial-setup">
+<h2>0. Initial setup<a class="headerlink" href="#0.-Initial-setup" title="Permalink to this headline">¶</a></h2>
+<p>This initial setup should probably be run in some sort of setup file or at the beginning of any script, in any case. I’ll try to run it with the newer deprel model.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># to see concordance</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># for &quot;booleanize()&quot;</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">sparse</span> <span class="c1"># for &quot;booleanize()&quot;</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+</pre></div>
+</div>
+</div>
+<p>Then, the <code class="docutils literal notranslate"><span class="pre">nephosem</span></code> module itself has to be included. Until we can deploy it and install it with <code class="docutils literal notranslate"><span class="pre">pip</span></code>, we need to attach the path to the repository where it is hosted.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">nephosemdir</span> <span class="o">=</span> <span class="s2">&quot;/home/projects/semmetrix/mariana_wolken/nephosem&quot;</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nephosemdir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>From there, we can import the different functions that we need from the <code class="docutils literal notranslate"><span class="pre">nephosem</span></code> module. They could be imported as necessary for the different tasks, especially in a tutorial like this one.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">nephosem.conf</span> <span class="kn">import</span> <span class="n">ConfigLoader</span> <span class="c1"># to setup the configuration</span>
+<span class="kn">from</span> <span class="nn">nephosem</span> <span class="kn">import</span> <span class="n">Vocab</span><span class="p">,</span> <span class="n">TypeTokenMatrix</span> <span class="c1"># to manage frequency lists and matrices</span>
+<span class="kn">from</span> <span class="nn">nephosem</span> <span class="kn">import</span> <span class="n">ItemFreqHandler</span><span class="p">,</span> <span class="n">ColFreqHandler</span><span class="p">,</span> <span class="n">TokenHandler</span> <span class="c1"># to generate frequency lists and matrices</span>
+<span class="kn">from</span> <span class="nn">nephosem</span> <span class="kn">import</span> <span class="n">compute_association</span><span class="p">,</span> <span class="n">compute_distance</span> <span class="c1"># to compute PPMI and distances</span>
+<span class="c1"># compute_cosine would return similarities (I think), compute_simrank, similarity ranks</span>
+<span class="kn">from</span> <span class="nn">nephosem.specutils.mxcalc</span> <span class="kn">import</span> <span class="n">compute_token_weights</span><span class="p">,</span> <span class="n">compute_token_vectors</span> <span class="c1"># for token level. I have incorporated Stefano&#39;s modifications in my copy, with adjustments</span>
+<span class="c1"># from qlvl.basics.mxcalc import compute_token_weights, compute_token_vectors # non depmodel version</span>
+<span class="kn">from</span> <span class="nn">nephosem.models.typetoken</span> <span class="kn">import</span> <span class="n">build_tc_weight_matrix</span> <span class="c1"># for weighting at token level</span>
+
+<span class="c1"># For dependencies</span>
+<span class="kn">from</span> <span class="nn">nephosem.core.graph</span> <span class="kn">import</span> <span class="n">SentenceGraph</span><span class="p">,</span> <span class="n">MacroGraph</span><span class="p">,</span> <span class="n">PatternGraph</span>
+<span class="kn">from</span> <span class="nn">nephosem.models.deprel</span> <span class="kn">import</span> <span class="n">DepRelHandler</span><span class="p">,</span> <span class="n">read_sentence</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="1.-Configuration">
+<h2>1. Configuration<a class="headerlink" href="#1.-Configuration" title="Permalink to this headline">¶</a></h2>
+<p>Depending on what you need, you will have to set up some useful paths settings. I like to have at least the path to my project (<code class="docutils literal notranslate"><span class="pre">mydir</span></code>), an output path within (<code class="docutils literal notranslate"><span class="pre">mydir</span> <span class="pre">+</span> <span class="pre">&quot;output&quot;</span></code>) and a GitHub path for the datasets that I will use in the visualization. There is no real reason not to have everything together, except that I did not think of it at the moment.</p>
+<p>For this notebook, we will use a dataset in the same directory of the package: <code class="docutils literal notranslate"><span class="pre">tests/data/StanfDepSents</span></code>, because it includes dependency information.</p>
+<p>You could also set up a file with filenames, but we won’t use that here.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># mydir = &quot;/home/projects/semmetrix/mariana_wolken/Wolken/&quot;</span>
+<span class="n">mydir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nephosemdir</span><span class="si">}</span><span class="s2">/qlvl/tests/data&quot;</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/output/&quot;</span>
+<span class="c1"># fnames_file = &quot;{}/sources/LeNC260TwNC260.fnames&quot;.format(mydir)</span>
+<span class="c1"># coldir = &quot;/home/projects/semmetrix/NephoSem/input-data/frequency-matrices/QLVLNewsCorpus/&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>The variables with paths is just meant to make it easier to manipulate filenames. The most important concrete step is to adapt the configuration file.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">conf</span> <span class="o">=</span> <span class="n">ConfigLoader</span><span class="p">()</span>
+<span class="n">default_settings</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">settings</span>
+<span class="n">settings</span> <span class="o">=</span> <span class="n">default_settings</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">line-machine</span></code> and <code class="docutils literal notranslate"><span class="pre">line-format</span></code> settings relate to the shape of the corpus file, or concretely to the lines of the tokens, and their content.</p>
+<p>The first is a regular expression with capturing groups: the versions for <em>QLVLNewsCorpus</em> and <em>Brown</em> are commented; the one for Stanford Dependency Sentences captures six items separated by tabs.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">global-columns</span></code> (previously <code class="docutils literal notranslate"><span class="pre">line-format</span></code>) refers to the capturing groups in the line machine and labels them. In the case of the Stanford toy corpus, that is the word form, part-of-speech, lemma, id (index of item in the sentence), head (id of its dependency head) and dependency relation.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">colloc</span></code> and <code class="docutils literal notranslate"><span class="pre">token</span></code> settings indicate the format of the type, collocate and token ID’s. Here the target and collocate types are set to the default (combination of ‘lemma’ and ‘pos’), and the token ID uses the values of the ‘lemma’ and ‘pos’ fields along with the file name/ID (‘fid’) and the line number starting from 1 (‘lid’), all separated by slashes. The ‘fid’ is computed as the basename of the filename, without extension.</p>
+<p>Afterwards we have settings for dependency-based models: the format of the node and edges in the graph, and the labels of the index and head information.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">separator-line-machine</span></code> is optional for bag-of-words models (it indicates that we want to stop the window when we encounter it) but necessary for dependency-models: it tells the software where sentences end.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># settings[&#39;line-machine&#39;] = &#39;[^\t]+\t([^\t]+)\t([^\t]+)\t([^\t]+)\t[^\t]+\t[^\t]+\t_\t_&#39; #QLVLNewsCorpus, no dep</span>
+<span class="c1"># settings[&#39;line-machine&#39;] = &#39;([^\t]+)\t([^\t])[^\t]*\t([^\t]+)&#39; #Brown corpus</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;line-machine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;([^</span><span class="se">\t</span><span class="s1">]+)</span><span class="se">\t</span><span class="s1">([^</span><span class="se">\t</span><span class="s1">])[^</span><span class="se">\t</span><span class="s1">]*</span><span class="se">\t</span><span class="s1">([^</span><span class="se">\t</span><span class="s1">]+)</span><span class="se">\t</span><span class="s1">([^</span><span class="se">\t</span><span class="s1">]+)</span><span class="se">\t</span><span class="s1">([^</span><span class="se">\t</span><span class="s1">]+)</span><span class="se">\t</span><span class="s1">([^</span><span class="se">\t</span><span class="s1">]+)&#39;</span> <span class="c1">#Stanford corpus</span>
+<span class="c1"># settings[&#39;line-format&#39;] = &#39;word,lemma,pos&#39;</span>
+<span class="c1">#settings[&#39;line-format&#39;] = &#39;word,pos,lemma&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;global-columns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;word,pos,lemma,id,head,deprel&quot;</span>
+
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lemma/pos&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;colloc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lemma/pos&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lemma/pos/fid/lid&#39;</span>
+
+<span class="c1"># For dependencies</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;node-attr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lemma,pos&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;edge-attr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;deprel&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;currID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;headID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;head&#39;</span>
+
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;separator-line-machine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&lt;/s&gt;&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;line-machine&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;global-columns&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">],</span> <span class="n">settings</span><span class="p">[</span><span class="s1">&#39;colloc&#39;</span><span class="p">],</span> <span class="n">settings</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+([^     ]+)     ([^     ])[^    ]*      ([^     ]+)     ([^     ]+)     ([^     ]+)     ([^     ]+)
+word,pos,lemma,id,head,deprel
+lemma/pos lemma/pos lemma/pos/fid/lid
+</pre></div></div>
+</div>
+<p>Finally, you can set up the file encoding and the paths for corpus and output (although the output is specified separately as well, I think, and the ‘corpus-path’ is only useful if you do not specify filenames). The <em>QLVLNewsCorpus</em> has a ‘latin1’ encoding, but we want ‘utf-8’ for the output.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># settings[&#39;file-encoding&#39;] = &#39;latin1&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;file-encoding&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;outfile-encoding&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;file-encoding&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;outfile-encoding&#39;</span><span class="p">])</span>
+<span class="c1"># output_path = settings[&#39;output-path&#39;]</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;output-path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_path</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;output path: &quot;</span><span class="p">,</span> <span class="n">output_path</span><span class="p">)</span>
+<span class="n">corpus_name</span> <span class="o">=</span> <span class="s1">&#39;StanfDepSents&#39;</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;corpus-path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">corpus_name</span><span class="si">}</span><span class="s2">/&quot;</span>
+<span class="c1"># settings[&#39;corpus-path&#39;] = &#39;/home/aardvark/corp/nl/&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;corpus path: &quot;</span><span class="p">,</span> <span class="n">settings</span><span class="p">[</span><span class="s1">&#39;corpus-path&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+utf-8
+utf-8
+output path:  /home/projects/semmetrix/mariana_wolken/depmodel/qlvl/tests/data/output/
+corpus path:  /home/projects/semmetrix/mariana_wolken/depmodel/qlvl/tests/data/StanfDepSents/
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="2.-Frequency-lists">
+<h2>2. Frequency lists<a class="headerlink" href="#2.-Frequency-lists" title="Permalink to this headline">¶</a></h2>
+<p>The Vocab class is a dictionary (but with a <code class="docutils literal notranslate"><span class="pre">.dataframe</span></code> attribute that also returns a Pandas DataFrame with <code class="docutils literal notranslate"><span class="pre">item</span></code> and <code class="docutils literal notranslate"><span class="pre">freq</span></code> column). The steps to create one are twofold:</p>
+<ul class="simple">
+<li><p>Set up an ItemFreqHandler class with the settings</p></li>
+<li><p>Build the frequency list with its <code class="docutils literal notranslate"><span class="pre">.build_item_freq()</span></code> method. The <code class="docutils literal notranslate"><span class="pre">fnames</span></code> argument can be a list of paths or a path to a file with a list of paths. If it is not provided, the full content of <code class="docutils literal notranslate"><span class="pre">corpus-path</span></code> will be used.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ifhan</span> <span class="o">=</span> <span class="n">ItemFreqHandler</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">)</span>
+<span class="n">vocab</span> <span class="o">=</span> <span class="n">ifhan</span><span class="o">.</span><span class="n">build_item_freq</span><span class="p">()</span> <span class="c1"># by default it uses multiprocessor, which is overkill with the toy Brown corpus</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Building item frequency list...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c124b59e6fe045b883d765184c836810", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vocab</span> <span class="c1"># it looks like a list of tuples but it is not: you cannot manipulate it as such</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(&#39;the/D&#39;, 53),(&#39;boy/N&#39;, 25),(&#39;eat/V&#39;, 22) ... (&#39;ten/C&#39;, 1),(&#39;ask/V&#39;, 1),(&#39;about/I&#39;, 1)]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vocab</span><span class="o">.</span><span class="n">dataframe</span> <span class="c1">#the dataframe attribute returns a Pandas Dataframe and can be manipulated as such</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>item</th>
+      <th>freq</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>the/D</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>boy/N</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>eat/V</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>apple/N</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>girl/N</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>be/V</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>healthy/J</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>look/V</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>a/D</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>at/I</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>give/V</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>and/C</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>tasty/J</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>food/N</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>old/J</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>,/,</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>an/D</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>by/I</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>sit/V</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>year/N</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>baby/N</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>have/V</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>not/R</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>she/P</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>should/M</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>to/T</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>what/W</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>'s/P</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>about/I</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>about/R</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>all/P</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>as/I</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>ask/V</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>both/D</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>do/V</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>down/R</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>during/I</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>for/I</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>her/P</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>him/P</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>house/N</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>in/I</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>less/R</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>like/V</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>love/V</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>on/I</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>say/V</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>ten/C</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>ten/J</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>that/I</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>that/W</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>this/D</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>very/R</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>which/W</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>without/I</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vocab</span><span class="p">[</span><span class="s1">&#39;the/D&#39;</span><span class="p">]</span> <span class="c1"># The names of the items are the keys in the dictionary</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+53
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vocab</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;the/D&#39;,
+ &#39;boy/N&#39;,
+ &#39;should/M&#39;,
+ &#39;eat/V&#39;,
+ &#39;an/D&#39;,
+ &#39;apple/N&#39;,
+ &#39;have/V&#39;,
+ &#39;be/V&#39;,
+ &#39;and/C&#39;,
+ &#39;girl/N&#39;,
+ &#39;a/D&#39;,
+ &#39;healthy/J&#39;,
+ &#39;tasty/J&#39;,
+ &#39;all/P&#39;,
+ &#39;old/J&#39;,
+ &#39;give/V&#39;,
+ &#39;look/V&#39;,
+ &#39;at/I&#39;,
+ &#39;in/I&#39;,
+ &#39;house/N&#39;,
+ &#39;for/I&#39;,
+ &#39;say/V&#39;,
+ &#39;that/I&#39;,
+ &#39;that/W&#39;,
+ &#39;baby/N&#39;,
+ &#39;her/P&#39;,
+ &#39;by/I&#39;,
+ &#39;very/R&#39;,
+ &#39;food/N&#39;,
+ &#39;,/,&#39;,
+ &#39;during/I&#39;,
+ &#39;year/N&#39;,
+ &#39;like/V&#39;,
+ &#39;to/T&#39;,
+ &#39;without/I&#39;,
+ &#39;sit/V&#39;,
+ &#39;down/R&#39;,
+ &#39;about/R&#39;,
+ &#39;ten/J&#39;,
+ &#39;she/P&#39;,
+ &#39;love/V&#39;,
+ &#39;which/W&#39;,
+ &#39;him/P&#39;,
+ &#39;this/D&#39;,
+ &#39;not/R&#39;,
+ &#39;do/V&#39;,
+ &#39;as/I&#39;,
+ &#39;less/R&#39;,
+ &#39;what/W&#39;,
+ &#39;on/I&#39;,
+ &#34;&#39;s/P&#34;,
+ &#39;both/D&#39;,
+ &#39;ten/C&#39;,
+ &#39;ask/V&#39;,
+ &#39;about/I&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">Vocab</span><span class="p">(</span><span class="n">vocab</span><span class="o">.</span><span class="n">dataframe</span><span class="p">)</span> <span class="c1"># The dataframe can be retransformed into a Vocab object with Vocab</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(&#39;the/D&#39;, 53),(&#39;boy/N&#39;, 25),(&#39;eat/V&#39;, 22) ... (&#39;very/R&#39;, 1),(&#39;which/W&#39;, 1),(&#39;without/I&#39;, 1)]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vocab_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">corpus_name</span><span class="si">}</span><span class="s2">.nfreq&quot;</span>
+<span class="n">vocab</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">vocab_fname</span><span class="p">)</span> <span class="c1"># save method</span>
+<span class="n">Vocab</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">vocab_fname</span><span class="p">)</span> <span class="c1"># load method</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving frequency list (vocabulary)... (in &#39;utf-8&#39;)
+Stored in /home/projects/semmetrix/mariana_wolken/depmodel/qlvl/tests/data/output//StanfDepSents.nfreq
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(&#39;the/D&#39;, 53),(&#39;boy/N&#39;, 25),(&#39;eat/V&#39;, 22) ... (&#39;ten/C&#39;, 1),(&#39;ask/V&#39;, 1),(&#39;about/I&#39;, 1)]
+</pre></div></div>
+</div>
+<p>This is probably done only once per corpus. Once the main vocabulary list is compiled and stored, it can be further filtered.</p>
+<p>It can be used to simply extract the frequency of a lemma, and for the <code class="docutils literal notranslate"><span class="pre">row_vocab</span></code> and <code class="docutils literal notranslate"><span class="pre">col_vocab</span></code> arguments of the <code class="docutils literal notranslate"><span class="pre">build_col_freq</span></code> method below.</p>
+</div>
+<div class="section" id="3.-Co-occurrence-matrix">
+<h2>3. Co-occurrence matrix<a class="headerlink" href="#3.-Co-occurrence-matrix" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="3.1.-Creating-type-level-matrices">
+<h3>3.1. Creating type-level matrices<a class="headerlink" href="#3.1.-Creating-type-level-matrices" title="Permalink to this headline">¶</a></h3>
+<p>Among the important settings to be fed to the object is the window span for the co-occurrence frequency.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;left-span&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">settings</span><span class="p">[</span><span class="s1">&#39;right-span&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Bag-of-words">
+<h4>Bag-of-words<a class="headerlink" href="#Bag-of-words" title="Permalink to this headline">¶</a></h4>
+<p>Like creating the vocabulary list, creating a co-occurrence frequency matrix has two steps: set up the <code class="docutils literal notranslate"><span class="pre">ColFreqHandler</span></code> object and running its <code class="docutils literal notranslate"><span class="pre">.build_col_freq()</span></code> method.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">cfhan</span> <span class="o">=</span> <span class="n">ColFreqHandler</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span> <span class="n">row_vocab</span> <span class="o">=</span> <span class="n">vocab</span><span class="p">,</span> <span class="n">col_vocab</span> <span class="o">=</span> <span class="n">vocab</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+</pre></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.build_col_freq()</span></code> method also has an optional <code class="docutils literal notranslate"><span class="pre">fname</span></code> argument requiring a list of paths or a path to a list of paths. In addition, <code class="docutils literal notranslate"><span class="pre">row_vocab</span></code> and <code class="docutils literal notranslate"><span class="pre">col_vocab</span></code> ask for <code class="docutils literal notranslate"><span class="pre">Vocab</span></code> objects like <code class="docutils literal notranslate"><span class="pre">vocab</span></code> above.</p>
+<p>In principle, you would create one overarching collocational matrix for all weight computations, with the full vocabulary for both rows and columns. But if the corpus is big, it may result in a huge files that can take a few minutes to load (and hours to create), so if you are only interested in the co-occurrence frequency between certain groups of items, you can use filtered vocabularies.</p>
+<p>The result is a <code class="docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code> object.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">freqMTX</span> <span class="o">=</span> <span class="n">cfhan</span><span class="o">.</span><span class="n">build_col_freq</span><span class="p">()</span>
+<span class="n">freqMTX</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;the/D&quot;</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;of/C&#39;</span><span class="p">,</span> <span class="s1">&#39;be/V&#39;</span><span class="p">,</span> <span class="s1">&#39;a/D&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Building collocate frequency matrix...
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 3]  of/C  be/V  a/D
+the/D   1     11    5
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sub_cfhan</span> <span class="o">=</span> <span class="n">ColFreqHandler</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span> <span class="n">row_vocab</span><span class="o">=</span><span class="n">vocab</span><span class="p">[[</span><span class="s1">&#39;the/D&#39;</span><span class="p">]],</span> <span class="n">col_vocab</span><span class="o">=</span><span class="n">vocab</span><span class="p">[[</span><span class="s1">&#39;of/C&#39;</span><span class="p">,</span> <span class="s1">&#39;be/V&#39;</span><span class="p">,</span> <span class="s1">&#39;a/D&#39;</span><span class="p">]])</span>
+<span class="n">subfreqMTX</span> <span class="o">=</span> <span class="n">sub_cfhan</span><span class="o">.</span><span class="n">build_col_freq</span><span class="p">()</span>
+<span class="n">subfreqMTX</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Building collocate frequency matrix...
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 2]  a/D  be/V
+the/D   5    11
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">corpus_name</span><span class="si">}</span><span class="s2">.wcmx.pac&quot;</span> <span class="c1"># ideally you will code parameter settings into the name</span>
+<span class="n">freqMTX</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="c1"># save method</span>
+<span class="n">TypeTokenMatrix</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+Saving matrix...
+Stored in file:
+  /home/projects/semmetrix/mariana_wolken/depmodel/qlvl/tests/data/output//StanfDepSents.wcmx.pac
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[55, 55]  &#39;s/P  ,/,  a/D  about/I  about/R  all/P  an/D  ...
+&#39;s/P      NaN   NaN  NaN  NaN      NaN      NaN    NaN   ...
+,/,       NaN   2    2    NaN      NaN      NaN    NaN   ...
+a/D       NaN   2    NaN  NaN      NaN      NaN    NaN   ...
+about/I   NaN   NaN  NaN  NaN      NaN      NaN    NaN   ...
+about/R   NaN   NaN  NaN  NaN      NaN      NaN    NaN   ...
+all/P     NaN   NaN  NaN  NaN      NaN      NaN    NaN   ...
+an/D      NaN   NaN  NaN  NaN      NaN      NaN    NaN   ...
+...       ...   ...  ...  ...      ...      ...    ...   ...
+</pre></div></div>
+</div>
+<p>Important attributes of <code class="docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code> are <code class="docutils literal notranslate"><span class="pre">row_items</span></code> and <code class="docutils literal notranslate"><span class="pre">col_items</span></code>: the names of the rows and columns.</p>
+<p>One of the important methods of the <code class="docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code> class is <code class="docutils literal notranslate"><span class="pre">.submatrix()</span></code>, which takes lists of items, as would be returned by <code class="docutils literal notranslate"><span class="pre">row_items</span></code> and <code class="docutils literal notranslate"><span class="pre">col_items</span></code>, to <strong>subset the matrix</strong>. <em>However</em>, it does not respond well when the requested list includes items that are missing from the row/column names of the matrix. It is best to first obtain the intersection between the items in the row/column names and the desired list before using it for subsetting.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">freqMTX</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;the/D&quot;</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;of/C&#39;</span><span class="p">,</span> <span class="s1">&#39;be/V&#39;</span><span class="p">,</span> <span class="s1">&#39;a/D&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 3]  of/C  be/V  a/D
+the/D   1     11    5
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="s2">&quot;bird/N&quot;</span> <span class="ow">in</span> <span class="n">freqMTX</span><span class="o">.</span><span class="n">col_items</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">freqMTX</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;the/D&quot;</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;of/C&#39;</span><span class="p">,</span> <span class="s1">&#39;be/V&#39;</span><span class="p">,</span> <span class="s1">&#39;bird/N&#39;</span><span class="p">])</span>
+<span class="c1"># Instead of an error or warning or just dropping the extra element, it copies the value of another column and creates it</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 3]  of/C  be/V  bird/N
+the/D   1     11    1
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">freqMTX</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;the/D&quot;</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;of/C&#39;</span><span class="p">,</span> <span class="s1">&#39;be/V&#39;</span><span class="p">,</span> <span class="s1">&#39;bird/N&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">freqMTX</span><span class="o">.</span><span class="n">col_items</span><span class="p">])</span>
+<span class="c1"># Best to first check the intersection</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 1]  be/V
+the/D   11
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Dependency-based">
+<h4>Dependency-based<a class="headerlink" href="#Dependency-based" title="Permalink to this headline">¶</a></h4>
+<p>Dependency-based models require yet another piece of information: templates. On the one hand, we have .graphml files that indicate relationships between elements. On the other, we have .xml files which specify the role of the node and features in the relationships. For example, in .graphml you would say that you want the relationship between a verb and its direct object; in the .xml, you would clarify that the verb is your feature and the object is your target. You would also specify whether you
+want the lemma of the verb as the feature or, instead, the full path (just <em>eat/V</em> or <code class="docutils literal notranslate"><span class="pre">eat/v-&gt;dobj:#T</span></code>, with <code class="docutils literal notranslate"><span class="pre">#T</span></code> filling in the role of the target.</p>
+<p>For the type-level, we will exemplify with patterns that do not specify the <em>kind</em> of relationships but the number of steps, only selecting paths with one step between the target and the context word (<em>aka</em> LEMMAPATH1).</p>
+<p>First, we have to upload the files.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">path_graphml_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/templates/LEMMAPATH-Stanford.template.graphml&quot;</span>
+<span class="n">path_patterns</span> <span class="o">=</span> <span class="n">PatternGraph</span><span class="o">.</span><span class="n">read_graphml</span><span class="p">(</span><span class="n">path_graphml_fname</span><span class="p">)</span>
+
+<span class="n">path_macro_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/templates/LEMMAPATH1-Stanford.target-feature-macro.xml&quot;</span>
+<span class="n">path_macros</span> <span class="o">=</span> <span class="n">MacroGraph</span><span class="o">.</span><span class="n">read_xml</span><span class="p">(</span><span class="n">path_macro_fname</span><span class="p">,</span> <span class="n">path_patterns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>This is a fragment of the raw <code class="docutils literal notranslate"><span class="pre">path_patterns</span></code>, the .graphml file:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;graphml</span> <span class="na">xmlns=</span><span class="s">&quot;http://graphml.graphdrawing.org/xmlns&quot;</span>
+      <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+      <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://graphml.graphdrawing.org/xmlns</span>
+<span class="s">        http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;key</span> <span class="na">id=</span><span class="s">&quot;n1&quot;</span> <span class="na">for=</span><span class="s">&quot;node&quot;</span> <span class="na">attr.name=</span><span class="s">&quot;lemma&quot;</span> <span class="na">attr.type=</span><span class="s">&quot;string&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;default&gt;</span>(.+)<span class="nt">&lt;/default&gt;</span>
+    <span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;key</span> <span class="na">id=</span><span class="s">&quot;n2&quot;</span> <span class="na">for=</span><span class="s">&quot;node&quot;</span> <span class="na">attr.name=</span><span class="s">&quot;pos&quot;</span> <span class="na">attr.type=</span><span class="s">&quot;string&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;default&gt;</span>(\w+)<span class="nt">&lt;/default&gt;</span>
+    <span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;key</span> <span class="na">id=</span><span class="s">&quot;e1&quot;</span> <span class="na">for=</span><span class="s">&quot;edge&quot;</span> <span class="na">attr.name=</span><span class="s">&quot;deprel&quot;</span> <span class="na">attr.type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;graph</span> <span class="na">id=</span><span class="s">&quot;1&quot;</span> <span class="na">edgedefault=</span><span class="s">&quot;directed&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;node</span> <span class="na">id=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;&lt;/node&gt;</span>
+        <span class="nt">&lt;node</span> <span class="na">id=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;&lt;/node&gt;</span>
+        <span class="nt">&lt;edge</span> <span class="na">source=</span><span class="s">&quot;1&quot;</span> <span class="na">target=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;e1&quot;</span><span class="nt">&gt;</span>\w+<span class="nt">&lt;/data&gt;</span>
+        <span class="nt">&lt;/edge&gt;</span>
+    <span class="nt">&lt;/graph&gt;</span>
+<span class="nt">&lt;/graphml&gt;</span>
+</pre></div>
+</div>
+<p>The structure is as follows: the main element is a <code class="docutils literal notranslate"><span class="pre">&lt;graphml&gt;</span></code> tag, that always stay the same, within which we have three <code class="docutils literal notranslate"><span class="pre">&lt;key&gt;</span></code> tags setting up the main elements we are now interested in: lemma and pos for the nodes, and deprel for the key. Inside them, the <code class="docutils literal notranslate"><span class="pre">&lt;default&gt;</span></code> tag lets us set up a default regex expression for filtering these items, but then we can make further specifications within the specific graphs. Afterwards, we can add as many <code class="docutils literal notranslate"><span class="pre">&lt;graph&gt;</span></code> tags as we want, each of them
+representing one pattern to match.</p>
+<p>Each <code class="docutils literal notranslate"><span class="pre">&lt;graph&gt;</span></code> tag has an id (which is a string with a number) and a property <code class="docutils literal notranslate"><span class="pre">edgedefault=&quot;directed&quot;</span></code> (not sure how compulsory that is). Inside the <code class="docutils literal notranslate"><span class="pre">&lt;graph&gt;</span></code> tag we can have <code class="docutils literal notranslate"><span class="pre">&lt;node&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;edge&gt;</span></code> tags indicating the nodes (items) and edges (relationships) in the pattern. Here we have two nodes, 1 and 2, joined by an edge that goes from 1 (source attribute) to 2 (target attribute): node 1 is the head of node 2, e.g the verb for its direct object. We could specify that we want the
+direct object by filling in the <code class="docutils literal notranslate"><span class="pre">&lt;data&gt;</span></code> element within <code class="docutils literal notranslate"><span class="pre">&lt;edge&gt;</span></code> as “dobj” instead of “<span class="math">\w`+”. Note that this ``<data>`</span> element has a <code class="docutils literal notranslate"><span class="pre">key</span></code> attribute with value “e1”, meaning that it’s talking about a “deprel” element. Within the nodes, we could have a similar <code class="docutils literal notranslate"><span class="pre">&lt;data&gt;</span></code> element with a <code class="docutils literal notranslate"><span class="pre">key</span></code> attribute and valeue “n1” if we want to filter by lemma or “n2” if we want to filter by part-of-speech.</p>
+<p>Next, we have a fragment of the raw <code class="docutils literal notranslate"><span class="pre">path_macros</span></code>, the .xml file:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;target-feature-list&gt;</span>
+    <span class="nt">&lt;target-fmt&gt;</span>
+        <span class="nt">&lt;node-fmt&gt;</span>
+            <span class="nt">&lt;lemma</span> <span class="na">group=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;pos</span> <span class="na">group=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;fid</span> <span class="na">group=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;lid</span> <span class="na">group=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;string</span> <span class="na">connector=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>lemma/pos/fid/lid<span class="nt">&lt;/string&gt;</span>
+        <span class="nt">&lt;/node-fmt&gt;</span>
+    <span class="nt">&lt;/target-fmt&gt;</span>
+    <span class="nt">&lt;feature-fmt&gt;</span>
+        <span class="nt">&lt;node-fmt&gt;</span>
+            <span class="nt">&lt;lemma</span> <span class="na">group=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;pos</span> <span class="na">group=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;string</span> <span class="na">connector=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>lemma/pos<span class="nt">&lt;/string&gt;</span>
+        <span class="nt">&lt;/node-fmt&gt;</span>
+        <span class="nt">&lt;edge-fmt&gt;</span>deprel<span class="nt">&lt;/edge-fmt&gt;</span>
+    <span class="nt">&lt;/feature-fmt&gt;</span>
+    <span class="nt">&lt;target-feature-macro</span> <span class="na">id=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;sub-graph-pattern</span> <span class="na">id=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;target</span> <span class="na">nodeID=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;description&gt;</span>Empty<span class="nt">&lt;/description&gt;</span>
+        <span class="nt">&lt;/target&gt;</span>
+        <span class="nt">&lt;feature</span> <span class="na">featureID=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;description&gt;</span>Words that depend directly on the target.<span class="nt">&lt;/description&gt;</span>
+        <span class="nt">&lt;/feature&gt;</span>
+    <span class="nt">&lt;/target-feature-macro&gt;</span>
+<span class="nt">&lt;/target-feature-list&gt;</span>
+</pre></div>
+</div>
+<p>In this case, after the small xml preamble, we have the mail element <code class="docutils literal notranslate"><span class="pre">&lt;target-feature-list&gt;</span></code>, within which we find one <code class="docutils literal notranslate"><span class="pre">&lt;target-fmt&gt;</span></code> element to specify the format of the target, one <code class="docutils literal notranslate"><span class="pre">&lt;feature-fmt&gt;</span></code> tag to specify the format of the feature elements (the columns of our matrices), and as many <code class="docutils literal notranslate"><span class="pre">&lt;target-feature-macro&gt;</span></code> elements as we have templates/macros to describe.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">&lt;target-fmt&gt;</span></code> element, the <code class="docutils literal notranslate"><span class="pre">&lt;node-fmt&gt;</span></code> element gives instructions to capture the elements of a node and chain them. The <code class="docutils literal notranslate"><span class="pre">fid</span></code> and <code class="docutils literal notranslate"><span class="pre">lid</span></code> elements are only relevant at token-level. The same goes for <code class="docutils literal notranslate"><span class="pre">&lt;feature-fmt&gt;</span></code>, where a reference to the edge is included.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;target-feature-macro&gt;</span></code> element has an attribute “id” (with a number as a string) and three child elements. The first, <code class="docutils literal notranslate"><span class="pre">&lt;sub-graph-pattern&gt;</span></code>, also has an attribute “id” that points to the id of a <code class="docutils literal notranslate"><span class="pre">&lt;graph&gt;</span></code> element in the .graphml file. Totally different from the “id” of the parent element. The <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;feature&gt;</span></code> elements point to the nodes in that <code class="docutils literal notranslate"><span class="pre">&lt;graph&gt;</span></code> that take the roles of node and feature. Here, because the “nodeID” attribute of <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> is “1”, the target is
+the head of the relationship in that graph; because the “featureID” attribute of <code class="docutils literal notranslate"><span class="pre">&lt;feature&gt;</span></code> is “2”, the feature is the dependent. Optionally, you can add a description of the item. With this format, the features will be the lemma/pos combination; if you exclude the “featureID” attribute altogether, the full template will become the feature (including dependency information).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">nephosem.specutils.deputils</span> <span class="kn">import</span> <span class="n">parse_pattern</span><span class="p">,</span> <span class="n">draw_tree</span><span class="p">,</span> <span class="n">draw_match</span><span class="p">,</span> <span class="n">draw_labels</span><span class="p">,</span> <span class="n">get_root</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="k">def</span> <span class="nf">plot_patterns</span><span class="p">(</span><span class="n">macros_list</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">20.0</span><span class="p">,</span> <span class="mf">32.0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">macros_list</span><span class="p">)):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">draw_labels</span><span class="p">(</span><span class="n">macros_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="n">v_labels</span><span class="o">=</span><span class="s1">&#39;pos&#39;</span><span class="p">,</span> <span class="n">e_labels</span><span class="o">=</span><span class="s1">&#39;deprel&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># This shows the patterns included with these files --- it is always the same pattern,</span>
+<span class="c1"># but in the macros file we include relationships in both directions, so we have two macros.</span>
+<span class="n">plot_patterns</span><span class="p">(</span><span class="n">path_macros</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_fullTypeLevel_46_0.png" src="../_images/tutorials_fullTypeLevel_46_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># The only difference between type- and token-level here is the &quot;mode&quot; argument</span>
+<span class="n">path_dephan_type</span> <span class="o">=</span> <span class="n">DepRelHandler</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">targets</span> <span class="o">=</span> <span class="n">vocab</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
+<span class="n">path_dephan_type</span><span class="o">.</span><span class="n">read_templates</span><span class="p">(</span><span class="n">macros</span><span class="o">=</span><span class="n">path_macros</span><span class="p">)</span>
+<span class="n">pathMTX</span> <span class="o">=</span> <span class="n">path_dephan_type</span><span class="o">.</span><span class="n">build_dependency</span><span class="p">()</span>
+<span class="n">pathMTX</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;girl/N&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_nonzero</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Building dependency features...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c60b49ccfb4a413aa127b4d46805068c", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+Building matrix...
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 12]  &#39;s/P  apple/N  ask/V  at/I  boy/N  by/I  eat/V  ...
+girl/N   1     1        1      1     2      1     6      ...
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pathfull_macro_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/templates/LEMMAPATH1-Stanford-full.target-feature-macro.xml&quot;</span>
+<span class="n">pathfull_macros</span> <span class="o">=</span> <span class="n">MacroGraph</span><span class="o">.</span><span class="n">read_xml</span><span class="p">(</span><span class="n">pathfull_macro_fname</span><span class="p">,</span> <span class="n">path_patterns</span><span class="p">)</span>
+<span class="n">pathfull_dephan_type</span> <span class="o">=</span> <span class="n">DepRelHandler</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">targets</span> <span class="o">=</span> <span class="n">vocab</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
+<span class="n">pathfull_dephan_type</span><span class="o">.</span><span class="n">read_templates</span><span class="p">(</span><span class="n">macros</span><span class="o">=</span><span class="n">pathfull_macros</span><span class="p">)</span>
+<span class="n">pathfullMTX</span> <span class="o">=</span> <span class="n">pathfull_dephan_type</span><span class="o">.</span><span class="n">build_dependency</span><span class="p">()</span>
+<span class="n">pathfullMTX</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;girl/N&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_nonzero</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># Note that the dependency itself is replaced by &quot;*&quot; because the regex in the patterns file does not capture it</span>
+<span class="c1"># (it doesn&#39;t have parentheses)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Building dependency features...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d61181bea2804c0c8f9dd3f854a580d2", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+Building matrix...
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 12]  #T#-&gt;*:&#39;s/P  #T#-&gt;*:old/J  #T#-&gt;*:the/D  apple/N-&gt;*:#T#  ask/V-&gt;*:#T#  at/I-&gt;*:#T#  boy/N-&gt;*:#T#  ...
+girl/N   1            1             21            1               1             1            2             ...
+</pre></div></div>
+</div>
+<p>In practice, we will be more interested in the transposed counterpart of this matrix: when we obtain token-level matrices of this kind, the patterns will be the columns and will need to be multiplied by a SOCC matrix where the patterns are the rows :).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pathfullMTX</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">col</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;girl/N&quot;</span><span class="p">,</span> <span class="s2">&quot;boy/N&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n_nonzero</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[24, 2]        girl/N  boy/N
+#T#-&gt;*:&#39;s/P    1       NaN
+#T#-&gt;*:a/D     NaN     2
+#T#-&gt;*:all/P   NaN     1
+#T#-&gt;*:and/C   NaN     2
+#T#-&gt;*:baby/N  NaN     1
+#T#-&gt;*:both/D  NaN     1
+#T#-&gt;*:girl/N  NaN     2
+...            ...     ...
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="3.2-Manipulating-co-occurrence-matrices">
+<h3>3.2 Manipulating co-occurrence matrices<a class="headerlink" href="#3.2-Manipulating-co-occurrence-matrices" title="Permalink to this headline">¶</a></h3>
+<p>One of the things you will want to do is <strong>compute association measures</strong>, which will be the values of the vectors, either for type or token level matrices. This is done with the <code class="docutils literal notranslate"><span class="pre">compute_association()</span></code>, a function that takes a (sub)matrix, row and column vocabulary objects and the kind of measure.</p>
+<p>Something else you might be interested in is computing a distance matrix, but we will look into that with the token-level matrix (even though it is, of course, possible at type-level as well).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">nfreq</span> <span class="o">=</span> <span class="n">Vocab</span><span class="p">(</span><span class="n">freqMTX</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">cfreq</span> <span class="o">=</span> <span class="n">Vocab</span><span class="p">(</span><span class="n">freqMTX</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">pmi</span> <span class="o">=</span> <span class="n">compute_association</span><span class="p">(</span><span class="n">freqMTX</span><span class="p">,</span> <span class="n">nfreq</span><span class="o">=</span><span class="n">nfreq</span><span class="p">,</span> <span class="n">cfreq</span><span class="o">=</span><span class="n">cfreq</span><span class="p">,</span> <span class="n">meas</span> <span class="o">=</span> <span class="s1">&#39;pmi&#39;</span><span class="p">)</span>
+<span class="n">pmi</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8de14ea87b544530bbdb7c70269b33f2", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+
+************************************
+function    = compute_association
+  time      = 0.01668 sec
+************************************
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[55, 55]  &#39;s/P  ,/,        a/D        about/I  about/R  all/P  an/D  ...
+&#39;s/P      NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...
+,/,       NaN   2.0384464  1.2940059  NaN      NaN      NaN    NaN   ...
+a/D       NaN   1.2940059  NaN        NaN      NaN      NaN    NaN   ...
+about/I   NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...
+about/R   NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...
+all/P     NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...
+an/D      NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...
+...       ...   ...        ...        ...      ...      ...    ...   ...
+</pre></div></div>
+</div>
+<p>Even if you only want the values for a few of the items, you will need to use the full row and column sums for <code class="docutils literal notranslate"><span class="pre">nfreq</span></code> and <code class="docutils literal notranslate"><span class="pre">cfreq</span></code>.</p>
+<p>You can also use the <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> method (of <code class="docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code>) to <strong>remove</strong> all the rows (<code class="docutils literal notranslate"><span class="pre">axis</span> <span class="pre">=</span> <span class="pre">0</span></code>) or columns (<code class="docutils literal notranslate"><span class="pre">axis</span> <span class="pre">=</span> <span class="pre">1</span></code>) with no positive values.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">subMTX</span> <span class="o">=</span> <span class="n">freqMTX</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;the/D&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_nonzero</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">subpmi</span> <span class="o">=</span> <span class="n">compute_association</span><span class="p">(</span><span class="n">subMTX</span><span class="p">,</span> <span class="n">nfreq</span><span class="o">=</span><span class="n">nfreq</span><span class="p">,</span> <span class="n">cfreq</span><span class="o">=</span><span class="n">cfreq</span><span class="p">,</span> <span class="n">meas</span> <span class="o">=</span> <span class="s1">&#39;pmi&#39;</span><span class="p">)</span>
+<span class="n">subpmi</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "9655b00a815840cd9bb4646db9c4d809", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+
+************************************
+function    = compute_association
+  time      = 0.01447 sec
+************************************
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 53]  &#39;s/P         ,/,        a/D          about/I      about/R      all/P       an/D        ...
+the/D    0.030027887  -0.611826  -0.43997574  -0.15229367  0.030027887  0.25317144  -1.0685844  ...
+</pre></div></div>
+</div>
+<p>Read the documentation to find other possible measures.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">subllr</span> <span class="o">=</span> <span class="n">compute_association</span><span class="p">(</span><span class="n">subMTX</span><span class="p">,</span> <span class="n">nfreq</span><span class="o">=</span><span class="n">nfreq</span><span class="p">,</span> <span class="n">cfreq</span><span class="o">=</span><span class="n">cfreq</span><span class="p">,</span> <span class="n">meas</span> <span class="o">=</span> <span class="s1">&#39;llik&#39;</span><span class="p">)</span>
+<span class="n">subllr</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a09b18b8d6474667b1f2cf40cdb8bd7c", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+
+************************************
+function    = compute_association
+  time      = 0.01483 sec
+************************************
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 53]  &#39;s/P          ,/,        a/D        about/I      about/R       all/P      an/D       ...
+the/D    0.0011144616  1.1206855  1.3934952  0.030076249  0.0011144616  0.0751342  1.9897448  ...
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="4.-Token-level">
+<h2>4. Token level<a class="headerlink" href="#4.-Token-level" title="Permalink to this headline">¶</a></h2>
+<p>All matrices below belong to the <code class="docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code> class, so even if I don’t, they can be saved with the <code class="docutils literal notranslate"><span class="pre">.save()</span></code> method and loaded with <code class="docutils literal notranslate"><span class="pre">TypeTokenMatrix.load()</span></code>.</p>
+<div class="section" id="4.1-Collecting-tokens">
+<h3>4.1 Collecting tokens<a class="headerlink" href="#4.1-Collecting-tokens" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">query</span> <span class="o">=</span> <span class="n">vocab</span><span class="o">.</span><span class="n">subvocab</span><span class="p">([</span><span class="s2">&quot;girl/N&quot;</span><span class="p">])</span> <span class="c1"># which is equivalent to vocab[[&quot;girl/N&quot;]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h4>Bag-of-words<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>As always, collecting tokens go into two steps: setting up the <code class="docutils literal notranslate"><span class="pre">TokenHandler</span></code> class and then running the <code class="docutils literal notranslate"><span class="pre">retrieve_tokens()</span></code> method (there are other alternative methods too, I understand). The <code class="docutils literal notranslate"><span class="pre">query</span></code> argument of the class is a Vocab object with the types from which we want the tokens. Among the important settings you might want to reconfigure are the <strong>window span</strong> (like above) and the <code class="docutils literal notranslate"><span class="pre">single-boundary-machine</span></code>, a regular expression to match lines that correspond to sentence (or
+whatever) boundaries, such as <code class="docutils literal notranslate"><span class="pre">^&lt;/sentence&gt;$</span></code> in the case of <em>QLVLNewsCorpus</em> or <code class="docutils literal notranslate"><span class="pre">&lt;/s&gt;</span></code> for this case.</p>
+<p>Next to <code class="docutils literal notranslate"><span class="pre">fnames</span></code>, the method (as well as the class itself) includes a <code class="docutils literal notranslate"><span class="pre">col_vocab</span></code> argument which takes a <code class="docutils literal notranslate"><span class="pre">Vocab</span></code> object to select which context words can be captured (rather than, by default, all context words).</p>
+<p>I find <code class="docutils literal notranslate"><span class="pre">fnames</span></code> particularly useful to avoid browsing all of a huge corpus if I already know that I want to extract a sample and which files that sample resides in.</p>
+<p>(Some notes comparing to the old code:</p>
+<p>Before, the code required us to specify col_vocab, or it crashed. Now it doesn’t.</p>
+<p>The new code also ignores all the context words that do not occur in the window of the tokens (unlike the previous code, which could include many empty columns).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tokhan</span> <span class="o">=</span> <span class="n">TokenHandler</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
+<span class="n">tokens</span> <span class="o">=</span> <span class="n">tokhan</span><span class="o">.</span><span class="n">retrieve_tokens</span><span class="p">()</span>
+<span class="n">tokens</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Scanning tokens of queries in corpus...
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[21, 39]                   that/W  which/W  about/R  be/V  ,/,  this/D  apple/N  ...
+girl/N/StanfDepSents.4/7   NaN     NaN      NaN      NaN   NaN  NaN     4        ...
+girl/N/StanfDepSents.4/15  4       NaN      NaN      NaN   NaN  NaN     3        ...
+girl/N/StanfDepSents.3/21  NaN     NaN      NaN      NaN   NaN  NaN     NaN      ...
+girl/N/StanfDepSents.7/7   NaN     NaN      NaN      NaN   NaN  NaN     3        ...
+girl/N/StanfDepSents.7/25  NaN     NaN      NaN      NaN   NaN  NaN     3        ...
+girl/N/StanfDepSents.2/29  NaN     NaN      NaN      -4    NaN  NaN     NaN      ...
+girl/N/StanfDepSents.9/14  NaN     NaN      NaN      NaN   NaN  NaN     NaN      ...
+...                        ...     ...      ...      ...   ...  ...     ...      ...
+</pre></div></div>
+</div>
+<p>For the ones interested in running <code class="docutils literal notranslate"><span class="pre">retrieve_token_nodes()</span></code> instead, that method doesn’t exist anymore as a separate function, but its output can be found in the <code class="docutils literal notranslate"><span class="pre">type2toks</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">TokenHandler</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">type2toks</span></code> attribute is then a dictionary with types as keys and and a <code class="docutils literal notranslate"><span class="pre">TypeNode</span></code> object as value, which has <code class="docutils literal notranslate"><span class="pre">tokens</span></code> attribute that is a list of <code class="docutils literal notranslate"><span class="pre">TokenNode</span></code> objects. From them, we can create a concordance with a function like <code class="docutils literal notranslate"><span class="pre">tokenConcordance()</span></code> below :)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tokhan</span><span class="o">.</span><span class="n">type2toks</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;girl/N&#39;: girl/N}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">type</span><span class="p">(</span><span class="n">tokhan</span><span class="o">.</span><span class="n">type2toks</span><span class="p">[</span><span class="s2">&quot;girl/N&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+qlvl.core.terms.TypeNode
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">firstToken</span> <span class="o">=</span> <span class="n">tokhan</span><span class="o">.</span><span class="n">type2toks</span><span class="p">[</span><span class="s2">&quot;girl/N&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">firstToken</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+qlvl.core.terms.TokenNode
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[80]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">tokenConcordance</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
+    <span class="n">leftContext</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">word</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">token</span><span class="o">.</span><span class="n">lcollocs</span><span class="p">])</span>
+    <span class="n">rightContext</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">word</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">token</span><span class="o">.</span><span class="n">rcollocs</span><span class="p">])</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">leftContext</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">token</span><span class="o">.</span><span class="n">word</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">rightContext</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tokenConcordance</span><span class="p">(</span><span class="n">firstToken</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;boy says that the girl should eat the apple&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[81]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#If you have several queries, you just need to replace tokhan.type2toks[&quot;girl/N&quot;].tokens with a flattened version</span>
+<span class="c1"># [tok for typ in tokhan.type2toks.values() for tok in ctyp.tokens]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="s2">&quot;token_id&quot;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">token</span><span class="p">),</span> <span class="s2">&quot;text&quot;</span> <span class="p">:</span> <span class="n">tokenConcordance</span><span class="p">(</span><span class="n">token</span><span class="p">)}</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokhan</span><span class="o">.</span><span class="n">type2toks</span><span class="p">[</span><span class="s2">&quot;girl/N&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tokens</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[81]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>text</th>
+      <th>token_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>boy says that the girl should eat the apple</td>
+      <td>girl/N/StanfDepSents.4/7</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>The girl eats the apple that</td>
+      <td>girl/N/StanfDepSents.4/15</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The boy and the girl eat a healthy and</td>
+      <td>girl/N/StanfDepSents.3/21</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>old boy gives the girl a baby apple</td>
+      <td>girl/N/StanfDepSents.7/7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>The boy asked the girl about eating apples</td>
+      <td>girl/N/StanfDepSents.7/25</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>are eaten by the girl</td>
+      <td>girl/N/StanfDepSents.2/29</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>The older girl looks at a boy</td>
+      <td>girl/N/StanfDepSents.9/14</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>The boy gives the girl a tasty healthy apple</td>
+      <td>girl/N/StanfDepSents.6/6</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>The girl does n't eat</td>
+      <td>girl/N/StanfDepSents.6/21</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>The girl sits down</td>
+      <td>girl/N/StanfDepSents.10/13</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>The girl eats about ten apples</td>
+      <td>girl/N/StanfDepSents.10/19</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>The girl looks at the boy</td>
+      <td>girl/N/StanfDepSents.11/3</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>the apple which the girl gave him</td>
+      <td>girl/N/StanfDepSents.11/19</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>This year , the girl looked at a boy</td>
+      <td>girl/N/StanfDepSents.11/28</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>What the girl eats was given by</td>
+      <td>girl/N/StanfDepSents.5/19</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>The girl looks healthy</td>
+      <td>girl/N/StanfDepSents.1/3</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>boy looks at the girl as she eats</td>
+      <td>girl/N/StanfDepSents.1/13</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>The girl eats less healthy food</td>
+      <td>girl/N/StanfDepSents.1/20</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>The girl sat on the apple</td>
+      <td>girl/N/StanfDepSents.8/3</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>boy looked at the girl 's apple</td>
+      <td>girl/N/StanfDepSents.8/15</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>the boys and the girls eat apples</td>
+      <td>girl/N/StanfDepSents.8/25</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">nouns</span> <span class="o">=</span> <span class="n">vocab</span><span class="o">.</span><span class="n">subvocab</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">vocab</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">)])</span>
+<span class="n">query2</span> <span class="o">=</span> <span class="n">vocab</span><span class="o">.</span><span class="n">subvocab</span><span class="p">([</span><span class="s2">&quot;girl/N&quot;</span><span class="p">,</span> <span class="s2">&quot;boy/N&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tokhan2</span> <span class="o">=</span> <span class="n">TokenHandler</span><span class="p">(</span><span class="n">query2</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span> <span class="n">col_vocab</span> <span class="o">=</span> <span class="n">nouns</span><span class="p">)</span> <span class="c1"># multiple types as targets</span>
+<span class="n">tokens2</span> <span class="o">=</span> <span class="n">tokhan2</span><span class="o">.</span><span class="n">retrieve_tokens</span><span class="p">()</span> <span class="c1"># Subset of context words</span>
+<span class="n">tokens2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Scanning tokens of queries in corpus...
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[46, 7]                    year/N  apple/N  girl/N  food/N  house/N  boy/N  baby/N
+girl/N/StanfDepSents.6/6   NaN     1        NaN     NaN     NaN      -1     NaN
+girl/N/StanfDepSents.6/21  NaN     NaN      NaN     NaN     NaN      NaN    NaN
+girl/N/StanfDepSents.5/19  NaN     NaN      NaN     NaN     NaN      NaN    NaN
+girl/N/StanfDepSents.2/29  NaN     NaN      NaN     NaN     NaN      NaN    NaN
+girl/N/StanfDepSents.3/21  NaN     NaN      NaN     NaN     NaN      -1     NaN
+girl/N/StanfDepSents.9/14  NaN     NaN      NaN     NaN     NaN      1      NaN
+girl/N/StanfDepSents.4/7   NaN     1        NaN     NaN     NaN      -1     NaN
+...                        ...     ...      ...     ...     ...      ...    ...
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># In this case, the concordance looks weird because we have only used nouns as collocates</span>
+<span class="c1"># In order to capture the full concordance, we should run TokenHandler with the full vocabulary and THEN filter the columns</span>
+<span class="n">allTokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">tok</span> <span class="k">for</span> <span class="n">typ</span> <span class="ow">in</span> <span class="n">tokhan2</span><span class="o">.</span><span class="n">type2toks</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">typ</span><span class="o">.</span><span class="n">tokens</span><span class="p">]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="s2">&quot;token_id&quot;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">token</span><span class="p">),</span> <span class="s2">&quot;text&quot;</span> <span class="p">:</span> <span class="n">tokenConcordance</span><span class="p">(</span><span class="n">token</span><span class="p">)}</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">allTokens</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>text</th>
+      <th>token_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>boy girl apple</td>
+      <td>girl/N/StanfDepSents.6/6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>girl</td>
+      <td>girl/N/StanfDepSents.6/21</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>girl</td>
+      <td>girl/N/StanfDepSents.5/19</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>girl</td>
+      <td>girl/N/StanfDepSents.2/29</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>boy girl</td>
+      <td>girl/N/StanfDepSents.3/21</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>girl boy</td>
+      <td>girl/N/StanfDepSents.9/14</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>boy girl apple</td>
+      <td>girl/N/StanfDepSents.4/7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>girl apple</td>
+      <td>girl/N/StanfDepSents.4/15</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>girl boy</td>
+      <td>girl/N/StanfDepSents.11/3</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>apple girl</td>
+      <td>girl/N/StanfDepSents.11/19</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>year girl boy</td>
+      <td>girl/N/StanfDepSents.11/28</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>girl</td>
+      <td>girl/N/StanfDepSents.1/3</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>boy girl</td>
+      <td>girl/N/StanfDepSents.1/13</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>girl food</td>
+      <td>girl/N/StanfDepSents.1/20</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>girl</td>
+      <td>girl/N/StanfDepSents.10/13</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>girl apples</td>
+      <td>girl/N/StanfDepSents.10/19</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>girl apple</td>
+      <td>girl/N/StanfDepSents.8/3</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>boy girl apple</td>
+      <td>girl/N/StanfDepSents.8/15</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>boys girls apples</td>
+      <td>girl/N/StanfDepSents.8/25</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>boy girl baby apple</td>
+      <td>girl/N/StanfDepSents.7/7</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>boy girl apples</td>
+      <td>girl/N/StanfDepSents.7/25</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>boy girl</td>
+      <td>boy/N/StanfDepSents.6/3</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>boy</td>
+      <td>boy/N/StanfDepSents.6/14</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>boy</td>
+      <td>boy/N/StanfDepSents.5/3</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>boy</td>
+      <td>boy/N/StanfDepSents.5/11</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>boy</td>
+      <td>boy/N/StanfDepSents.5/25</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>boy</td>
+      <td>boy/N/StanfDepSents.2/8</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>boy food</td>
+      <td>boy/N/StanfDepSents.2/12</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>boy apple</td>
+      <td>boy/N/StanfDepSents.3/3</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>boy girl</td>
+      <td>boy/N/StanfDepSents.3/18</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>boys apple</td>
+      <td>boy/N/StanfDepSents.9/5</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>girl boy house</td>
+      <td>boy/N/StanfDepSents.9/18</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Apples boys</td>
+      <td>boy/N/StanfDepSents.9/28</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>boy</td>
+      <td>boy/N/StanfDepSents.12/12</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>boy girl</td>
+      <td>boy/N/StanfDepSents.4/3</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>apple baby boy</td>
+      <td>boy/N/StanfDepSents.4/22</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>girl boy</td>
+      <td>boy/N/StanfDepSents.11/7</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>boy apple</td>
+      <td>boy/N/StanfDepSents.11/13</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>girl boy</td>
+      <td>boy/N/StanfDepSents.11/32</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>boy girl</td>
+      <td>boy/N/StanfDepSents.1/9</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>boy</td>
+      <td>boy/N/StanfDepSents.10/3</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>boy girl</td>
+      <td>boy/N/StanfDepSents.8/11</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>boys girls</td>
+      <td>boy/N/StanfDepSents.8/22</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>boy girl</td>
+      <td>boy/N/StanfDepSents.7/4</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>boy years</td>
+      <td>boy/N/StanfDepSents.7/14</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>boy girl</td>
+      <td>boy/N/StanfDepSents.7/22</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Dependency models can use different types of patterns. Here we will see three:</p>
+<ul class="simple">
+<li><p>Lemmarel, where the dependency is selected by a specific set of relationships and the context feature is a lemma.</p></li>
+<li><p>Lemmapath, where the dependency is selected based on the number of steps on the dependency path (like above) and the context feature is a lemma.</p></li>
+<li><p>Deppath, where the dependency is selected based on the number of steps on the dependency path but the full dependency relation is the context feature. (Deprel is of course also possible but I will not show it.)</p></li>
+</ul>
+</div>
+<div class="section" id="Lemmarel">
+<h4>Lemmarel<a class="headerlink" href="#Lemmarel" title="Permalink to this headline">¶</a></h4>
+<p>In the first dependency-based model, we will look at templates where a noun is the target and the features could be the verb of which it is subject or direct object, its modifier or an item from which it depends via a preposition.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">rel_graphml_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/templates/LEMMAREL-Stanford.nouns.template.graphml&quot;</span>
+<span class="n">rel_patterns</span> <span class="o">=</span> <span class="n">PatternGraph</span><span class="o">.</span><span class="n">read_graphml</span><span class="p">(</span><span class="n">rel_graphml_fname</span><span class="p">)</span>
+
+<span class="n">rel_macro_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mydir</span><span class="si">}</span><span class="s2">/templates/LEMMAREL1-Stanford.nouns.target-feature-macro.xml&quot;</span>
+<span class="n">rel_macros</span> <span class="o">=</span> <span class="n">MacroGraph</span><span class="o">.</span><span class="n">read_xml</span><span class="p">(</span><span class="n">rel_macro_fname</span><span class="p">,</span> <span class="n">rel_patterns</span><span class="p">)</span>
+<span class="n">plot_patterns</span><span class="p">(</span><span class="n">rel_macros</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_fullTypeLevel_76_0.png" src="../_images/tutorials_fullTypeLevel_76_0.png" />
+</div>
+</div>
+<p>Like in all other dependency-based models, we first create an object of the <code class="docutils literal notranslate"><span class="pre">DepRelHandler</span></code> class (with either mode ‘type’ or, in this case, ‘token’) and then we give the macros to the <code class="docutils literal notranslate"><span class="pre">.read_templates()</span></code> method.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">rel_dephan</span> <span class="o">=</span> <span class="n">DepRelHandler</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+<span class="n">rel_dephan</span><span class="o">.</span><span class="n">read_templates</span><span class="p">(</span><span class="n">macros</span><span class="o">=</span><span class="n">rel_macros</span><span class="p">)</span>
+<span class="n">rel_tokens</span> <span class="o">=</span> <span class="n">rel_dephan</span><span class="o">.</span><span class="n">build_dependency</span><span class="p">()</span>
+<span class="n">rel_tokens</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Building dependency features...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "0b179a75a142445d8f8b9dbc6af139d3", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+Building matrix...
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[15, 6]                     ask/V  at/I  eat/V  give/V  look/V  sit/V
+girl/N/StanfDepSents.1/13   NaN    1     NaN    NaN     NaN     NaN
+girl/N/StanfDepSents.1/20   NaN    NaN   1      NaN     NaN     NaN
+girl/N/StanfDepSents.1/3    NaN    NaN   NaN    NaN     1       NaN
+girl/N/StanfDepSents.10/13  NaN    NaN   NaN    NaN     NaN     1
+girl/N/StanfDepSents.10/19  NaN    NaN   1      NaN     NaN     NaN
+girl/N/StanfDepSents.11/19  NaN    NaN   NaN    1       NaN     NaN
+girl/N/StanfDepSents.11/28  NaN    NaN   NaN    NaN     1       NaN
+...                         ...    ...   ...    ...     ...     ...
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Lemmapath">
+<h4>Lemmapath<a class="headerlink" href="#Lemmapath" title="Permalink to this headline">¶</a></h4>
+<p>This is the token-level counterpart of the type-level model shown above: the rows are individual instances instead of type-level vectors.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">path_dephan</span> <span class="o">=</span> <span class="n">DepRelHandler</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+<span class="n">path_dephan</span><span class="o">.</span><span class="n">read_templates</span><span class="p">(</span><span class="n">macros</span><span class="o">=</span><span class="n">path_macros</span><span class="p">)</span>
+<span class="n">path_tokens</span> <span class="o">=</span> <span class="n">path_dephan</span><span class="o">.</span><span class="n">build_dependency</span><span class="p">()</span>
+<span class="n">path_tokens</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Building dependency features...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ee42df516a304d53bc52dd7bb0924adf", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+Building matrix...
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[21, 12]                    &#39;s/P  apple/N  ask/V  at/I  boy/N  by/I  eat/V  ...
+girl/N/StanfDepSents.1/13   NaN   NaN      NaN    1     NaN    NaN   NaN    ...
+girl/N/StanfDepSents.1/20   NaN   NaN      NaN    NaN   NaN    NaN   1      ...
+girl/N/StanfDepSents.1/3    NaN   NaN      NaN    NaN   NaN    NaN   NaN    ...
+girl/N/StanfDepSents.10/13  NaN   NaN      NaN    NaN   NaN    NaN   NaN    ...
+girl/N/StanfDepSents.10/19  NaN   NaN      NaN    NaN   NaN    NaN   1      ...
+girl/N/StanfDepSents.11/19  NaN   NaN      NaN    NaN   NaN    NaN   NaN    ...
+girl/N/StanfDepSents.11/28  NaN   NaN      NaN    NaN   NaN    NaN   NaN    ...
+...                         ...   ...      ...    ...   ...    ...   ...    ...
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Deppath">
+<h4>Deppath<a class="headerlink" href="#Deppath" title="Permalink to this headline">¶</a></h4>
+<p>This is the token-level counterpart of the second type-level model shown above; that (transposed) type-level model would serve as the second-order matrix for this token-level matrix.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pathfull_dephan</span> <span class="o">=</span> <span class="n">DepRelHandler</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+<span class="n">pathfull_dephan</span><span class="o">.</span><span class="n">read_templates</span><span class="p">(</span><span class="n">macros</span><span class="o">=</span><span class="n">pathfull_macros</span><span class="p">)</span>
+<span class="n">pathfull_tokens</span> <span class="o">=</span> <span class="n">pathfull_dephan</span><span class="o">.</span><span class="n">build_dependency</span><span class="p">()</span>
+<span class="n">pathfull_tokens</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+WARNING: Not provide the temporary path!
+WARNING: Use the default tmp directory: &#39;~/tmp&#39;!
+Building dependency features...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "bdeb25390ba44172a0a5afc4bd64633b", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+Building matrix...
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[21, 12]                    #T#-&gt;*:&#39;s/P  #T#-&gt;*:old/J  #T#-&gt;*:the/D  apple/N-&gt;*:#T#  ask/V-&gt;*:#T#  at/I-&gt;*:#T#  boy/N-&gt;*:#T#  ...
+girl/N/StanfDepSents.1/13   NaN          NaN           1             NaN             NaN           1            NaN           ...
+girl/N/StanfDepSents.1/20   NaN          NaN           1             NaN             NaN           NaN          NaN           ...
+girl/N/StanfDepSents.1/3    NaN          NaN           1             NaN             NaN           NaN          NaN           ...
+girl/N/StanfDepSents.10/13  NaN          NaN           1             NaN             NaN           NaN          NaN           ...
+girl/N/StanfDepSents.10/19  NaN          NaN           1             NaN             NaN           NaN          NaN           ...
+girl/N/StanfDepSents.11/19  NaN          NaN           1             NaN             NaN           NaN          NaN           ...
+girl/N/StanfDepSents.11/28  NaN          NaN           1             NaN             NaN           NaN          NaN           ...
+...                         ...          ...           ...           ...             ...           ...          ...           ...
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="4.2-Weight-or-booleanize">
+<h3>4.2 Weight or booleanize<a class="headerlink" href="#4.2-Weight-or-booleanize" title="Permalink to this headline">¶</a></h3>
+<p>The result is also a <code class="docutils literal notranslate"><span class="pre">TypeTokenMatrix</span></code> object, with <code class="docutils literal notranslate"><span class="pre">.submatrix()</span></code> and <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> methods, but with tokens instead of types on its rows and with <em>positions</em> as its values. It can be directly fed into a <code class="docutils literal notranslate"><span class="pre">compute_token_weights()</span></code> function in order to replace the positions with weights, but if we do not want to implement any weighting we should do something else: transform it into a boolean matrix.</p>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">tokens</span></code> could be replaced by <code class="docutils literal notranslate"><span class="pre">rel_tokens</span></code>, <code class="docutils literal notranslate"><span class="pre">path_tokens</span></code> or <code class="docutils literal notranslate"><span class="pre">pathfull_tokens</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">booleanize</span><span class="p">(</span><span class="n">ttmx</span><span class="p">,</span> <span class="n">include_negative</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="c1"># For PPMI matrices, include_negative should be False</span>
+    <span class="n">boolean_array</span> <span class="o">=</span> <span class="n">ttmx</span><span class="o">.</span><span class="n">matrix</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">include_negative</span> <span class="k">else</span> <span class="n">ttmx</span><span class="o">.</span><span class="n">matrix</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="n">boolean_sparse</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">boolean_array</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">TypeTokenMatrix</span><span class="p">(</span><span class="n">boolean_sparse</span><span class="p">,</span> <span class="n">ttmx</span><span class="o">.</span><span class="n">row_items</span><span class="p">,</span> <span class="n">ttmx</span><span class="o">.</span><span class="n">col_items</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_nonzero</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">tokens</span> <span class="o">=</span> <span class="n">booleanize</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+<span class="n">tokens</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[21, 39]                   that/W  which/W  about/R  be/V  ,/,  this/D  apple/N  ...
+girl/N/StanfDepSents.4/7   NaN     NaN      NaN      NaN   NaN  NaN     1        ...
+girl/N/StanfDepSents.4/15  1       NaN      NaN      NaN   NaN  NaN     1        ...
+girl/N/StanfDepSents.3/21  NaN     NaN      NaN      NaN   NaN  NaN     NaN      ...
+girl/N/StanfDepSents.7/7   NaN     NaN      NaN      NaN   NaN  NaN     1        ...
+girl/N/StanfDepSents.7/25  NaN     NaN      NaN      NaN   NaN  NaN     1        ...
+girl/N/StanfDepSents.2/29  NaN     NaN      NaN      1     NaN  NaN     NaN      ...
+girl/N/StanfDepSents.9/14  NaN     NaN      NaN      NaN   NaN  NaN     NaN      ...
+...                        ...     ...      ...      ...   ...  ...     ...      ...
+</pre></div></div>
+</div>
+<p>Then, if we want to weight the values with the PPMI between the context words and the target, we can use <code class="docutils literal notranslate"><span class="pre">compute_token_weights()</span></code> and the PPMI matrix; if we only want to <em>select</em> the context words with a positive PMI, we can use the boolean version of the PPMI matrix.</p>
+<p>This PPMI matrix has to have the same column items as the token-level matrix, and at least the types of the targets in its row names.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sub_pmi</span> <span class="o">=</span> <span class="n">pmi</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">get_item_list</span><span class="p">(),</span> <span class="n">col</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">col_items</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_nonzero</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">#Of course, it&#39;s best to check for the intersection...</span>
+<span class="n">sub_pmi</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 39]  that/W     which/W    about/R    be/V         ,/,         this/D     apple/N     ...
+girl/N   0.3507146  0.3507146  0.8207182  -0.97104126  -0.5142828  1.0438617  0.18944645  ...
+</pre></div></div>
+</div>
+<p>The bag-of-words pmi matrix works for all token-level matrices except the one with full dependencies as features. In order to weight that one, we would need to calculate PMI values between the lemmas and the paths.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pathfull_nfreq</span> <span class="o">=</span> <span class="n">Vocab</span><span class="p">(</span><span class="n">pathfullMTX</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">pathfull_cfreq</span> <span class="o">=</span> <span class="n">Vocab</span><span class="p">(</span><span class="n">pathfullMTX</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">pathfull_pmi</span> <span class="o">=</span> <span class="n">compute_association</span><span class="p">(</span><span class="n">pathfullMTX</span><span class="p">,</span> <span class="n">nfreq</span><span class="o">=</span><span class="n">pathfull_nfreq</span><span class="p">,</span> <span class="n">cfreq</span><span class="o">=</span><span class="n">pathfull_cfreq</span><span class="p">,</span> <span class="n">meas</span> <span class="o">=</span> <span class="s1">&#39;pmi&#39;</span><span class="p">)</span>
+<span class="n">pathfull_pmi</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">get_item_list</span><span class="p">(),</span> <span class="n">col</span> <span class="o">=</span> <span class="n">pathfull_tokens</span><span class="o">.</span><span class="n">col_items</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_nonzero</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "156ca367cdc742059e8211d65c6b95ac", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+
+************************************
+function    = compute_association
+  time      = 0.01623 sec
+************************************
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 12]  #T#-&gt;*:&#39;s/P  #T#-&gt;*:old/J  #T#-&gt;*:the/D  apple/N-&gt;*:#T#  ask/V-&gt;*:#T#  at/I-&gt;*:#T#  boy/N-&gt;*:#T#  ...
+girl/N   2.325058     0.93876356    1.3992884     -0.81043625     1.2264457     0.5332985    -0.5081554    ...
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">weighted_tokens</span> <span class="o">=</span> <span class="n">compute_token_weights</span><span class="p">(</span><span class="n">tokens</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">col</span> <span class="o">=</span> <span class="n">sub_pmi</span><span class="o">.</span><span class="n">col_items</span><span class="p">),</span> <span class="n">sub_pmi</span><span class="p">)</span>
+<span class="n">weighted_tokens</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[21, 39]                   that/W  which/W  about/R  be/V     ,/,  this/D  apple/N  ...
+girl/N/StanfDepSents.4/7   NaN     NaN      NaN      NaN      NaN  NaN     0.1894   ...
+girl/N/StanfDepSents.4/15  0.3507  NaN      NaN      NaN      NaN  NaN     0.1894   ...
+girl/N/StanfDepSents.3/21  NaN     NaN      NaN      NaN      NaN  NaN     NaN      ...
+girl/N/StanfDepSents.7/7   NaN     NaN      NaN      NaN      NaN  NaN     0.1894   ...
+girl/N/StanfDepSents.7/25  NaN     NaN      NaN      NaN      NaN  NaN     0.1894   ...
+girl/N/StanfDepSents.2/29  NaN     NaN      NaN      -0.9710  NaN  NaN     NaN      ...
+girl/N/StanfDepSents.9/14  NaN     NaN      NaN      NaN      NaN  NaN     NaN      ...
+...                        ...     ...      ...      ...      ...  ...     ...      ...
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">selected_tokens</span> <span class="o">=</span> <span class="n">compute_token_weights</span><span class="p">(</span><span class="n">tokens</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">col</span> <span class="o">=</span> <span class="n">sub_pmi</span><span class="o">.</span><span class="n">col_items</span><span class="p">),</span> <span class="n">booleanize</span><span class="p">(</span><span class="n">sub_pmi</span><span class="p">))</span>
+<span class="n">selected_tokens</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[21, 39]                   that/W  which/W  about/R  be/V    ,/,  this/D  apple/N  ...
+girl/N/StanfDepSents.4/7   NaN     NaN      NaN      NaN     NaN  NaN     1.0000   ...
+girl/N/StanfDepSents.4/15  1.0000  NaN      NaN      NaN     NaN  NaN     1.0000   ...
+girl/N/StanfDepSents.3/21  NaN     NaN      NaN      NaN     NaN  NaN     NaN      ...
+girl/N/StanfDepSents.7/7   NaN     NaN      NaN      NaN     NaN  NaN     1.0000   ...
+girl/N/StanfDepSents.7/25  NaN     NaN      NaN      NaN     NaN  NaN     1.0000   ...
+girl/N/StanfDepSents.2/29  NaN     NaN      NaN      1.0000  NaN  NaN     NaN      ...
+girl/N/StanfDepSents.9/14  NaN     NaN      NaN      NaN     NaN  NaN     NaN      ...
+...                        ...     ...      ...      ...     ...  ...     ...      ...
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="4.3-Second-order-dimensions">
+<h3>4.3 Second-order dimensions<a class="headerlink" href="#4.3-Second-order-dimensions" title="Permalink to this headline">¶</a></h3>
+<p>Now <code class="docutils literal notranslate"><span class="pre">tokens</span></code>, <code class="docutils literal notranslate"><span class="pre">weighted_tokens</span></code> and <code class="docutils literal notranslate"><span class="pre">selected_tokens</span></code> are alternatives that can be used to create the final vectors, for which we need one final type-level (PPMI) matrix to multiply them for and the <code class="docutils literal notranslate"><span class="pre">compute_token_vectors()</span></code> function.</p>
+<p>The first two arguments of this function, <code class="docutils literal notranslate"><span class="pre">tcWeightMTX</span></code> and <code class="docutils literal notranslate"><span class="pre">soccMTX</span></code>, are the token level and second-order type level matrices involved. Next to them there is an argument <code class="docutils literal notranslate"><span class="pre">operation</span></code> to decide how to merge the type level vectors of the context words to form the token-level vector: by default, it’s addition, but it could also be multiplication or a weighted mean. In addition, the argument <code class="docutils literal notranslate"><span class="pre">normalization</span></code>, with L1 as default, sets whether and how the vectors should be normalized.</p>
+<p>The second-order matrix has to have, as rows, the columns of the token-level matrix, while the columns will be the final dimensions. I understand that if we wanted to use SVD, it would be applied to that second-order matrix before the multiplication.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ppmi</span> <span class="o">=</span> <span class="n">pmi</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">pmi</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_nonzero</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># The multiply() method with the boolean matrix lets us set all values below 0 to 0</span>
+<span class="n">intersection_cw</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tokens</span><span class="o">.</span><span class="n">col_items</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ppmi</span><span class="o">.</span><span class="n">row_items</span><span class="p">]</span>
+<span class="n">ppmi</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[55, 55]  &#39;s/P  ,/,        a/D        about/I  about/R  all/P  an/D  ...
+&#39;s/P      NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...
+,/,       NaN   2.0384464  1.2940059  NaN      NaN      NaN    NaN   ...
+a/D       NaN   1.2940059  NaN        NaN      NaN      NaN    NaN   ...
+about/I   NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...
+about/R   NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...
+all/P     NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...
+an/D      NaN   NaN        NaN        NaN      NaN      NaN    NaN   ...
+...       ...   ...        ...        ...      ...      ...    ...   ...
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">filtered_tokens</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">col</span> <span class="o">=</span> <span class="n">intersection_cw</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n_nonzero</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">filtered_soc</span> <span class="o">=</span> <span class="n">ppmi</span><span class="o">.</span><span class="n">submatrix</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="n">intersection_cw</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_nonzero</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">tokvecs</span> <span class="o">=</span> <span class="n">compute_token_vectors</span><span class="p">(</span><span class="n">filtered_tokens</span><span class="p">,</span> <span class="n">filtered_soc</span><span class="p">)</span> <span class="c1"># This is currently the old version: I think Stefano should commit his fix himself</span>
+<span class="n">tokvecs</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+  Operation: addition &#39;token-feature weight matrix&#39; X &#39;socc matrix&#39;...
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[21, 55]                   &#39;s/P    ,/,     a/D     about/I  about/R  all/P   an/D    ...
+girl/N/StanfDepSents.4/7   0.0130  NaN     0.0055  0.0253   0.0230   0.0146  0.0509  ...
+girl/N/StanfDepSents.4/15  0.0220  NaN     0.0077  0.0311   0.0389   0.0050  0.0303  ...
+girl/N/StanfDepSents.3/21  0.0004  0.0311  0.0229  0.0160   0.0112   0.0159  0.0155  ...
+girl/N/StanfDepSents.7/7   0.0117  0.0136  0.0279  0.0157   0.0117   0.0432  0.0456  ...
+girl/N/StanfDepSents.7/25  0.0154  NaN     0.0065  0.0808   0.0273   0.0174  0.0320  ...
+girl/N/StanfDepSents.2/29  0.0006  0.0327  NaN     0.0138   0.0181   0.0412  0.0181  ...
+girl/N/StanfDepSents.9/14  0.0461  0.0286  0.0191  0.0073   0.0004   0.0508  0.0286  ...
+...                        ...     ...     ...     ...      ...      ...     ...     ...
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tokvecs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">corpus_name</span><span class="si">}</span><span class="s2">.ttmx.ppmi.pac&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+Saving matrix...
+Stored in file:
+  /home/projects/semmetrix/mariana_wolken/depmodel/qlvl/tests/data/output//StanfDepSents.ttmx.ppmi.pac
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="4.4-Cosine-distances">
+<h3>4.4 Cosine distances<a class="headerlink" href="#4.4-Cosine-distances" title="Permalink to this headline">¶</a></h3>
+<p>The final element, <code class="docutils literal notranslate"><span class="pre">tokvecs</span></code>, is the actual token-level matrix we are interested in. We could use it to average vectors over a set of tokens, for example, but normally we go straight to computing distances, with the <code class="docutils literal notranslate"><span class="pre">compute_distance()</span></code> function. The default measure is cosine, but it could also be euclidean, cityblock, or other options. It could also compute distances between columns rather than, as default, by row.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tokdists</span> <span class="o">=</span> <span class="n">compute_distance</span><span class="p">(</span><span class="n">tokvecs</span><span class="p">)</span>
+<span class="n">tokdists</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">corpus_name</span><span class="si">}</span><span class="s2">.ttmx.dist.pac&quot;</span><span class="p">)</span>
+<span class="n">tokdists</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+************************************
+function    = compute_distance
+  time      = 0.0008376 sec
+************************************
+
+
+Saving matrix...
+Stored in file:
+  /home/projects/semmetrix/mariana_wolken/depmodel/qlvl/tests/data/output//StanfDepSents.ttmx.dist.pac
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[21, 21]                   girl/N/StanfDepSents.4/7  girl/N/StanfDepSents.4/15  girl/N/StanfDepSents.3/21  girl/N/StanfDepSents.7/7  girl/N/StanfDepSents.7/25  girl/N/StanfDepSents.2/29  girl/N/StanfDepSents.9/14  ...
+girl/N/StanfDepSents.4/7   0.0000                    0.3498                     0.4297                     0.4806                    0.3102                     0.4148                     0.5820                     ...
+girl/N/StanfDepSents.4/15  0.3498                    0.0000                     0.3867                     0.3655                    0.2375                     0.3159                     0.6249                     ...
+girl/N/StanfDepSents.3/21  0.4297                    0.3867                     0.0000                     0.3425                    0.3082                     0.2551                     0.3583                     ...
+girl/N/StanfDepSents.7/7   0.4806                    0.3655                     0.3425                     0.0000                    0.3908                     0.3923                     0.3277                     ...
+girl/N/StanfDepSents.7/25  0.3102                    0.2375                     0.3082                     0.3908                    0.0000                     0.3052                     0.5041                     ...
+girl/N/StanfDepSents.2/29  0.4148                    0.3159                     0.2551                     0.3923                    0.3052                     0.0000                     0.4530                     ...
+girl/N/StanfDepSents.9/14  0.5820                    0.6249                     0.3583                     0.3277                    0.5041                     0.4530                     0.0000                     ...
+...                        ...                       ...                        ...                        ...                       ...                        ...                        ...                        ...
+</pre></div></div>
+</div>
+<p>Of course, this could be used to compute the distances between the context words themselves!</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">focdists</span> <span class="o">=</span> <span class="n">compute_distance</span><span class="p">(</span><span class="n">filtered_soc</span><span class="p">)</span>
+<span class="n">focdists</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">corpus_name</span><span class="si">}</span><span class="s2">.wwmx.dist.pac&quot;</span><span class="p">)</span>
+<span class="n">focdists</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+************************************
+function    = compute_distance
+  time      = 0.0005112 sec
+************************************
+
+
+Saving matrix...
+Stored in file:
+  /home/projects/semmetrix/mariana_wolken/depmodel/qlvl/tests/data/output//StanfDepSents.wwmx.dist.pac
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[39, 39]  that/W  which/W  about/R  be/V    ,/,     this/D  apple/N  ...
+that/W    0.0000  0.9507   0.9237   0.8441  1.0000  0.9735  0.7750   ...
+which/W   0.9507  0.0000   0.9278   0.9611  1.0000  0.9750  0.9858   ...
+about/R   0.9237  0.9278   0.0000   0.9707  1.0000  0.9525  0.7109   ...
+be/V      0.8441  0.9611   0.9707   0.0000  0.7636  0.8006  0.6355   ...
+,/,       1.0000  1.0000   1.0000   0.7636  0.0000  0.5079  0.9361   ...
+this/D    0.9735  0.9750   0.9525   0.8006  0.5079  0.0000  0.9871   ...
+apple/N   0.7750  0.9858   0.7109   0.6355  0.9361  0.9871  0.0000   ...
+...       ...     ...      ...      ...     ...     ...     ...      ...
+</pre></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Further-steps">
+<h1>Further steps<a class="headerlink" href="#Further-steps" title="Permalink to this headline">¶</a></h1>
+<p>I normally do the rest on R: either t-SNE or MDS, HDBSCAN… But nothing stops us from running it in Python. An important point is being able to create a <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> or alike that goes through all the combinations of parameter settings, and runs this workflow with all those values, returning multiple models. This requires some thinking in order to avoid running (costly) operations with the same result multiple times — and also planning to set up a proper registrer of parameter settings and
+selection of context words per token: that is what my <code class="docutils literal notranslate"><span class="pre">workflow.py</span></code> module tries to achieve. I will make it nicer :)</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QLVL.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
