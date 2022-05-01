@@ -144,12 +144,13 @@ class Paralleler(object):
 
         # produce the job queue
         self._job_producer(fnames, job_queue)
-
+        
         for worker in workers:
             worker.join()
 
         # merge results of different sub-processes
         result = self._process_results(res_queue, n=len(fnames))
+        
         return result
 
     def _job_producer(self, fnames, job_queue, **kwargs):
@@ -169,7 +170,8 @@ class Paralleler(object):
             job_queue.put(fname)
         logger.debug("putting all jobs into queue")
 
-        # put a number ('self.workders') of None to the job queue
+        # put a number ('self.workers') of None to the job queue
+        # this way, all workers encounter one None and stop working
         for _ in range(self.workers):
             job_queue.put(None)
         logger.debug("job loop exiting, total {} jobs".format(len(fnames)))

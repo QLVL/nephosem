@@ -459,9 +459,9 @@ def compute_simrank(simMTX, reverse=False):
     return simMTX.__class__(*args, **kwargs)
 
 
-def compute_token_weights(tcPositionMTX, twMTX):
+def compute_token_weights(tcPositionMTX, twMTX, booleanize = True):
     """Compute token-by-context weight matrix.
-    Build token weights from a token-by-context position/boolean matrix and
+    Build token weights from a token-by-context matrix and
     a type-by-context weight matrix.
 
     Parameters
@@ -483,6 +483,8 @@ def compute_token_weights(tcPositionMTX, twMTX):
                     (types) |      ...      |
                              ---------------
 
+    booleanize : bool
+        whether `tcPositionMTX` should be booleanized. If False, original values will be kept.
     Returns
     -------
     token weight matrix : :class:`~qlvl.TypeTokenMatrix`
@@ -500,7 +502,8 @@ def compute_token_weights(tcPositionMTX, twMTX):
     missing_types = []
     tokens = tcPositionMTX.row_items
     types = set(twMTX.row_items)  # set of target types
-    bool_tcmx = tcPositionMTX.matrix.astype(np.bool, copy=True).toarray()  # transform to dense boolean matrix
+    tcmx_type = np.bool if booleanize else tcPositionMTX.matrix.dtype
+    bool_tcmx = tcPositionMTX.matrix.astype(tcmx_type, copy=True).toarray()
     twmx = twMTX.matrix.toarray()  # transform to dense matrix (numpy.ndarray)
     resmx = np.zeros(bool_tcmx.shape)
     for i, tok in enumerate(tokens):
