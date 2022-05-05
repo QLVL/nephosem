@@ -166,7 +166,7 @@ class Paralleler(object):
         job_queue : Queue of (str)
             A queue of jobs still to be processed. The worker will take up jobs from this queue.
         """
-        for file_idx, fname in enumerate(fnames):
+        for fname in progbar(fnames, unit='file', desc='  corpus'):
             job_queue.put(fname)
         logger.debug("putting all jobs into queue")
 

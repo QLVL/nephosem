@@ -526,7 +526,11 @@ class TokenHandler(BaseHandler):
         logger.info("Scanning tokens of queries in corpus...")
         res = self.process(fnames)
         self.type2toks = res
-        return mxutils.transform_nodes_to_matrix(res, self.formatter.colloc_format)
+        logger.info("Creating matrix...")
+        start = time.time()
+        mtx = mxutils.transform_nodes_to_matrix(res, self.formatter.colloc_format)
+        logger.info(f"Finished matrix after {time.time()-start} seconds.")
+        return mtx
 
     def process(self, fnames, **kwargs):
         return super(TokenHandler, self).process(fnames, **kwargs)
@@ -541,6 +545,7 @@ class TokenHandler(BaseHandler):
             A queue of job objects for worker function.
         """
         first = True
+#         for _ in trange(job_queue.qsize()):
         while True:
             job = job_queue.get()
             if job is None:
@@ -637,15 +642,19 @@ class TokenHandler(BaseHandler):
 
     def _process_results(self, res_queue, n=0, **kwargs):
         type2toks = defaultdict(list)
+        logger.info("Merging results")
 
-        while not res_queue.empty():
-        #for _ in trange(n):
+        for _ in trange(n):
             res = res_queue.get()
             # when data in res_queue is a `type2toks` dict
             if isinstance(res, dict):
                 for k, v in res.items():
                     type2toks[k].append(v)
+        logger.info("Finished recording results")
+        recorded = time.time()
         type2toks = {k: TypeNode.merge(v) for k, v in type2toks.items()}
+        updated = time.time()
+        logger.info(f"Dictionary updated, it took {updated-recorded} seconds.")
         return type2toks
 
 
