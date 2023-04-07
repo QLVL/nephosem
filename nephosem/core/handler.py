@@ -318,7 +318,8 @@ class BaseHandler(Paralleler):
         win = Window(lspan, rspan)
 
         # process file
-        fname = os.path.basename(filename).rsplit('.', 1)[0]  # for filename in token
+        fname = os.path.splitext(os.path.relpath(filename, start=self.settings['corpus-path']))[0] # change 2023.04.07: assign fid based corpus path in settings (flexible softcoding)
+        # fname = os.path.basename(filename).rsplit('.', 1)[0]  # for filename in token
         with codecs.open(filename, 'r', input_encoding) as fin:
             lid = 0  # line number (1-based)
             for line in fin:
