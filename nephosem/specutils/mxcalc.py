@@ -459,7 +459,7 @@ def compute_simrank(simMTX, reverse=False):
     return simMTX.__class__(*args, **kwargs)
 
 
-def compute_token_weights(tcPositionMTX, twMTX, booleanize = True):
+def compute_token_weights(tcPositionMTX, twMTX, booleanize = True, tokenFormat='lemma/pos'):
     """Compute token-by-context weight matrix.
     Build token weights from a token-by-context matrix and
     a type-by-context weight matrix.
@@ -485,6 +485,10 @@ def compute_token_weights(tcPositionMTX, twMTX, booleanize = True):
 
     booleanize : bool
         whether `tcPositionMTX` should be booleanized. If False, original values will be kept.
+    
+    tokenFormat : str
+        whether settings['token'] has both lemma and part-of-speech information (default) or just lemma information
+    
     Returns
     -------
     token weight matrix : :class:`~qlvl.TypeTokenMatrix`
@@ -510,7 +514,9 @@ def compute_token_weights(tcPositionMTX, twMTX, booleanize = True):
         # normally the last two parts of token string are filename and line number
         # while the first one or two parts of token string are 'lemma' or 'lemma/pos'
         # so split token string by '/' from right twice -> 'lemma' or 'lemma/pos', 'fname', 'lid'
-        type_ = '/'.join(tok.rsplit('/', 2)[:-2])
+        # type_ = '/'.join(tok.rsplit('/', 2)[:-2])
+        # change 2023.04.11: flexible softcoding of token id (given corpora with different structure)
+        type_ = '/'.join(tok.split('/')[:2]) if tokenFormat == 'lemma/pos' else tok.split('/')[0]
         if type_ not in types:
             missing_types.append(type_)
             continue
