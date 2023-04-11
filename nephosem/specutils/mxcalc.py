@@ -510,7 +510,9 @@ def compute_token_weights(tcPositionMTX, twMTX, booleanize = True):
         # normally the last two parts of token string are filename and line number
         # while the first one or two parts of token string are 'lemma' or 'lemma/pos'
         # so split token string by '/' from right twice -> 'lemma' or 'lemma/pos', 'fname', 'lid'
-        type_ = '/'.join(tok.rsplit('/', 2)[:-2])
+        # type_ = '/'.join(tok.rsplit('/', 2)[:-2])
+        # change 2023.04.11: flexible softcoding of token id (given corpora with different structure)
+        type_ = '/'.join(tok.split('/')[:2]) if 'pos' in self.settings['token'] else tok.split('/')[0]
         if type_ not in types:
             missing_types.append(type_)
             continue
