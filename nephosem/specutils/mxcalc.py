@@ -506,7 +506,9 @@ def compute_token_weights(tcPositionMTX, twMTX, booleanize = True, tokenFormat='
     missing_types = []
     tokens = tcPositionMTX.row_items
     types = set(twMTX.row_items)  # set of target types
-    tcmx_type = np.bool if booleanize else tcPositionMTX.matrix.dtype
+    # tcmx_type = np.bool if booleanize else tcPositionMTX.matrix.dtype
+    # Adding _ to make sure it works with numpy 1.26.4 in Google Colab
+    tcmx_type = np.bool_ if booleanize else tcPositionMTX.matrix.dtype
     bool_tcmx = tcPositionMTX.matrix.astype(tcmx_type, copy=True).toarray()
     twmx = twMTX.matrix.toarray()  # transform to dense matrix (numpy.ndarray)
     resmx = np.zeros(bool_tcmx.shape)
