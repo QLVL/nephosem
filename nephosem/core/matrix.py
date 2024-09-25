@@ -152,7 +152,10 @@ class SparseMatrix(BaseMatrix):
 
     @property
     def dataframe(self):
-        return pd.SparseDataFrame(self.matrix).to_dense()
+        # return pd.SparseDataFrame(self.matrix).to_dense()
+        # The code is outdated. Use the following instead.
+        return pd.DataFrame.sparse.from_spmatrix(self.matrix).sparse.to_dense()
+
 
     def __getitem__(self, arg):
         return self._get_value(arg)
